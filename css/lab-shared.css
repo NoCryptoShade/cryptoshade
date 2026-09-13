@@ -154,3 +154,50 @@ strong{font-weight:600;color:var(--text)}
 .ans-mark.ok{color:var(--green)}
 .ans-mark.bad{color:var(--red)}
 .ans-hint{font-size:11px;color:var(--text3);margin-top:4px;font-family:var(--mono)}
+
+/* ── TEORI ── forklaringsblokker, promotert fra web-sårbarheter ──
+   Brukes i alle moduler. Teksten kommer FØR målene, slik at
+   studenten leser konseptet før de gjør noe.
+──────────────────────────────────────────────────────── */
+.theory-block{background:var(--bg3);border:1px solid var(--border);border-radius:10px;
+  padding:16px 18px;margin-bottom:14px}
+.theory-title{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:9px;
+  display:flex;align-items:center;gap:8px}
+.theory-text{font-size:13px;color:var(--text2);line-height:1.75}
+.theory-text p{margin:0 0 9px}
+.theory-text p:last-child{margin-bottom:0}
+.theory-text code{font-family:var(--mono);font-size:11.5px;background:rgba(255,255,255,.07);
+  padding:1px 5px;border-radius:3px;color:var(--text)}
+.theory-text strong{color:var(--text);font-weight:600}
+.theory-block.why{border-left:2px solid var(--amber)}
+.theory-block.why .theory-title{color:var(--amber)}
+
+/* intro- og oppsummeringskort */
+.intro-card{background:linear-gradient(135deg,rgba(0,229,160,.06),rgba(0,229,160,.02));
+  border:1px solid rgba(0,229,160,.25);border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:24px}
+.intro-card h3{font-size:16px;font-weight:700;margin-bottom:10px}
+.intro-card p{font-size:13.5px;color:var(--text2);line-height:1.75;margin-bottom:10px;max-width:62ch}
+.intro-card ul{margin:0 0 10px;padding-left:18px;color:var(--text2);font-size:13.5px;line-height:1.8}
+.intro-card .lect{font-family:var(--mono);font-size:11px;color:var(--green);
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.recap-card{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--blue);
+  border-radius:var(--radius-lg);padding:24px 28px;margin-top:28px}
+.recap-card h3{font-size:16px;font-weight:700;margin-bottom:12px}
+.recap-card ol{margin:0;padding-left:20px;color:var(--text2);font-size:13.5px;line-height:1.85}
+.recap-card li{margin-bottom:7px}
+.recap-card li strong{color:var(--text)}
+
+/* ── FLERVALG ─────────────────────────────────────────── */
+.mcq{margin-bottom:16px}
+.mcq-q{font-size:13px;color:var(--text2);line-height:1.55;margin-bottom:9px;font-weight:500}
+.mcq-opt{display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--border2);
+  border-radius:6px;color:var(--text2);font:inherit;font-size:12.5px;padding:9px 12px;margin-bottom:6px;
+  cursor:pointer;transition:all .16s;line-height:1.45}
+.mcq-opt:hover:not(:disabled){border-color:var(--blue);color:var(--text)}
+.mcq-opt:disabled{opacity:.4;cursor:default}
+.mcq-opt.sel.ok{border-color:var(--green);background:rgba(0,229,160,.08);color:var(--green);font-weight:600}
+.mcq-opt.sel.bad{border-color:var(--red);background:rgba(255,92,92,.07);color:var(--red)}
+.mcq-fb{display:none;font-size:12px;margin-top:4px;padding:7px 11px;border-radius:5px;line-height:1.6}
+.mcq-fb.show{display:block}
+.mcq-fb.ok{background:var(--green-d);border:1px solid rgba(0,229,160,.25);color:#7acfb0}
+.mcq-fb.bad{background:var(--red-d);border:1px solid rgba(255,92,92,.25);color:#d99}

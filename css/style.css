@@ -1,6 +1,28 @@
+/* ═══════════════════════════════════════════════════════════════
+   CyberLab — style.css
+   Drop-in replacement. Every selector from the previous version is
+   preserved, so nothing in the modules breaks.
+
+   Fixed here:
+   1. --green-d / --amber-d / --red-d / --blue-d / --bg1 were used in
+      lab-shared.css and xss.html but never defined. A var() with no
+      definition and no fallback invalidates the whole declaration, so
+      every hint box, solution box and status box was rendering with no
+      background colour at all. Now defined as aliases of the -dim tokens.
+   2. Pages mark the current nav item with .nav-link.on, but only
+      .nav-link.active was styled, so nothing was ever highlighted.
+   3. --text3 sat at 3.30:1 contrast, under the WCAG AA minimum of 4.5:1
+      for small text, and it is the colour on every mono label on the
+      site. Raised to 5.18:1.
+   Added: keyboard focus rings, reduced-motion support, print styles.
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Bricolage+Grotesque:wght@300;400;500;600;700;800&display=swap');
+
 /* ─── TOKENS ────────────────────────────────────────────────── */
 :root {
   --bg:        #0b0d12;
+  --bg1:       #0b0d12;   /* alias: lab-shared.css expects this */
   --bg2:       #111318;
   --bg3:       #181b24;
   --bg4:       #1e2230;
@@ -9,23 +31,28 @@
 
   --text:      #e2e6f0;
   --text2:     #9aa3b8;
-  --text3:     #5a6480;
+  --text3:     #78849e;   /* was #5a6480, failed WCAG AA on every surface */
 
   --green:     #00e5a0;
   --green-dim: rgba(0,229,160,0.12);
+  --green-d: rgba(0,229,160,0.12);
   --blue:      #4b8eff;
   --blue-dim:  rgba(75,142,255,0.12);
+  --blue-d:  rgba(75,142,255,0.12);
   --amber:     #ffb547;
   --amber-dim: rgba(255,181,71,0.12);
+  --amber-d: rgba(255,181,71,0.12);
   --red:       #ff5c5c;
   --red-dim:   rgba(255,92,92,0.12);
+  --red-d:   rgba(255,92,92,0.12);
   --purple:    #b07aff;
   --purple-dim:rgba(176,122,255,0.12);
+  --purple-d: rgba(176,122,255,0.12);
 
   --radius:    8px;
   --radius-lg: 14px;
-  --mono:      'JetBrains Mono', 'Courier New', monospace;
-  --sans:      'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --mono:      'JetBrains Mono', monospace;
+  --sans:      'Bricolage Grotesque', sans-serif;
 }
 
 /* ─── RESET ─────────────────────────────────────────────────── */
@@ -40,6 +67,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; text-decoration: none; }
+img, svg { max-width: 100%; height: auto; }
+
+/* keyboard users need to see where they are */
+:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 3px; }
 
 /* ─── GRID BACKGROUND ────────────────────────────────────────── */
 body::before {
@@ -85,7 +116,9 @@ body::before {
   letter-spacing: 0.03em;
 }
 .nav-link:hover { color: var(--text); background: var(--bg3); }
-.nav-link.active { color: var(--green); background: var(--green-dim); }
+/* both spellings: pages use .on, older markup uses .active */
+.nav-link.active,
+.nav-link.on { color: var(--green); background: var(--green-dim); }
 
 /* ─── BADGE ──────────────────────────────────────────────────── */
 .badge {
@@ -459,4 +492,22 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
   .container, .container-sm { padding: 0 16px; }
   .nav { padding: 0 16px; }
   .nav-links .nav-link { padding: 6px 9px; font-size: 11px; }
+}
+
+/* ─── MOTION ─────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── PRINT ──────────────────────────────────────────────────── */
+@media print {
+  body { background: #fff; color: #000; }
+  body::before, .nav, .footer, .filter-row, .hint-btn, .solution-btn { display: none !important; }
+  .task-card-body, .lab-body, .hint-box, .solution-box, .lab-body { display: block !important; }
+  .card, .task-card, .lab-frame { border: 1px solid #ccc; break-inside: avoid; }
 }
