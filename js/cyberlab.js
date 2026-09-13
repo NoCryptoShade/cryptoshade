@@ -235,6 +235,7 @@ function checkAnswerRow(row, silent){
 }
 
 function syncCard(row){
+  if (row.closest('.lab-card, .task-card, .quiz-card')?.querySelector('.mcq')) return syncCardAll(row);
   const card = row.closest('.lab-card, .task-card');
   if (!card || !card.id) return;
   const rows = [...card.querySelectorAll('.ans-row')];
@@ -263,3 +264,79 @@ function initAnswers(){
 }
 
 document.addEventListener('DOMContentLoaded', initAnswers);
+
+/* ── Flervalg ── MC-spørsmål som lagrer og teller med i fremdriften ──
+   Markup:
+     <div class="mcq" data-c="123456">
+       <div class="mcq-q">Hva betyr LISTENING?</div>
+       <button class="mcq-opt">En tjeneste venter på tilkoblinger</button>
+       <button class="mcq-opt">To maskiner snakker sammen nå</button>
+       <button class="mcq-opt">Porten er stengt</button>
+       <div class="mcq-fb"></div>
+     </div>
+   data-c er clHash() av teksten i det riktige alternativet, ikke en
+   indeks, slik at rekkefølgen kan endres og svaret ikke ligger synlig
+   som "riktig = nummer to". Feilsvar låser ikke, studenten kan prøve
+   igjen, men riktig svar låser valget.
+──────────────────────────────────────────────────────── */
+
+function mcqKey(box){
+  const card = box.closest('.lab-card, .task-card, .quiz-card');
+  const boxes = card ? [...card.querySelectorAll('.mcq')] : [box];
+  return 'mcq:' + (card && card.id ? card.id : 'x') + ':' + boxes.indexOf(box);
+}
+
+function markMcq(box, btn, silent){
+  const want = parseInt(box.dataset.c, 10);
+  const fb   = box.querySelector('.mcq-fb');
+  const ok   = clHash(btn.textContent) === want;
+  box.querySelectorAll('.mcq-opt').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel', ok ? 'ok' : 'bad');
+  if (!ok) btn.classList.remove('ok'); else btn.classList.remove('bad');
+  if (fb) {
+    fb.textContent = ok ? (box.dataset.ok || 'Riktig.') : (box.dataset.no || 'Ikke helt. Prøv igjen.');
+    fb.className = 'mcq-fb show ' + (ok ? 'ok' : 'bad');
+  }
+  const store = getAnswers();
+  if (ok) {
+    store[mcqKey(box)] = btn.textContent.trim();
+    box.querySelectorAll('.mcq-opt').forEach(b => { if (b !== btn) b.disabled = true; });
+  } else {
+    delete store[mcqKey(box)];
+  }
+  saveAnswers(store);
+  syncCardAll(box);
+}
+
+/* et kort er ferdig når BÅDE alle ans-row og alle mcq er riktige */
+function syncCardAll(node){
+  const card = node.closest('.lab-card, .task-card, .quiz-card');
+  if (!card || !card.id) return;
+  const rows = [...card.querySelectorAll('.ans-row')];
+  const mcqs = [...card.querySelectorAll('.mcq')];
+  const store = getAnswers();
+  const rowsOk = rows.every(r => r.querySelector('.ans-in').classList.contains('ok'));
+  const mcqsOk = mcqs.every(m => store[mcqKey(m)]);
+  if ((rows.length + mcqs.length) > 0 && rowsOk && mcqsOk) { markTaskDone(card.id); }
+  else {
+    card.classList.remove('done');
+    const p = getProgress(); delete p[card.id]; saveProgress(p);
+    const b = document.getElementById('done-' + card.id);
+    if (b) b.classList.remove('show');
+    updateModuleProgress();
+  }
+}
+
+function initMcq(){
+  document.querySelectorAll('.mcq').forEach(box => {
+    const saved = getAnswers()[mcqKey(box)];
+    box.querySelectorAll('.mcq-opt').forEach(btn => {
+      if (btn.dataset.wired) return;
+      btn.dataset.wired = '1';
+      btn.addEventListener('click', () => markMcq(box, btn, false));
+      if (saved && btn.textContent.trim() === saved) markMcq(box, btn, true);
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initMcq);
