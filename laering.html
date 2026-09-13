@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Bricolage+Grotesque:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 .laering-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;display:flex;gap:24px;align-items:flex-start;text-decoration:none;transition:all .2s;position:relative;overflow:hidden;margin-bottom:16px}
-.laering-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--blue)}
+.laering-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--c,var(--blue))}
 .laering-card:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
 .laering-icon{font-size:28px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:var(--bg3);border:1px solid var(--border);border-radius:12px;flex-shrink:0}
 .laering-body{flex:1}
@@ -25,6 +25,8 @@
   <div class="nav-logo"><span class="bracket">[</span>CyberLab<span class="bracket">]</span></div>
   <div class="nav-links">
     <a href="index.html" class="nav-link">Hjem</a>
+    <a href="emne1.html" class="nav-link">Emne 1</a>
+    <a href="emne3.html" class="nav-link">Emne 3</a>
     <a href="labber.html" class="nav-link">Labber</a>
     <a href="laering.html" class="nav-link on">Læring</a>
   </div>
@@ -51,6 +53,21 @@
       </div>
     </div>
   </a>
+
+  <a href="https://tk1104.timoamling.com/" target="_blank" rel="noopener" class="laering-card" style="--c:var(--amber)">
+    <div class="laering-icon">📘</div>
+    <div class="laering-body">
+      <div class="laering-title">TK1104 — Digital Technology &nearr;</div>
+      <div class="laering-desc">Forelesningsskript skrevet av <strong>Timo Amling</strong>, med kapitler i sammenhengende tekst og en quiz til hvert kapittel. Dekker bits og binærtall, hvordan maskinen regner, operativsystemer og nettverk lag for lag. Et godt supplement til grunnlaget i Emne 1. Ligger på hans eget nettsted og åpnes i ny fane.</div>
+      <div class="laering-tags">
+        <span class="badge badge-easy">Lett: bits, binær, hex</span>
+        <span class="badge badge-medium">Middels: OS, internett</span>
+        <span class="badge badge-hard">Nettverk lag for lag</span>
+        <span class="badge badge-module">Ekstern ressurs</span>
+      </div>
+    </div>
+  </a>
+
 </div>
 
 <footer class="footer">

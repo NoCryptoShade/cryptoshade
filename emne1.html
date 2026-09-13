@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emne 1 — Grunnleggende cybersikkerhet — CyberLab</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/lab-shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Bricolage+Grotesque:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+.mod-band{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  padding:13px 20px;border-radius:10px;margin:32px 0 14px;border:1px solid var(--border);background:var(--bg2)}
+.mod-band.green{border-left:3px solid var(--green)}
+.mod-band.amber{border-left:3px solid var(--amber)}
+.mod-band.blue{border-left:3px solid var(--blue)}
+.mod-band.purple{border-left:3px solid var(--purple)}
+.mod-band-l{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.mod-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--text3);text-transform:uppercase}
+.mod-name{font-size:15px;font-weight:700}
+.mod-weeks{font-family:var(--mono);font-size:11px;color:var(--text3)}
+.week{display:flex;gap:18px;padding:4px 0 4px 6px}
+.week-no{font-family:var(--mono);font-size:11px;color:var(--text3);min-width:56px;padding-top:15px;flex-shrink:0}
+.week-body{flex:1;min-width:0}
+.lesson{display:flex;align-items:flex-start;gap:14px;padding:13px 16px;background:var(--bg2);
+  border:1px solid var(--border);border-radius:9px;margin-bottom:8px;transition:border-color .18s}
+.lesson:hover{border-color:var(--border2)}
+.l-no{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--green);min-width:26px;padding-top:2px}
+.l-main{flex:1;min-width:0}
+.l-title{font-size:14px;font-weight:600;margin-bottom:3px}
+.l-desc{font-size:12.5px;color:var(--text3);line-height:1.6}
+.l-links{display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap}
+.lchip{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:4px 10px;
+  border-radius:5px;text-decoration:none;border:1px solid;white-space:nowrap}
+.lchip.lab{color:var(--green);border-color:rgba(0,229,160,.35);background:rgba(0,229,160,.08)}
+.lchip.lab:hover{background:rgba(0,229,160,.16)}
+.lchip.quiz{color:var(--blue);border-color:rgba(75,142,255,.35);background:rgba(75,142,255,.08)}
+.lchip.quiz:hover{background:rgba(75,142,255,.16)}
+.lchip.soon{color:var(--text3);border-color:var(--border2);background:transparent}
+@media(max-width:720px){.week{flex-direction:column;gap:4px}.week-no{padding-top:0}
+  .lesson{flex-wrap:wrap}.l-links{width:100%;padding-left:40px}}
+.modline{font-size:12.5px;color:var(--text3);margin:-6px 0 12px 6px;max-width:64ch}
+.lchip.bok{color:var(--amber);border-color:rgba(255,181,71,.35);background:rgba(255,181,71,.08)}
+.lchip.bok:hover{background:rgba(255,181,71,.16)}
+.l-no{color:var(--blue)}
+</style>
+</head>
+<body class="page">
+<nav class="nav">
+  <div class="nav-logo"><span class="bracket">[</span>CyberLab<span class="bracket">]</span></div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Hjem</a>
+    <a href="emne1.html" class="nav-link on">Emne 1</a>
+    <a href="emne3.html" class="nav-link">Emne 3</a>
+    <a href="labber.html" class="nav-link">Labber</a>
+    <a href="laering.html" class="nav-link">Læring</a>
+  </div>
+</nav>
+
+<div class="container-sm page" style="padding-top:40px;padding-bottom:80px">
+  <a href="index.html" class="back-link">&larr; Hjem</a>
+  <div class="mod-hero">
+    <div class="section-eyebrow">Emne 1</div>
+    <div class="section-title">Grunnleggende cybersikkerhet</div>
+    <p class="section-desc">26 leksjoner over 13 uker, to i uka. Grunnlaget, nettverk, Linux og
+    skripting. Du trenger ingen forkunnskaper.</p>
+  </div>
+
+  <div class="intro-card">
+    <div class="lect">Slik bruker du denne siden</div>
+    <h3>Finn uka di</h3>
+    <p>Hver leksjon står med nummer og en linje om hva den handler om. Står det
+    <strong>Lab</strong>, finnes det en praktisk øving du kan gjøre når som helst, også etter timen.
+    Står det <strong>Kommer</strong>, er labben ikke bygget ennå.</p>
+    <p>Vil du ha teorien i sammenhengende tekst i tillegg, ligger den samlet på
+    <a href="https://tk1104.timoamling.com/" target="_blank" rel="noopener" style="color:var(--amber)">TK1104-skriptet til Timo Amling</a>. Det er hans eget nettsted, og et supplement til
+    forelesningene våre, ikke en erstatning.</p>
+  </div>
+
+  <div class="mod-band green">
+    <div class="mod-band-l"><span class="mod-tag">Modul 1</span><span class="mod-name">Grunnlaget</span></div>
+    <span class="mod-weeks">uke 1-2</span>
+  </div>
+  <p class="modline">Hva faget handler om, hvordan et digitalt system henger sammen, og hvor grensene går.</p>
+  <div class="lesson">
+      <span class="l-no">L01</span>
+      <div class="l-main"><div class="l-title">Å jobbe med cybersikkerhet</div><div class="l-desc">Hva cybersikkerhet skal beskytte, fire vanlige jobber i bransjen, og hvem som angriper.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L02</span>
+      <div class="l-main"><div class="l-title">Hvordan digitale systemer virker</div><div class="l-desc">Fra bruker til svar: klient, tjener, og de viktigste delene i et digitalt system.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L03</span>
+      <div class="l-main"><div class="l-title">Verdier, trusler, sårbarheter og risiko</div><div class="l-desc">Hva en virksomhet må beskytte, og forskjellen på en trussel og en sårbarhet.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L04</span>
+      <div class="l-main"><div class="l-title">Etikk, lov og ansvar</div><div class="l-desc">Hvorfor testing krever tillatelse, hvem som kan gi den, og hvordan personopplysninger håndteres.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+
+  <div class="mod-band blue">
+    <div class="mod-band-l"><span class="mod-tag">Modul 2</span><span class="mod-name">Nettverk</span></div>
+    <span class="mod-weeks">uke 3-5</span>
+  </div>
+  <p class="modline">Nettverk lag for lag. Dette er grunnlaget alt senere hviler på.</p>
+  <div class="lesson">
+      <span class="l-no">L05</span>
+      <div class="l-main"><div class="l-title">Hva et nettverk er</div><div class="l-desc">Hvorfor data deles i pakker, og hvorfor en enhet trenger både MAC- og IP-adresse.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L06</span>
+      <div class="l-main"><div class="l-title">IP-adressering, DNS og DHCP</div><div class="l-desc">Lese en IPv4-adresse med nettverksmaske, og avgjøre om to adresser ligger i samme nett.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/nettverk.html">Lab</a></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L07</span>
+      <div class="l-main"><div class="l-title">Tjenester, porter og eksponering</div><div class="l-desc">Portnumre, vanlige tjenester, og skillet mellom lokalt og eksponert.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/nettverk.html">Lab</a></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L08</span>
+      <div class="l-main"><div class="l-title">Switching, VLAN og segmentering</div><div class="l-desc">Hvordan en switch lærer hvor enhetene er, og hvorfor flate nett sprer angrep.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L09</span>
+      <div class="l-main"><div class="l-title">Ruting, default gateway og NAT</div><div class="l-desc">Hvordan en ruter velger vei, hva standardruten brukes til, og hva NAT gjør.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/nettverk.html">Lab</a></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L10</span>
+      <div class="l-main"><div class="l-title">Trådløse nettverk</div><div class="l-desc">Radiosignaler, Wi-Fi-sikkerhet, og hvorfor gamle løsninger ikke bør brukes.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+
+  <div class="mod-band amber">
+    <div class="mod-band-l"><span class="mod-tag">Modul 3</span><span class="mod-name">Linux</span></div>
+    <span class="mod-weeks">uke 6-7</span>
+  </div>
+  <p class="modline">Operativsystemet under alt sammen, og kommandolinja som verktøy.</p>
+  <div class="lesson">
+      <span class="l-no">L11</span>
+      <div class="l-main"><div class="l-title">Linux: distribusjoner, terminal, filsystem og pakker</div><div class="l-desc">Navigere filsystemet, finne hjelp til en kommando, og installere programvare.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L12</span>
+      <div class="l-main"><div class="l-title">Å finne den ene linja</div><div class="l-desc">grep, find, rør og omdirigering. Hva en logg er og hvorfor den er nyttig.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L13</span>
+      <div class="l-main"><div class="l-title">Hvem får gjøre hva</div><div class="l-desc">Brukere, grupper, rettigheter og sudo. Lese hvem som får lese, endre og kjøre.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L14</span>
+      <div class="l-main"><div class="l-title">Fire spørsmål til en ukjent maskin</div><div class="l-desc">Hvilke tjenester kjører, hvilke porter lyttes det på, hvem er logget inn.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/nettverk.html">Lab</a></div>
+    </div>
+
+  <div class="mod-band purple">
+    <div class="mod-band-l"><span class="mod-tag">Modul 4</span><span class="mod-name">Skripting, databaser og web</span></div>
+    <span class="mod-weeks">uke 8-13</span>
+  </div>
+  <p class="modline">Fra kommando til program. Python, SQL, Bash og til slutt web.</p>
+  <div class="lesson">
+      <span class="l-no">L15</span>
+      <div class="l-main"><div class="l-title">Fra kommando til program</div><div class="l-desc">Hva et Python-skript er. Variabler, tekst mot tall, og å hente ut et felt fra en logglinje.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L16</span>
+      <div class="l-main"><div class="l-title">Én regel, mange linjer</div><div class="l-desc">La programmet velge mellom handlinger, og gjenta kode for flere linjer.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L17</span>
+      <div class="l-main"><div class="l-title">Hundre funn, én variabel</div><div class="l-desc">Lister, mengder og ordbøker. Velge datastruktur ut fra spørsmålet.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L18</span>
+      <div class="l-main"><div class="l-title">Fem linjer med et navn</div><div class="l-desc">Funksjoner, parametre og retur. Lese en fil uten å glemme å lukke den.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L19</span>
+      <div class="l-main"><div class="l-title">Fra funn til rapport</div><div class="l-desc">Skrive filer uten å overskrive, og lage en enkel tekst- eller CSV-rapport.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L20</span>
+      <div class="l-main"><div class="l-title">Når verden ikke ser ut som du trodde</div><div class="l-desc">Lese en Python-feil, håndtere forventede feil, og filstier som virker automatisk.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L21</span>
+      <div class="l-main"><div class="l-title">Tabellen noen andre passer på</div><div class="l-desc">Hvordan en database organiserer data, og enkle spørringer med SQL.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L22</span>
+      <div class="l-main"><div class="l-title">Skriptet som spør</div><div class="l-desc">Koble Python til en database, og holde brukerens verdier atskilt fra SQL-en.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/web-sårbarheter.html">Lab</a></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L23</span>
+      <div class="l-main"><div class="l-title">Kommandolinjen får sitt eget språk</div><div class="l-desc">Bash-skript: variabler, valg og løkker. Hvordan Bash behandler mellomrom og hermetegn.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L24</span>
+      <div class="l-main"><div class="l-title">Ett skript, fire spørsmål</div><div class="l-desc">Samle maskininfo i én rapport, sammenligne med normalbildet, og kjøre kontroll automatisk.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L25</span>
+      <div class="l-main"><div class="l-title">Under panseret på en nettside</div><div class="l-desc">HTML og CSS, elementer og skjemaer, og hva et skjema faktisk sender.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/web-sårbarheter.html">Lab</a></div>
+    </div>
+  <div class="lesson">
+      <span class="l-no">L26</span>
+      <div class="l-main"><div class="l-title">Når navnet blir kode</div><div class="l-desc">Hvorfor tjeneren må kontrollere alt den mottar, og hvordan tekst kan bli tolket som kode.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/xss.html">Lab</a></div>
+    </div>
+
+  <div class="recap-card" style="margin-top:36px">
+    <h3>Fire spørsmål som går igjen hele emnet</h3>
+    <ol>
+      <li><strong>Hva skal beskyttes?</strong> Verdier før tiltak. Du kan ikke sikre noe du ikke har funnet.</li>
+      <li><strong>Hvem får gjøre hva?</strong> Rettigheter i Linux, tilgang i nettverket, tillatelse i en test.</li>
+      <li><strong>Hvor kommer dataene fra?</strong> Alt som kommer utenfra må kontrolleres før det brukes.</li>
+      <li><strong>Kan du svare med en kommando?</strong> Fra uke 6 skal spørsmål ende i noe du faktisk kjører.</li>
+    </ol>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span>CyberLab &mdash; Fagskole Informasjonssikkerhet</span>
+      <span>Gratis &amp; åpen kildekode</span>
+    </div>
+  </div>
+</footer>
+<script src="js/cyberlab.js"></script>
+</body>
+</html>

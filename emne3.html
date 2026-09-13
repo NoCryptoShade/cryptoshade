@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emne 3 — Avansert cybersikkerhet — CyberLab</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/lab-shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Bricolage+Grotesque:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+.mod-band{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  padding:13px 20px;border-radius:10px;margin:32px 0 14px;border:1px solid var(--border);background:var(--bg2)}
+.mod-band.green{border-left:3px solid var(--green)}
+.mod-band.amber{border-left:3px solid var(--amber)}
+.mod-band.blue{border-left:3px solid var(--blue)}
+.mod-band.purple{border-left:3px solid var(--purple)}
+.mod-band-l{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.mod-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--text3);text-transform:uppercase}
+.mod-name{font-size:15px;font-weight:700}
+.mod-weeks{font-family:var(--mono);font-size:11px;color:var(--text3)}
+.week{display:flex;gap:18px;padding:4px 0 4px 6px}
+.week-no{font-family:var(--mono);font-size:11px;color:var(--text3);min-width:56px;padding-top:15px;flex-shrink:0}
+.week-body{flex:1;min-width:0}
+.lesson{display:flex;align-items:flex-start;gap:14px;padding:13px 16px;background:var(--bg2);
+  border:1px solid var(--border);border-radius:9px;margin-bottom:8px;transition:border-color .18s}
+.lesson:hover{border-color:var(--border2)}
+.l-no{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--green);min-width:26px;padding-top:2px}
+.l-main{flex:1;min-width:0}
+.l-title{font-size:14px;font-weight:600;margin-bottom:3px}
+.l-desc{font-size:12.5px;color:var(--text3);line-height:1.6}
+.l-links{display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap}
+.lchip{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:4px 10px;
+  border-radius:5px;text-decoration:none;border:1px solid;white-space:nowrap}
+.lchip.lab{color:var(--green);border-color:rgba(0,229,160,.35);background:rgba(0,229,160,.08)}
+.lchip.lab:hover{background:rgba(0,229,160,.16)}
+.lchip.quiz{color:var(--blue);border-color:rgba(75,142,255,.35);background:rgba(75,142,255,.08)}
+.lchip.quiz:hover{background:rgba(75,142,255,.16)}
+.lchip.soon{color:var(--text3);border-color:var(--border2);background:transparent}
+@media(max-width:720px){.week{flex-direction:column;gap:4px}.week-no{padding-top:0}
+  .lesson{flex-wrap:wrap}.l-links{width:100%;padding-left:40px}}
+</style>
+</head>
+<body class="page">
+<nav class="nav">
+  <div class="nav-logo"><span class="bracket">[</span>CyberLab<span class="bracket">]</span></div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Hjem</a>
+    <a href="emne1.html" class="nav-link">Emne 1</a>
+    <a href="emne3.html" class="nav-link on">Emne 3</a>
+    <a href="labber.html" class="nav-link">Labber</a>
+    <a href="laering.html" class="nav-link">Læring</a>
+  </div>
+</nav>
+
+<div class="container-sm page" style="padding-top:40px;padding-bottom:80px">
+  <a href="index.html" class="back-link">&larr; Hjem</a>
+  <div class="mod-hero">
+    <div class="section-eyebrow">Emne 3 &middot; ACS103</div>
+    <div class="section-title">Avansert cybersikkerhet</div>
+    <p class="section-desc">26 leksjoner over uke 35 til 49. Rekognosering, utnyttelse, deteksjon og respons.
+    Undervisningen er 08:15 til 12:00: kort teori, deretter mye praktisk arbeid.</p>
+  </div>
+
+  <div class="intro-card">
+    <div class="lect">Slik bruker du denne siden</div>
+    <h3>Finn uka di, ikke verktøyet</h3>
+    <p>Hver leksjon står med uke og nummer. Der det finnes en <strong>Lab</strong> er det en praktisk
+    øvelse du kan gjøre når som helst, også etter timen. Der det finnes en <strong>Egensjekk</strong>
+    kan du teste om du faktisk sitter igjen med noe, før eksamen heller enn etter.</p>
+    <p>Står det <strong>Kommer</strong>, er labben ikke bygget ennå. Spør på samlingen hvis du vil ha
+    den prioritert.</p>
+  </div>
+
+  <div class="mod-band green">
+    <div class="mod-band-l"><span class="mod-tag">Modul 1</span><span class="mod-name">Rekognosering og skanning</span></div>
+    <span class="mod-weeks">uke 35-37</span>
+  </div>
+  <div class="week"><div class="week-no">Uke 35</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L01</span>
+      <div class="l-main"><div class="l-title">Etikk, scope og RoE</div><div class="l-desc">Hva pentesting er, samtykke som skillet mellom white hat og black hat, GDPR og dokumentasjon.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L02</span>
+      <div class="l-main"><div class="l-title">Passiv rekognosering</div><div class="l-desc">Kartlegg uten å røre målet: dig, crt.sh, exiftool, gitleaks.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  </div></div>
+  <div class="week"><div class="week-no">Uke 36</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L03</span>
+      <div class="l-main"><div class="l-title">Aktiv rekognosering</div><div class="l-desc">Host discovery, porttilstander open/closed/filtered, timing, og hvordan bytte banner lurer skanneren.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/nettverk.html">Lab</a></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L04</span>
+      <div class="l-main"><div class="l-title">Sårbarhetsskanning</div><div class="l-desc">Bevist eller gjettet, bakporterte patcher, CVSS mot EPSS mot KEV, bevis uten utnyttelse.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  </div></div>
+  <div class="week"><div class="week-no">Uke 37</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L05</span>
+      <div class="l-main"><div class="l-title">HTTP, sesjoner og API-er</div><div class="l-desc">Statuskoder, headere, cookies, sesjoner og JWT mot en ekte server du starter selv.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/http-sesjoner.html">Lab</a><a class="lchip quiz" href="quiz/e3-05.html">Egensjekk</a></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L06</span>
+      <div class="l-main"><div class="l-title">Webangrepsflate</div><div class="l-desc">Parametre, filopplasting, innloggingsflyt og autorisasjon.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  </div></div>
+
+  <div class="mod-band amber">
+    <div class="mod-band-l"><span class="mod-tag">Modul 2</span><span class="mod-name">Applikasjon og infrastruktur, utnyttelse</span></div>
+    <span class="mod-weeks">uke 38-42</span>
+  </div>
+  <div class="week"><div class="week-no">Uke 38</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L07</span>
+      <div class="l-main"><div class="l-title">Injeksjon</div><div class="l-desc">SQL- og kommandoinjeksjon for hånd, før sqlmap.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/web-sårbarheter.html">Lab</a></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L08</span>
+      <div class="l-main"><div class="l-title">XSS og broken access control</div><div class="l-desc">Reflected, stored og DOM-basert XSS, pluss IDOR.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/xss.html">Lab</a></div>
+    </div>
+  </div></div>
+  <div class="week"><div class="week-no">Uke 39</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L09</span>
+      <div class="l-main"><div class="l-title">Autentiseringssvakheter</div><div class="l-desc">Tilbakestillingsflyt, MFA, sesjonstidsavbrudd.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L10</span>
+      <div class="l-main"><div class="l-title">Passordangrep</div><div class="l-desc">Hashtyper, MD5 mot bcrypt som regnestykke, spraying.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/kryptografi.html">Lab</a></div>
+    </div>
+  </div></div>
+  <div class="week"><div class="week-no">Uke 40</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L11</span>
+      <div class="l-main"><div class="l-title">Infrastruktursvakheter</div><div class="l-desc">NFS, X11, r-services, standardpassord. Funn uten CVE.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/kali.html">Lab</a></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L12</span>
+      <div class="l-main"><div class="l-title">Første hele angrepskjede</div><div class="l-desc">Recon til root på ett mål, uten avansert utnyttelse.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/kali.html">Lab</a></div>
+    </div>
+  </div></div>
+  <div class="week"><div class="week-no">Uke 42</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L13</span>
+      <div class="l-main"><div class="l-title">Etter kompromittering</div><div class="l-desc">Plant tre feilkonfigurasjoner, finn dem igjen uten root.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L14</span>
+      <div class="l-main"><div class="l-title">Oversettelse til forsvar</div><div class="l-desc">Tre svar per angrep: forebygg, deteksjon, støy.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  </div></div>
+
+  <div class="mod-band blue">
+    <div class="mod-band-l"><span class="mod-tag">Modul 3</span><span class="mod-name">Deteksjon, analyse og trusselinformasjon</span></div>
+    <span class="mod-weeks">uke 43-47</span>
+  </div>
+  <div class="week"><div class="week-no">Uke 43</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L15</span>
+      <div class="l-main"><div class="l-title">Deteksjonsgrunnlag</div><div class="l-desc">Baseline, anomali, falske positive målt i tall.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L16</span>
+      <div class="l-main"><div class="l-title">IDS og IPS teknisk</div><div class="l-desc">Regel-anatomi, skriv egne regler, passiv mot inline.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/ids-ips.html">Lab</a></div>
+    </div>
+  </div></div>
+  <div class="week"><div class="week-no">Uke 44</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L17</span>
+      <div class="l-main"><div class="l-title">Vertsdeteksjon</div><div class="l-desc">Auth-logger, dobbeltbruk-kommandoer, living off the land.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L18</span>
+      <div class="l-main"><div class="l-title">Nettdeteksjon</div><div class="l-desc">DNS, beaconing som regnestykke, skanning i flow-data.</div></div>
+      <div class="l-links"><a class="lchip lab" href="modules/nettverk.html">Lab</a></div>
+    </div>
+  </div></div>
+  <div class="week"><div class="week-no">Uke 45</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L19</span>
+      <div class="l-main"><div class="l-title">Statisk skadevaretriage</div><div class="l-desc">Egenbygd prøve, YARA målt mot /usr/bin.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L20</span>
+      <div class="l-main"><div class="l-title">Skadevareatferd</div><div class="l-desc">Persistens, C2 og ransomware-kjeden på Linux.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  </div></div>
+  <div class="week"><div class="week-no">Uke 46</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L21</span>
+      <div class="l-main"><div class="l-title">Trusselinformasjon</div><div class="l-desc">Pyramid of Pain, IOC mot TTP, Admiralty-kode, TLP 2.0.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L22</span>
+      <div class="l-main"><div class="l-title">ATT&amp;CK-dekning</div><div class="l-desc">Kartlegg eget semester, Navigator-lag, dekningsgrad.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  </div></div>
+  <div class="week"><div class="week-no">Uke 47</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L23</span>
+      <div class="l-main"><div class="l-title">Deteksjonsutvikling</div><div class="l-desc">Hele sløyfa: Sigma, Atomic Red Team og ADS.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L24</span>
+      <div class="l-main"><div class="l-title">Endepunktsrespons</div><div class="l-desc">Bygg egen telemetri med auditd, arbeid en alarm til dom.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  </div></div>
+
+  <div class="mod-band purple">
+    <div class="mod-band-l"><span class="mod-tag">Modul 4</span><span class="mod-name">Respons, trusseljakt og helhet</span></div>
+    <span class="mod-weeks">uke 48-49</span>
+  </div>
+  <div class="week"><div class="week-no">Uke 48</div><div class="week-body">
+    <div class="lesson">
+      <span class="l-no">L25</span>
+      <div class="l-main"><div class="l-title">Trusseljakt</div><div class="l-desc">Hypotesedrevet jakt, HMM, TaHiTI, NIST 800-61r3.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+    <div class="lesson">
+      <span class="l-no">L26</span>
+      <div class="l-main"><div class="l-title">Sluttintegrasjon</div><div class="l-desc">Hele løypa. Forsegl angriperloggen og etterforsk uten den.</div></div>
+      <div class="l-links"><span class="lchip soon">Kommer</span></div>
+    </div>
+  </div></div>
+
+  <div class="recap-card" style="margin-top:36px">
+    <h3>Gjennomgående i hele emnet</h3>
+    <ol>
+      <li><strong>Gjør noe først, verktøyet etterpå.</strong> Du skal forstå hva verktøyet gjør før du lar det gjøre det for deg.</li>
+      <li><strong>Hver dag ender i en vurdering av verktøyet.</strong> Hva så det, hva så det ikke, og hva ville du skrevet i en rapport.</li>
+      <li><strong>Skriv en regel, mål falske positive.</strong> Samme øvelse på tre ulike datakilder gjennom semesteret, med vilje.</li>
+      <li><strong>Bevist eller gjettet.</strong> Et funn du ikke kan forsvare er et funn du ikke skal sende til en kunde.</li>
+    </ol>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span>CyberLab &mdash; Fagskole Informasjonssikkerhet</span>
+      <span>Gratis &amp; åpen kildekode</span>
+    </div>
+  </div>
+</footer>
+<script src="js/cyberlab.js"></script>
+</body>
+</html>
