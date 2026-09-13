@@ -83,6 +83,18 @@
           <div class="obj-item"><div class="obj-num">2</div><div class="obj-text">Forklar: hva betyr "inline" vs. "speilport (TAP)"?</div></div>
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hvorfor er falske positiver et større problem for IPS enn IDS?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="80755812">
+            <span class="ans-q">Hvilken plassering må en IPS ha for å kunne blokkere trafikk?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="-27673881,193506634,2090731639">
+            <span class="ans-q">Hva kalles porten som sender en kopi av trafikken til en NIDS?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">IPS sitter <strong>inline</strong> — all trafikk passerer gjennom den. En falsk positiv blokkerer legitim trafikk. IDS bruker en <strong>kopi</strong> av trafikken fra en speilport — en falsk positiv gir bare et unødvendig varsel.</div>
@@ -156,6 +168,18 @@
           <div class="obj-item"><div class="obj-num">C</div><div class="obj-text">Alert på HTTP med content <code>cmd.exe</code></div></div>
           <div class="obj-item"><div class="obj-num">D</div><div class="obj-text">Forklar: <code>alert</code> vs. <code>drop</code> — når bruker du hvilken?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="2090195226">
+            <span class="ans-q">Hvilken Snort-handling blokkerer trafikken i stedet for å varsle?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="-747005568">
+            <span class="ans-q">Hvilket felt i regelen inneholder mønsteret det letes etter?</span>
+            <input class="ans-in" placeholder="feltnavn"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box">
@@ -223,6 +247,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Hvilken IP er angriperen? Hvilken er kompromittert?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva stoppet IPS, og hva kom gjennom?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="480784704">
+            <span class="ans-q">Hvilken IP er angriperen?</span>
+            <input class="ans-in" placeholder="en IP-adresse"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="480782620">
+            <span class="ans-q">Hvilken IP er den kompromitterte maskinen?</span>
+            <input class="ans-in" placeholder="en IP-adresse"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Port <code>4444</code> = Meterpreter reverse shell. Port <code>445</code> = SMB — brukt av WannaCry for lateral movement. <code>[DROP]</code> betyr IPS blokkerte.</div>
@@ -273,6 +309,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Legg til <code>content</code> og <code>threshold</code> og se effekten</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva er alert fatigue og hvilken risiko medfører det?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="-257802286">
+            <span class="ans-q">Hvilket regelfelt begrenser hvor ofte et varsel utløses?</span>
+            <input class="ans-in" placeholder="feltnavn"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="2012632482,1137096162">
+            <span class="ans-q">Hva kalles problemet der analytikere slutter å lese varslene?</span>
+            <input class="ans-in" placeholder="to ord"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box"><strong>Alert fatigue:</strong> For mange varsler → analytikere ignorerer dem → reelt angrep drukner i støy.<br><br><strong>Fix Regel 1:</strong> Fjern — normal HTTPS er ikke mistenkelig.<br><strong>Fix Regel 2:</strong> Legg til threshold (f.eks. 100 ICMP/10sek).<br><strong>Fix Regel 3:</strong> Legg til <code>content:"cmd.exe"</code> eller annet konkret mønster.</div>
@@ -355,6 +403,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hvorfor er ett lag aldri nok?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva er den svakeste lenken i de fleste organisasjoner?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="1863075214,-594295795,-594295793,1292565347">
+            <span class="ans-q">Hva er den svakeste lenken i de fleste organisasjoner?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="460495743">
+            <span class="ans-q">Hvilken angrepsvektor utnytter den svakheten oftest?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box"><strong>Defense in Depth:</strong> Hvert lag stopper angrepet hvis forrige lag feiler. Ingen enkelt teknologi er 100% effektiv.<br><br><strong>Svakeste lenke:</strong> Menneskene. Phishing er den vanligste angrepsvektoren — én klikk kan nullstille alle tekniske forsvarstiltak.</div>
@@ -405,6 +465,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Skriv en incident-rapport på 5–8 setninger</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva er én enkel mekanisme som hadde forhindret alt dette?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="193433016,193432950,195160417">
+            <span class="ans-q">Hvor mange GB finansdata ble eksfiltrert?</span>
+            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="193499161,193434910,1186232311">
+            <span class="ans-q">Hvilken enkeltmekanisme hadde stoppet hele angrepet?</span>
+            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box"><strong>Rapport:</strong> Ekstern angriper brute-forcet admin-konto via Tor. Opprettet bakdørsbruker. Eksfiltrerte 2.3GB finansdata. IPS stoppet ransomware, men dataene er allerede stjålet (double extortion).<br><br><strong>Én mekanisme:</strong> MFA på alle adminkontoer eliminerer brute force fullstendig.</div>

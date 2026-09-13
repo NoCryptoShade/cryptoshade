@@ -74,6 +74,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Hash en tom streng — hva returneres?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Prøv å hash samme ord to ganger — er resultatet alltid identisk?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="5861743">
+            <span class="ans-q">Hvor mange heksadesimale tegn er en SHA-256-hash?</span>
+            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="5863504">
+            <span class="ans-q">Gir samme input alltid samme hash? ja eller nei</span>
+            <input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box"><strong>Avalanche effect:</strong> én bit forskjell i input = ~50% endrede bits i output. Dette er designet — gjør det umulig å "gjette seg frem" mot en hash.</div>
@@ -138,6 +150,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hvorfor hjelper ikke et rainbow table mot saltet hash?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva er bcrypt og hvorfor er det bedre enn SHA-256 for passord?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="-458980769,2033503922,891100823">
+            <span class="ans-q">Hva kalles forhåndsberegnede hashtabeller?</span>
+            <input class="ans-in" placeholder="to ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="-206003943">
+            <span class="ans-q">Hvilken algoritme er treg med vilje og har innebygd salt?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Prøv å hash vanlige passord i Lab 1 og sammenlign med hashene i databasen. Usaltede hashes med kjente passord knekkes direkte.</div>
@@ -200,6 +224,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hva er nøkkelutbyttingsproblemet for symmetrisk kryptering?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hvordan løser RSA dette problemet?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="5861612">
+            <span class="ans-q">Hvor mange mulige skift finnes i et Caesar-chiffer?</span>
+            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="899781859,-371969624,362648740">
+            <span class="ans-q">Hvilken av Bobs nøkler bruker Alice når hun krypterer til ham?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box"><strong>Nøkkelutbytting:</strong> Hvis Alice og Bob vil bruke AES, må de dele den hemmelige nøkkelen trygt. Men over internett er det umulig uten asymmetrisk hjelp.</div>
@@ -272,6 +308,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Sjekk TLS-sertifikat på vg.no i din nettleser — finn TLS-versjon</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva er Perfect Forward Secrecy og hvorfor er det viktig?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="177627">
+            <span class="ans-q">Hvor mange steg er TLS-handshaken delt inn i her?</span>
+            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="193502446,501930161">
+            <span class="ans-q">Hva heter egenskapen som hindrer at gamle sesjoner kan dekrypteres senere?</span>
+            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">RSA er ~1000× tregere enn AES. Du bruker asymmetrisk kun for å trygt bli enige om en symmetrisk sesjonsnøkkel — deretter AES for all dataoverføring.</div>
@@ -327,6 +375,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar steg for steg: hvordan verifiserer mottakeren?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva beviser signaturen, og hva beviser den <em>ikke</em>?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="359353179,1702027880,-1026246880">
+            <span class="ans-q">Hvilken nøkkel signerer man en melding med?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="5863273,257921532,980259985">
+            <span class="ans-q">Hvem må ha signert sertifikatet for at identitet skal være bevist?</span>
+            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Signering: <strong>hash melding → krypter hash med privat nøkkel</strong>.<br>Verifisering: <strong>dekrypter signatur med offentlig nøkkel → sammenlign med ny hash av meldingen</strong>.</div>
@@ -392,6 +452,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hva er det enkle tiltaket som stopper begge?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Sjekk en nettside med ssllabs.com/ssltest — hva er ratingen?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="274787455,477960063,274784617">
+            <span class="ans-q">Hvilken gammel protokoll utnytter DROWN?</span>
+            <input class="ans-in" placeholder="protokoll"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="274787456,477960064,274784618">
+            <span class="ans-q">Hvilken protokoll tvinger POODLE klienten ned til?</span>
+            <input class="ans-in" placeholder="protokoll"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Begge angrepene utnytter <strong>gammel, utdatert protokoll-støtte</strong>. Tiltaket er enkelt: deaktiver SSLv2, SSLv3 og TLS 1.0/1.1 på serveren.</div>

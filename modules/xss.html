@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XSS &amp; Websikkerhet — CyberLab</title>
 <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/lab-shared.css">
 <style>
 /* ── page chrome ─── */
 .mod-hero{padding:52px 0 40px;border-bottom:1px solid var(--border);margin-bottom:36px}
@@ -192,6 +193,18 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Injiser <code>&lt;img src=x&gt;</code> — lastes bildet?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: er HTML-injeksjon alene farlig?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="1155099638">
+            <span class="ans-q">Hvilken JavaScript-egenskap gjør at taggene dine blir tolket som HTML?</span>
+            <input class="ans-in" placeholder="egenskap"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="1815841804">
+            <span class="ans-q">Hvilket attributt brukes i neste lab for å kjøre JS når et bilde feiler?</span>
+            <input class="ans-in" placeholder="attributt"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Nettleseren tolker alt som HTML via <code>innerHTML</code>. Du kan formatere tekst — men for å kjøre JavaScript trenger du et script eller en event handler.</div>
@@ -260,6 +273,18 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Prøv å lese <code>document.cookie</code> i payloaden</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva ville en ekte angriper gjort videre?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="1815841804">
+            <span class="ans-q">Hvilket attributt i payloaden kjører JavaScript?</span>
+            <input class="ans-in" placeholder="attributt"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="1657655276,-152760801">
+            <span class="ans-q">Hvilket objekt leser en angriper for å stjele sesjonen?</span>
+            <input class="ans-in" placeholder="JS-uttrykk"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Prøv: <code>&lt;img src=x onerror="document.getElementById('l2-cookie').style.display='block'"&gt;</code><br><br><code>onerror</code> kjøres av nettleseren automatisk når bildet feiler å laste. <code>src=x</code> er en ugyldig URL som alltid feiler.</div>
@@ -332,6 +357,18 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Åpne siden som en annen bruker — kjøres payloaden automatisk?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar hvorfor stored XSS er farligere enn reflected</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="479342582,182574852,2039010516">
+            <span class="ans-q">Hvilken type XSS rammer alle besøkende automatisk?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="1769641445">
+            <span class="ans-q">Hvilken egenskap bør brukes ved visning i stedet for innerHTML?</span>
+            <input class="ans-in" placeholder="egenskap"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Prøv en payload i kommentarfeltet: <code>&lt;img src=x onerror="this.closest('.ts-comment').style.outline='3px solid red'"&gt;</code><br><br>Deretter klikk "Simuer ny besøkende" — scriptet kjøres på nytt automatisk.</div>
@@ -404,6 +441,18 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hvorfor ser aldri serveren denne payloaden?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hvilken forsvarsstrategi virker mot DOM XSS?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="193508280,633771334,277122859">
+            <span class="ans-q">Hvor kommer brukerinputen fra i DOM-basert XSS?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="1769641445">
+            <span class="ans-q">Hvilken egenskap fikser dette uten å fjerne funksjonalitet?</span>
+            <input class="ans-in" placeholder="egenskap"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">URL-fragmentet (<code>#hash</code>) og URL-parametre lest med <code>location.search</code> sendes aldri til serveren — de lever kun i nettleseren. Server-side WAF og filtrering er blindt for dette angrepet.</div>
@@ -475,6 +524,18 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Bypass med uppercase: <code>&lt;SCRIPT&gt;</code></div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar hvorfor blacklist-filtrering alltid vil feile</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="-1152543902">
+            <span class="ans-q">Blacklist eller whitelist — hvilken tilnærming er riktig?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="-1214831708">
+            <span class="ans-q">Hvilket bibliotek anbefales i løsningen?</span>
+            <input class="ans-in" placeholder="biblioteknavn"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Det finnes hundrevis av gyldige XSS-vektorer uten <code>&lt;script&gt;</code>:<br>• <code>&lt;img onerror=...&gt;</code><br>• <code>&lt;svg onload=...&gt;</code><br>• <code>&lt;SCRIPT&gt;</code> (case sensitivity)<br>• <code>&lt;scr&lt;script&gt;ipt&gt;</code> (dobbel-injeksjon hvis filter bare kjøres én gang)</div>
@@ -547,6 +608,18 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hvorfor er dette farligere enn vanlig phishing på annet domene?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva beskytter mot dette? (HttpOnly er ikke nok her — hvorfor?)</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="193508280,555058584,277122859,542746929">
+            <span class="ans-q">Hvorfor merker ikke brukeren noe galt? Hva er ekte her?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="193500225">
+            <span class="ans-q">Hjelper HttpOnly mot dette angrepet? ja eller nei</span>
+            <input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Prøv å injisere et falskt skjema:<br><code>&lt;div style="background:white;padding:20px;border:2px solid red"&gt;&lt;h3&gt;Sikkerhetskontroll&lt;/h3&gt;&lt;input placeholder="Passord"&gt;&lt;/div&gt;</code></div>
@@ -626,6 +699,18 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: er <code>textContent</code> alene nok, eller trenger vi CSP i tillegg?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Skriv en komplett forsvarsstrategi mot XSS (minst 4 lag)</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="193488715,1320079330">
+            <span class="ans-q">Hvilken HTTP-header blokkerer inline scripts?</span>
+            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="193500225">
+            <span class="ans-q">Er CSP alene nok til å stoppe XSS? ja eller nei</span>
+            <input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">CSP er en HTTP-header som instruerer nettleseren. <code>script-src 'self'</code> betyr at kun scripts fra samme domene kan kjøre — inline scripts blokkeres selv om XSS-payload injiseres.</div>

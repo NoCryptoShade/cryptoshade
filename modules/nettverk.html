@@ -74,6 +74,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Hva er standard gateway, og hva brukes den til?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Prøv også <code>ifconfig</code> og <code>ip a</code></div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="-896484500">
+            <span class="ans-q">Hva er standard gateway på denne maskinen?</span>
+            <input class="ans-in" placeholder="en IP-adresse"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="359353179,-765838686">
+            <span class="ans-q">Er IP-adressen privat eller offentlig?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Private adresser starter med <code>10.</code>, <code>172.16-31.</code> eller <code>192.168.</code>. Alt annet er offentlig. Gateway er ruteren — all trafikk ut av nettverket passerer den.</div>
@@ -118,6 +130,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Kjør <code>ping vg.no</code> — svarer serveren? Hva betyr timeout?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva kan en angriper lære av DNS-informasjon alene?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="5863626,-482798890,-92013303">
+            <span class="ans-q">Hvilken record-type peker på e-postserverne?</span>
+            <input class="ans-in" placeholder="to bokstaver"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="339548891,-1888487464">
+            <span class="ans-q">Hva kalles rekognosering som ikke sender en eneste pakke til målet?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box"><strong>MX-records</strong> avslører e-postservere. Mange server-typer blokkerer ping (ICMP) for å skjule seg — men de er fremdeles oppe.</div>
@@ -162,6 +186,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Hvilken tilkobling indikerer en aktiv bakdør?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva gjør du som incident responder umiddelbart?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="2088400725">
+            <span class="ans-q">Hvilken port har en ESTABLISHED-tilkobling som tyder på bakdør?</span>
+            <input class="ans-in" placeholder="portnummer"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="5861610">
+            <span class="ans-q">Hvilken port viser at Telnet kjører og ikke burde eksistere?</span>
+            <input class="ans-in" placeholder="portnummer"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Port <code>4444</code> = Metasploit Meterpreter bakdør. Port <code>23</code> = Telnet (klartekst). Port <code>3306</code> åpen på <code>0.0.0.0</code> = database eksponert mot alle.</div>
@@ -206,6 +242,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Sammenlign <code>tracert vg.no</code> og <code>tracert google.com</code></div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva kan traceroute avsløre om intern nettverksstruktur?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="275469876">
+            <span class="ans-q">Hvilken leverandør avsløres av routernavnet ae0.cr1-osl1.telia.net?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="2090591522,193501779">
+            <span class="ans-q">Hvilken by avsløres i det samme navnet?</span>
+            <input class="ans-in" placeholder="en by"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box"><code>* * *</code> betyr at ruteren ikke svarer på ICMP TTL-exceeded — vanlig sikkerhetstiltak. Angripere kan fremdeles bruke TCP-traceroute for å omgå dette.</div>
@@ -250,6 +298,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Kjør <code>ssh</code> i terminalen — forstå fingerprint-advarselen</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva er et MITM-angrep, og hvordan stopper SSH-nøkkel det?</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="500577009">
+            <span class="ans-q">Hvilken av de to protokollene sender passordet i klartekst?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="193486078">
+            <span class="ans-q">Hvilken krypteringsalgoritme brukes av SSH i denne labben?</span>
+            <input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">SSH-fingerprint er en hash av serverens offentlige nøkkel. Hvis fingerprinten endrer seg neste gang du kobler til, kan noen sitte mellom deg og serveren.</div>
@@ -328,6 +388,18 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Identifiser tjenester som kjører på nettverket</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Skriv rekkefølgen på kommandoene du brukte, og forklar hvilke er mest "stille"</div></div>
         </div>
+        <div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="193486504,-227521546">
+            <span class="ans-q">Hvilken kommando leser lokal cache uten å sende en eneste pakke?</span>
+            <input class="ans-in" placeholder="kommando"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="2090616627,-1856457801">
+            <span class="ans-q">Hvilken av kommandoene er den støyende som IDS lett oppdager?</span>
+            <input class="ans-in" placeholder="kommando"><span class="ans-mark"></span>
+          </div>
+        </div>
+
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Prøv rekkefølgen: <code>whoami</code> → <code>ipconfig</code> → <code>arp -a</code> → <code>netstat -an</code> → <code>nslookup</code>.<br><br><code>arp -a</code> viser maskiner som allerede er i ARP-cachen — helt stille, ingen ny nettverkstrafikk.</div>
