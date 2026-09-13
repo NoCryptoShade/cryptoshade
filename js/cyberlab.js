@@ -180,3 +180,86 @@ async function sha256(str) {
     return '(crypto.subtle ikke tilgjengelig — bruk GitHub Pages)';
   }
 }
+
+/* ── Answer boxes ── TryHackMe-style typed answers ───────
+   Markup:
+     <div class="ans-row" data-a="1234567">
+       <span class="ans-q">Hvilken statuskode kom tilbake?</span>
+       <input class="ans-in" placeholder="tre siffer">
+       <span class="ans-mark"></span>
+     </div>
+   data-a holds one or more accepted answers as hashes, comma
+   separated. Generate them with clHash() in the console.
+   A task card is marked done when every ans-row inside it is
+   correct, so it feeds the existing progress bar for free.
+──────────────────────────────────────────────────────── */
+
+function clHash(s){
+  let h = 5381;
+  s = String(s).trim().toLowerCase().replace(/\s+/g,' ');
+  for (let i = 0; i < s.length; i++) { h = ((h << 5) + h) + s.charCodeAt(i); h |= 0; }
+  return h;
+}
+
+function getAnswers(){
+  try { return JSON.parse(localStorage.getItem('cl_answers') || '{}'); } catch { return {}; }
+}
+function saveAnswers(d){
+  try { localStorage.setItem('cl_answers', JSON.stringify(d)); } catch {}
+}
+
+function answerKey(row){
+  const card = row.closest('.lab-card, .task-card');
+  const rows = card ? [...card.querySelectorAll('.ans-row')] : [row];
+  return (card && card.id ? card.id : 'x') + ':' + rows.indexOf(row);
+}
+
+function checkAnswerRow(row, silent){
+  const input = row.querySelector('.ans-in');
+  const mark  = row.querySelector('.ans-mark');
+  const want  = String(row.dataset.a || '').split(',').map(x => parseInt(x, 10));
+  const store = getAnswers();
+  const key   = answerKey(row);
+  const val   = input.value;
+
+  if (!val.trim()) {
+    input.className = 'ans-in'; mark.className = 'ans-mark'; mark.textContent = '';
+    delete store[key]; saveAnswers(store); syncCard(row); return false;
+  }
+  if (want.includes(clHash(val))) {
+    input.className = 'ans-in ok'; mark.className = 'ans-mark ok'; mark.textContent = '✓';
+    store[key] = val.trim(); saveAnswers(store); syncCard(row); return true;
+  }
+  if (!silent) { input.className = 'ans-in bad'; mark.className = 'ans-mark bad'; mark.textContent = '✗'; }
+  delete store[key]; saveAnswers(store); syncCard(row); return false;
+}
+
+function syncCard(row){
+  const card = row.closest('.lab-card, .task-card');
+  if (!card || !card.id) return;
+  const rows = [...card.querySelectorAll('.ans-row')];
+  const all  = rows.length > 0 && rows.every(r => r.querySelector('.ans-in').classList.contains('ok'));
+  if (all) { markTaskDone(card.id); }
+  else {
+    card.classList.remove('done');
+    const p = getProgress(); delete p[card.id]; saveProgress(p);
+    const b = document.getElementById('done-' + card.id);
+    if (b) b.classList.remove('show');
+    updateModuleProgress();
+  }
+}
+
+function initAnswers(){
+  document.querySelectorAll('.ans-row').forEach(row => {
+    const input = row.querySelector('.ans-in');
+    if (!input || input.dataset.wired) return;
+    input.dataset.wired = '1';
+    const saved = getAnswers()[answerKey(row)];
+    if (saved) { input.value = saved; checkAnswerRow(row, true); }
+    input.addEventListener('input', () => checkAnswerRow(row, true));
+    input.addEventListener('blur',  () => checkAnswerRow(row, false));
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') checkAnswerRow(row, false); });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initAnswers);
