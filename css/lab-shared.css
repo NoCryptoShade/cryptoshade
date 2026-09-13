@@ -133,3 +133,24 @@ strong{font-weight:600;color:var(--text)}
   .lab-split{grid-template-columns:1fr;min-height:auto}
   .lab-left{border-right:none;border-bottom:1px solid var(--border)}
 }
+
+/* ── ANSWER BOXES ── TryHackMe-style typed answers ────────
+   Used by .ans-row in cyberlab.js. Sits inside .lab-left
+   under the objectives, or anywhere in a lab body.
+──────────────────────────────────────────────────────── */
+.ans-block{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.ans-block .obj-title{margin-bottom:10px}
+.ans-row{margin-bottom:12px}
+.ans-q{display:block;font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:6px}
+.ans-in{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:6px;
+  color:var(--text);font-family:var(--mono);font-size:12px;padding:8px 11px;outline:none;
+  transition:border-color .18s,color .18s}
+.ans-in::placeholder{color:var(--text3)}
+.ans-in:focus{border-color:var(--blue)}
+.ans-in.ok{border-color:var(--green);color:var(--green);background:rgba(0,229,160,.06)}
+.ans-in.bad{border-color:var(--red)}
+.ans-mark{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:700;
+  margin-left:8px;min-width:12px;vertical-align:middle}
+.ans-mark.ok{color:var(--green)}
+.ans-mark.bad{color:var(--red)}
+.ans-hint{font-size:11px;color:var(--text3);margin-top:4px;font-family:var(--mono)}
