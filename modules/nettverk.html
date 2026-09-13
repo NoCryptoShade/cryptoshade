@@ -55,6 +55,25 @@
 
   <div class="tasks">
 
+  <div class="intro-card">
+    <div class="lect">Før du starter</div>
+    <h3>Hva du skal sitte igjen med</h3>
+    <p>Denne labben handler om de seks kommandoene som både systemadministratorer og angripere
+    bruker først. Poenget er ikke å huske flagg, det er å forstå <strong>hva hver kommando
+    forteller deg om nettverket</strong>, og hvorfor den rekkefølgen du gjør ting i har noe å si.</p>
+    <ul>
+      <li>Lese en IP-adresse og vite om du står på et internt nett</li>
+      <li>Hente informasjon om et selskap uten å røre serverne deres</li>
+      <li>Se forskjell på en normal tjeneste og en bakdør i <code>netstat</code></li>
+      <li>Forklare hvorfor Telnet aldri skal brukes</li>
+      <li>Vurdere hvor mye støy en kommando lager</li>
+    </ul>
+    <p>Hver oppgave starter med en kort forklaring. <strong>Les den før du kjører noe</strong>,
+    ellers blir spørsmålene vanskeligere enn de trenger å være.</p>
+  </div>
+
+
+
 <!-- LAB 1: ipconfig/ifconfig ─────────────────────────── -->
 <div class="lab-card" id="net-1" data-level="easy">
   <div class="lab-header" onclick="toggleTask(this)">
@@ -66,6 +85,8 @@
     <div class="lab-split">
       <div class="lab-left">
         <div class="level-badge lb-1">Nivå 1 — Lokal nettverksinformasjon</div>
+        <div class="theory-block"><div class="theory-title">📍 Hva en IP-adresse faktisk forteller</div><div class="theory-text"><p>En IP-adresse er ikke bare et navn på maskinen. Den sier hvilket <strong>nettverk</strong> maskinen står i, og det er nettopp det en angriper er ute etter først.</p><p><strong>Privat eller offentlig?</strong> Tre områder er reservert til internt bruk og rutes aldri på internett: <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code> og <code>192.168.0.0/16</code>. Ser du en adresse i et av dem, står du på et internt nett.</p><p><strong>Subnettmasken</strong> deler adressen i nettverksdel og maskindel. <code>/24</code> betyr at de tre første tallene er nettverket og det siste er maskinen, altså 254 brukbare adresser. Det forteller deg hvor mange naboer du kan ha.</p></div></div>
+        <div class="theory-block why"><div class="theory-title">🎯 Hvorfor dette er første kommando en angriper kjører</div><div class="theory-text"><p>Et innbrudd starter sjelden med et angrep. Det starter med orientering. Hvor er jeg, hvilket nett er dette, hvor går veien ut? <strong>Standard gateway</strong> er svaret på det siste, og den adressen er som regel ruteren, som er et interessant mål i seg selv.</p></div></div>
         <p class="lab-desc">Bruk terminalen til høyre til å hente nettverksinformasjon om maskinen. Dette er det første en angriper gjør etter å ha fått tilgang.</p>
         <div>
           <div class="obj-title">Mål</div>
@@ -75,14 +96,18 @@
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Prøv også <code>ifconfig</code> og <code>ip a</code></div></div>
         </div>
         <div class="ans-block">
-          <div class="obj-title">Svar</div>
+          <div class="obj-title">Sjekk at du forstod</div>
           <div class="ans-row" data-a="-896484500">
             <span class="ans-q">Hva er standard gateway på denne maskinen?</span>
             <input class="ans-in" placeholder="en IP-adresse"><span class="ans-mark"></span>
           </div>
-          <div class="ans-row" data-a="359353179,-765838686">
+          <div class="ans-row" data-a="359353179">
             <span class="ans-q">Er IP-adressen privat eller offentlig?</span>
             <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="193433248">
+            <span class="ans-q">Hvor mange brukbare adresser gir en /24-maske?</span>
+            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
           </div>
         </div>
 
@@ -122,6 +147,8 @@
     <div class="lab-split">
       <div class="lab-left">
         <div class="level-badge lb-2">Nivå 2 — DNS og tilgjengelighet</div>
+        <div class="theory-block"><div class="theory-title">📖 DNS er internetts telefonkatalog</div><div class="theory-text"><p>Mennesker husker navn, maskiner ruter på tall. DNS oversetter mellom de to. Når du slår opp et domene får du tilbake ulike <strong>record-typer</strong>, og hver av dem forteller noe annet:</p><p><code>A</code> gir IPv4-adressen. <code>AAAA</code> gir IPv6. <code>MX</code> peker på e-postserverne. <code>NS</code> peker på navneserverne. <code>TXT</code> inneholder ofte SPF-oppføringer, som du møter igjen i e-postmodulen.</p></div></div>
+        <div class="theory-block why"><div class="theory-title">🎯 Passiv rekognosering</div><div class="theory-text"><p>Det spesielle med DNS er at oppslaget går til en navneserver, <strong>ikke til målet</strong>. Du kan kartlegge et selskaps e-postleverandør, hostingleverandør og infrastruktur uten at det dukker opp en eneste linje i deres logger. Det kalles passiv rekognosering, og det er derfor det alltid kommer først.</p></div></div>
         <p class="lab-desc">DNS oversetter domenenavn til IP-adresser. Angripere bruker DNS-oppslag til å kartlegge infrastruktur uten å røre serverne direkte.</p>
         <div>
           <div class="obj-title">Mål</div>
@@ -131,13 +158,17 @@
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva kan en angriper lære av DNS-informasjon alene?</div></div>
         </div>
         <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="5863626,-482798890,-92013303">
+          <div class="obj-title">Sjekk at du forstod</div>
+          <div class="ans-row" data-a="5863626">
             <span class="ans-q">Hvilken record-type peker på e-postserverne?</span>
             <input class="ans-in" placeholder="to bokstaver"><span class="ans-mark"></span>
           </div>
+          <div class="ans-row" data-a="177670,-1712745326">
+            <span class="ans-q">Hvilken record-type gir deg IPv4-adressen?</span>
+            <input class="ans-in" placeholder="én bokstav"><span class="ans-mark"></span>
+          </div>
           <div class="ans-row" data-a="339548891,-1888487464">
-            <span class="ans-q">Hva kalles rekognosering som ikke sender en eneste pakke til målet?</span>
+            <span class="ans-q">Hva kalles rekognosering som aldri treffer målets egne logger?</span>
             <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
           </div>
         </div>
@@ -178,6 +209,8 @@
     <div class="lab-split">
       <div class="lab-left">
         <div class="level-badge lb-3">Nivå 3 — Portanalyse</div>
+        <div class="theory-block"><div class="theory-title">🔌 Hva netstat faktisk viser deg</div><div class="theory-text"><p>Hver linje er en <strong>socket</strong>, altså en kombinasjon av adresse og port. To tilstander betyr noe her:</p><p><code>LISTENING</code> betyr at en tjeneste venter på tilkoblinger. Det er en åpen dør. <code>ESTABLISHED</code> betyr at noen faktisk snakker sammen akkurat nå.</p><p>Adressen tjenesten lytter på er like viktig som porten. <code>127.0.0.1</code> betyr kun lokalt, <strong><code>0.0.0.0</code> betyr alle grensesnitt</strong>, altså tilgjengelig fra nettverket. En database som lytter på 0.0.0.0 er eksponert.</p></div></div>
+        <div class="theory-block why"><div class="theory-title">🎯 Hvorfor port 4444 får alarmen til å gå</div><div class="theory-text"><p>Porter under 1024 er tildelt kjente tjenester. Høye porter er fritt vilt, og enkelte har fått et rykte. <strong>4444 er standardporten i Metasploit</strong> for en reverse shell. Ser du en ESTABLISHED-tilkobling ut til en ekstern adresse på 4444, er det ikke en tjeneste. Det er noen som styrer maskinen.</p></div></div>
         <p class="lab-desc">Netstat-outputen til høyre kommer fra en server. Analyser den og identifiser røde flagg — akkurat slik en SOC-analytiker ville gjort det.</p>
         <div>
           <div class="obj-title">Mål</div>
@@ -187,14 +220,18 @@
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva gjør du som incident responder umiddelbart?</div></div>
         </div>
         <div class="ans-block">
-          <div class="obj-title">Svar</div>
+          <div class="obj-title">Sjekk at du forstod</div>
           <div class="ans-row" data-a="2088400725">
             <span class="ans-q">Hvilken port har en ESTABLISHED-tilkobling som tyder på bakdør?</span>
             <input class="ans-in" placeholder="portnummer"><span class="ans-mark"></span>
           </div>
-          <div class="ans-row" data-a="5861610">
-            <span class="ans-q">Hvilken port viser at Telnet kjører og ikke burde eksistere?</span>
-            <input class="ans-in" placeholder="portnummer"><span class="ans-mark"></span>
+          <div class="ans-row" data-a="-512298385">
+            <span class="ans-q">Hvilken adresse betyr at tjenesten lytter på alle grensesnitt?</span>
+            <input class="ans-in" placeholder="en adresse"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="-1476524846">
+            <span class="ans-q">Hvilken tilstand betyr at en tjeneste venter på tilkoblinger?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
           </div>
         </div>
 
@@ -234,6 +271,8 @@
     <div class="lab-split">
       <div class="lab-left">
         <div class="level-badge lb-3">Nivå 4 — Nettverkstopologi</div>
+        <div class="theory-block"><div class="theory-title">🗺️ Hvordan traceroute i det hele tatt virker</div><div class="theory-text"><p>Hver IP-pakke har et felt som heter <strong>TTL</strong>, Time To Live. Hver ruter pakken passerer trekker fra én. Når TTL når null, kaster ruteren pakken og sender en feilmelding tilbake.</p><p>Traceroute utnytter dette med vilje: send en pakke med TTL 1, og første ruter melder fra. Send en med TTL 2, og andre ruter melder fra. Slik tegner du ruten hopp for hopp.</p><p><code>* * *</code> betyr at hoppet ikke svarte. Ofte er det en brannmur som er satt opp til å ignorere slike meldinger, ikke at ruteren er nede.</p></div></div>
+        <div class="theory-block why"><div class="theory-title">🎯 Hva et routernavn røper</div><div class="theory-text"><p>Rutere får navn som beskriver hvor de står. <code>ae0.cr1-osl1.telia.net</code> forteller deg leverandør og by uten at du har spurt noen. En angriper bygger nettverkskart av slike navn for å finne ut hvem som leverer hva, og hvor det finnes enkeltpunkter som kan felles.</p></div></div>
         <p class="lab-desc">Traceroute viser hvert hopp en pakke tar fra din maskin til destinasjonen. Brukes av angripere til å kartlegge infrastruktur og finne svake punkter.</p>
         <div>
           <div class="obj-title">Mål</div>
@@ -243,14 +282,18 @@
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva kan traceroute avsløre om intern nettverksstruktur?</div></div>
         </div>
         <div class="ans-block">
-          <div class="obj-title">Svar</div>
+          <div class="obj-title">Sjekk at du forstod</div>
+          <div class="ans-row" data-a="193507257,1452451143">
+            <span class="ans-q">Hvilket felt i IP-headeren teller ned for hvert hopp?</span>
+            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
+          </div>
           <div class="ans-row" data-a="275469876">
-            <span class="ans-q">Hvilken leverandør avsløres av routernavnet ae0.cr1-osl1.telia.net?</span>
+            <span class="ans-q">Hvilken leverandør avsløres av navnet ae0.cr1-osl1.telia.net?</span>
             <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
           </div>
-          <div class="ans-row" data-a="2090591522,193501779">
-            <span class="ans-q">Hvilken by avsløres i det samme navnet?</span>
-            <input class="ans-in" placeholder="en by"><span class="ans-mark"></span>
+          <div class="ans-row" data-a="193500225">
+            <span class="ans-q">Betyr * * * alltid at ruteren er nede? ja eller nei</span>
+            <input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
           </div>
         </div>
 
@@ -290,6 +333,8 @@
     <div class="lab-split">
       <div class="lab-left">
         <div class="level-badge lb-4">Nivå 5 — Protokollsikkerhet</div>
+        <div class="theory-block"><div class="theory-title">🔐 Samme jobb, to helt ulike protokoller</div><div class="theory-text"><p>Telnet og SSH gjør det samme: gir deg et skall på en annen maskin. Forskjellen er at <strong>Telnet sender alt i klartekst</strong>, inkludert brukernavn og passord. Hvem som helst med tilgang til trafikken leser det rett av.</p><p>SSH krypterer hele sesjonen. En avlytter ser at det er en SSH-forbindelse og hvor mye data som går, men ikke innholdet. Telnet bruker port 23, SSH bruker port 22.</p></div></div>
+        <div class="theory-block why"><div class="theory-title">🎯 Fingeravtrykket du alltid trykker ja på</div><div class="theory-text"><p>Første gang du kobler til, viser SSH et <strong>fingeravtrykk</strong> av serverens nøkkel. De fleste trykker ja uten å lese. Det er akkurat der et <strong>man-in-the-middle-angrep</strong> stoppes eller slipper gjennom: angriperen kan sette seg mellom deg og serveren, men han har ikke serverens private nøkkel, så fingeravtrykket endrer seg. Advarselen er hele forsvaret.</p></div></div>
         <p class="lab-desc">Du er en angriper som lytter på nettverkstrafikken. Til høyre ser du to innloggingsforsøk — én via Telnet og én via SSH. Analyser begge.</p>
         <div>
           <div class="obj-title">Mål</div>
@@ -299,14 +344,18 @@
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva er et MITM-angrep, og hvordan stopper SSH-nøkkel det?</div></div>
         </div>
         <div class="ans-block">
-          <div class="obj-title">Svar</div>
+          <div class="obj-title">Sjekk at du forstod</div>
           <div class="ans-row" data-a="500577009">
             <span class="ans-q">Hvilken av de to protokollene sender passordet i klartekst?</span>
             <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
           </div>
-          <div class="ans-row" data-a="193486078">
-            <span class="ans-q">Hvilken krypteringsalgoritme brukes av SSH i denne labben?</span>
-            <input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span>
+          <div class="ans-row" data-a="5861609">
+            <span class="ans-q">Hvilken port bruker SSH?</span>
+            <input class="ans-in" placeholder="portnummer"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="1702027880,-121186584,-29229673,359353179">
+            <span class="ans-q">Hva er det SSH-serveren har som en MITM-angriper ikke har?</span>
+            <input class="ans-in" placeholder="to ord"><span class="ans-mark"></span>
           </div>
         </div>
 
@@ -380,6 +429,8 @@
     <div class="lab-split">
       <div class="lab-left">
         <div class="level-badge lb-5">Nivå 6 — Intern rekognosering</div>
+        <div class="theory-block"><div class="theory-title">🤫 Rekognosering har en støyskala</div><div class="theory-text"><p>Alt du gjør på et nett etterlater spor, men ikke like mye. Kommandoene under er sortert fra stillest til mest støyende:</p><p><code>whoami</code> og <code>ipconfig</code> leser kun lokalt og lager <strong>null nettverkstrafikk</strong>. <code>arp -a</code> leser en cache som allerede ligger i maskinen. <code>netstat</code> viser tilkoblinger som allerede finnes. <code>nslookup</code> sender en DNS-forespørsel. Et <code>ping</code>-sveip sender pakker til hver eneste adresse i nettet.</p></div></div>
+        <div class="theory-block why"><div class="theory-title">🎯 Hvorfor rekkefølgen betyr noe</div><div class="theory-text"><p>En IDS reagerer på mønstre, og et pingsveip er et av de tydeligste mønstrene som finnes: én maskin snakker med hundre adresser på få sekunder. En angriper som vil bli værende lenge, henter alt han kan fra de stille kildene først, og bruker de støyende bare når han må.</p></div></div>
         <p class="lab-desc">Du har nettopp fått tilgang til én maskin i bedriftsnettverket <code>192.168.10.0/24</code>. Du vet ingenting om resten av nettverket. Bruk kun terminalen.</p>
         <div>
           <div class="obj-title">Mål</div>
@@ -389,13 +440,17 @@
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Skriv rekkefølgen på kommandoene du brukte, og forklar hvilke er mest "stille"</div></div>
         </div>
         <div class="ans-block">
-          <div class="obj-title">Svar</div>
+          <div class="obj-title">Sjekk at du forstod</div>
           <div class="ans-row" data-a="193486504,-227521546">
-            <span class="ans-q">Hvilken kommando leser lokal cache uten å sende en eneste pakke?</span>
+            <span class="ans-q">Hvilken kommando leser en lokal cache uten å sende pakker?</span>
             <input class="ans-in" placeholder="kommando"><span class="ans-mark"></span>
           </div>
-          <div class="ans-row" data-a="2090616627,-1856457801">
-            <span class="ans-q">Hvilken av kommandoene er den støyende som IDS lett oppdager?</span>
+          <div class="ans-row" data-a="2090616627,-1856457801,-608489126">
+            <span class="ans-q">Hvilken av kommandoene lager mest nettverkstrafikk?</span>
+            <input class="ans-in" placeholder="kommando"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="621634858,-13396364">
+            <span class="ans-q">Hvilken kommando gir null nettverkstrafikk i det hele tatt?</span>
             <input class="ans-in" placeholder="kommando"><span class="ans-mark"></span>
           </div>
         </div>
@@ -428,6 +483,18 @@
   </div>
 </div>
 
+  </div>
+
+  <div class="recap-card">
+    <h3>Oppsummering — kan du forklare disse uten å se på?</h3>
+    <ol>
+      <li><strong>Privat mot offentlig adresse.</strong> Hvilke tre områder er reservert til internt bruk, og hva forteller det deg at du står i et av dem?</li>
+      <li><strong>Passiv mot aktiv rekognosering.</strong> Hvorfor dukker ikke et DNS-oppslag opp i målets logger?</li>
+      <li><strong>LISTENING mot ESTABLISHED.</strong> Og hvorfor er 0.0.0.0 verre enn 127.0.0.1?</li>
+      <li><strong>TTL.</strong> Hvordan bruker traceroute et felt som egentlig var ment å hindre evige løkker?</li>
+      <li><strong>Klartekst mot kryptert.</strong> Hva ser en avlytter av en SSH-sesjon, og hva ser han ikke?</li>
+      <li><strong>Støyskalaen.</strong> Hvilke tre kommandoer ville du kjørt først hvis du ikke ville bli oppdaget?</li>
+    </ol>
   </div>
 
   <div style="margin-top:40px;display:flex;gap:12px;flex-wrap:wrap">
