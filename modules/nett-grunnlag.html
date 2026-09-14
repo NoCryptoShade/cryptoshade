@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hva et nettverk er — CyberLab</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/lab-shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Bricolage+Grotesque:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+.cmd{background:#05070a;border:1px solid var(--border);border-left:2px solid var(--blue);
+  border-radius:0 6px 6px 0;padding:11px 14px;font-family:var(--mono);font-size:11.5px;
+  color:var(--text2);overflow-x:auto;line-height:1.85;white-space:pre-wrap;word-break:break-word}
+.cmd .c{color:var(--text3)}
+</style>
+</head>
+<body class="page">
+<nav class="nav">
+  <div class="nav-logo"><span class="bracket">[</span>CyberLab<span class="bracket">]</span></div>
+  <div class="nav-links">
+    <a href="../index.html" class="nav-link">Hjem</a>
+    <a href="../emne1.html" class="nav-link">Emne 1</a>
+    <a href="../emne3.html" class="nav-link">Emne 3</a>
+    <a href="../labber.html" class="nav-link on">Labber</a>
+    <a href="https://tk1104.timoamling.com/" target="_blank" rel="noopener" class="nav-link">Self check &nearr;</a>
+  </div>
+</nav>
+
+<div class="container-sm page" style="padding-top:40px;padding-bottom:80px">
+  <a href="../labber.html" class="back-link">&larr; Tilbake</a>
+  <div class="mod-hero">
+    <div class="section-eyebrow">Lab 13 &middot; Emne 1 &middot; Leksjon 5</div>
+    <div class="section-title">Hva et nettverk er</div>
+    <p class="section-desc">Pakker, to adresser, og tre bokser som gj&oslash;r hver sin jobb. Dette er grunnlaget alt senere i emnet hviler p&aring;.</p>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Fremdrift</span><span id="progressLabel">0 / 0 fullf&oslash;rt</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <div class="filter-row">
+    <button class="filter-pill active-all" onclick="setFilter('all',this)">Alle</button>
+    <button class="filter-pill" onclick="setFilter('easy',this)">Lett</button>
+    <button class="filter-pill" onclick="setFilter('medium',this)">Middels</button>
+    <button class="filter-pill" onclick="setFilter('hard',this)">Vanskelig</button>
+  </div>
+
+  <div class="tasks">
+  <div class="lab-card" id="n5-1" data-level="easy">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">01</span>
+      <span class="lab-title">Hvorfor data deles i pakker</span>
+      <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-1">Niv&aring; 1 &mdash; Pakker</div>
+        <div class="theory-block"><div class="theory-title">📦 En lang strøm blokkerer, mange små gjør det ikke</div><div class="theory-text"><p>Data sendes ikke som &eacute;n sammenhengende str&oslash;m. Den deles i <strong>pakker</strong>, og hver pakke sendes for seg.</p><p>Tre grunner. Sendte du en 4 GB fil i &eacute;tt stykke, ville den <strong>blokkert linja</strong> for alle andre til den var ferdig. Gikk noe galt underveis, m&aring;tte <strong>hele</strong> fila sendes p&aring; nytt. Og pakker kan ta <strong>ulike veier</strong> og settes sammen igjen hos mottaker.</p><p>Hver pakke har en <strong>header</strong> med adressene, og en <strong>nyttelast</strong> med selve dataene. Headeren er konvolutten, nyttelasten er brevet.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du laster ned en fil p&aring; 1 MB, og &eacute;n pakke forsvinner underveis.</p><ol class="wsteps"><li>Fila deles i rundt 700 pakker p&aring; omtrent 1500 byte hver</li><li>Pakke nummer 412 kommer aldri fram</li><li>Mottakeren merker at 412 mangler og ber om <strong>den ene</strong> p&aring; nytt</li><li>Du sender 1500 byte om igjen, ikke 1 MB</li><li>Uten oppdeling m&aring;tte hele fila sendes p&aring; nytt</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2088324359,2088325448"><span class="ans-q">En fil på 3 MB deles i pakker på 1500 byte. Omtrent hvor mange pakker blir det?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="177622,5867708,5863352"><span class="ans-q">Én pakke av 2000 mistes. Hvor mange pakker må sendes på nytt?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="30546094,-1095038559"><span class="ans-q">Hva kalles delen av pakken som inneholder adressene?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">3 MB er omtrent 3 000 000 byte. Del p&aring; st&oslash;rrelsen per pakke.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">3 000 000 delt p&aring; 1500 er <strong>2000</strong> pakker. Og poenget med oppdeling er nettopp at &eacute;n tapt pakke koster &eacute;n pakke, ikke hele overf&oslash;ringen.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">ping -c 4 8.8.8.8
+<span class='c'># se st&oslash;rrelsen p&aring; hver pakke</span>
+ping -s 1000 -c 2 8.8.8.8</div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="n5-2" data-level="easy">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">02</span>
+      <span class="lab-title">MAC og IP: to adresser, to jobber</span>
+      <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-1">Niv&aring; 1 &mdash; De to adressene</div>
+        <div class="theory-block"><div class="theory-title">🏷️ Den ene gjelder denne kabelen, den andre gjelder hele veien</div><div class="theory-text"><p>Dette er det studenter blander mest, og forskjellen er enklere enn den ser ut.</p><p><strong>MAC-adressen</strong> er brent inn i nettverkskortet og gjelder bare <strong>p&aring; det lokale nettet</strong>. Den brukes til &aring; levere fra &eacute;n enhet til naboenheten. Den rutes aldri videre.</p><p><strong>IP-adressen</strong> sier hvilket <strong>nettverk</strong> og hvilken vert. Den f&oslash;lger pakken <strong>hele veien</strong>, fra avsender til endelig mottaker.</p><p>N&oslash;kkelen: IP-adressene i pakken er de samme hele veien. <strong>MAC-adressene byttes ut ved hvert hopp.</strong> Hver ruter skriver p&aring; nytt hvem som sender og hvem som er neste mottaker lokalt.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Din PC (192.168.1.10) henter en side fra 93.184.2.10, via ruteren din.</p><ol class="wsteps"><li>F&oslash;rste strekk: avsender-IP 192.168.1.10, mottaker-IP 93.184.2.10</li><li>Samme strekk: avsender-MAC din PC, mottaker-MAC <strong>ruteren</strong>, ikke webserveren</li><li>Ruteren pakker om: <strong>IP-ene er uendret</strong>, men MAC-ene byttes til neste hopp</li><li>Slik fortsetter det, hopp for hopp, helt fram</li><li>Webserveren ser aldri MAC-adressen til PC-en din</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">Du sender til en server i USA. Endrer avsender-IP seg underveis? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">Endrer avsender-MAC seg underveis? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863486,-2064537440,-1700795501"><span class="ans-q">Hvilken av de to adressene står i pakken når den forlater ruteren din mot internett, uendret fra din PC?</span><input class="ans-in" placeholder="to bokstaver"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r for hver adresse: gjelder den denne kabelen, eller hele reisen?</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Dette er hele forskjellen. <strong>IP = hele reisen. MAC = &eacute;n etappe.</strong> Husker du den ene setningen, l&oslash;ser du de fleste sp&oslash;rsm&aring;lene senere i emnet.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">ip addr          <span class='c'># din IP og MAC</span>
+ip neigh         <span class='c'># naboene og MAC-ene deres</span>
+arp -a           <span class='c'># samme p&aring; Windows</span></div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="n5-3" data-level="easy">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">03</span>
+      <span class="lab-title">Switch, ruter og brannmur</span>
+      <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-1">Niv&aring; 1 &mdash; Tre jobber</div>
+        <div class="theory-block"><div class="theory-title">🔀 Tre bokser, tre spørsmål</div><div class="theory-text"><p>En <strong>switch</strong> spør: hvilken port sitter denne MAC-adressen på? Den flytter trafikk <em>innenfor</em> ett nettverk, og bryr seg ikke om IP.</p><p>En <strong>ruter</strong> spør: hvilket nettverk skal denne IP-adressen til? Den flytter trafikk <em>mellom</em> nettverk, og er grensen mellom dem.</p><p>En <strong>brannmur</strong> spør: har denne trafikken lov? Den tillater eller nekter, og sitter gjerne i samme boks som ruteren hjemme hos deg.</p><p>Enkel huskeregel: switch flytter <em>innenfor</em>, ruter flytter <em>mellom</em>, brannmur <em>bestemmer</em>.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>To PC-er p&aring; samme kontor, og en tredje p&aring; et annet kontor.</p><ol class="wsteps"><li>PC A til PC B, samme nett: bare <strong>switchen</strong> er involvert</li><li>PC A til PC C, annet nett: switch til <strong>ruter</strong>, over, og switch igjen</li><li>PC A til en nettside ute: switch, ruter, <strong>brannmur</strong>, og ut</li><li>Jo lenger unna, jo flere bokser m&aring; pakken innom</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">To maskiner på samme nettverk snakker sammen. Er ruteren involvert? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="482686839,1659961002"><span class="ans-q">Hvilken av de tre ser på MAC-adresser og ikke IP?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="273681623,1686547466,434495398"><span class="ans-q">Hvilken av de tre er grensen mellom to nettverk?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r om trafikken krysser en nettverksgrense eller ikke.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">ip route          <span class='c'># hvor g&aring;r veien ut</span>
+ip neigh          <span class='c'># hvem er naboene</span>
+traceroute 8.8.8.8</div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="n5-4" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">04</span>
+      <span class="lab-title">Følg pakken: innenfor nettet</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; ARP</div>
+        <div class="theory-block"><div class="theory-title">📣 Maskinen må spørre hvem som har adressen</div><div class="theory-text"><p>Du kjenner mottakerens IP, men for &aring; sende p&aring; det lokale nettet trenger du <strong>MAC-adressen</strong>. Den finner du med <strong>ARP</strong>.</p><p>Maskinen roper ut til alle p&aring; nettet: «hvem har 192.168.1.20?» Den som har adressen svarer med sin MAC. Svaret lagres i en <strong>ARP-tabell</strong> slik at du slipper &aring; sp&oslash;rre hver gang.</p><p>Dette er ogs&aring; svakheten. Alle p&aring; nettet h&oslash;rer sp&oslash;rsm&aring;let, og <strong>hvem som helst kan svare</strong>. Svarer feil maskin f&oslash;rst, sender du trafikken din til den i stedet. Det kalles ARP-spoofing.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du skal sende til 192.168.1.20 og har tom ARP-tabell.</p><ol class="wsteps"><li>Du roper: «hvem har 192.168.1.20?» til hele nettet</li><li>Riktig maskin svarer med sin MAC, og du lagrer den</li><li>Neste gang sl&aring;r du bare opp i tabellen</li><li>Men en angriper kan svare <strong>f&oslash;r</strong> den ekte maskinen</li><li>Da havner trafikken din hos ham, og han sender den videre s&aring; du ikke merker noe</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193486504"><span class="ans-q">Du kjenner IP-en men ikke MAC-en. Hvilken protokoll finner MAC-en?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div><div class="ans-row" data-a="2090080771"><span class="ans-q">Hvor mange maskiner på nettet hører ARP-spørsmålet?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="437458010,505730768,-1372323527"><span class="ans-q">En angriper svarer på ARP før den ekte maskinen. Hvor havner trafikken din?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;rsm&aring;let g&aring;r ut til alle. Det er b&aring;de poenget og problemet.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">ip neigh
+arp -a
+<span class='c'># t&oslash;m tabellen og se den fylles igjen</span>
+ping -c 1 192.168.1.1 &amp;&amp; ip neigh</div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="n5-5" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">05</span>
+      <span class="lab-title">Følg pakken: ut av nettet</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; Lokalt eller ut</div>
+        <div class="theory-block"><div class="theory-title">🚦 Maskinen tar én avgjørelse før den sender</div><div class="theory-text"><p>F&oslash;r maskinen sender noe som helst, sammenligner den mottakerens IP med sin egen nettverksdel.</p><p>Er mottakeren i <strong>samme nett</strong>, sendes pakken direkte til mottakerens MAC.</p><p>Er mottakeren i et <strong>annet nett</strong>, sendes pakken til <strong>standard gateway</strong> sin MAC, men med mottakerens IP fortsatt i headeren.</p><p>Det er derfor en maskin uten gateway kan snakke med naboene, men ikke n&aring; internett. Og det er derfor «jeg har internett, men kommer ikke p&aring; fellesdisken» og «jeg n&aring;r fellesdisken, men ikke internett» er to helt ulike feil.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Din maskin er 192.168.1.10/24, gateway 192.168.1.1.</p><ol class="wsteps"><li>Til 192.168.1.55: samme nettdel, alts&aring; <strong>direkte</strong></li><li>Til 8.8.8.8: annen nettdel, alts&aring; <strong>til gateway</strong></li><li>I begge tilfeller st&aring;r mottakerens <strong>IP</strong> i pakken</li><li>Men MAC-en er mottakerens i det f&oslash;rste og <strong>gatewayens</strong> i det andre</li><li>Fjerner du gatewayen, virker det f&oslash;rste fortsatt og det andre slutter</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="313861389"><span class="ans-q">Du er 10.0.5.7/24. Sender du direkte eller via gateway til 10.0.5.99?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1690590601,-417400841"><span class="ans-q">Samme maskin, til 10.0.6.99. Direkte eller via gateway?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">En maskin har riktig IP men ingen gateway. Når den naboen sin på samme nett? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sammenlign de tre f&oslash;rste tallene n&aring;r masken er /24.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Siste sp&oslash;rsm&aring;l er det som gj&oslash;r feils&oslash;king mulig. Uten gateway virker alt lokalt og ingenting utenfor. Det peker rett p&aring; hva som mangler.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">ip route          <span class='c'># default via ...</span>
+ping -c 1 192.168.1.1
+ping -c 1 8.8.8.8
+ping -c 1 vg.no   <span class='c'># tester ogs&aring; DNS</span></div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="n5-6" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">06</span>
+      <span class="lab-title">Lokalnett eller fjernnett</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; Grensen</div>
+        <div class="theory-block"><div class="theory-title">🌍 Grensen går der ruteren står</div><div class="theory-text"><p>Et <strong>lokalnett</strong> er maskinene som deler samme nettverksdel og n&aring;r hverandre uten ruter. Kontoret, hjemmenettet, klasserommet.</p><p>Et <strong>fjernnett</strong> er alt p&aring; andre siden av en ruter.</p><p>Internett er ikke &eacute;n ting. Det er <strong>mange nettverk koblet sammen</strong> med rutere, som er hvorfor en pakke til utlandet g&aring;r gjennom mange hopp.</p><p>Sikkerhetspoenget: alt p&aring; ditt lokalnett h&oslash;rer ARP-ropene dine og kan svare p&aring; dem. Derfor er «hvem deler lokalnett med meg» et sikkerhetssp&oslash;rsm&aring;l, ikke bare et teknisk et. Det er hele grunnen til VLAN i neste leksjon.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Traceroute til en server i utlandet viser 12 hopp.</p><ol class="wsteps"><li>Hopp 1 er din egen ruter, alts&aring; grensen ut av lokalnettet</li><li>Hopp 2 til 11 er rutere hos ulike operat&oslash;rer underveis</li><li>Hopp 12 er m&aring;lets egen ruter</li><li>Hver av dem er en <strong>nettverksgrense</strong></li><li>Og p&aring; hvert strekk ble MAC-adressene byttet, mens IP-ene sto uendret</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177628,193505847,193506343"><span class="ans-q">Traceroute viser 7 hopp til målet. Hvor mange nettverksgrenser passerte pakken?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Kan en maskin på et annet lokalnett høre ARP-ropene dine? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="2090835094"><span class="ans-q">Hva heter teknikken som deler én switch i flere lokalnett? Du møter den neste time</span><input class="ans-in" placeholder="fire bokstaver"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Hvert hopp i traceroute er en ruter, og hver ruter er en grense.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">traceroute 8.8.8.8
+ip route
+<span class='c'># hvem deler lokalnett med meg</span>
+ip neigh</div>
+        
+      </div>
+    </div></div>
+  </div>
+  </div>
+
+  <div style="margin-top:36px"><a href="../labber.html" class="btn btn-ghost">&larr; Labber</a></div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner">
+<span>CyberLab &mdash; Fagskole Informasjonssikkerhet</span><span>Gratis &amp; &aring;pen kildekode</span>
+</div></div></footer>
+<script src="../js/cyberlab.js"></script>
+</body>
+</html>
