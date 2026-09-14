@@ -237,7 +237,7 @@
         <div class="theory-block"><div class="theory-title">🎯 Fra teori til et ekte felt</div><div class="theory-text"><p>Metasploitable 2 har DVWA liggende p&aring; <code>/dvwa/</code>. Logg inn med <code>admin</code> og <code>password</code>, og sett sikkerhetsniv&aring;et til <strong>low</strong> under DVWA Security f&oslash;rst.</p><p>Siden <em>SQL Injection</em> tar imot en User ID og viser fornavn og etternavn. Den bygger sp&oslash;rringen med tekstliming, akkurat som i oppgave 2.</p><p>Start med rekkef&oslash;lgen du n&aring; kan: test konteksten, finn antall kolonner, finn hvilken kolonne som vises. F&oslash;rst deretter henter du noe.</p><p>Alt her skjer p&aring; din egen maskin, p&aring; host-only. Ingenting av dette skal rettes mot noe annet.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du &aring;pner SQL Injection-siden og skriver <code>1</code>.</p><ol class="wsteps"><li>Siden svarer med ID, First name og Surname</li><li>To felt vises, s&aring; sp&oslash;rringen henter sannsynligvis <strong>to kolonner</strong></li><li>Du skriver <code>1'</code> og f&aring;r en MySQL-syntaksfeil: <strong>strengkontekst</strong></li><li>Du bekrefter med <code>1' ORDER BY 2#</code> som virker og <code>ORDER BY 3#</code> som feiler</li><li>N&aring; vet du b&aring;de kontekst og kolonnetall, og kan bygge en UNION</li></ol></div></div>
         <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177623,5863848"><span class="ans-q">Hvor mange kolonner returnerer spørringen på DVWA low?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="479436536,-823709429"><span class="ans-q">Hvilken kontekst er User ID-feltet i?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="177608,5861439"><span class="ans-q">Hvilket tegn bruker du som kommentar mot MySQL når # er lettest i en URL?</span><input class="ans-in" placeholder="ett tegn"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Tell feltene siden viser. Det er ofte, men ikke alltid, antall kolonner.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Merk at antall <em>viste</em> felt og antall <em>kolonner</em> ikke alltid er likt. Derfor bekrefter du med <code>ORDER BY</code> i stedet for &aring; telle p&aring; skjermen.</div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">To ting skal fastsl&aring;s, i denne rekkef&oslash;lgen. F&oslash;rst konteksten: send ett tegn som bryter en streng, og se om du f&aring;r en databasefeil. Deretter kolonnetallet: det finnes et SQL-n&oslash;kkelord som sorterer p&aring; kolonnenummer og feiler n&aring;r nummeret ikke finnes. &Oslash;k til det ryker.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Kontekst: <code>1'</code> i User ID-feltet. MySQL-syntaksfeil betyr strengkontekst.<br><br>Kolonner: <code>1' ORDER BY 1#</code>, s&aring; <code>2#</code>, s&aring; <code>3#</code>. Siste som virker er antallet.<br><br>Merk at antall <em>viste</em> felt og antall <em>kolonner</em> ikke alltid er likt. Derfor bekrefter du med <code>ORDER BY</code> i stedet for &aring; telle p&aring; skjermen.</div></div>
       </div>
       <div class="lab-right" style="padding:24px">
         <div class="obj-title">Kj&oslash;r dette</div>
@@ -246,8 +246,8 @@ http://&lt;MAAL&gt;/dvwa/
 <span class='c'># admin / password</span>
 <span class='c'># DVWA Security -&gt; low</span>
 
-<span class='c'># test i User ID-feltet:</span>
-<span class='c'># 1'        1' ORDER BY 2#</span></div>
+<span class='c'># resten bygger du selv.</span>
+<span class='c'># oppgave 2 og 4 har alt du trenger.</span></div>
         
       </div>
     </div></div>
@@ -264,16 +264,17 @@ http://&lt;MAAL&gt;/dvwa/
         <div class="theory-block"><div class="theory-title">🔑 Fra to navn til alle passordhasher</div><div class="theory-text"><p>N&aring; setter du sammen alt: UNION med riktig kolonnetall, metadata for &aring; finne tabellen, og til slutt selve uthentingen.</p><p>DVWA sin brukertabell heter <code>users</code> og har blant annet kolonnene <code>user</code> og <code>password</code>. Passordene ligger som <strong>MD5-hasher</strong>, ikke i klartekst.</p><p>Vil du ha to verdier i &eacute;n kolonne, limer du dem sammen med <code>CONCAT(user,':',password)</code>. Det er nyttig n&aring;r bare &eacute;n kolonne vises.</p><p>MD5 uten salt er det som gj&oslash;r funnet alvorlig: hashene kan sl&aring;s opp direkte, uten &aring; knekkes.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du har bekreftet to kolonner i strengkontekst.</p><ol class="wsteps"><li><code>1' UNION SELECT table_name,NULL FROM information_schema.tables#</code> lister tabeller</li><li>Du finner <code>users</code></li><li><code>1' UNION SELECT user,password FROM users#</code> gir navn og hash</li><li>Eller alt i &eacute;n kolonne: <code>1' UNION SELECT CONCAT(user,':',password),NULL FROM users#</code></li><li>Hashene er MD5, s&aring; neste steg er oppslag, ikke knekking</li></ol></div></div>
         <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193499051"><span class="ans-q">Hvilken hashtype brukes på DVWA-passordene?</span><input class="ans-in" placeholder="hashtype"><span class="ans-mark"></span></div><div class="ans-row" data-a="-152805699,1098319694"><span class="ans-q">Hvilken SQL-funksjon limer to kolonner sammen til én?</span><input class="ans-in" placeholder="en funksjon"><span class="ans-mark"></span></div><div class="ans-row" data-a="1227932942,-1537643880,1907186651"><span class="ans-q">Hashene er usaltet MD5. Må du knekke dem, eller holder det å slå dem opp?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Du trenger ikke gjette tabellnavnet. Spør registeret først.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Poenget for en rapport: funnet er ikke «SQL-injeksjon mulig», det er «hele brukertabellen kan hentes ut, og passordene er usaltet MD5 som kan slås opp på sekunder». Konsekvens, ikke teknikk.</div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Du trenger ikke gjette tabellnavnet. Registeret fra oppgave 5 har &eacute;n tabell som lister alle tabeller og &eacute;n som lister alle kolonner. Husk at UNION-en m&aring; ha like mange verdier som sp&oslash;rringen har kolonner, og at <code>NULL</code> fyller de du ikke bruker.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box"><strong>1, tabellene:</strong> <code>1' UNION SELECT table_name,NULL FROM information_schema.tables#</code><br><strong>2, kolonnene:</strong> <code>1' UNION SELECT column_name,NULL FROM information_schema.columns WHERE table_name='users'#</code><br><strong>3, radene:</strong> <code>1' UNION SELECT user,password FROM users#</code><br><br>Poenget for en rapport: funnet er ikke «SQL-injeksjon mulig», det er «hele brukertabellen kan hentes ut, og passordene er usaltet MD5 som kan slås opp på sekunder». Konsekvens, ikke teknikk.</div></div>
       </div>
       <div class="lab-right" style="padding:24px">
         <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># tabellene</span>
-<span class='c'># 1' UNION SELECT table_name,NULL</span>
-<span class='c'>#   FROM information_schema.tables#</span>
+        <div class="cmd"><span class='c'># du har kolonnetallet fra forrige oppgave</span>
+<span class='c'># bygg UNION-en selv, i tre steg:</span>
+<span class='c'>#   1. finn tabellnavnet</span>
+<span class='c'>#   2. finn kolonnenavnene</span>
+<span class='c'>#   3. hent radene</span>
 
-<span class='c'># brukerne</span>
-<span class='c'># 1' UNION SELECT user,password FROM users#</span></div>
+<span class='c'># oppgave 5 sier hvor navnene ligger</span></div>
         
       </div>
     </div></div>
@@ -341,16 +342,15 @@ http://&lt;MAAL&gt;/dvwa/
         <div class="theory-block"><div class="theory-title">📂 SQL kan også lese og skrive filer</div><div class="theory-text"><p>MySQL har <code>LOAD_FILE()</code> som leser en fil fra disk, og <code>INTO OUTFILE</code> som skriver til disk. Begge kj&oslash;rer med rettighetene til <strong>databasetjenesten</strong>, ikke til webserveren.</p><p>Det betyr at en SQL-injeksjon kan bli filtilgang, og i verste fall kodekj&oslash;ring hvis du kan skrive en fil inn i webroten.</p><p>To ting begrenser det: databasebrukeren m&aring; ha <code>FILE</code>-privilegiet, og nyere MySQL har <code>secure_file_priv</code> som l&aring;ser skriving til &eacute;n bestemt mappe. P&aring; gamle oppsett er ingen av delene p&aring; plass.</p><p>Derfor er sp&oslash;rsm&aring;let i en rapport aldri bare «kan de lese data», men <strong>hvor langt rekker denne databasebrukeren</strong>.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du har UNION med to kolonner og vil vite hvor langt du kommer.</p><ol class="wsteps"><li><code>' UNION SELECT LOAD_FILE('/etc/passwd'),NULL#</code> tester lesing</li><li>F&aring;r du innholdet, har brukeren <code>FILE</code>-privilegiet</li><li><code>' UNION SELECT user(),@@version#</code> viser hvem og hvilken versjon</li><li>Er brukeren <code>root@localhost</code>, er det ingen begrensning igjen &aring; snakke om</li><li>Da er funnet ikke lenger «datalekkasje», det er <strong>full kompromittering</strong></li></ol></div></div>
         <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2090257189"><span class="ans-q">Hvilket MySQL-privilegium kreves for å lese filer fra disk?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1032401528,98865626,267895067"><span class="ans-q">LOAD_FILE kjører med rettighetene til hvilken tjeneste, webserveren eller databasen?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">user() svarer root@localhost. Er dette et alvorligere funn enn om den svarte dvwa@localhost? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r alltid hvem databasen kj&oslash;rer som, ikke bare hva du fikk ut.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Den siste er poenget. Samme injeksjon, to helt ulike alvorlighetsgrader, avhengig av hvilken databasebruker applikasjonen kobler seg til med. Minste privilegium igjen, denne gangen i databasen.</div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Begge sp&oslash;rsm&aring;lene besvares med den samme UNION-en du allerede har. Du bytter bare ut hva du velger: to funksjoner for det f&oslash;rste, og lesefunksjonen fra fakta-boksen med en filsti som argument for det andre.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box"><strong>Hvem:</strong> <code>1' UNION SELECT user(),@@version#</code><br><strong>Lesing:</strong> <code>1' UNION SELECT LOAD_FILE('/etc/passwd'),NULL#</code><br><br>Den siste er poenget. Samme injeksjon, to helt ulike alvorlighetsgrader, avhengig av hvilken databasebruker applikasjonen kobler seg til med. Minste privilegium igjen, denne gangen i databasen.</div></div>
       </div>
       <div class="lab-right" style="padding:24px">
         <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># hvem er databasebrukeren</span>
-<span class='c'># ' UNION SELECT user(),@@version#</span>
+        <div class="cmd"><span class='c'># to sp&oslash;rsm&aring;l, samme UNION som f&oslash;r</span>
+<span class='c'>#   hvem er databasebrukeren?</span>
+<span class='c'>#   kan den lese filer fra disk?</span>
 
-<span class='c'># kan den lese filer</span>
-<span class='c'># ' UNION SELECT</span>
-<span class='c'>#   LOAD_FILE('/etc/passwd'),NULL#</span></div>
+<span class='c'># funksjonsnavnene st&aring;r i fakta-boksen</span></div>
         
       </div>
     </div></div>

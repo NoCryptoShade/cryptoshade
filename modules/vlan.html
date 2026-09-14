@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Switching, VLAN og segmentering — CyberLab</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/lab-shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Bricolage+Grotesque:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+.cmd{background:#05070a;border:1px solid var(--border);border-left:2px solid var(--blue);
+  border-radius:0 6px 6px 0;padding:11px 14px;font-family:var(--mono);font-size:11.5px;
+  color:var(--text2);overflow-x:auto;line-height:1.85;white-space:pre-wrap;word-break:break-word}
+.cmd .c{color:var(--text3)}
+</style>
+</head>
+<body class="page">
+<nav class="nav">
+  <div class="nav-logo"><span class="bracket">[</span>CyberLab<span class="bracket">]</span></div>
+  <div class="nav-links">
+    <a href="../index.html" class="nav-link">Hjem</a>
+    <a href="../emne1.html" class="nav-link">Emne 1</a>
+    <a href="../emne3.html" class="nav-link">Emne 3</a>
+    <a href="../labber.html" class="nav-link on">Labber</a>
+    <a href="https://tk1104.timoamling.com/" target="_blank" rel="noopener" class="nav-link">Self check &nearr;</a>
+  </div>
+</nav>
+
+<div class="container-sm page" style="padding-top:40px;padding-bottom:80px">
+  <a href="../labber.html" class="back-link">&larr; Tilbake</a>
+  <div class="mod-hero">
+    <div class="section-eyebrow">Lab 15 &middot; Emne 1 &middot; Leksjon 8</div>
+    <div class="section-title">Switching, VLAN og segmentering</div>
+    <p class="section-desc">Hvorfor et stort, flatt nett gj&oslash;r det lett for et angrep &aring; spre seg, og hva som skal til for &aring; dele det opp.</p>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Fremdrift</span><span id="progressLabel">0 / 0 fullf&oslash;rt</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <div class="filter-row">
+    <button class="filter-pill active-all" onclick="setFilter('all',this)">Alle</button>
+    <button class="filter-pill" onclick="setFilter('easy',this)">Lett</button>
+    <button class="filter-pill" onclick="setFilter('medium',this)">Middels</button>
+    <button class="filter-pill" onclick="setFilter('hard',this)">Vanskelig</button>
+  </div>
+
+  <div class="tasks">
+  <div class="lab-card" id="n8-1" data-level="easy">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">01</span>
+      <span class="lab-title">Switchen lærer selv</span>
+      <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-1">Niv&aring; 1 &mdash; MAC-tabellen</div>
+        <div class="theory-block"><div class="theory-title">🔀 Ingen konfigurerer switchen, den ser etter selv</div><div class="theory-text"><p>En switch f&oslash;rer en <strong>MAC-tabell</strong> over hvilken port hver enhet sitter p&aring;. Den fylles ut helt av seg selv.</p><p>N&aring;r en ramme kommer inn, noterer switchen <strong>avsenderens MAC</strong> og hvilken port den kom fra. S&aring;nn l&aelig;rer den hvor alle er.</p><p>Kjenner den ikke mottakeren enn&aring;, sender den rammen ut p&aring; <strong>alle porter</strong> unntatt den den kom fra. Det kalles flooding. N&aring;r svaret kommer, har den l&aelig;rt begge.</p><p>Konsekvens: de f&oslash;rste sekundene etter oppstart sender switchen mye ut overalt, fordi tabellen er tom.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>PC A sender til PC B p&aring; en nettopp startet switch.</p><ol class="wsteps"><li>Tabellen er tom. Switchen ser ramma komme inn p&aring; port 1</li><li>Den noterer: <strong>MAC til A sitter p&aring; port 1</strong></li><li>Den vet ikke hvor B er, s&aring; den sender ut p&aring; <strong>alle andre porter</strong></li><li>B svarer, og svaret kommer inn p&aring; port 5</li><li>N&aring; vet switchen begge, og neste ramme g&aring;r bare port 1 til port 5</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="-562626781,-1885345795"><span class="ans-q">Hva noterer switchen når en ramme kommer inn: avsenderens eller mottakerens MAC?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="2090080771,1047312237"><span class="ans-q">Switchen kjenner ikke mottakeren. Hvor mange porter sender den ut på?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Må noen konfigurere MAC-tabellen manuelt? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Switchen kan bare l&aelig;re av det som kommer <em>inn</em>, ikke av det den sender ut.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">ip neigh
+arp -a
+<span class='c'># din maskins egen tabell over naboer</span></div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="n8-2" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">02</span>
+      <span class="lab-title">Kringkastingsdomenet</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; Hvem h&oslash;rer ropet</div>
+        <div class="theory-block"><div class="theory-title">📣 Alt i samme domene hører alt som ropes ut</div><div class="theory-text"><p>Noen meldinger m&aring; n&aring; alle, for eksempel ARP-sp&oslash;rsm&aring;l og DHCP-Discover. De sendes som <strong>kringkasting</strong>, og en switch sender dem ut p&aring; alle porter.</p><p>Alle maskinene som h&oslash;rer hverandres kringkasting er i samme <strong>kringkastingsdomene</strong>. En ruter stopper kringkasting, en switch gj&oslash;r det ikke.</p><p>To problemer f&oslash;lger av store domener. Det ene er <strong>st&oslash;y</strong>: jo flere maskiner, jo mer trafikk alle m&aring; h&oslash;re p&aring;. Det andre er <strong>sikkerhet</strong>: alle kan svare p&aring; hverandres ARP, alts&aring; kan hvem som helst lyve.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Et kontor med 400 maskiner p&aring; ett flatt nett.</p><ol class="wsteps"><li>Hver eneste ARP-sp&oslash;rring h&oslash;res av alle 400</li><li>Med 400 maskiner blir det mange sp&oslash;rringer i sekundet</li><li>Verre: <strong>alle 400 kan svare</strong> p&aring; hverandres ARP</li><li>En kompromittert PC kan da avlytte trafikken til hvem som helst av de andre</li><li>Deler du opp i fire nett med 100 hver, kan en angriper bare n&aring; sine egne 99 naboer</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">Stopper en switch kringkasting? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">Stopper en ruter kringkasting? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="5861847"><span class="ans-q">400 maskiner deles i fire like nett. Hvor mange naboer kan en angriper nå direkte nå?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Tell hvor mange som er igjen i <em>ditt</em> nett, ikke deg selv medregnet.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Dette er hele argumentet for segmentering. Du fjerner ikke angriperen, men du <strong>krymper hva han n&aring;r</strong> fra 399 til 99.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">ip neigh
+<span class='c'># hvor mange naboer har du</span>
+ip neigh | wc -l</div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="n8-3" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">03</span>
+      <span class="lab-title">ARP kan lyve</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; ARP-spoofing</div>
+        <div class="theory-block"><div class="theory-title">🎭 Den som svarer først blir trodd</div><div class="theory-text"><p>ARP har ingen kontroll av hvem som svarer. Roper du «hvem har 192.168.1.1?», tror du p&aring; det f&oslash;rste svaret du f&aring;r.</p><p>En angriper p&aring; samme nett kan svare <strong>f&oslash;r</strong> ruteren og si at han har adressen. Da sender du all trafikk ut mot internett til ham i stedet.</p><p>Han sender den som regel videre til den ekte ruteren, s&aring; alt fungerer som normalt. Det er derfor angrepet er vanskelig &aring; oppdage for brukeren: <strong>ingenting slutter &aring; virke</strong>.</p><p>Merk at dette bare virker <strong>innenfor samme kringkastingsdomene</strong>. Det er derfor VLAN er et mottiltak.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du sjekker ARP-tabellen og ser noe rart.</p><ol class="wsteps"><li>Gateway <code>192.168.1.1</code> har MAC <code>aa:bb:cc:11:22:33</code></li><li>En annen maskin, <code>192.168.1.77</code>, har <strong>samme MAC</strong></li><li>To IP-adresser kan godt dele MAC hvis det er samme maskin</li><li>Men her skal de v&aelig;re to ulike enheter</li><li>Alts&aring; utgir 192.168.1.77 seg for &aring; v&aelig;re gatewayen</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="1621977082,1985719021,1438611754"><span class="ans-q">To ulike IP-adresser viser samme MAC i ARP-tabellen din. Hva tyder det på?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Kan en angriper på et annet VLAN utføre ARP-spoofing mot deg? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Merker brukeren vanligvis at trafikken går via angriperen? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r om angriperen h&oslash;rer ARP-ropene dine i det hele tatt.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">arp -a
+ip neigh
+<span class='c'># se etter samme MAC p&aring; to adresser</span>
+ip neigh | awk '{print $5}' | sort | uniq -d</div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="n8-4" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">04</span>
+      <span class="lab-title">VLAN deler én switch i flere nett</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-3">Niv&aring; 3 &mdash; VLAN</div>
+        <div class="theory-block"><div class="theory-title">🧱 Samme fysiske switch, flere logiske nett</div><div class="theory-text"><p>Et <strong>VLAN</strong> deler &eacute;n fysisk switch i flere separate nettverk. Hver port tilordnes et VLAN-nummer, og porter i ulike VLAN <strong>n&aring;r ikke hverandre</strong>, selv om de sitter i samme boks.</p><p>Hvert VLAN blir sitt eget <strong>kringkastingsdomene</strong>. ARP fra VLAN 10 h&oslash;res ikke i VLAN 20.</p><p>Skal trafikk mellom VLAN, m&aring; den gjennom en <strong>ruter</strong> eller en lag 3-switch, og <strong>der</strong> kan du sette regler.</p><p>Det er poenget: VLAN alene deler opp, men det er kontrollen i overgangen som gir sikkerhet.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Ett kontor, &eacute;n switch, tre VLAN.</p><ol class="wsteps"><li>VLAN 10: ansatte. VLAN 20: gjester. VLAN 30: servere</li><li>En gjest i VLAN 20 h&oslash;rer ikke ARP fra VLAN 10</li><li>Gjesten kan alts&aring; ikke ARP-spoofe en ansatt</li><li>Vil gjesten n&aring; en server, m&aring; trafikken via ruteren</li><li>Der st&aring;r regelen: <strong>VLAN 20 f&aring;r bare ut mot internett</strong>, ikke inn til VLAN 30</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">To porter på samme switch, ulike VLAN. Når de hverandre direkte? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="273681623,1686547466,434495398"><span class="ans-q">Hva må trafikk mellom to VLAN gjennom?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="177624,193507184"><span class="ans-q">Hvor mange kringkastingsdomener lager tre VLAN?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Hvert VLAN oppf&oslash;rer seg som om det var en helt egen switch.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd"><span class='c'># p&aring; din maskin</span>
+ip addr
+ip route
+<span class='c'># VLAN settes p&aring; switchen, ikke p&aring; PC-en</span></div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="n8-5" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">05</span>
+      <span class="lab-title">Soner: gjest, ansatt og server</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-5">Niv&aring; 3 &mdash; Segmentering</div>
+        <div class="theory-block"><div class="theory-title">🗺️ Del etter hvem som skal nå hva, ikke etter hvor folk sitter</div><div class="theory-text"><p>En enkel og vanlig inndeling har tre soner.</p><p><strong>Gjestenett:</strong> bare ut mot internett. Ingen tilgang til noe internt.</p><p><strong>Ansattnett:</strong> ut mot internett, og inn til de tjenestene folk faktisk trenger.</p><p><strong>Serversone:</strong> tar imot forespørsler fra ansattnettet, men skal normalt ikke kunne <strong>starte</strong> forbindelser ut selv.</p><p>Den siste regelen er den folk glemmer. En server som ikke kan ringe ut, kan heller ikke hente ned neste steg i et angrep eller sende data ut.</p><p>Og administrasjonsgrensesnitt h&oslash;rer i en egen sone som bare n&aring;s fra bestemte maskiner.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En angriper f&aring;r kj&oslash;rt kode p&aring; en webserver i serversonen.</p><ol class="wsteps"><li>Han pr&oslash;ver &aring; laste ned et verkt&oslash;y fra internett: <strong>blokkert</strong>, sonen kan ikke starte forbindelser ut</li><li>Han pr&oslash;ver &aring; sende databasen ut til sin egen server: <strong>blokkert</strong>, samme grunn</li><li>Han pr&oslash;ver &aring; n&aring; administrasjonsnettet: <strong>blokkert</strong>, egen sone</li><li>Han har fortsatt kodekj&oslash;ring, men nesten ingen steder &aring; g&aring;</li><li>Segmenteringen stoppet ikke innbruddet, den stoppet <strong>spredningen</strong></li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="-1560102529,-1609082127,461665948"><span class="ans-q">Hvilken sone skal normalt ikke kunne starte forbindelser ut mot internett?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-800502034,-1620677111,-1155704555,-1620677126"><span class="ans-q">Gjestenettet skal nå internett, men ikke hva?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div><div class="ans-row" data-a="-938257278,-584566961,1292116860"><span class="ans-q">Segmentering stoppet ikke innbruddet. Hva stoppet den?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r for hver sone: hvem skal n&aring; inn hit, og hvor skal denne sonen f&aring; lov &aring; n&aring; ut.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Dette er <strong>Target-angrepet</strong> i et n&oslash;tteskall. Angriperne kom inn via en leverand&oslash;r med tilgang til varme- og ventilasjonssystemet, og n&aring;dde derfra kassasystemet fordi nettet ikke var delt. Inndelingen ville ikke stoppet innbruddet, men den ville stoppet veien videre.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd"><span class='c'># test om en sone n&aring;r ut</span>
+curl -m 5 -sI https://example.com
+ping -c 2 8.8.8.8
+<span class='c'># og om den n&aring;r andre soner</span>
+nc -vz &lt;server-i-annen-sone&gt; 22</div>
+        
+      </div>
+    </div></div>
+  </div>
+  </div>
+
+  <div style="margin-top:36px"><a href="../labber.html" class="btn btn-ghost">&larr; Labber</a></div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner">
+<span>CyberLab &mdash; Fagskole Informasjonssikkerhet</span><span>Gratis &amp; &aring;pen kildekode</span>
+</div></div></footer>
+<script src="../js/cyberlab.js"></script>
+</body>
+</html>
