@@ -201,3 +201,25 @@ strong{font-weight:600;color:var(--text)}
 .mcq-fb.show{display:block}
 .mcq-fb.ok{background:var(--green-d);border:1px solid rgba(0,229,160,.25);color:#7acfb0}
 .mcq-fb.bad{background:var(--red-d);border:1px solid rgba(255,92,92,.25);color:#d99}
+
+/* ── REGNEEKSEMPEL ── regelen brukt én gang, synlig ──────────
+   Står mellom teorien og oppgavene. Teorien gir regelen,
+   eksempelet viser den brukt, oppgavene bruker den på et nytt
+   tilfelle som ikke står i teksten.
+──────────────────────────────────────────────────────── */
+.worked{background:var(--bg2);border:1px solid var(--border);border-left:2px solid var(--blue);
+  border-radius:0 9px 9px 0;padding:14px 17px;margin-bottom:14px}
+.worked-t{font-size:12.5px;font-weight:700;color:var(--blue);margin-bottom:9px;
+  font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase}
+.worked-b{font-size:12.5px;color:var(--text2);line-height:1.75}
+.worked-b p{margin:0 0 7px}.worked-b p:last-child{margin:0}
+.worked-b code{font-family:var(--mono);font-size:11.5px;background:rgba(255,255,255,.07);
+  padding:1px 5px;border-radius:3px;color:var(--text)}
+.worked-b strong{color:var(--text);font-weight:600}
+.wsteps{list-style:none;counter-reset:w;margin:8px 0 0;padding:0}
+.wsteps li{counter-increment:w;position:relative;padding:5px 0 5px 26px;
+  font-size:12.5px;color:var(--text2);line-height:1.6}
+.wsteps li::before{content:counter(w);position:absolute;left:0;top:6px;
+  font-family:var(--mono);font-size:9.5px;font-weight:700;width:17px;height:17px;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--blue-d);border:1px solid rgba(75,142,255,.3);color:var(--blue)}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rekognosering og skanning — CyberLab</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/lab-shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Bricolage+Grotesque:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+.cmd{background:#05070a;border:1px solid var(--border);border-left:2px solid var(--blue);
+  border-radius:0 6px 6px 0;padding:11px 14px;font-family:var(--mono);font-size:11.5px;
+  color:var(--text2);overflow-x:auto;line-height:1.85;white-space:pre-wrap;word-break:break-word}
+.cmd .c{color:var(--text3)}
+</style>
+</head>
+<body class="page">
+<nav class="nav">
+  <div class="nav-logo"><span class="bracket">[</span>CyberLab<span class="bracket">]</span></div>
+  <div class="nav-links">
+    <a href="../index.html" class="nav-link">Hjem</a>
+    <a href="../emne1.html" class="nav-link">Emne 1</a>
+    <a href="../emne3.html" class="nav-link">Emne 3</a>
+    <a href="../labber.html" class="nav-link on">Labber</a>
+    <a href="https://tk1104.timoamling.com/" target="_blank" rel="noopener" class="nav-link">Self check &nearr;</a>
+  </div>
+</nav>
+
+<div class="container-sm page" style="padding-top:40px;padding-bottom:80px">
+  <a href="../labber.html" class="back-link">&larr; Tilbake</a>
+  <div class="mod-hero">
+    <div class="section-eyebrow">Lab 10 &middot; Emne 3 &middot; Leksjon 02-04</div>
+    <div class="section-title">Rekognosering og skanning</div>
+    <p class="section-desc">Fra passiv kartlegging til skannerrapport. Hovedsp&oslash;rsm&aring;let hele veien: hva har du <em>bevist</em>, og hva har verkt&oslash;yet <em>gjettet</em>?</p>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Fremdrift</span><span id="progressLabel">0 / 0 fullf&oslash;rt</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <div class="filter-row">
+    <button class="filter-pill active-all" onclick="setFilter('all',this)">Alle</button>
+    <button class="filter-pill" onclick="setFilter('easy',this)">Lett</button>
+    <button class="filter-pill" onclick="setFilter('medium',this)">Middels</button>
+    <button class="filter-pill" onclick="setFilter('hard',this)">Vanskelig</button>
+  </div>
+
+  <div class="tasks">
+  <div class="lab-card" id="rek-1" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">01</span>
+      <span class="lab-title">Passivt eller aktivt</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; Grensen</div>
+        <div class="theory-block"><div class="theory-title">👁️ Grensen går ved hvem som får pakken</div><div class="theory-text"><p>Rekognosering kalles <strong>passiv</strong> når målet aldri mottar en pakke fra deg, og <strong>aktiv</strong> når det gjør det.</p><p>Et DNS-oppslag går til en navneserver. Et sertifikatsøk går til en logg. Et arkivsøk går til arkivet. Ingen av dem treffer målets egne servere.</p><p>Et enkelt <code>ping</code>, en portskann eller bare det å åpne nettsiden treffer derimot målet, og havner i deres logger.</p><p>Skillet er ikke akademisk. Det avgjør om handlingen er dekket av avtalen din.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du kartlegger firma.no og gjør fire ting.</p><ol class="wsteps"><li><code>dig firma.no MX</code> spør en navneserver: <strong>passivt</strong></li><li>Søk i crt.sh etter sertifikater: går til en offentlig logg, <strong>passivt</strong></li><li>Åpne <code>https://firma.no</code> i nettleseren: treffer webserveren, <strong>aktivt</strong></li><li>Lese selskapets årsrapport hos Brønnøysund: <strong>passivt</strong></li><li>Bare den tredje ville dukket opp i firmaets logger</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177621,2090557760,262742614"><span class="ans-q">Du slår opp NS-records for firma.no. Hvor mange pakker fikk firma.no sine egne servere?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="-235597320,253161732"><span class="ans-q">Du laster ned firmaets PDF fra deres egen webserver for å lese metadata. Passivt eller aktivt?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">En TXT-record avslører at de bruker en skyleverandør. Trengte du tillatelse fra firmaet for å se den? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Still ett spørsmål per handling: fikk målets egen server en pakke fra meg?</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Å laste ned fila <em>fra deres server</em> er aktivt, selv om innholdet er offentlig. Det er en vanlig felle: mange regner nedlasting som passivt fordi dokumentet er publisert. Loggen deres ser forskjellen.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">dig firma.no MX +short
+dig firma.no NS +short
+dig firma.no TXT +short
+<span class='c'># sertifikatlogg, i nettleser:</span>
+<span class='c'># crt.sh/?q=%.firma.no</span></div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="rek-2" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">02</span>
+      <span class="lab-title">Åpen, lukket eller filtrert</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; Porttilstander</div>
+        <div class="theory-block"><div class="theory-title">🚪 Tre tilstander, to av dem betyr et svar</div><div class="theory-text"><p>En portskann sender en SYN-pakke og tolker det som kommer tilbake.</p><p><strong>open</strong>: du fikk SYN/ACK. Noe lytter.</p><p><strong>closed</strong>: du fikk RST. Maskinen <em>er der</em>, men ingenting lytter på akkurat den porten.</p><p><strong>filtered</strong>: du fikk <em>ingenting</em>, eller en ICMP-feilmelding. En brannmur spiste pakken, og du vet ikke om det lytter noe bak.</p><p>Merk forskjellen: <strong>closed er et svar</strong> og forteller deg at verten lever. <strong>filtered er fravær av svar</strong> og forteller deg om brannmuren, ikke om tjenesten.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En skann mot to verter gir ulike svar.</p><ol class="wsteps"><li>Vert A: 998 closed, 2 open. Alle porter svarte noe, så <strong>verten lever helt sikkert</strong></li><li>Vert B: 1000 filtered, 0 open. Ingenting svarte i det hele tatt</li><li>På vert B vet du ikke om maskinen er nede eller om en brannmur dropper alt</li><li>Det er to helt ulike funn, og bare det første kan du skrive noe bastant om</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="-156309985,206429397"><span class="ans-q">Du får RST tilbake fra port 3306. Hvilken tilstand er det?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">En skann gir 1000 filtered og 0 andre. Har du bevist at verten er nede? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-156309985,206429397"><span class="ans-q">Hvilken av de tre tilstandene beviser at det finnes en levende vert på adressen, uten at noe lytter?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Spør deg selv om du fikk et svar i det hele tatt, og deretter hva slags svar.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box"><code>closed</code> er nøkkelen. Det er det eneste svaret som samtidig sier «ingen tjeneste her» og «maskinen lever». <code>filtered</code> sier ingenting om tjenesten, bare at noe står i veien.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">nmap -sS 192.168.56.101
+nmap -p 22,80,445 192.168.56.101
+nmap -Pn 192.168.56.101   <span class='c'># hopp over vertssjekk</span>
+nmap --reason 192.168.56.101 <span class='c'># hvorfor denne tilstanden</span></div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="rek-3" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">03</span>
+      <span class="lab-title">Bevist eller gjettet</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-5">Niv&aring; 4 &mdash; Bevisniv&aring;</div>
+        <div class="theory-block"><div class="theory-title">🔬 nmap oppgir hvor sikkert det er, men bare i XML</div><div class="theory-text"><p><code>-sV</code> finner tjenesteversjoner på to helt ulike måter, og vanlig utdata sier ikke hvilken.</p><p><code>method="table"</code> betyr at nmap <strong>slo opp portnummeret i en tabell</strong> over hva som pleier å kjøre der. Den snakket aldri med tjenesten.</p><p><code>method="probed"</code> betyr at nmap <strong>sendte en prøve og fikk et svar</strong> som matchet en kjent signatur.</p><p><code>conf=</code> går fra 1 til 10. Disse to feltene finnes <strong>bare i XML-utdata</strong>, aldri i det du ser på skjermen.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>XML-en inneholder to tjenester.</p><ol class="wsteps"><li><code>&lt;service name="http" method="table" conf="3"/&gt;</code></li><li>Altså: port 80 er åpen, og nmap <strong>antar</strong> http fordi det er vanlig på 80</li><li><code>&lt;service name="ssh" product="OpenSSH" version="8.9" method="probed" conf="10"/&gt;</code></li><li>Altså: nmap <strong>snakket med</strong> tjenesten og fikk en match</li><li>Bare det andre funnet kan du skrive en versjon på i en rapport</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">En tjeneste har method="table" conf="3". Snakket nmap med den? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Versjonen på en port endrer seg når du går fra --version-light til --version-all. Var den første versjonen et bevis? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193511382,193429785,2090596997"><span class="ans-q">Hvilket utdataformat må du be om for å se conf-verdien?</span><input class="ans-in" placeholder="format"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Et funn som endrer seg når du ser nøyere etter, var aldri et faktum.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Poenget for en rapport: du kan skrive «port 80 er åpen» etter en table-match, men ikke «de kjører Apache 2.4.7». Det andre krever <code>probed</code>.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">nmap -sV 192.168.56.101
+nmap -sV -oX - 192.168.56.101 | less
+<span class='c'># let etter method= og conf=</span>
+nmap -sV --version-light 192.168.56.101
+nmap -sV --version-all 192.168.56.101</div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="rek-4" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">04</span>
+      <span class="lab-title">Den falske positiven du møter først</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-5">Niv&aring; 4 &mdash; Bakporterte patcher</div>
+        <div class="theory-block"><div class="theory-title">🩹 Versjonsnummeret forteller ikke om hullet er lappet</div><div class="theory-text"><p>Debian, Ubuntu og Red Hat retter sikkerhetshull <strong>uten å endre versjonsnummeret</strong>. De henter rettelsen fra en nyere versjon og limer den inn i den gamle. Det kalles <strong>backporting</strong>.</p><p>En skanner som bare leser versjonen ser <code>OpenSSH 7.4</code>, slår opp hvilke CVE-er som rammet 7.4, og melder dem alle som funn. Flere av dem kan være lukket for år siden.</p><p>Red Hat sier det selv: å se på versjonsnummeret alene forteller deg ikke om du er sårbar.</p><p>Motsatt vei finnes også: et versjonsnummer kan se helt greit ut mens bygget er trojanisert. Da er funnet en <strong>falsk negativ</strong>.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>To maskiner melder begge <code>OpenSSH 7.4</code>.</p><ol class="wsteps"><li>Maskin A er en oppdatert RHEL. Distribusjonen har bakportert rettelsene</li><li>Maskin B er et image fra 2017 som aldri har fått en oppdatering</li><li>En versjonsbasert skanner gir <strong>samme funn på begge</strong></li><li>Bare maskin B er faktisk sårbar</li><li>For å skille dem må du sjekke pakkens changelog eller distribusjonens CVE-sporer</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="-1645427580,1535464809,-1132240685"><span class="ans-q">To verter viser samme versjon, men bare én er sårbar. Er skannerens funn på den trygge en falsk positiv eller falsk negativ?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="736381965,-2001400499,-1283155810"><span class="ans-q">Hvilken fil på en Debian-maskin forteller deg om en CVE er bakportert?</span><input class="ans-in" placeholder="et filnavn"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">En autentisert skann leser pakkelista i stedet for banneret. Løser det problemet? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Falsk positiv = rapportert, men ikke sant. Falsk negativ = sant, men ikke rapportert.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Dette er hovedargumentet for <strong>autentiserte skann</strong>. Utenfra ser du bare banneret. Innenfra ser du pakkelista, og da er spørsmålet avgjort i stedet for gjettet.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">zgrep -i CVE- /usr/share/doc/openssh-server/\
+  changelog.Debian.gz | head
+dpkg -l openssh-server
+<span class='c'># slå opp i sporeren:</span>
+<span class='c'># security-tracker.debian.org/tracker/CVE-...</span></div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="rek-5" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">05</span>
+      <span class="lab-title">Alvorlig, sannsynlig eller aktuelt</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-5">Niv&aring; 4 &mdash; Prioritering</div>
+        <div class="theory-block"><div class="theory-title">📊 Tre kilder som svarer på tre ulike spørsmål</div><div class="theory-text"><p><strong>CVSS</strong> svarer på <em>hvor stor skade</em> hvis noen utnytter hullet. Den sier ingenting om hvor sannsynlig det er.</p><p><strong>EPSS</strong> svarer på <em>hvor sannsynlig</em> utnyttelse er observert i det fri de neste 30 dagene, som et tall mellom 0 og 1.</p><p><strong>CISA KEV</strong> svarer på <em>om det skjer nå</em>. Står CVE-en der, er den bekreftet utnyttet i praksis.</p><p>De kan peke i hver sin retning, og da må du velge og kunne forsvare valget.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>To funn hos en kunde, og budsjett til å fikse ett denne uka.</p><ol class="wsteps"><li>Funn A: CVSS 9.8, EPSS 0.02, ikke i KEV</li><li>Funn B: CVSS 6.5, EPSS 0.71, står i KEV</li><li>A gjør mest skade <em>hvis</em> noen bruker den, men nesten ingen gjør det</li><li>B gjør mindre skade, men utnyttes <strong>akkurat nå</strong></li><li>Med én ukes budsjett fikser du <strong>B først</strong>, og begrunner det med KEV</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193496971,2130407979"><span class="ans-q">Hvilken av de tre kildene sier noe om hva som skjer akkurat nå?</span><input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Et funn har CVSS 9.9 men EPSS 0.001 og står ikke i KEV. Bør det stå øverst på lista? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="262742614"><span class="ans-q">En sårbarhet har ingen CVE i det hele tatt, for eksempel et standardpassord. Hvilken av de tre kildene hjelper deg? Skriv «ingen» hvis svaret er det</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Les hva hver kilde faktisk måler før du rangerer. To av dem måler noe annet enn alvorlighet.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Siste oppgave er poenget: alle tre kildene beskriver <strong>sårbarheter i produkter</strong>. Et uendret standardpassord er ikke en sårbarhet i programvaren, det er en tilstand i installasjonen. Da er du uten hjelp fra alle tre, og må bygge argumentet selv.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd"><span class='c'># CVSS-kalkulator</span>
+<span class='c'># first.org/cvss/calculator/3.1</span>
+<span class='c'># EPSS via API</span>
+curl -s 'https://api.first.org/data/v1/\
+  epss?cve=CVE-2021-44228' | jq</div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="rek-6" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">06</span>
+      <span class="lab-title">Tre nivåer av bevis</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-5">Niv&aring; 5 &mdash; Trygg validering</div>
+        <div class="theory-block"><div class="theory-title">🧪 En versjon antyder, en sjekk indikerer, en utnyttelse beviser</div><div class="theory-text"><p>Et funn kan hvile på tre ulike bevisnivåer, og rapporten din bør si hvilket.</p><p><strong>Versjon</strong>: du leste et banner. Svakest, og rammes av bakporting.</p><p><strong>Sjekk</strong>: et verktøy testet noe uten å utløse hullet. Sterkere, men fortsatt en slutning.</p><p><strong>Utnyttelse</strong>: du utløste hullet og fikk hardt bevis. Sterkest, og krever skriftlig tillatelse.</p><p>Ordvalget i verktøyene røper nivået. «appears to be vulnerable» er ikke det samme som «is vulnerable», og forskjellen er tilsiktet.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Samme hull, tre måter å komme fram til det på.</p><ol class="wsteps"><li>Banner sier <code>vsftpd 2.3.4</code>. Bevisnivå: <strong>versjon</strong></li><li>En sjekk kobler til og ser at tjenesten oppfører seg som forventet, uten å åpne bakdøren. Bevisnivå: <strong>sjekk</strong></li><li>Et fullt forsøk åpner bakdøren og gir et skall. Bevisnivå: <strong>utnyttelse</strong></li><li>Bare det siste krever tillatelse, og bare det siste kan du kalle bevist</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="274456093,255409219"><span class="ans-q">Et verktøy svarer «appears to be vulnerable». Hvilket bevisnivå er det?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-730310650,-2104723318,1930131643"><span class="ans-q">Hvilket av de tre nivåene krever skriftlig tillatelse?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Du har bare et banner. Kan du skrive «verten er sårbar for CVE-2011-2523» i rapporten? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Spør hva verktøyet faktisk gjorde mot målet, ikke hva det konkluderte med.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Den siste er den som teller i yrkeslivet. Med bare et banner skriver du hva du observerte og hva som <em>ikke</em> er fastslått. Et funn du ikke kan forsvare er et funn du ikke skal sende.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd"><span class='c'># nivå 1: banner</span>
+nmap -sV -p 21 192.168.56.101
+<span class='c'># nivå 2: sjekk, uten å utløse</span>
+nmap --script ftp-vsftpd-backdoor -p 21 \
+  192.168.56.101</div>
+        
+      </div>
+    </div></div>
+  </div>
+  </div>
+
+  <div style="margin-top:36px"><a href="../labber.html" class="btn btn-ghost">&larr; Labber</a></div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner">
+<span>CyberLab &mdash; Fagskole Informasjonssikkerhet</span><span>Gratis &amp; &aring;pen kildekode</span>
+</div></div></footer>
+<script src="../js/cyberlab.js"></script>
+</body>
+</html>

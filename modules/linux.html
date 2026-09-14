@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux: filer, s&oslash;k og rettigheter — CyberLab</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/lab-shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Bricolage+Grotesque:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+.cmd{background:#05070a;border:1px solid var(--border);border-left:2px solid var(--blue);
+  border-radius:0 6px 6px 0;padding:11px 14px;font-family:var(--mono);font-size:11.5px;
+  color:var(--text2);overflow-x:auto;line-height:1.85;white-space:pre-wrap;word-break:break-word}
+.cmd .c{color:var(--text3)}
+</style>
+</head>
+<body class="page">
+<nav class="nav">
+  <div class="nav-logo"><span class="bracket">[</span>CyberLab<span class="bracket">]</span></div>
+  <div class="nav-links">
+    <a href="../index.html" class="nav-link">Hjem</a>
+    <a href="../emne1.html" class="nav-link">Emne 1</a>
+    <a href="../emne3.html" class="nav-link">Emne 3</a>
+    <a href="../labber.html" class="nav-link on">Labber</a>
+    <a href="https://tk1104.timoamling.com/" target="_blank" rel="noopener" class="nav-link">Self check &nearr;</a>
+  </div>
+</nav>
+
+<div class="container-sm page" style="padding-top:40px;padding-bottom:80px">
+  <a href="../labber.html" class="back-link">&larr; Tilbake</a>
+  <div class="mod-hero">
+    <div class="section-eyebrow">Lab 9 &middot; Emne 1 &middot; Leksjon 11-14</div>
+    <div class="section-title">Linux: filer, s&oslash;k og rettigheter</div>
+    <p class="section-desc">Kommandolinja er ikke vanskeligere enn et filutforskervindu, den er bare skriftlig. Her l&aelig;rer du &aring; finne fram, finne igjen, og lese hvem som f&aring;r gj&oslash;re hva.</p>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Fremdrift</span><span id="progressLabel">0 / 0 fullf&oslash;rt</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <div class="filter-row">
+    <button class="filter-pill active-all" onclick="setFilter('all',this)">Alle</button>
+    <button class="filter-pill" onclick="setFilter('easy',this)">Lett</button>
+    <button class="filter-pill" onclick="setFilter('medium',this)">Middels</button>
+    <button class="filter-pill" onclick="setFilter('hard',this)">Vanskelig</button>
+  </div>
+
+  <div class="tasks">
+  <div class="lab-card" id="lin-1" data-level="easy">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">01</span>
+      <span class="lab-title">Hvor er jeg?</span>
+      <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-1">Niv&aring; 1 &mdash; Finne fram</div>
+        <div class="theory-block"><div class="theory-title">📂 Alt henger under én rot</div><div class="theory-text"><p>Linux har ikke C: og D:. Alt henger under <strong>én rot</strong>, skrevet <code>/</code>.</p><p>En sti som begynner med <code>/</code> er <strong>absolutt</strong>: den peker på samme sted uansett hvor du står. En sti uten <code>/</code> foran er <strong>relativ</strong>: den regnes ut fra der du står nå.</p><p>To snarveier går igjen. <code>.</code> betyr her, og <code>..</code> betyr ett nivå opp. <code>~</code> betyr hjemmemappa di.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du står i <code>/home/kari/dokumenter</code> og skriver <code>cd ../bilder</code>.</p><ol class="wsteps"><li><code>..</code> tar deg opp ett nivå, til <code>/home/kari</code></li><li><code>/bilder</code> tar deg ned i bilder derfra</li><li>Du havner i <code>/home/kari/bilder</code></li><li>Samme sted kunne du nådd med den absolutte stien <code>cd /home/kari/bilder</code></li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="1099985021"><span class="ans-q">Du står i /var/log/nginx og skriver cd ../../tmp. Hvor havner du?</span><input class="ans-in" placeholder="en sti"><span class="ans-mark"></span></div><div class="ans-row" data-a="1050752380"><span class="ans-q">Er stien etc/passwd absolutt eller relativ?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="255188520,-168713385"><span class="ans-q">Du står i /home/ola. Skriv den korteste kommandoen som tar deg til /home</span><input class="ans-in" placeholder="en kommando"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Les <code>..</code> som «ett hakk opp» og tell deg gjennom stien ett hakk om gangen.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box"><code>/var/log/nginx</code>, ett opp er <code>/var/log</code>, to opp er <code>/var</code>, så ned i <code>tmp</code> gir <strong>/var/tmp</strong>. En sti er absolutt bare hvis den starter med <code>/</code>.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">pwd          <span class='c'># hvor er jeg</span>
+ls           <span class='c'># hva ligger her</span>
+ls -la       <span class='c'># alt, med detaljer</span>
+cd /etc      <span class='c'># absolutt sti</span>
+cd ..        <span class='c'># ett nivå opp</span>
+cd ~         <span class='c'># hjem</span></div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="lin-2" data-level="easy">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">02</span>
+      <span class="lab-title">Hva står i fila?</span>
+      <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-1">Niv&aring; 1 &mdash; Lese filer</div>
+        <div class="theory-block"><div class="theory-title">📄 Fire måter å lese en fil på</div><div class="theory-text"><p><code>cat</code> skriver ut hele fila på én gang. Fint til korte filer, ubrukelig til en logg på 40 000 linjer.</p><p><code>head</code> gir de <strong>første</strong> linjene, <code>tail</code> gir de <strong>siste</strong>. Begge tar <code>-n</code> for hvor mange. Standard er 10.</p><p><code>tail -f</code> blir stående og viser nye linjer etter hvert som de skrives. Det er sånn man følger en logg live.</p><p><code>wc -l</code> teller linjer i stedet for å vise dem.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En logg har 1 200 linjer. Du vil se linje 1 191 til 1 200.</p><ol class="wsteps"><li><code>cat</code> ville skrevet ut alle 1 200</li><li>De siste ti er standard for <code>tail</code></li><li>Altså holder <code>tail logg.txt</code></li><li>Ville du hatt de siste 50, skrev du <code>tail -n 50 logg.txt</code></li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="-1278012935,-1097595093"><span class="ans-q">En fil har 500 linjer. Hvilken kommando viser linje 1 til 25?</span><input class="ans-in" placeholder="en kommando"><span class="ans-mark"></span></div><div class="ans-row" data-a="1227156420,278871032"><span class="ans-q">Du vil vite hvor mange brukere som står i /etc/passwd, ikke se dem. Hvilken kommando?</span><input class="ans-in" placeholder="en kommando"><span class="ans-mark"></span></div><div class="ans-row" data-a="5861496"><span class="ans-q">Du skal følge en logg mens du tester noe. Hvilket flagg trenger du?</span><input class="ans-in" placeholder="et flagg"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Første linjer og siste linjer er to forskjellige kommandoer. Antall styres av <code>-n</code>.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">cat /etc/hostname
+head -n 5 /etc/passwd
+tail -n 20 /var/log/syslog
+wc -l /etc/passwd
+tail -f /var/log/syslog   <span class='c'># Ctrl-C for å avslutte</span></div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="lin-3" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">03</span>
+      <span class="lab-title">Finn den ene linja</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; grep og r&oslash;r</div>
+        <div class="theory-block"><div class="theory-title">🔎 grep filtrerer, røret kobler sammen</div><div class="theory-text"><p><code>grep m&oslash;nster fil</code> skriver ut bare de linjene som inneholder mønsteret.</p><p>Tre flagg du kommer til å bruke hele tiden: <code>-i</code> gjør søket <strong>ufølsomt for store og små bokstaver</strong>, <code>-v</code> snur søket og viser linjene som <strong>ikke</strong> passer, og <code>-c</code> teller treff i stedet for å vise dem.</p><p>Røret <code>|</code> sender utdata fra én kommando inn som inndata til den neste. Da kan du filtrere flere ganger etter hverandre.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du vil telle hvor mange linjer i en logg som nevner «error», men ikke de som også nevner «test».</p><ol class="wsteps"><li><code>grep -i error logg.txt</code> gir alle linjer med error, uansett skrivemåte</li><li>Send det videre: <code>| grep -v test</code> fjerner linjene som også nevner test</li><li>Send det videre igjen: <code>| wc -l</code> teller det som er igjen</li><li>Hele kjeden: <code>grep -i error logg.txt | grep -v test | wc -l</code></li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5861512"><span class="ans-q">Hvilket flagg viser linjene som IKKE inneholder mønsteret?</span><input class="ans-in" placeholder="et flagg"><span class="ans-mark"></span></div><div class="ans-row" data-a="193429566,193429374,-986376212,-986376404"><span class="ans-q">Du vil telle linjer med «failed», uansett store bokstaver. Skriv flaggene du trenger, sammen</span><input class="ans-in" placeholder="flagg"><span class="ans-mark"></span></div><div class="ans-row" data-a="5861574"><span class="ans-q">cat fil.txt | grep -v ssh | wc -l gir 90. Fila har 100 linjer. Hvor mange linjer nevner ssh?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Tenk på røret som et samlebånd: hver kommando får det forrige ledd sendte videre.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box"><code>-v</code> snur søket, <code>-c</code> teller. Siste oppgave: hvis 90 linjer <em>ikke</em> nevner ssh av 100, nevner <strong>10</strong> det.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">grep root /etc/passwd
+grep -i ERROR /var/log/syslog
+grep -c bash /etc/passwd
+grep -v nologin /etc/passwd
+cat /etc/passwd | grep bash | wc -l</div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="lin-4" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">04</span>
+      <span class="lab-title">Finn fila</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; find</div>
+        <div class="theory-block"><div class="theory-title">🗂️ find leter i treet, ikke i innholdet</div><div class="theory-text"><p><code>find</code> tar først <strong>hvor</strong> den skal lete, så <strong>hva</strong> den skal se etter. <code>find /etc -name "*.conf"</code> betyr: let i /etc, finn alt som slutter på .conf.</p><p><code>-name</code> er følsom for store bokstaver, <code>-iname</code> er det ikke.</p><p>Andre nyttige: <code>-type f</code> for bare filer, <code>-type d</code> for bare mapper, og <code>-size +10M</code> for alt større enn ti megabyte.</p><p>Feilmeldinger om «Permission denied» er normale når du leter i hele treet som vanlig bruker. De skjules med <code>2&gt;/dev/null</code>.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du leter etter alle mapper under /var som heter noe med «log».</p><ol class="wsteps"><li>Hvor: <code>/var</code></li><li>Hva slags: <code>-type d</code>, altså bare mapper</li><li>Navn: <code>-iname "*log*"</code>, altså log hvor som helst i navnet</li><li>Hele kommandoen: <code>find /var -type d -iname "*log*"</code></li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2021733052"><span class="ans-q">Hvilket flagg bruker du hvis du ikke vet om filnavnet har store bokstaver?</span><input class="ans-in" placeholder="et flagg"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1558223400"><span class="ans-q">Du vil finne bare mapper. Hva skriver du?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="1495086499,-1801678568"><span class="ans-q">Skriv kommandoen som finner filer over 50 MB under /home</span><input class="ans-in" placeholder="en kommando"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Rekkefølgen er alltid <code>find</code>, så hvor, så kriteriene.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">find /etc -name "*.conf"
+find /home -type f -name "*.txt"
+find / -size +100M 2>/dev/null
+find /var -type d -iname "*log*"</div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="lin-5" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">05</span>
+      <span class="lab-title">Hvem får gjøre hva</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-3">Niv&aring; 3 &mdash; Rettigheter</div>
+        <div class="theory-block"><div class="theory-title">🔐 Ni bokstaver, tre grupper</div><div class="theory-text"><p><code>ls -l</code> viser rettigheter som ti tegn. Det første sier om det er en fil (<code>-</code>) eller en mappe (<code>d</code>). De ni neste er <strong>tre grupper på tre</strong>: eier, gruppe, alle andre.</p><p>I hver gruppe står <code>r</code> for lese, <code>w</code> for skrive og <code>x</code> for kjøre. En bindestrek betyr at retten mangler.</p><p>Tallformen er den samme informasjonen: <strong>r=4, w=2, x=1</strong>, lagt sammen per gruppe. Derfor er <code>rwx</code> = 7, <code>rw-</code> = 6 og <code>r-x</code> = 5.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En fil vises som <code>-rwxr-x---</code>.</p><ol class="wsteps"><li>Første tegn er <code>-</code>, altså en vanlig fil</li><li>Eier har <code>rwx</code> = 4+2+1 = <strong>7</strong></li><li>Gruppa har <code>r-x</code> = 4+0+1 = <strong>5</strong></li><li>Andre har <code>---</code> = <strong>0</strong></li><li>Tallformen er altså <code>750</code></li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193437571"><span class="ans-q">Skriv tallformen for -rw-r--r--</span><input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1738709751"><span class="ans-q">Skriv bokstavformen for 600, uten det første tegnet</span><input class="ans-in" placeholder="ni tegn"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">En fil er 604. Kan gruppa lese den? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Regn ut én gruppe om gangen. r er 4, w er 2, x er 1, og du legger sammen.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box"><code>-rw-r--r--</code>: eier 4+2=6, gruppe 4, andre 4, altså <strong>644</strong>. <code>600</code>: eier 6=<code>rw-</code>, gruppe 0=<code>---</code>, andre 0=<code>---</code>. <code>604</code>: midterste siffer er 0, så <strong>nei</strong>, gruppa har ingenting.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">ls -l /etc/passwd
+ls -l /etc/shadow
+ls -ld /tmp
+id            <span class='c'># hvem er jeg, hvilke grupper</span></div>
+        
+      </div>
+    </div></div>
+  </div>
+  <div class="lab-card" id="lin-6" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">06</span>
+      <span class="lab-title">Fire spørsmål til en ukjent maskin</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body"><div class="lab-split">
+      <div class="lab-left">
+        <div class="level-badge lb-5">Niv&aring; 3 &mdash; Orientering</div>
+        <div class="theory-block"><div class="theory-title">🧭 Rekkefølgen er alltid den samme</div><div class="theory-text"><p>Står du på en maskin du ikke kjenner, er det fire spørsmål som kommer først, og de besvares med én kommando hver.</p><p><strong>Hvem er jeg?</strong> <code>id</code> gir brukernavn, bruker-ID og gruppene. UID 0 er root.</p><p><strong>Hva kjører?</strong> <code>ps aux</code> lister alle prosesser, med hvilken bruker som eier hver av dem.</p><p><strong>Hva lytter?</strong> <code>ss -tlnp</code> viser åpne porter. <code>t</code>=TCP, <code>l</code>=lyttende, <code>n</code>=tall i stedet for navn.</p><p><strong>Hvem er logget inn?</strong> <code>who</code> viser aktive økter.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p><code>id</code> svarer <code>uid=1000(kari) gid=1000(kari) groups=1000(kari),27(sudo)</code>.</p><ol class="wsteps"><li>UID er 1000, ikke 0, så kari er <strong>ikke root</strong></li><li>Men gruppa <code>27(sudo)</code> står i lista</li><li>Altså kan kari <strong>bli</strong> root ved å bruke <code>sudo</code></li><li>Praktisk forskjell: hun er ikke administrator nå, men hun har nøkkelen</li></ol></div></div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2090695081"><span class="ans-q">id gir uid=0(root). Hvilken bruker er dette?</span><input class="ans-in" placeholder="brukernavn"><span class="ans-mark"></span></div><div class="ans-row" data-a="5861502,177681"><span class="ans-q">Hvilket flagg i ss betyr «bare lyttende»?</span><input class="ans-in" placeholder="et flagg"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">En bruker har uid=1001 og er ikke i sudo-gruppa. Kan hun lese /etc/shadow, som er 640 og eid av root? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Siste oppgave henger sammen med forrige tema. Regn ut hva 640 betyr for «andre».</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">640 gir eier <code>rw-</code>, gruppe <code>r--</code> og andre <code>---</code>. Hun er verken eier eller i gruppa, så hun havner i «andre» og har <strong>ingen rettigheter</strong>. Svaret er nei. Det er nettopp derfor /etc/shadow er trygg.</div></div>
+      </div>
+      <div class="lab-right" style="padding:24px">
+        <div class="obj-title">Kj&oslash;r dette</div>
+        <div class="cmd">id
+ps aux | head -20
+ss -tlnp
+who
+uname -a      <span class='c'># hvilket system og kjerne</span></div>
+        
+      </div>
+    </div></div>
+  </div>
+  </div>
+
+  <div style="margin-top:36px"><a href="../labber.html" class="btn btn-ghost">&larr; Labber</a></div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner">
+<span>CyberLab &mdash; Fagskole Informasjonssikkerhet</span><span>Gratis &amp; &aring;pen kildekode</span>
+</div></div></footer>
+<script src="../js/cyberlab.js"></script>
+</body>
+</html>
