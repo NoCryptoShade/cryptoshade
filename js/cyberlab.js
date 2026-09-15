@@ -340,3 +340,10 @@ function initMcq(){
 }
 
 document.addEventListener('DOMContentLoaded', initMcq);
+
+/* hint og svar per sp&oslash;rsm&aring;l */
+function aTip(b){
+  b.classList.toggle('on');
+  var box = b.nextElementSibling;
+  if (box && box.classList.contains('ah-box')) box.classList.toggle('show');
+}

@@ -81,14 +81,10 @@ python3 lab5.py</pre>
         <div class="cmd">curl -i http://127.0.0.1:8080/</div>
         <p style="font-size:12.5px;color:var(--text3);margin-top:14px"><code>-i</code> tar med svarheaderne over selve siden. Uten den ser du bare HTML-en, og alt det interessante er borte.</p></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193433079,-2147453583">
-            <span class="ans-q">Hvilken statuskode kom tilbake?</span>
-            <input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="-2032732564,-256539890">
-            <span class="ans-q">Hva står det i Server-headeren?</span>
-            <input class="ans-in" placeholder="navn/versjon"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="193433079,-2147453583"><span class="ans-q">Hvilken statuskode kom tilbake?</span><input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Se f&oslash;rste linje i svaret fra curl -i.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">200</div></div></div>
+          <div class="ans-row" data-a="-2032732564,-256539890"><span class="ans-q">Hva står det i Server-headeren?</span><input class="ans-in" placeholder="navn/versjon"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Les headerlinjene i svaret.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">gokstad-lab/1.0</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -111,14 +107,10 @@ python3 lab5.py</pre>
         <div class="cmd">curl --trace-ascii - http://127.0.0.1:8080/ | head -20</div>
         <p style="font-size:12.5px;color:var(--text3);margin-top:14px">Linjer merket <code>=&gt;</code> er sendt fra deg. Linjer merket <code>&lt;=</code> kom tilbake. Linjer med <code>*</code> er curl som snakker om seg selv.</p></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="2090335843">
-            <span class="ans-q">Hvilken header forteller serveren hvilket nettsted du vil ha?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="1339991552">
-            <span class="ans-q">Hvilken header identifiserer klientprogramvaren?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="2090335843"><span class="ans-q">Hvilken header forteller serveren hvilket nettsted du vil ha?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Uten den vet ikke serveren hvilket vertsnavn du ba om.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">host </div></div></div>
+          <div class="ans-row" data-a="1339991552"><span class="ans-q">Hvilken header identifiserer klientprogramvaren?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Den r&oslash;per at du bruker curl og ikke en nettleser.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">user-agent</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -142,10 +134,8 @@ python3 lab5.py</pre>
         <div class="cmd-block"><div class="obj-title">Kjør dette</div>
         <div class="cmd">curl -s http://127.0.0.1:8080/ | wc -c</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193438590">
-            <span class="ans-q">Hvor mange byte er forsiden?</span>
-            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="193438590"><span class="ans-q">Hvor mange byte er forsiden?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Bruk %{size_download} i curl.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">720</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -171,14 +161,10 @@ python3 lab5.py</pre>
 curl -s -o /dev/null -w '%{http_code}\n' \
      http://127.0.0.1:8080/api/login</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193436347">
-            <span class="ans-q">Statuskode for den oppdiktede metoden?</span>
-            <input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="193435262">
-            <span class="ans-q">Statuskode for GET mot /api/login?</span>
-            <input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="193436347"><span class="ans-q">Statuskode for den oppdiktede metoden?</span><input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Serveren kjenner ikke metoden i det hele tatt.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">501</div></div></div>
+          <div class="ans-row" data-a="193435262"><span class="ans-q">Statuskode for GET mot /api/login?</span><input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Endepunktet finnes, men metoden er feil.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">405</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -206,10 +192,8 @@ curl -s -o /dev/null -w '%{http_code}\n' \
 curl -s -o /dev/null -w '%{size_download}\n' \
      -H 'Host: admin.lab' http://127.0.0.1:8080/</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193437607">
-            <span class="ans-q">Hvor mange byte returnerer admin.lab-versjonen?</span>
-            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="193437607"><span class="ans-q">Hvor mange byte returnerer admin.lab-versjonen?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Sett Host-headeren og m&aring;l st&oslash;rrelsen.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">657</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -235,14 +219,10 @@ curl -s -o /dev/null -w '%{size_download}\n' \
 curl -s -o /dev/null -w '%{http_code} %{size_download}\n' \
      http://127.0.0.1:8080/vault/finnesikke.pdf</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193435260">
-            <span class="ans-q">Statuskode for begge?</span>
-            <input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="193437734">
-            <span class="ans-q">Antall byte i det lengste avslaget?</span>
-            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="193435260"><span class="ans-q">Statuskode for begge?</span><input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Sammenlign de to svarene linje for linje.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">403</div></div></div>
+          <div class="ans-row" data-a="193437734"><span class="ans-q">Antall byte i det lengste avslaget?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">M&aring;l begge og ta det st&oslash;rste tallet.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">692</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -266,14 +246,10 @@ curl -s -o /dev/null -w '%{http_code} %{size_download}\n' \
         <div class="cmd-block"><div class="obj-title">Kjør dette</div>
         <div class="cmd">curl -sI http://127.0.0.1:8080/ | grep -i set-cookie</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="-747041505">
-            <span class="ans-q">Hvilken cookie har Secure-flagget?</span>
-            <input class="ans-in" placeholder="navnet"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="-1166596456">
-            <span class="ans-q">Hvilken har SameSite=Lax?</span>
-            <input class="ans-in" placeholder="navnet"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="-747041505"><span class="ans-q">Hvilken cookie har Secure-flagget?</span><input class="ans-in" placeholder="navnet"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Les Set-Cookie-linjene i svaret.</div></div></div>
+          <div class="ans-row" data-a="-1166596456"><span class="ans-q">Hvilken har SameSite=Lax?</span><input class="ans-in" placeholder="navnet"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Samme sted: Set-Cookie-linjene.</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -303,14 +279,10 @@ curl -s -b jar.txt -c jar.txt -o /dev/null \
 curl -s -b jar.txt http://127.0.0.1:8080/account \
      | grep -o '&lt;span&gt;[^&lt;]*&lt;/span&gt;'</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193505797">
-            <span class="ans-q">Hva heter sesjonscookien?</span>
-            <input class="ans-in" placeholder="navnet"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="193434170">
-            <span class="ans-q">Statuskode for /account uten cookie?</span>
-            <input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="193505797"><span class="ans-q">Hva heter sesjonscookien?</span><input class="ans-in" placeholder="navnet"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Den settes n&aring;r du logger inn.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">sid</div></div></div>
+          <div class="ans-row" data-a="193434170"><span class="ans-q">Statuskode for /account uten cookie?</span><input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Serveren sender deg et annet sted.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">302</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -342,10 +314,8 @@ curl -s -o /dev/null -w '%{http_code}\n' \
      -H 'Cookie: sid=LIM_INN_GAMMEL_VERDI' \
      http://127.0.0.1:8080/account</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193433079,-2147453583">
-            <span class="ans-q">Statuskode når du spiller av den gamle sesjonen?</span>
-            <input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="193433079,-2147453583"><span class="ans-q">Statuskode når du spiller av den gamle sesjonen?</span><input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Virket den fortsatt, fikk du siden. Hvilken kode er det?</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">200</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -374,14 +344,10 @@ curl -s -o /dev/null -w '%{http_code}\n' \
 <span class="c"># dekod verdien du fikk</span>
 echo 'LIM_INN_VERDIEN' | base64 -d ; echo</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="177631">
-            <span class="ans-q">Den dekodede verdien har to deler. Hvilket tegn skiller dem?</span>
-            <input class="ans-in" placeholder="ett tegn"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="-738903707,500574829">
-            <span class="ans-q">Er den første delen tilfeldig, eller en teller?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="177631"><span class="ans-q">Den dekodede verdien har to deler. Hvilket tegn skiller dem?</span><input class="ans-in" placeholder="ett tegn"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Dekod verdien og se hva som st&aring;r mellom delene.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">:</div></div></div>
+          <div class="ans-row" data-a="-738903707,500574829"><span class="ans-q">Er den første delen tilfeldig, eller en teller?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Lag to sesjoner og sammenlign verdiene.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">teller</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -415,10 +381,8 @@ curl -s -o /dev/null -w '%{http_code}\n' \
      http://127.0.0.1:8080/account</div>
         <p style="font-size:12.5px;color:var(--text3);margin-top:14px">Ikke skriv kandidatene for hånd. Legg de to linjene i en løkke og la maskinen gjøre jobben. Noter hvor mange forespørsler det tok.</p></div><div class="ans-block">
           <div class="obj-title">Flagg</div>
-          <div class="ans-row" data-a="-632544501">
-            <span class="ans-q">Lim inn flagget</span>
-            <input class="ans-in" placeholder="GKA{...}"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="-632544501"><span class="ans-q">Lim inn flagget</span><input class="ans-in" placeholder="GKA{...}"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Flagget f&aring;r du bare ved &aring; gjennomf&oslash;re steget. Det finnes ingen snarvei.</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -448,10 +412,8 @@ TOK='lim_inn_tokenet_her'
 curl -s -H "Authorization: Bearer $TOK" \
      http://127.0.0.1:8080/api/me</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="1595898102">
-            <span class="ans-q">Hvilken HTTP-header bærer tokenet?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="1595898102"><span class="ans-q">Hvilken HTTP-header bærer tokenet?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Den brukes til autentisering og starter med A.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">Authorization</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -476,14 +438,10 @@ curl -s -H "Authorization: Bearer $TOK" \
         <div class="cmd">echo "$TOK" | cut -d. -f1 | base64 -d 2>/dev/null; echo
 echo "$TOK" | cut -d. -f2 | base64 -d 2>/dev/null; echo</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="261677021">
-            <span class="ans-q">Hvilken signeringsalgoritme navngir headeren?</span>
-            <input class="ans-in" placeholder="f.eks. XX123"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="473528119">
-            <span class="ans-q">Hvilken rolle gir nyttelasten deg?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="261677021"><span class="ans-q">Hvilken signeringsalgoritme navngir headeren?</span><input class="ans-in" placeholder="f.eks. XX123"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Dekod f&oslash;rste del av tokenet.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">hs256</div></div></div>
+          <div class="ans-row" data-a="473528119"><span class="ans-q">Hvilken rolle gir nyttelasten deg?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Dekod andre del av tokenet.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">customer </div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -511,10 +469,8 @@ echo "$TOK" | cut -d. -f2 | base64 -d 2>/dev/null; echo</div></div><div class="a
 curl -s -H "Authorization: Bearer $TOK" \
      http://127.0.0.1:8080/api/me</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="956151994">
-            <span class="ans-q">Hvilket felt i API-svaret er farligst å lekke?</span>
-            <input class="ans-in" placeholder="feltnavnet"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="956151994"><span class="ans-q">Hvilket felt i API-svaret er farligst å lekke?</span><input class="ans-in" placeholder="feltnavnet"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Se hva API-et returnerer som grensesnittet aldri viser.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">password_reset_token </div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -540,14 +496,10 @@ curl -s -H "Authorization: Bearer $TOK" \
      -H "Authorization: Bearer $TOK" \
      http://127.0.0.1:8080/api/admin/users</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193435260">
-            <span class="ans-q">Statuskode med ditt vanlige token?</span>
-            <input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="193500225,5863650">
-            <span class="ans-q">Virker det endrede tokenet? ja eller nei</span>
-            <input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="193435260"><span class="ans-q">Statuskode med ditt vanlige token?</span><input class="ans-in" placeholder="tre siffer"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Tokenet ditt er gyldig, men gir det deg tilgang hit?</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">403</div></div></div>
+          <div class="ans-row" data-a="193500225,5863650"><span class="ans-q">Virker det endrede tokenet? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Signaturen ble regnet ut over den opprinnelige nyttelasten.</div><button class="ah-btn sv" onclick="aTip(this)">&#9654; Svar</button><div class="ah-box sv">nei</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
@@ -581,10 +533,8 @@ hashcat -m 16500 tok.txt \
   /usr/share/wordlists/rockyou.txt</div>
         <p style="font-size:12.5px;color:var(--text3);margin-top:14px">Gi den noen minutter i en VM uten GPU. Den står ikke fast.</p></div><div class="ans-block">
           <div class="obj-title">Flagg</div>
-          <div class="ans-row" data-a="1453421539">
-            <span class="ans-q">Lim inn flagget</span>
-            <input class="ans-in" placeholder="GKA{...}"><span class="ans-mark"></span>
-          </div>
+          <div class="ans-row" data-a="1453421539"><span class="ans-q">Lim inn flagget</span><input class="ans-in" placeholder="GKA{...}"><span class="ans-mark"></span>
+          <div class="ah"><button class="ah-btn" onclick="aTip(this)">&#9654; Hint</button><div class="ah-box tip">Flagget f&aring;r du bare ved &aring; gjennomf&oslash;re steget. Det finnes ingen snarvei.</div></div></div>
         </div>
         <div>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
