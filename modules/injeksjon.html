@@ -55,23 +55,23 @@
       <span class="lab-title">Én feil, mange navn</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 2 &mdash; Prinsippet</div>
         <div class="theory-block"><div class="theory-title">💉 Data som krysser over til instruksjon</div><div class="theory-text"><p>All injeksjon er samme feil: et program <strong>limer brukerens tekst rett inn i noe som skal tolkes</strong>, og tolkeren kan ikke se hvor programmet slutter og brukeren begynner.</p><p>Bytt ut tolkeren, så får feilen nytt navn. En SQL-motor gir SQL-injeksjon. Et skall gir kommandoinjeksjon. En LDAP-katalog gir LDAP-injeksjon. En nettleser som tolker HTML gir XSS.</p><p>To ting må være på plass samtidig: brukerinput ender i en <strong>streng som bygges</strong>, og den strengen sendes til <strong>noe som tolker</strong> den. Mangler én av dem, finnes ikke feilen.</p><p>Derfor er spørsmålet aldri «er dette SQL-injeksjon». Det er «hvem tolker denne strengen, og kan brukeren styre hva den betyr».</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Fire linjer kode, samme feil.</p><ol class="wsteps"><li><code>"SELECT * FROM bruker WHERE navn='" + input + "'"</code> &rarr; tolkes av SQL-motoren</li><li><code>"ping -c 1 " + input</code> &rarr; tolkes av skallet</li><li><code>"&lt;p&gt;Hei " + input + "&lt;/p&gt;"</code> &rarr; tolkes av nettleseren</li><li>I alle tre bygges en streng, og i alle tre tolker noen den etterpå</li><li>Forskjellen er hvilket <strong>språk</strong> angriperen skriver i, ikke hva slags feil det er</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">Et program limer brukerinput inn i en filsti og åpner fila. Ingen tolker er involvert. Er dette injeksjon? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="512432950,1485113645,512432951"><span class="ans-q">Hvilke to ting må være til stede samtidig for at injeksjon skal være mulig? Skriv det ene: at strengen sendes til noe som gjør hva?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-170517434,-1578800837"><span class="ans-q">Samba tok imot et brukernavn og sendte det videre til et skall. Hvilken injeksjonstype er det?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Still alltid to spørsmål: bygges det en streng, og hvem tolker den etterpå?</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Første oppgave er en felle. Å lime input inn i en filsti er en <em>annen</em> feil, path traversal, fordi ingen tolker strengen som instruksjoner. Den er farlig, men den er ikke injeksjon, og forsvaret er et annet.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># de tre du møter oftest</span>
+        <div class="cmd-block">
+          <div class="obj-title">Til hjelp</div>
+          <div class="cmd"><span class='c'># de tre du møter oftest</span>
 <span class='c'># SQL    -&gt; databasen tolker</span>
 <span class='c'># Kommando -&gt; skallet tolker</span>
 <span class='c'># XSS    -&gt; nettleseren tolker</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">Et program limer brukerinput inn i en filsti og åpner fila. Ingen tolker er involvert. Er dette injeksjon? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="512432950,1485113645,512432951"><span class="ans-q">Hvilke to ting må være til stede samtidig for at injeksjon skal være mulig? Skriv det ene: at strengen sendes til noe som gjør hva?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-170517434,-1578800837"><span class="ans-q">Samba tok imot et brukernavn og sendte det videre til et skall. Hvilken injeksjonstype er det?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Still alltid to spørsmål: bygges det en streng, og hvem tolker den etterpå?</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Første oppgave er en felle. Å lime input inn i en filsti er en <em>annen</em> feil, path traversal, fordi ingen tolker strengen som instruksjoner. Den er farlig, men den er ikke injeksjon, og forsvaret er et annet.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-2" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -79,25 +79,25 @@
       <span class="lab-title">Hvor spørringen brekker</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 2 &mdash; SQL-injeksjon</div>
         <div class="theory-block"><div class="theory-title">🔓 Hermetegnet er grensen, og den kan lukkes</div><div class="theory-text"><p>En sårbar innlogging bygger gjerne noe slikt:</p><p><code>SELECT * FROM bruker WHERE navn='$n' AND passord='$p'</code></p><p>Hermetegnene er <strong>grensen mellom kode og data</strong>. Skriver brukeren et hermetegn selv, lukker han datafeltet tidlig, og alt etterpå leses som <strong>kode</strong>.</p><p>Tre byggeklosser går igjen. <code>'</code> lukker strengen. <code>OR</code> legger til en betingelse som alltid er sann. <code>--</code> gjør resten av linja til en kommentar, slik at det som var igjen av spørringen forsvinner.</p><p>Derfor er <code>'</code> alene den beste første testen: gir siden en databasefeil, bygges spørringen med tekstliming.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Brukeren skriver <code>' OR '1'='1</code> i navnefeltet.</p><ol class="wsteps"><li>Malen er <code>WHERE navn='$n' AND passord='$p'</code></li><li>Etter innsetting: <code>WHERE navn='' OR '1'='1' AND passord=''</code></li><li><code>navn=''</code> er usant, men <code>'1'='1'</code> er <strong>alltid</strong> sant</li><li>OR gjør at hele betingelsen blir sann uansett passord</li><li>Databasen gjør akkurat det den fikk beskjed om. Feilen skjedde da strengen ble bygget</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">Malen er WHERE id=$id, uten hermetegn rundt. Trenger du et hermetegn i payloaden? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1270002938,-588703582,947766001,473882204"><span class="ans-q">Brukeren skriver admin'-- i navnefeltet. Hva skjer med passordsjekken?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1473817936,-696896054,-202788321"><span class="ans-q">Du skriver ' og får en databasefeil. Har du bevist at siden er sårbar, eller bare at den bygger spørringen med tekstliming?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Skriv ut hele spørringen med payloaden satt inn, ord for ord, før du svarer.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Siste oppgave er den viktige. En feilmelding beviser at input påvirker spørringen, ikke at du kan hente ut data. Det er samme skillet som «bevist eller gjettet» fra sårbarhetsskanningen: du har en indikasjon, ikke et funn du kan rapportere som utnyttbart.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># første test, alltid</span>
+        <div class="cmd-block">
+          <div class="obj-title">Pr&oslash;v dette</div>
+          <div class="cmd"><span class='c'># første test, alltid</span>
 <span class='c'># skriv bare:  '</span>
 
 <span class='c'># klassikerne</span>
 <span class='c'># ' OR '1'='1</span>
 <span class='c'># admin'--</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">Malen er WHERE id=$id, uten hermetegn rundt. Trenger du et hermetegn i payloaden? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1270002938,-588703582,947766001,473882204"><span class="ans-q">Brukeren skriver admin'-- i navnefeltet. Hva skjer med passordsjekken?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1473817936,-696896054,-202788321"><span class="ans-q">Du skriver ' og får en databasefeil. Har du bevist at siden er sårbar, eller bare at den bygger spørringen med tekstliming?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Skriv ut hele spørringen med payloaden satt inn, ord for ord, før du svarer.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Siste oppgave er den viktige. En feilmelding beviser at input påvirker spørringen, ikke at du kan hente ut data. Det er samme skillet som «bevist eller gjettet» fra sårbarhetsskanningen: du har en indikasjon, ikke et funn du kan rapportere som utnyttbart.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-3" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -105,23 +105,23 @@
       <span class="lab-title">Streng eller tall</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 2 &mdash; Kontekst</div>
         <div class="theory-block"><div class="theory-title">🔤 Hermetegnet finnes ikke alltid</div><div class="theory-text"><p>Payloaden din avhenger av <strong>hvordan verdien står i spørringen</strong>, og det er to muligheter.</p><p><strong>Strengkontekst:</strong> <code>WHERE navn='$n'</code>. Verdien står i hermetegn, og du må lukke dem før du kan skrive kode. Payloaden starter med <code>'</code>.</p><p><strong>Tallkontekst:</strong> <code>WHERE id=$id</code>. Ingen hermetegn å lukke. Du kan skrive rett videre, og payloaden starter med et mellomrom eller en operator.</p><p>Slik finner du ut hvilken: send <code>'</code> alene. Får du en syntaksfeil, er du i strengkontekst. Skjer ingenting, prøv <code>1 AND 1=1</code> mot <code>1 AND 1=2</code> og se om svaret endrer seg.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Samme mål, to kontekster, to payloads.</p><ol class="wsteps"><li>Streng: <code>WHERE navn='$n'</code> krever <code>' OR '1'='1</code></li><li>Tall: <code>WHERE id=$id</code> krever bare <code>1 OR 1=1</code></li><li>Bruker du strengpayloaden i tallkontekst, blir det <code>WHERE id=' OR ...</code> og spørringen feiler på et hermetegn som ikke skulle vært der</li><li>Feilen ser da ut som om siden ikke er sårbar, men du brukte bare feil nøkkel</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">WHERE alder=$a. Trenger payloaden et hermetegn? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="479436536,-823709429"><span class="ans-q">Du sender ' og får syntaksfeil. Hvilken kontekst er du i?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">?id=1 AND 1=2 gir tom side, ?id=1 AND 1=1 gir normal side. Er feltet sårbart? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Skriv ut spørringen med payloaden satt inn. Teller hermetegnene opp?</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Feil kontekst er den vanligste grunnen til at folk konkluderer med at et felt ikke er s&aring;rbart n&aring;r det faktisk er det. Test alltid begge f&oslash;r du gir deg.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># test konteksten først</span>
+        <div class="cmd-block">
+          <div class="obj-title">Pr&oslash;v dette</div>
+          <div class="cmd"><span class='c'># test konteksten først</span>
 <span class='c'># ?id=1'        -&gt; feil = streng</span>
 <span class='c'># ?id=1 AND 1=1  -&gt; virker = tall</span>
 <span class='c'># ?id=1 AND 1=2  -&gt; tomt = tall, bekreftet</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">WHERE alder=$a. Trenger payloaden et hermetegn? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="479436536,-823709429"><span class="ans-q">Du sender ' og får syntaksfeil. Hvilken kontekst er du i?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">?id=1 AND 1=2 gir tom side, ?id=1 AND 1=1 gir normal side. Er feltet sårbart? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Skriv ut spørringen med payloaden satt inn. Teller hermetegnene opp?</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Feil kontekst er den vanligste grunnen til at folk konkluderer med at et felt ikke er s&aring;rbart n&aring;r det faktisk er det. Test alltid begge f&oslash;r du gir deg.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-4" data-level="hard">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -129,24 +129,24 @@
       <span class="lab-title">Å hente ut mer enn ditt eget</span>
       <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-5">Niv&aring; 3 &mdash; UNION</div>
         <div class="theory-block"><div class="theory-title">🗄️ UNION limer en spørring til på slutten</div><div class="theory-text"><p><code>UNION SELECT</code> setter resultatet av din egen spørring under resultatet av den opprinnelige. Da vises dine rader i samme tabell på siden.</p><p>To krav må være oppfylt, ellers feiler det. <strong>Like mange kolonner</strong> i begge spørringene, og <strong>forenlige datatyper</strong> i kolonnene som vises.</p><p>Antall kolonner finner du med <code>ORDER BY n</code>: øk n til spørringen feiler. Siste tall som virket er antall kolonner.</p><p>Kolonner du ikke trenger fyller du med <code>NULL</code>, som passer med alle typer.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p><code>ORDER BY 3</code> virker, <code>ORDER BY 4</code> gir feil.</p><ol class="wsteps"><li>Altså har den opprinnelige spørringen <strong>3 kolonner</strong></li><li>UNION-en må også ha tre: <code>UNION SELECT NULL,NULL,NULL</code></li><li>Test hvilken kolonne som vises: <code>UNION SELECT NULL,'test',NULL</code></li><li>Vises ordet test på siden, er det kolonne 2 som skrives ut</li><li>Da bytter du <code>'test'</code> med det du vil hente, for eksempel et brukernavn</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177626"><span class="ans-q">ORDER BY 5 virker, ORDER BY 6 feiler. Hvor mange kolonner har spørringen?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="177625"><span class="ans-q">Spørringen har 4 kolonner. Hvor mange verdier må stå etter UNION SELECT?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="2090557760"><span class="ans-q">Du vil hente ett brukernavn ut av en spørring med 3 kolonner, og bare kolonne 2 vises. Hva setter du i kolonne 1 og 3?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Siste tall som <em>virket</em> er antallet, ikke det første som feilet.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Fellen er å svare 6 på første oppgave. <code>ORDER BY 6</code> feilet nettopp fordi kolonne 6 ikke finnes. Svaret er alltid det siste tallet som gikk gjennom.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># finn antall kolonner</span>
+        <div class="cmd-block">
+          <div class="obj-title">Pr&oslash;v dette</div>
+          <div class="cmd"><span class='c'># finn antall kolonner</span>
 <span class='c'># ' ORDER BY 1--   ' ORDER BY 2--  ...</span>
 
 <span class='c'># finn hvilken som vises</span>
 <span class='c'># ' UNION SELECT NULL,'test',NULL--</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177626"><span class="ans-q">ORDER BY 5 virker, ORDER BY 6 feiler. Hvor mange kolonner har spørringen?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="177625"><span class="ans-q">Spørringen har 4 kolonner. Hvor mange verdier må stå etter UNION SELECT?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="2090557760"><span class="ans-q">Du vil hente ett brukernavn ut av en spørring med 3 kolonner, og bare kolonne 2 vises. Hva setter du i kolonne 1 og 3?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Siste tall som <em>virket</em> er antallet, ikke det første som feilet.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Fellen er å svare 6 på første oppgave. <code>ORDER BY 6</code> feilet nettopp fordi kolonne 6 ikke finnes. Svaret er alltid det siste tallet som gikk gjennom.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-5" data-level="hard">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -154,25 +154,25 @@
       <span class="lab-title">Hvor ligger tabellene</span>
       <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-5">Niv&aring; 3 &mdash; Metadata</div>
         <div class="theory-block"><div class="theory-title">🗺️ Databasen fører register over seg selv</div><div class="theory-text"><p>Du kan ikke hente ut en tabell du ikke vet navnet p&aring;. Heldigvis f&oslash;rer MySQL et register over sine egne tabeller og kolonner, i en database som heter <code>information_schema</code>.</p><p><code>information_schema.tables</code> har kolonnen <code>table_name</code>. <code>information_schema.columns</code> har <code>column_name</code> og <code>table_name</code>.</p><p>Tre funksjoner er verdt &aring; kunne: <code>database()</code> gir navnet p&aring; databasen du st&aring;r i, <code>user()</code> gir hvilken databasebruker du kj&oslash;rer som, og <code>@@version</code> gir versjonen.</p><p>Rekkef&oslash;lgen er alltid den samme: finn databasen, finn tabellene, finn kolonnene, hent radene.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du har en fungerende UNION med to kolonner.</p><ol class="wsteps"><li><code>' UNION SELECT database(),user()#</code> gir deg hvor du er og hvem du er</li><li><code>' UNION SELECT table_name,NULL FROM information_schema.tables#</code> lister tabellene</li><li>Du ser en tabell som heter <code>users</code></li><li><code>' UNION SELECT column_name,NULL FROM information_schema.columns WHERE table_name='users'#</code> gir kolonnene</li><li>F&oslash;rst da kan du skrive <code>' UNION SELECT user,password FROM users#</code></li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="1135959899"><span class="ans-q">Hvilken database inneholder registeret over alle tabeller?</span><input class="ans-in" placeholder="et navn"><span class="ans-mark"></span></div><div class="ans-row" data-a="556066005,2090806916"><span class="ans-q">Hvilken funksjon forteller deg hvilken databasebruker du kjører som?</span><input class="ans-in" placeholder="en funksjon"><span class="ans-mark"></span></div><div class="ans-row" data-a="38487114,-749332762"><span class="ans-q">Du kjenner tabellnavnet men ikke kolonnene. Hvilken tabell i registeret slår du opp i?</span><input class="ans-in" placeholder="et tabellnavn"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Registeret er bygget som en vanlig database, med tabeller og kolonner du kan SELECTe fra.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Dette er steget mellom « jeg kan injisere » og « jeg har brukertabellen ». Uten metadata gjetter du tabellnavn. Med metadata slår du dem opp.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># hvor er jeg, hvem er jeg</span>
+        <div class="cmd-block">
+          <div class="obj-title">Pr&oslash;v dette</div>
+          <div class="cmd"><span class='c'># hvor er jeg, hvem er jeg</span>
 <span class='c'># ' UNION SELECT database(),user()#</span>
 
 <span class='c'># hvilke tabeller</span>
 <span class='c'># ' UNION SELECT table_name,NULL</span>
 <span class='c'>#   FROM information_schema.tables#</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="1135959899"><span class="ans-q">Hvilken database inneholder registeret over alle tabeller?</span><input class="ans-in" placeholder="et navn"><span class="ans-mark"></span></div><div class="ans-row" data-a="556066005,2090806916"><span class="ans-q">Hvilken funksjon forteller deg hvilken databasebruker du kjører som?</span><input class="ans-in" placeholder="en funksjon"><span class="ans-mark"></span></div><div class="ans-row" data-a="38487114,-749332762"><span class="ans-q">Du kjenner tabellnavnet men ikke kolonnene. Hvilken tabell i registeret slår du opp i?</span><input class="ans-in" placeholder="et tabellnavn"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Registeret er bygget som en vanlig database, med tabeller og kolonner du kan SELECTe fra.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Dette er steget mellom « jeg kan injisere » og « jeg har brukertabellen ». Uten metadata gjetter du tabellnavn. Med metadata slår du dem opp.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-6" data-level="hard">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -180,24 +180,24 @@
       <span class="lab-title">Stablede spørringer</span>
       <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-5">Niv&aring; 3 &mdash; To setninger</div>
         <div class="theory-block"><div class="theory-title">📚 Semikolon i SQL, akkurat som i skallet</div><div class="theory-text"><p>Med <strong>stablede sp&oslash;rringer</strong> avslutter du den opprinnelige setningen med <code>;</code> og skriver en helt ny etterp&aring;. Da er du ikke lenger begrenset til <code>SELECT</code>.</p><p>Det &aring;pner for <code>INSERT</code>, <code>UPDATE</code>, <code>DROP</code> og <code>CREATE USER</code>. Alts&aring; fra &aring; lese data til &aring; endre dem.</p><p>Men det virker ikke overalt. Om det g&aring;r an avhenger av <strong>databasedriveren</strong>, ikke av databasen. PHPs gamle <code>mysql_query</code> tillater bare &eacute;n setning per kall, mens for eksempel .NET og PostgreSQL-drivere ofte tillater flere.</p><p>Merk forskjellen fra UNION: UNION <em>leser</em> mer, stabling <em>gj&oslash;r</em> mer.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>To payloads mot samme felt, ulikt m&aring;l.</p><ol class="wsteps"><li><code>' UNION SELECT user,password FROM users#</code> henter data ut</li><li><code>'; UPDATE users SET password='x' WHERE user='admin';#</code> endrer data</li><li>Den f&oslash;rste trenger like mange kolonner, den andre trenger ingenting</li><li>Den andre feiler likevel hvis driveren bare tillater &eacute;n setning per kall</li><li>Derfor er det verdt &aring; teste begge: de feiler av helt ulike grunner</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177632,1061472566"><span class="ans-q">Hvilket tegn starter en ny setning i SQL?</span><input class="ans-in" placeholder="ett tegn"><span class="ans-mark"></span></div><div class="ans-row" data-a="1746419481,1746414793,-1378699260"><span class="ans-q">UNION eller stabling: hvilken av de to kan endre data?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="173525508,-110271407"><span class="ans-q">Stablede spørringer feiler på målet ditt. Er det databasen eller driveren som avgjør det?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Skillet er om du vil lese mer eller gjøre mer.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># les mer</span>
+        <div class="cmd-block">
+          <div class="obj-title">Pr&oslash;v dette</div>
+          <div class="cmd"><span class='c'># les mer</span>
 <span class='c'># ' UNION SELECT ...#</span>
 
 <span class='c'># gjør mer, hvis driveren tillater det</span>
 <span class='c'># '; UPDATE ... ;#</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177632,1061472566"><span class="ans-q">Hvilket tegn starter en ny setning i SQL?</span><input class="ans-in" placeholder="ett tegn"><span class="ans-mark"></span></div><div class="ans-row" data-a="1746419481,1746414793,-1378699260"><span class="ans-q">UNION eller stabling: hvilken av de to kan endre data?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="173525508,-110271407"><span class="ans-q">Stablede spørringer feiler på målet ditt. Er det databasen eller driveren som avgjør det?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Skillet er om du vil lese mer eller gjøre mer.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-7" data-level="hard">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -205,25 +205,25 @@
       <span class="lab-title">Når siden ikke viser noe</span>
       <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-5">Niv&aring; 4 &mdash; Blind injeksjon</div>
         <div class="theory-block"><div class="theory-title">🕶️ Du trenger ikke se data, bare en forskjell</div><div class="theory-text"><p>Ofte vises ingen databasefeil og ingen data. Siden svarer bare litt ulikt. Da er injeksjonen <strong>blind</strong>, og du henter ut data ett ja-eller-nei-spørsmål om gangen.</p><p><strong>Boolsk blind:</strong> du sammenligner to forespørsler. <code>' AND 1=1--</code> skal gi normal side, <code>' AND 1=2--</code> skal gi noe annet. Er de to svarene ulike, styrer du spørringen.</p><p><strong>Tidsbasert blind:</strong> siden ser lik ut uansett, men du kan be databasen vente. <code>' AND SLEEP(5)--</code>. Tar svaret fem sekunder ekstra, ble kommandoen kjørt.</p><p>Prisen er antall forespørsler. Ett tegn i et passord krever flere runder, og et helt passord krever hundrevis. Derfor er blind injeksjon <strong>støyende</strong> og lett å oppdage i logger.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du tester et søkefelt som alltid viser samme side.</p><ol class="wsteps"><li><code>' AND 1=1--</code> gir siden på 0,2 sekunder</li><li><code>' AND 1=2--</code> gir samme side, på 0,2 sekunder. Ingen forskjell å lese</li><li><code>' AND SLEEP(5)--</code> gir samme side, men på <strong>5,2 sekunder</strong></li><li>Forskjellen i tid er beviset. Databasen kjørte din kommando</li><li>Nå kan du spørre om ett tegn om gangen: sov hvis første bokstav er 'a'</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5863504"><span class="ans-q">1=1 og 1=2 gir helt identiske sider, men SLEEP(5) tar fem sekunder ekstra. Er siden sårbar? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193438660"><span class="ans-q">Et passord er 12 tegn og du må prøve inntil 62 mulige tegn per posisjon. Omtrent hvor mange forespørsler i verste fall?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1688727270,193506886,2124052547"><span class="ans-q">Hvilken av de to blindmetodene er lettest å se i en webserverlogg som bare loggfører svartid?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Andre oppgave er ren multiplikasjon: posisjoner ganger muligheter.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">12 &times; 62 = <strong>744</strong> forespørsler for ett passord. Det er poenget med å regne på det: blind injeksjon er ikke usynlig, den er tvert imot det mest støyende du kan gjøre mot en webapplikasjon.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># boolsk: to forespørsler, samme felt</span>
+        <div class="cmd-block">
+          <div class="obj-title">Pr&oslash;v dette</div>
+          <div class="cmd"><span class='c'># boolsk: to forespørsler, samme felt</span>
 <span class='c'># ' AND 1=1--</span>
 <span class='c'># ' AND 1=2--</span>
 
 <span class='c'># tidsbasert</span>
 <span class='c'># ' AND SLEEP(5)--</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5863504"><span class="ans-q">1=1 og 1=2 gir helt identiske sider, men SLEEP(5) tar fem sekunder ekstra. Er siden sårbar? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193438660"><span class="ans-q">Et passord er 12 tegn og du må prøve inntil 62 mulige tegn per posisjon. Omtrent hvor mange forespørsler i verste fall?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1688727270,193506886,2124052547"><span class="ans-q">Hvilken av de to blindmetodene er lettest å se i en webserverlogg som bare loggfører svartid?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Andre oppgave er ren multiplikasjon: posisjoner ganger muligheter.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">12 &times; 62 = <strong>744</strong> forespørsler for ett passord. Det er poenget med å regne på det: blind injeksjon er ikke usynlig, den er tvert imot det mest støyende du kan gjøre mot en webapplikasjon.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-8" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -231,26 +231,26 @@
       <span class="lab-title">DVWA: finn injeksjonen</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 2 &mdash; Praktisk</div>
         <div class="theory-block"><div class="theory-title">🎯 Fra teori til et ekte felt</div><div class="theory-text"><p>Metasploitable 2 har DVWA liggende p&aring; <code>/dvwa/</code>. Logg inn med <code>admin</code> og <code>password</code>, og sett sikkerhetsniv&aring;et til <strong>low</strong> under DVWA Security f&oslash;rst.</p><p>Siden <em>SQL Injection</em> tar imot en User ID og viser fornavn og etternavn. Den bygger sp&oslash;rringen med tekstliming, akkurat som i oppgave 2.</p><p>Start med rekkef&oslash;lgen du n&aring; kan: test konteksten, finn antall kolonner, finn hvilken kolonne som vises. F&oslash;rst deretter henter du noe.</p><p>Alt her skjer p&aring; din egen maskin, p&aring; host-only. Ingenting av dette skal rettes mot noe annet.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du &aring;pner SQL Injection-siden og skriver <code>1</code>.</p><ol class="wsteps"><li>Siden svarer med ID, First name og Surname</li><li>To felt vises, s&aring; sp&oslash;rringen henter sannsynligvis <strong>to kolonner</strong></li><li>Du skriver <code>1'</code> og f&aring;r en MySQL-syntaksfeil: <strong>strengkontekst</strong></li><li>Du bekrefter med <code>1' ORDER BY 2#</code> som virker og <code>ORDER BY 3#</code> som feiler</li><li>N&aring; vet du b&aring;de kontekst og kolonnetall, og kan bygge en UNION</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177623,5863848"><span class="ans-q">Hvor mange kolonner returnerer spørringen på DVWA low?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="479436536,-823709429"><span class="ans-q">Hvilken kontekst er User ID-feltet i?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="177608,5861439"><span class="ans-q">Hvilket tegn bruker du som kommentar mot MySQL når # er lettest i en URL?</span><input class="ans-in" placeholder="ett tegn"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">To ting skal fastsl&aring;s, i denne rekkef&oslash;lgen. F&oslash;rst konteksten: send ett tegn som bryter en streng, og se om du f&aring;r en databasefeil. Deretter kolonnetallet: det finnes et SQL-n&oslash;kkelord som sorterer p&aring; kolonnenummer og feiler n&aring;r nummeret ikke finnes. &Oslash;k til det ryker.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Kontekst: <code>1'</code> i User ID-feltet. MySQL-syntaksfeil betyr strengkontekst.<br><br>Kolonner: <code>1' ORDER BY 1#</code>, s&aring; <code>2#</code>, s&aring; <code>3#</code>. Siste som virker er antallet.<br><br>Merk at antall <em>viste</em> felt og antall <em>kolonner</em> ikke alltid er likt. Derfor bekrefter du med <code>ORDER BY</code> i stedet for &aring; telle p&aring; skjermen.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># i nettleseren p&aring; Kali</span>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># i nettleseren p&aring; Kali</span>
 http://&lt;MAAL&gt;/dvwa/
 <span class='c'># admin / password</span>
 <span class='c'># DVWA Security -&gt; low</span>
 
 <span class='c'># resten bygger du selv.</span>
 <span class='c'># oppgave 2 og 4 har alt du trenger.</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177623,5863848"><span class="ans-q">Hvor mange kolonner returnerer spørringen på DVWA low?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="479436536,-823709429"><span class="ans-q">Hvilken kontekst er User ID-feltet i?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="177608,5861439"><span class="ans-q">Hvilket tegn bruker du som kommentar mot MySQL når # er lettest i en URL?</span><input class="ans-in" placeholder="ett tegn"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">To ting skal fastsl&aring;s, i denne rekkef&oslash;lgen. F&oslash;rst konteksten: send ett tegn som bryter en streng, og se om du f&aring;r en databasefeil. Deretter kolonnetallet: det finnes et SQL-n&oslash;kkelord som sorterer p&aring; kolonnenummer og feiler n&aring;r nummeret ikke finnes. &Oslash;k til det ryker.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Kontekst: <code>1'</code> i User ID-feltet. MySQL-syntaksfeil betyr strengkontekst.<br><br>Kolonner: <code>1' ORDER BY 1#</code>, s&aring; <code>2#</code>, s&aring; <code>3#</code>. Siste som virker er antallet.<br><br>Merk at antall <em>viste</em> felt og antall <em>kolonner</em> ikke alltid er likt. Derfor bekrefter du med <code>ORDER BY</code> i stedet for &aring; telle p&aring; skjermen.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-9" data-level="hard">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -258,26 +258,26 @@ http://&lt;MAAL&gt;/dvwa/
       <span class="lab-title">DVWA: hent brukertabellen</span>
       <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-5">Niv&aring; 3 &mdash; Praktisk UNION</div>
         <div class="theory-block"><div class="theory-title">🔑 Fra to navn til alle passordhasher</div><div class="theory-text"><p>N&aring; setter du sammen alt: UNION med riktig kolonnetall, metadata for &aring; finne tabellen, og til slutt selve uthentingen.</p><p>DVWA sin brukertabell heter <code>users</code> og har blant annet kolonnene <code>user</code> og <code>password</code>. Passordene ligger som <strong>MD5-hasher</strong>, ikke i klartekst.</p><p>Vil du ha to verdier i &eacute;n kolonne, limer du dem sammen med <code>CONCAT(user,':',password)</code>. Det er nyttig n&aring;r bare &eacute;n kolonne vises.</p><p>MD5 uten salt er det som gj&oslash;r funnet alvorlig: hashene kan sl&aring;s opp direkte, uten &aring; knekkes.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du har bekreftet to kolonner i strengkontekst.</p><ol class="wsteps"><li><code>1' UNION SELECT table_name,NULL FROM information_schema.tables#</code> lister tabeller</li><li>Du finner <code>users</code></li><li><code>1' UNION SELECT user,password FROM users#</code> gir navn og hash</li><li>Eller alt i &eacute;n kolonne: <code>1' UNION SELECT CONCAT(user,':',password),NULL FROM users#</code></li><li>Hashene er MD5, s&aring; neste steg er oppslag, ikke knekking</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193499051"><span class="ans-q">Hvilken hashtype brukes på DVWA-passordene?</span><input class="ans-in" placeholder="hashtype"><span class="ans-mark"></span></div><div class="ans-row" data-a="-152805699,1098319694"><span class="ans-q">Hvilken SQL-funksjon limer to kolonner sammen til én?</span><input class="ans-in" placeholder="en funksjon"><span class="ans-mark"></span></div><div class="ans-row" data-a="1227932942,-1537643880,1907186651"><span class="ans-q">Hashene er usaltet MD5. Må du knekke dem, eller holder det å slå dem opp?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Du trenger ikke gjette tabellnavnet. Registeret fra oppgave 5 har &eacute;n tabell som lister alle tabeller og &eacute;n som lister alle kolonner. Husk at UNION-en m&aring; ha like mange verdier som sp&oslash;rringen har kolonner, og at <code>NULL</code> fyller de du ikke bruker.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box"><strong>1, tabellene:</strong> <code>1' UNION SELECT table_name,NULL FROM information_schema.tables#</code><br><strong>2, kolonnene:</strong> <code>1' UNION SELECT column_name,NULL FROM information_schema.columns WHERE table_name='users'#</code><br><strong>3, radene:</strong> <code>1' UNION SELECT user,password FROM users#</code><br><br>Poenget for en rapport: funnet er ikke «SQL-injeksjon mulig», det er «hele brukertabellen kan hentes ut, og passordene er usaltet MD5 som kan slås opp på sekunder». Konsekvens, ikke teknikk.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># du har kolonnetallet fra forrige oppgave</span>
+        <div class="cmd-block">
+          <div class="obj-title">Til hjelp</div>
+          <div class="cmd"><span class='c'># du har kolonnetallet fra forrige oppgave</span>
 <span class='c'># bygg UNION-en selv, i tre steg:</span>
 <span class='c'>#   1. finn tabellnavnet</span>
 <span class='c'>#   2. finn kolonnenavnene</span>
 <span class='c'>#   3. hent radene</span>
 
 <span class='c'># oppgave 5 sier hvor navnene ligger</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193499051"><span class="ans-q">Hvilken hashtype brukes på DVWA-passordene?</span><input class="ans-in" placeholder="hashtype"><span class="ans-mark"></span></div><div class="ans-row" data-a="-152805699,1098319694"><span class="ans-q">Hvilken SQL-funksjon limer to kolonner sammen til én?</span><input class="ans-in" placeholder="en funksjon"><span class="ans-mark"></span></div><div class="ans-row" data-a="1227932942,-1537643880,1907186651"><span class="ans-q">Hashene er usaltet MD5. Må du knekke dem, eller holder det å slå dem opp?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Du trenger ikke gjette tabellnavnet. Registeret fra oppgave 5 har &eacute;n tabell som lister alle tabeller og &eacute;n som lister alle kolonner. Husk at UNION-en m&aring; ha like mange verdier som sp&oslash;rringen har kolonner, og at <code>NULL</code> fyller de du ikke bruker.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box"><strong>1, tabellene:</strong> <code>1' UNION SELECT table_name,NULL FROM information_schema.tables#</code><br><strong>2, kolonnene:</strong> <code>1' UNION SELECT column_name,NULL FROM information_schema.columns WHERE table_name='users'#</code><br><strong>3, radene:</strong> <code>1' UNION SELECT user,password FROM users#</code><br><br>Poenget for en rapport: funnet er ikke «SQL-injeksjon mulig», det er «hele brukertabellen kan hentes ut, og passordene er usaltet MD5 som kan slås opp på sekunder». Konsekvens, ikke teknikk.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-10" data-level="hard">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -285,24 +285,24 @@ http://&lt;MAAL&gt;/dvwa/
       <span class="lab-title">DVWA: les koden og hev nivået</span>
       <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-5">Niv&aring; 4 &mdash; &Aring;rsak i kildekoden</div>
         <div class="theory-block"><div class="theory-title">📜 Fiksen står i kildekoden, ikke i teksten</div><div class="theory-text"><p>DVWA har en <strong>View Source</strong>-knapp nederst p&aring; hver side. Der ser du den faktiske PHP-koden for hvert sikkerhetsniv&aring;, og det er den beste m&aring;ten &aring; forst&aring; &aring;rsaken p&aring;.</p><p>P&aring; <strong>low</strong> limes <code>$id</code> rett inn i sp&oslash;rringen.</p><p>P&aring; <strong>medium</strong> brukes gjerne <code>mysql_real_escape_string</code> eller lignende. Det er <strong>rensing</strong>, ikke separasjon, og feltet er ofte tallkontekst i stedet, slik at hermetegn ikke trengs likevel.</p><p>P&aring; <strong>high</strong> strammes det ytterligere, men prinsippet er det samme: s&aring; lenge sp&oslash;rringen bygges som tekst, er det et kappl&oslash;p mot angriperens fantasi.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du sammenligner to niv&aring;er i View Source.</p><ol class="wsteps"><li>low: <code>$q = "SELECT ... WHERE user_id = '$id'";</code> &mdash; tekstliming, hermetegn</li><li>medium: input renses, men verdien st&aring;r <strong>uten</strong> hermetegn i sp&oslash;rringen</li><li>Alts&aring; er medium i <strong>tallkontekst</strong>, og da trenger payloaden ingen hermetegn</li><li><code>1 OR 1=1</code> kan fungere der <code>' OR '1'='1</code> ikke gj&oslash;r det</li><li>Rensingen fjernet tegnene du ikke lenger trengte</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2090751602,285655685"><span class="ans-q">På medium står verdien uten hermetegn. Hvilken kontekst er det da?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Er rensing av tegn det samme som å skille data fra kode? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-2016348367,473628534"><span class="ans-q">Hvilken knapp i DVWA lar deg se PHP-koden bak siden?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sammenlign hvordan verdien står i spørringen, ikke bare hvilke funksjoner som kalles.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Dette er den viktigste &oslash;velsen i hele labben. &Aring; se den samme feilen i kode p&aring; tre niv&aring;er lar deg koble <em>symptomet</em> du utnyttet til <em>linja</em> som forvoldte det. Det er akkurat det en kunde betaler for i en rapport.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># nederst p&aring; DVWA-siden</span>
+        <div class="cmd-block">
+          <div class="obj-title">Til hjelp</div>
+          <div class="cmd"><span class='c'># nederst p&aring; DVWA-siden</span>
 <span class='c'># [ View Source ]</span>
 
 <span class='c'># bytt niv&aring;, les koden p&aring; nytt</span>
 <span class='c'># DVWA Security -&gt; medium</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2090751602,285655685"><span class="ans-q">På medium står verdien uten hermetegn. Hvilken kontekst er det da?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Er rensing av tegn det samme som å skille data fra kode? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-2016348367,473628534"><span class="ans-q">Hvilken knapp i DVWA lar deg se PHP-koden bak siden?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sammenlign hvordan verdien står i spørringen, ikke bare hvilke funksjoner som kalles.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Dette er den viktigste &oslash;velsen i hele labben. &Aring; se den samme feilen i kode p&aring; tre niv&aring;er lar deg koble <em>symptomet</em> du utnyttet til <em>linja</em> som forvoldte det. Det er akkurat det en kunde betaler for i en rapport.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-11" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -310,25 +310,25 @@ http://&lt;MAAL&gt;/dvwa/
       <span class="lab-title">sqlmap: når verktøyet er riktig</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 3 &mdash; Verkt&oslash;yvurdering</div>
         <div class="theory-block"><div class="theory-title">🤖 Verktøyet gjør fort det du nettopp gjorde sakte</div><div class="theory-text"><p><code>sqlmap</code> automatiserer n&oslash;yaktig den rekkef&oslash;lgen du har brukt: test konteksten, finn kolonnene, hent metadata, hent data. Den pr&oslash;ver bare mange flere varianter enn du rekker for h&aring;nd.</p><p>Den trenger &aring; vite hvor den skal se. Er siden bak innlogging, m&aring; du gi den &oslash;kten med <code>--cookie</code>.</p><p>Prisen er <strong>st&oslash;y</strong>. En sqlmap-kj&oslash;ring sender tusenvis av foresp&oslash;rsler og er trivielt synlig i enhver logg. Det er derfor rekkef&oslash;lgen i dette emnet alltid er for h&aring;nd f&oslash;rst.</p><p>Og du m&aring; kunne forklare hva den gjorde. Et funn du ikke kan gjenskape manuelt er et funn du ikke kan forsvare i et m&oslash;te.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du har allerede bekreftet injeksjonen for h&aring;nd.</p><ol class="wsteps"><li><code>sqlmap -u 'http://MAAL/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit' \</code></li><li><code>  --cookie='PHPSESSID=...; security=low' --dbs</code></li><li><code>--dbs</code> lister databasene, <code>--tables -D dvwa</code> lister tabellene</li><li><code>--dump -T users -D dvwa</code> henter hele tabellen</li><li>Den finner det samme som deg. Forskjellen er at du <strong>vet hvorfor</strong></li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2051566809,-152760801"><span class="ans-q">Hvilket flagg gir sqlmap sesjonen din når siden krever innlogging?</span><input class="ans-in" placeholder="et flagg"><span class="ans-mark"></span></div><div class="ans-row" data-a="679189376,280882556,354247022"><span class="ans-q">Hvorfor kjører vi for hånd først? Fordi et funn du ikke kan gjenskape manuelt ikke kan gjøres hva?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-907041031,-1973622576,-907041031"><span class="ans-q">Er sqlmap stille eller støyende i en webserverlogg?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Tenk p&aring; hva verkt&oslash;yet gir deg, og hva det ikke gir deg.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">sqlmap -u 'http://&lt;MAAL&gt;/dvwa/\
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">sqlmap -u 'http://&lt;MAAL&gt;/dvwa/\
   vulnerabilities/sqli/?id=1&amp;Submit=Submit' \
   --cookie='PHPSESSID=&lt;din&gt;; security=low' \
   --dbs
 
 <span class='c'># deretter --tables, --dump</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2051566809,-152760801"><span class="ans-q">Hvilket flagg gir sqlmap sesjonen din når siden krever innlogging?</span><input class="ans-in" placeholder="et flagg"><span class="ans-mark"></span></div><div class="ans-row" data-a="679189376,280882556,354247022"><span class="ans-q">Hvorfor kjører vi for hånd først? Fordi et funn du ikke kan gjenskape manuelt ikke kan gjøres hva?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-907041031,-1973622576,-907041031"><span class="ans-q">Er sqlmap stille eller støyende i en webserverlogg?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Tenk p&aring; hva verkt&oslash;yet gir deg, og hva det ikke gir deg.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-12" data-level="hard">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -336,24 +336,24 @@ http://&lt;MAAL&gt;/dvwa/
       <span class="lab-title">Fra injeksjon til filsystemet</span>
       <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-5">Niv&aring; 4 &mdash; Konsekvens</div>
         <div class="theory-block"><div class="theory-title">📂 SQL kan også lese og skrive filer</div><div class="theory-text"><p>MySQL har <code>LOAD_FILE()</code> som leser en fil fra disk, og <code>INTO OUTFILE</code> som skriver til disk. Begge kj&oslash;rer med rettighetene til <strong>databasetjenesten</strong>, ikke til webserveren.</p><p>Det betyr at en SQL-injeksjon kan bli filtilgang, og i verste fall kodekj&oslash;ring hvis du kan skrive en fil inn i webroten.</p><p>To ting begrenser det: databasebrukeren m&aring; ha <code>FILE</code>-privilegiet, og nyere MySQL har <code>secure_file_priv</code> som l&aring;ser skriving til &eacute;n bestemt mappe. P&aring; gamle oppsett er ingen av delene p&aring; plass.</p><p>Derfor er sp&oslash;rsm&aring;let i en rapport aldri bare «kan de lese data», men <strong>hvor langt rekker denne databasebrukeren</strong>.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du har UNION med to kolonner og vil vite hvor langt du kommer.</p><ol class="wsteps"><li><code>' UNION SELECT LOAD_FILE('/etc/passwd'),NULL#</code> tester lesing</li><li>F&aring;r du innholdet, har brukeren <code>FILE</code>-privilegiet</li><li><code>' UNION SELECT user(),@@version#</code> viser hvem og hvilken versjon</li><li>Er brukeren <code>root@localhost</code>, er det ingen begrensning igjen &aring; snakke om</li><li>Da er funnet ikke lenger «datalekkasje», det er <strong>full kompromittering</strong></li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2090257189"><span class="ans-q">Hvilket MySQL-privilegium kreves for å lese filer fra disk?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1032401528,98865626,267895067"><span class="ans-q">LOAD_FILE kjører med rettighetene til hvilken tjeneste, webserveren eller databasen?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">user() svarer root@localhost. Er dette et alvorligere funn enn om den svarte dvwa@localhost? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Begge sp&oslash;rsm&aring;lene besvares med den samme UNION-en du allerede har. Du bytter bare ut hva du velger: to funksjoner for det f&oslash;rste, og lesefunksjonen fra fakta-boksen med en filsti som argument for det andre.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box"><strong>Hvem:</strong> <code>1' UNION SELECT user(),@@version#</code><br><strong>Lesing:</strong> <code>1' UNION SELECT LOAD_FILE('/etc/passwd'),NULL#</code><br><br>Den siste er poenget. Samme injeksjon, to helt ulike alvorlighetsgrader, avhengig av hvilken databasebruker applikasjonen kobler seg til med. Minste privilegium igjen, denne gangen i databasen.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># to sp&oslash;rsm&aring;l, samme UNION som f&oslash;r</span>
+        <div class="cmd-block">
+          <div class="obj-title">Til hjelp</div>
+          <div class="cmd"><span class='c'># to sp&oslash;rsm&aring;l, samme UNION som f&oslash;r</span>
 <span class='c'>#   hvem er databasebrukeren?</span>
 <span class='c'>#   kan den lese filer fra disk?</span>
 
 <span class='c'># funksjonsnavnene st&aring;r i fakta-boksen</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2090257189"><span class="ans-q">Hvilket MySQL-privilegium kreves for å lese filer fra disk?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1032401528,98865626,267895067"><span class="ans-q">LOAD_FILE kjører med rettighetene til hvilken tjeneste, webserveren eller databasen?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">user() svarer root@localhost. Er dette et alvorligere funn enn om den svarte dvwa@localhost? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Begge sp&oslash;rsm&aring;lene besvares med den samme UNION-en du allerede har. Du bytter bare ut hva du velger: to funksjoner for det f&oslash;rste, og lesefunksjonen fra fakta-boksen med en filsti som argument for det andre.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box"><strong>Hvem:</strong> <code>1' UNION SELECT user(),@@version#</code><br><strong>Lesing:</strong> <code>1' UNION SELECT LOAD_FILE('/etc/passwd'),NULL#</code><br><br>Den siste er poenget. Samme injeksjon, to helt ulike alvorlighetsgrader, avhengig av hvilken databasebruker applikasjonen kobler seg til med. Minste privilegium igjen, denne gangen i databasen.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-13" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -361,24 +361,24 @@ http://&lt;MAAL&gt;/dvwa/
       <span class="lab-title">Samme feil, annet språk</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 3 &mdash; Kommandoinjeksjon</div>
         <div class="theory-block"><div class="theory-title">⌨️ Skallet har også skilletegn</div><div class="theory-text"><p>Bygger programmet en <strong>kommandolinje</strong> av brukerinput, er tolkeren et skall i stedet for en database. Prinsippet er identisk, bare tegnene er andre.</p><p><code>;</code> avslutter kommandoen og starter den neste, uansett utfall. <code>&amp;&amp;</code> kjører den neste bare hvis den første gikk bra. <code>||</code> kjører den neste bare hvis den første feilet. <code>|</code> sender utdata videre. <code>$(...)</code> og bakoverfnutter kjører noe og setter inn resultatet.</p><p>Konsekvensen er som regel verre enn ved SQL. SQL gir deg databasen. Kommandoinjeksjon gir deg <strong>hele maskinen</strong>, med rettighetene til tjenesten.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Et verktøy kjører <code>ping -c 1 $input</code> for å teste om en vert svarer.</p><ol class="wsteps"><li>Normal bruk: <code>8.8.8.8</code> gir <code>ping -c 1 8.8.8.8</code></li><li>Angriper skriver <code>8.8.8.8; id</code></li><li>Kommandolinja blir <code>ping -c 1 8.8.8.8; id</code></li><li>Skallet ser <code>;</code> og kjører <strong>to</strong> kommandoer</li><li>Med <code>8.8.8.8 || id</code> ville <code>id</code> kjørt bare hvis ping feilet, som er nyttig hvis du vil skjule det i støyen</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177623,5863848"><span class="ans-q">Programmet kjører «ls $mappe». Du skriver: . && whoami. Hvor mange kommandoer kjøres?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">Du skriver finnesikke || whoami mot samme program. Kjøres whoami? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="798764977,-941199693,-2089228792"><span class="ans-q">En tjeneste kjører som brukeren www-data. Hvilke rettigheter får du ved kommandoinjeksjon?</span><input class="ans-in" placeholder="et brukernavn"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Les skilletegnet som en betingelse: alltid, bare hvis det gikk bra, bare hvis det feilet.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Andre oppgave: <code>finnesikke</code> feiler, og <code>||</code> kjører nettopp <em>fordi</em> det feilet. Tredje oppgave er grunnen til at tjenestebrukere betyr noe. Du arver rettighetene til prosessen, ikke til root.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># skilletegnene som teller</span>
+        <div class="cmd-block">
+          <div class="obj-title">Til hjelp</div>
+          <div class="cmd"><span class='c'># skilletegnene som teller</span>
 <span class='c'># ;   alltid neste</span>
 <span class='c'># &amp;&amp;  bare hvis forrige gikk bra</span>
 <span class='c'># ||  bare hvis forrige feilet</span>
 <span class='c'># $(kommando)  kjør og sett inn</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177623,5863848"><span class="ans-q">Programmet kjører «ls $mappe». Du skriver: . && whoami. Hvor mange kommandoer kjøres?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">Du skriver finnesikke || whoami mot samme program. Kjøres whoami? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="798764977,-941199693,-2089228792"><span class="ans-q">En tjeneste kjører som brukeren www-data. Hvilke rettigheter får du ved kommandoinjeksjon?</span><input class="ans-in" placeholder="et brukernavn"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Les skilletegnet som en betingelse: alltid, bare hvis det gikk bra, bare hvis det feilet.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Andre oppgave: <code>finnesikke</code> feiler, og <code>||</code> kjører nettopp <em>fordi</em> det feilet. Tredje oppgave er grunnen til at tjenestebrukere betyr noe. Du arver rettighetene til prosessen, ikke til root.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-14" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -386,24 +386,24 @@ http://&lt;MAAL&gt;/dvwa/
       <span class="lab-title">DVWA: kommandoinjeksjon i praksis</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 3 &mdash; Praktisk skall</div>
-        <div class="theory-block"><div class="theory-title">⚙️ Ping-feltet som kjører hva som helst</div><div class="theory-text"><p>DVWA har en side som heter <em>Command Execution</em>. Den tar imot en IP-adresse og kj&oslash;rer <code>ping</code> mot den. Koden limer inputen rett inn i kommandolinja.</p><p>Alle skilletegnene fra oppgave 12 gjelder her: <code>;</code>, <code>&amp;&amp;</code>, <code>||</code> og <code>|</code>.</p><p>Start med <code>id</code> eller <code>whoami</code>, som skriver &eacute;n linje og er lette &aring; se i utdata. Deretter er <code>cat /etc/passwd</code> den klassiske bekreftelsen p&aring; at du leser filsystemet.</p><p>Legg merke til hvilken bruker du er. Det avgj&oslash;r hva funnet faktisk er verdt.</p></div></div>
+        <div class="theory-block"><div class="theory-title">⚙️ Ping-feltet som kjører hva som helst</div><div class="theory-text"><p>DVWA har en side som heter <em>Command Execution</em>. Den tar imot en IP-adresse og kj&oslash;rer <code>ping</code> mot den. Koden limer inputen rett inn i kommandolinja.</p><p>Alle skilletegnene fra oppgave 13 gjelder her: <code>;</code>, <code>&amp;&amp;</code>, <code>||</code> og <code>|</code>.</p><p>Start med <code>id</code> eller <code>whoami</code>, som skriver &eacute;n linje og er lette &aring; se i utdata. Deretter er <code>cat /etc/passwd</code> den klassiske bekreftelsen p&aring; at du leser filsystemet.</p><p>Legg merke til hvilken bruker du er. Det avgj&oslash;r hva funnet faktisk er verdt.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du skriver <code>127.0.0.1; id</code> i feltet.</p><ol class="wsteps"><li>Kommandolinja blir <code>ping -c 3 127.0.0.1; id</code></li><li>Utdata viser f&oslash;rst tre ping-svar</li><li>Deretter en linje som <code>uid=33(www-data) gid=33(www-data)</code></li><li>Du er alts&aring; <strong>www-data</strong>, ikke root</li><li>Funnet er kodekj&oslash;ring som webserverbrukeren, og det er presist nok til en rapport</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="798764977"><span class="ans-q">Hvilken bruker kjører webserveren på Metasploitable?</span><input class="ans-in" placeholder="et brukernavn"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">Du skriver 127.0.0.1 && whoami. Kjøres whoami hvis ping lykkes? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="1405228945,570484738,339549335"><span class="ans-q">Hvilken fil er den klassiske bekreftelsen på at du kan lese filsystemet?</span><input class="ans-in" placeholder="en filsti"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Skriv ut hele kommandolinja med inputen satt inn, som i SQL-oppgavene.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Skriv funnet presist: ikke «kommandoinjeksjon» alene, men «vilkårlig kodekjøring som www-data via ping-feltet». Brukeren er en del av alvorligheten.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># DVWA -&gt; Command Execution</span>
+        <div class="cmd-block">
+          <div class="obj-title">Pr&oslash;v dette</div>
+          <div class="cmd"><span class='c'># DVWA -&gt; Command Execution</span>
 <span class='c'># pr&oslash;v i feltet:</span>
 <span class='c'># 127.0.0.1; id</span>
 <span class='c'># 127.0.0.1; cat /etc/passwd</span>
 <span class='c'># 127.0.0.1 | whoami</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="798764977"><span class="ans-q">Hvilken bruker kjører webserveren på Metasploitable?</span><input class="ans-in" placeholder="et brukernavn"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">Du skriver 127.0.0.1 && whoami. Kjøres whoami hvis ping lykkes? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="1405228945,570484738,339549335"><span class="ans-q">Hvilken fil er den klassiske bekreftelsen på at du kan lese filsystemet?</span><input class="ans-in" placeholder="en filsti"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Skriv ut hele kommandolinja med inputen satt inn, som i SQL-oppgavene.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Skriv funnet presist: ikke «kommandoinjeksjon» alene, men «vilkårlig kodekjøring som www-data via ping-feltet». Brukeren er en del av alvorligheten.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-15" data-level="hard">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -411,25 +411,25 @@ http://&lt;MAAL&gt;/dvwa/
       <span class="lab-title">Blind kommandoinjeksjon</span>
       <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-5">Niv&aring; 4 &mdash; Uten utdata</div>
         <div class="theory-block"><div class="theory-title">⏱️ Samme problem, samme løsning: mål tiden</div><div class="theory-text"><p>Mange felt kj&oslash;rer en kommando uten &aring; vise deg noe av resultatet. Da er kommandoinjeksjonen <strong>blind</strong>, akkurat som den blinde SQL-varianten.</p><p>Du trenger et signal du kan m&aring;le utenfra. Det enkleste er tid: <code>; sleep 5</code>. Tar svaret fem sekunder ekstra, ble kommandoen kj&oslash;rt.</p><p>Det andre er nettverket: f&aring; m&aring;let til &aring; kontakte deg. Et <code>ping</code> mot din egen Kali, med <code>tcpdump</code> lyttende, gir en bekreftelse som ikke krever at siden viser noe som helst.</p><p>Den andre metoden beviser i tillegg at m&aring;let har <strong>utg&aring;ende nettverkstilgang</strong>, som er et eget funn og ofte viktigere enn selve injeksjonen.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Et felt tar imot et vertsnavn og viser aldri noe utdata.</p><ol class="wsteps"><li><code>127.0.0.1</code> gir svar p&aring; 0,3 sekunder</li><li><code>127.0.0.1; sleep 5</code> gir svar p&aring; <strong>5,3 sekunder</strong></li><li>Tidsforskjellen er beviset, selv om siden ser helt lik ut</li><li>Deretter: start <code>tcpdump -i eth0 icmp</code> p&aring; Kali</li><li>Send <code>127.0.0.1; ping -c 2 DIN_KALI_IP</code>. Ser du pakkene, har m&aring;let vei ut</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5863504"><span class="ans-q">Siden ser lik ut, men svaret tar fem sekunder ekstra etter ; sleep 5. Er feltet sårbart? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-2053323070,1473881078,1690717118,-1295416260"><span class="ans-q">Hvilket ekstra funn beviser du hvis målet klarer å pinge din Kali-maskin?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-734697054,978922741"><span class="ans-q">Hvilket verktøy på Kali bruker du for å se om pakkene kommer fram?</span><input class="ans-in" placeholder="et verktøy"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Du trenger ikke se utdata. Du trenger bare noe du kan m&aring;le: tid eller en pakke.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Utg&aring;ende tilgang er verdt &aring; skrive opp separat. En maskin som kan n&aring; ut mot internett kan ogs&aring; hente ned neste steg, og det endrer hva en angriper kan gj&oslash;re etter f&oslash;rste fot innenfor.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># tidsbasert</span>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># tidsbasert</span>
 <span class='c'># 127.0.0.1; sleep 5</span>
 
 <span class='c'># p&aring; Kali, lytt f&oslash;rst</span>
 sudo tcpdump -i eth0 icmp
 <span class='c'># 127.0.0.1; ping -c 2 &lt;DIN_IP&gt;</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5863504"><span class="ans-q">Siden ser lik ut, men svaret tar fem sekunder ekstra etter ; sleep 5. Er feltet sårbart? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-2053323070,1473881078,1690717118,-1295416260"><span class="ans-q">Hvilket ekstra funn beviser du hvis målet klarer å pinge din Kali-maskin?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-734697054,978922741"><span class="ans-q">Hvilket verktøy på Kali bruker du for å se om pakkene kommer fram?</span><input class="ans-in" placeholder="et verktøy"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Du trenger ikke se utdata. Du trenger bare noe du kan m&aring;le: tid eller en pakke.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Utg&aring;ende tilgang er verdt &aring; skrive opp separat. En maskin som kan n&aring; ut mot internett kan ogs&aring; hente ned neste steg, og det endrer hva en angriper kan gj&oslash;re etter f&oslash;rste fot innenfor.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="inj-16" data-level="hard">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -437,25 +437,25 @@ sudo tcpdump -i eth0 icmp
       <span class="lab-title">Hvorfor bare én forsvarsmetode virker</span>
       <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-5">Niv&aring; 4 &mdash; Forsvar</div>
         <div class="theory-block"><div class="theory-title">🛡️ Skille data fra kode, ikke rense data</div><div class="theory-text"><p>Den vanligste reparasjonen er å <strong>filtrere bort farlige tegn</strong>. Den feiler systematisk, av tre grunner: det finnes alltid en koding du ikke tenkte på, en tolker med andre regler, og et tegn du glemte. Å svarteliste er å gjette hva angriperen kommer på.</p><p><strong>Parameteriserte spørringer</strong>, også kalt prepared statements, løser det på en annen måte. Spørringen sendes til databasen <strong>først</strong>, med plassholdere. Databasen planlegger den ferdig. Deretter sendes verdiene separat.</p><p>Da er strukturen allerede låst når dataene kommer. En verdi kan ikke bli til en ny setning, uansett hva den inneholder, fordi den aldri deltar i tolkningen.</p><p>For kommandoer er det samme prinsipp: ikke bygg en kommandolinje som et skall skal tolke. Kall programmet direkte med argumentene som en liste.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Samme innlogging, to måter.</p><ol class="wsteps"><li>Sårbar: <code>"SELECT * FROM b WHERE n='" + navn + "'"</code>, sendt som én streng</li><li>Trygg: <code>"SELECT * FROM b WHERE n=?"</code>, deretter <code>bind(1, navn)</code></li><li>I den trygge varianten er spørringen <strong>ferdig planlagt</strong> før navnet kommer</li><li>Skriver brukeren <code>' OR '1'='1</code>, leter databasen etter en bruker som <em>heter</em> det</li><li>Den finner ingen, og det er hele poenget: teksten forble tekst</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="505730768,213437981,262752949,2090755795"><span class="ans-q">Hvorfor virker ikke en svarteliste over farlige tegn? Fordi du må gjette hva? Ett ord</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-41187678,492866716,51383023,261380337"><span class="ans-q">Med en parameterisert spørring skriver brukeren ' OR '1'='1 som brukernavn. Hva leter databasen etter?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">I Python: subprocess.run med en liste og uten shell=True. Er kommandoinjeksjon mulig? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Spør når strukturen låses: før eller etter at dataene kommer inn.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Poenget å ta med videre: <strong>parameterisering fjerner feilen, filtrering reduserer den</strong>. Uten <code>shell=True</code> finnes det ikke noe skall til å tolke skilletegn, og da er <code>;</code> bare et tegn i et argument. Samme idé, to språk.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># SQL, trygt</span>
+        <div class="cmd-block">
+          <div class="obj-title">Til hjelp</div>
+          <div class="cmd"><span class='c'># SQL, trygt</span>
 <span class='c'># cur.execute("... WHERE n=?", (navn,))</span>
 
 <span class='c'># kommando, trygt</span>
 <span class='c'># subprocess.run(["ping","-c","1",vert])</span>
 <span class='c'># uten shell=True</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="505730768,213437981,262752949,2090755795"><span class="ans-q">Hvorfor virker ikke en svarteliste over farlige tegn? Fordi du må gjette hva? Ett ord</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-41187678,492866716,51383023,261380337"><span class="ans-q">Med en parameterisert spørring skriver brukeren ' OR '1'='1 som brukernavn. Hva leter databasen etter?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">I Python: subprocess.run med en liste og uten shell=True. Er kommandoinjeksjon mulig? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Spør når strukturen låses: før eller etter at dataene kommer inn.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Poenget å ta med videre: <strong>parameterisering fjerner feilen, filtrering reduserer den</strong>. Uten <code>shell=True</code> finnes det ikke noe skall til å tolke skilletegn, og da er <code>;</code> bare et tegn i et argument. Samme idé, to språk.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   </div>
 

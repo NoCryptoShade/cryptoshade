@@ -507,7 +507,12 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
 /* ─── PRINT ──────────────────────────────────────────────────── */
 @media print {
   body { background: #fff; color: #000; }
-  body::before, .nav, .footer, .filter-row, .hint-btn, .solution-btn { display: none !important; }
-  .task-card-body, .lab-body, .hint-box, .solution-box, .lab-body { display: block !important; }
+  /* modulene bruker .sol-btn/.sol-box, ikke .solution-btn/.solution-box.
+     St&aring;r bare det ene settet her, skjules hint-knappen mens
+     l&oslash;sningsknappen blir st&aring;ende, slik det ble i PDF-utskriften. */
+  body::before, .nav, .footer, .filter-row,
+  .hint-btn, .solution-btn, .sol-btn, .hbtn { display: none !important; }
+  .task-card-body, .lab-body, .lab-flow,
+  .hint-box, .solution-box, .sol-box, .htext { display: block !important; }
   .card, .task-card, .lab-frame { border: 1px solid #ccc; break-inside: avoid; }
 }

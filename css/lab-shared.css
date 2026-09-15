@@ -16,7 +16,7 @@ strong{font-weight:600;color:var(--text)}
 .tasks{display:flex;flex-direction:column;gap:20px}
 
 /* lab card */
-.lab-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s}
+.lab-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);transition:border-color .2s;overflow:hidden;overflow:clip}
 .lab-card.done{border-color:rgba(0,229,160,.35)}
 .lab-header{padding:18px 24px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none;border-bottom:1px solid var(--border)}
 .lab-header:hover{background:rgba(255,255,255,.02)}
@@ -223,3 +223,85 @@ strong{font-weight:600;color:var(--text)}
   font-family:var(--mono);font-size:9.5px;font-weight:700;width:17px;height:17px;border-radius:4px;
   display:flex;align-items:center;justify-content:center;
   background:var(--blue-d);border:1px solid rgba(75,142,255,.3);color:var(--blue)}
+
+/* ── LESEKOLONNE OG KLEBRIG VERKTØYPANEL ──────────────────
+   To rettelser etter tilbakemelding fra undervisningen:
+
+   1. Verktøypanelet fulgte ikke med når man leste. Teksten er
+      lang, panelet var kort, og man måtte bla oppover igjen for
+      å se hva man skulle skrive. Nå står det fast mens teksten
+      ruller under.
+   2. Teorien lå i 300px-kolonnen mens kommandolista fikk resten.
+      Det var motsatt av hva innholdet trengte. Moduler uten
+      terminal snur nå på forholdet.
+──────────────────────────────────────────────────────── */
+.lab-right{
+  position:sticky;
+  top:76px;                 /* 60px sticky nav + luft */
+  /* NB: .lab-card m&aring; bruke overflow:clip, ikke hidden.
+     overflow:hidden lager en scroll-container, og da har
+     dette panelet ingen plass &aring; feste seg i. */
+  align-self:start;         /* uten denne strekkes den og har ingen plass å feste seg i */
+  max-height:calc(100vh - 92px);
+  overflow-y:auto;
+}
+
+/* moduler der høyre panel bare er en kommandoliste:
+   gi lesekolonnen plassen den trenger */
+.lab-split.reading{grid-template-columns:minmax(0,1fr) 330px}
+.lab-split.reading .lab-left{max-width:none}
+.lab-split.reading .theory-text,
+.lab-split.reading .worked-b,
+.lab-split.reading .lab-desc{max-width:68ch}
+
+@media(max-width:900px){
+  .lab-right{position:static;max-height:none;overflow:visible}
+  .lab-split.reading{grid-template-columns:1fr}
+}
+
+/* ── LESEFLYT ── én kolonne, kommandoene der de trengs ─────
+   Erstatter totkolonneoppsettet for moduler uten terminal.
+   Kommandoene står rett over spørsmålene de hører til, så man
+   slipper å bla oppover for å se hva man skulle skrive.
+──────────────────────────────────────────────────────── */
+.lab-flow{padding:26px 30px;max-width:78ch}
+.lab-flow .theory-block:first-of-type{margin-top:4px}
+.lab-flow .ans-block{margin-top:18px;padding-top:18px}
+.cmd-block{margin:18px 0 4px;background:#05070a;border:1px solid var(--border);
+  border-left:2px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 16px}
+.cmd-block .obj-title{margin-bottom:8px;color:var(--blue)}
+.cmd-block .cmd{background:none;border:0;padding:0;margin:0;font-family:var(--mono);
+  font-size:12px;color:var(--text2);line-height:1.9;overflow-x:auto;white-space:pre-wrap;
+  word-break:break-word}
+.cmd-block .cmd .c{color:var(--text3)}
+.cmd-note{font-size:12.5px;color:var(--text3);margin:10px 0 0;line-height:1.6}
+.hint-row{margin-top:16px}
+@media(max-width:640px){.lab-flow{padding:20px 18px}}
+
+/* ── TERMINAL INLINE ──────────────────────────────────────
+   Terminalen laa i en egen kolonne ved siden av teksten. Da ble
+   teksten presset ned i 300px mens terminalen sto halvtom. Naa
+   staar den i flyten, rett etter maalene og foer spoersmaalene.
+──────────────────────────────────────────────────────── */
+.term-block{margin:18px 0 4px;border:1px solid var(--border);border-radius:9px;overflow:clip;
+  background:#0a0c10}
+.term-block .lab-term{border-top:0;flex:none}
+.term-block .lab-term-body{max-height:300px;min-height:150px}
+.term-block .lab-topbar{border-radius:9px 9px 0 0}
+.term-block .kali-desktop,.term-block .fake-browser{border:0;border-radius:0}
+.term-block > *:first-child{border-radius:9px 9px 0 0}
+.lab-flow .obj-list{margin-bottom:4px}
+
+/* Panelene som ble flyttet inn i flyten mistet hoeyden sin.
+   I totkolonneoppsettet var .lab-right en flex-kolonne inne i et
+   grid med min-height 480px, og .fake-browser levde av flex:1 mot
+   den hoeyden. Som vanlig blokk kollapset hele kjeden til null, og
+   XSS-labbene rendret en usynlig side. */
+.term-block{display:flex;flex-direction:column}
+.term-block .fake-browser{min-height:440px}
+.term-block .kali-desktop{min-height:380px}
+.term-block .lab-term{min-height:200px}
+@media(max-width:640px){
+  .term-block .fake-browser{min-height:360px}
+  .term-block .kali-desktop{min-height:320px}
+}

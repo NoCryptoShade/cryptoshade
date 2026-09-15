@@ -113,8 +113,7 @@
     <div class="lab-meta"><span class="badge badge-easy">Grunnlag</span><span class="level-badge lb-1" style="margin:0">Nivå 1</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-1">Nivå 1 — Kali-intro</div>
         <p class="lab-desc">Kali Linux er et spesialisert Linux-distro laget for penetrasjonstesting. Alt skjer i terminalen. Bli komfortabel her — du vil bruke den i alle andre labber.</p>
         <div>
@@ -125,7 +124,24 @@
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Utforsk Kali-verktøy: <code>ls /usr/bin | grep nmap</code></div></div>
           <div class="obj-item"><div class="obj-num">5</div><div class="obj-text">Les manualen til et verktøy: <code>man nmap</code> (trykk q for å avslutte)</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="kali-desktop">
+          <div class="kali-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="kali-title">root@kali:~# — Kali Linux 2024</div>
+          </div>
+          <div class="kali-term">
+            <div class="kali-body" id="kb1">
+              <div class="lt-info">Kali GNU/Linux Rolling</div>
+              <div class="lt-out">Kernel: Linux 6.6.9-amd64</div>
+              <div class="lt-out">Velkommen til Kali Linux — skriv 'help' for kommandoer</div>
+              <div class="lt-info" style="margin-top:6px">Prøv: whoami</div>
+            </div>
+            <div class="kali-input-row">
+              <span class="kali-ps1">root@kali:~#&nbsp;</span>
+              <input class="kali-in" id="ki1" placeholder="skriv kommando..." autocomplete="off">
+            </div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="2090695081">
             <span class="ans-q">Hvilken bruker er du logget inn som?</span>
@@ -145,27 +161,6 @@
         </div>
         <div class="complete-banner" id="done-kali-1"><span>✓</span> Lab 1 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="kali-desktop">
-          <div class="kali-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="kali-title">root@kali:~# — Kali Linux 2024</div>
-          </div>
-          <div class="kali-term">
-            <div class="kali-body" id="kb1">
-              <div class="lt-info">Kali GNU/Linux Rolling</div>
-              <div class="lt-out">Kernel: Linux 6.6.9-amd64</div>
-              <div class="lt-out">Velkommen til Kali Linux — skriv 'help' for kommandoer</div>
-              <div class="lt-info" style="margin-top:6px">Prøv: whoami</div>
-            </div>
-            <div class="kali-input-row">
-              <span class="kali-ps1">root@kali:~#&nbsp;</span>
-              <input class="kali-in" id="ki1" placeholder="skriv kommando..." autocomplete="off">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -179,8 +174,7 @@
     <div class="lab-meta"><span class="badge badge-easy">Grunnlag</span><span class="level-badge lb-2" style="margin:0">Nivå 2</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="tool-pill">🛠 nmap</div>
         <div class="level-badge lb-2">Nivå 2 — Portscanning</div>
         <p class="lab-desc">nmap (Network Mapper) er det første verktøyet en pentester bruker. Det kartlegger hvilke maskiner som er oppe, hvilke porter som er åpne, og hvilke tjenester som kjører.</p>
@@ -192,7 +186,22 @@
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">OS-deteksjon: <code>nmap -O 10.10.10.50</code></div></div>
           <div class="obj-item"><div class="obj-num">5</div><div class="obj-text">Full aggressiv skann: <code>nmap -A 10.10.10.50</code></div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="kali-desktop">
+          <div class="kali-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="kali-title">root@kali:~# — nmap lab</div>
+          </div>
+          <div class="kali-term">
+            <div class="kali-body" id="kb2">
+              <div class="lt-info">Target: 10.10.10.50 — InnoTech AS webserver</div>
+              <div class="lt-out">Prøv: nmap 10.10.10.50</div>
+            </div>
+            <div class="kali-input-row">
+              <span class="kali-ps1">root@kali:~#&nbsp;</span>
+              <input class="kali-in" id="ki2" placeholder="nmap ..." autocomplete="off">
+            </div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="193429915,5863822">
             <span class="ans-q">Hvilket nmap-flagg gir versjonsdeteksjon?</span>
@@ -212,25 +221,6 @@
         </div>
         <div class="complete-banner" id="done-kali-2"><span>✓</span> Lab 2 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="kali-desktop">
-          <div class="kali-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="kali-title">root@kali:~# — nmap lab</div>
-          </div>
-          <div class="kali-term">
-            <div class="kali-body" id="kb2">
-              <div class="lt-info">Target: 10.10.10.50 — InnoTech AS webserver</div>
-              <div class="lt-out">Prøv: nmap 10.10.10.50</div>
-            </div>
-            <div class="kali-input-row">
-              <span class="kali-ps1">root@kali:~#&nbsp;</span>
-              <input class="kali-in" id="ki2" placeholder="nmap ..." autocomplete="off">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -244,8 +234,7 @@
     <div class="lab-meta"><span class="badge badge-easy">Grunnlag</span><span class="level-badge lb-2" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="tool-pill">🛠 gobuster</div>
         <div class="level-badge lb-2">Nivå 3 — Web enumeration</div>
         <p class="lab-desc">Gobuster prøver systematisk tusenvis av vanlige katalognavn mot en webserver. Mange nettsider har skjulte administrasjonspaneler, backup-filer og config-filer som ikke er linket noe sted.</p>
@@ -256,7 +245,22 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Utforsk funnene med <code>curl http://10.10.10.50/admin</code></div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva er forskjellen på 200, 301, 403 og 404?</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="kali-desktop">
+          <div class="kali-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="kali-title">root@kali:~# — gobuster lab</div>
+          </div>
+          <div class="kali-term">
+            <div class="kali-body" id="kb3">
+              <div class="lt-info">Target webserver: http://10.10.10.50</div>
+              <div class="lt-out">Prøv: gobuster dir -u http://10.10.10.50 -w wordlist.txt</div>
+            </div>
+            <div class="kali-input-row">
+              <span class="kali-ps1">root@kali:~#&nbsp;</span>
+              <input class="kali-in" id="ki3" placeholder="gobuster ..." autocomplete="off">
+            </div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="193435260">
             <span class="ans-q">Hvilken statuskode fikk /backup?</span>
@@ -276,25 +280,6 @@
         </div>
         <div class="complete-banner" id="done-kali-3"><span>✓</span> Lab 3 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="kali-desktop">
-          <div class="kali-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="kali-title">root@kali:~# — gobuster lab</div>
-          </div>
-          <div class="kali-term">
-            <div class="kali-body" id="kb3">
-              <div class="lt-info">Target webserver: http://10.10.10.50</div>
-              <div class="lt-out">Prøv: gobuster dir -u http://10.10.10.50 -w wordlist.txt</div>
-            </div>
-            <div class="kali-input-row">
-              <span class="kali-ps1">root@kali:~#&nbsp;</span>
-              <input class="kali-in" id="ki3" placeholder="gobuster ..." autocomplete="off">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -308,8 +293,7 @@
     <div class="lab-meta"><span class="badge badge-medium">Verktøy</span><span class="level-badge lb-3" style="margin:0">Nivå 4</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="tool-pill">🛠 hydra</div>
         <div class="level-badge lb-3">Nivå 4 — Brute force</div>
         <p class="lab-desc">Hydra prøver systematisk brukernavn/passord-kombinasjoner mot tjenester. Fra nmap vet vi at SSH kjører på port 22. Fra nettsiden vet vi brukeren heter <code>admin</code>.</p>
@@ -320,7 +304,24 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Prøv HTTP-form: <code>hydra -l admin -P passwords.txt 10.10.10.50 http-post-form "/admin:user=^USER^&pass=^PASS^:Invalid"</code></div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva stopper et Hydra-angrep i praksis?</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="kali-desktop">
+          <div class="kali-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="kali-title">root@kali:~# — hydra lab</div>
+          </div>
+          <div class="kali-term">
+            <div class="kali-body" id="kb4">
+              <div class="lt-info">Mål: SSH på 10.10.10.50:22</div>
+              <div class="lt-out">Kjent bruker: admin</div>
+              <div class="lt-out">Wordlist: passwords.txt (100 vanlige passord)</div>
+              <div class="lt-info" style="margin-top:4px">Prøv: hydra -l admin -P passwords.txt ssh://10.10.10.50</div>
+            </div>
+            <div class="kali-input-row">
+              <span class="kali-ps1">root@kali:~#&nbsp;</span>
+              <input class="kali-in" id="ki4" placeholder="hydra ..." autocomplete="off">
+            </div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="351856718">
             <span class="ans-q">Hvilket passord fant Hydra for admin?</span>
@@ -340,27 +341,6 @@
         </div>
         <div class="complete-banner" id="done-kali-4"><span>✓</span> Lab 4 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="kali-desktop">
-          <div class="kali-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="kali-title">root@kali:~# — hydra lab</div>
-          </div>
-          <div class="kali-term">
-            <div class="kali-body" id="kb4">
-              <div class="lt-info">Mål: SSH på 10.10.10.50:22</div>
-              <div class="lt-out">Kjent bruker: admin</div>
-              <div class="lt-out">Wordlist: passwords.txt (100 vanlige passord)</div>
-              <div class="lt-info" style="margin-top:4px">Prøv: hydra -l admin -P passwords.txt ssh://10.10.10.50</div>
-            </div>
-            <div class="kali-input-row">
-              <span class="kali-ps1">root@kali:~#&nbsp;</span>
-              <input class="kali-in" id="ki4" placeholder="hydra ..." autocomplete="off">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -374,8 +354,7 @@
     <div class="lab-meta"><span class="badge badge-medium">Verktøy</span><span class="level-badge lb-3" style="margin:0">Nivå 5</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="tool-pill">🛠 john</div>
         <div class="level-badge lb-3">Nivå 5 — Passordknekking</div>
         <p class="lab-desc">Du har fått tak i <code>/etc/shadow</code> fra InnoTech-serveren. Filen inneholder hashed passord. John the Ripper prøver å knekke dem med en wordlist.</p>
@@ -387,7 +366,22 @@
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Kombiner med regler: <code>john --wordlist=rockyou.txt --rules shadow.txt</code></div></div>
           <div class="obj-item"><div class="obj-num">5</div><div class="obj-text">Forklar: hva er forskjellen på dictionary-attack og brute force?</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="kali-desktop">
+          <div class="kali-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="kali-title">root@kali:~# — john lab</div>
+          </div>
+          <div class="kali-term">
+            <div class="kali-body" id="kb5">
+              <div class="lt-info">Fil: shadow.txt — hentet fra InnoTech-server</div>
+              <div class="lt-out">Prøv: cat shadow.txt</div>
+            </div>
+            <div class="kali-input-row">
+              <span class="kali-ps1">root@kali:~#&nbsp;</span>
+              <input class="kali-in" id="ki5" placeholder="john ..." autocomplete="off">
+            </div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="2090766953">
             <span class="ans-q">Hvilket passord har root?</span>
@@ -407,25 +401,6 @@
         </div>
         <div class="complete-banner" id="done-kali-5"><span>✓</span> Lab 5 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="kali-desktop">
-          <div class="kali-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="kali-title">root@kali:~# — john lab</div>
-          </div>
-          <div class="kali-term">
-            <div class="kali-body" id="kb5">
-              <div class="lt-info">Fil: shadow.txt — hentet fra InnoTech-server</div>
-              <div class="lt-out">Prøv: cat shadow.txt</div>
-            </div>
-            <div class="kali-input-row">
-              <span class="kali-ps1">root@kali:~#&nbsp;</span>
-              <input class="kali-in" id="ki5" placeholder="john ..." autocomplete="off">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -439,8 +414,7 @@
     <div class="lab-meta"><span class="badge badge-medium">Verktøy</span><span class="level-badge lb-3" style="margin:0">Nivå 6</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="tool-pill">🛠 netcat / nc</div>
         <div class="level-badge lb-3">Nivå 6 — Netcat</div>
         <p class="lab-desc">Netcat kan lytte på porter, koble til tjenester, sende filer og sette opp reverse shells. Det er sannsynligvis det mest brukte verktøyet i en angripers arsenal.</p>
@@ -451,7 +425,23 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Simuler mottak av reverse shell: <code>nc -lvnp 4444</code> + se hva som kobler til</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva er forskjellen på bind shell og reverse shell?</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="kali-desktop">
+          <div class="kali-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="kali-title">root@kali:~# — netcat lab</div>
+          </div>
+          <div class="kali-term">
+            <div class="kali-body" id="kb6">
+              <div class="lt-info">Netcat — tilkobling og lytting</div>
+              <div class="lt-out">Prøv: nc 10.10.10.50 80</div>
+              <div class="lt-out">Eller: nc -lvnp 4444</div>
+            </div>
+            <div class="kali-input-row">
+              <span class="kali-ps1">root@kali:~#&nbsp;</span>
+              <input class="kali-in" id="ki6" placeholder="nc ..." autocomplete="off">
+            </div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="2088400725">
             <span class="ans-q">Hvilken port lyttes det på i eksempelet?</span>
@@ -471,26 +461,6 @@
         </div>
         <div class="complete-banner" id="done-kali-6"><span>✓</span> Lab 6 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="kali-desktop">
-          <div class="kali-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="kali-title">root@kali:~# — netcat lab</div>
-          </div>
-          <div class="kali-term">
-            <div class="kali-body" id="kb6">
-              <div class="lt-info">Netcat — tilkobling og lytting</div>
-              <div class="lt-out">Prøv: nc 10.10.10.50 80</div>
-              <div class="lt-out">Eller: nc -lvnp 4444</div>
-            </div>
-            <div class="kali-input-row">
-              <span class="kali-ps1">root@kali:~#&nbsp;</span>
-              <input class="kali-in" id="ki6" placeholder="nc ..." autocomplete="off">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -504,8 +474,7 @@
     <div class="lab-meta"><span class="badge badge-hard">CTF</span><span class="level-badge lb-5" style="margin:0">Nivå 7</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split" style="min-height:600px">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-5">Nivå 7 — Full CTF</div>
         <p class="lab-desc">Alt du har lært — nmap, gobuster, hydra, john, netcat — brukes nå mot InnoTech AS. Du starter med kun én IP-adresse. Finn alle 3 flagg.</p>
 
@@ -529,7 +498,27 @@
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text"><strong>Post:</strong> john + cat — les filer, knekk hashes</div></div>
           <div class="obj-item"><div class="obj-num">5</div><div class="obj-text"><strong>Privesc:</strong> sudo -l — eskaler til root</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="kali-desktop" style="min-height:600px">
+          <div class="kali-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="kali-title">root@kali:~# — CTF: InnoTech AS</div>
+          </div>
+          <div class="kali-term" style="flex:1">
+            <div class="kali-body" id="kb7" style="max-height:460px">
+              <div class="hl-purple" style="font-weight:700;margin-bottom:4px">╔══════════════════════════════════════╗</div>
+              <div class="hl-purple" style="font-weight:700">║   CTF — HACK INNOTECH AS             ║</div>
+              <div class="hl-purple" style="font-weight:700;margin-bottom:4px">╚══════════════════════════════════════╝</div>
+              <div class="lt-out">Target IP: 10.10.10.50</div>
+              <div class="lt-out">Flagg å finne: 3</div>
+              <div class="lt-info" style="margin-top:6px">Start med: nmap -sV 10.10.10.50</div>
+              <div class="lt-info">Skriv 'help' for tilgjengelige kommandoer</div>
+            </div>
+            <div class="kali-input-row">
+              <span class="kali-ps1" id="ctf-ps1">root@kali:~#&nbsp;</span>
+              <input class="kali-in" id="ki7" placeholder="skriv kommando..." autocomplete="off">
+            </div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="-885161786">
             <span class="ans-q">🚩 Flagg 1 — webserveren</span>
@@ -564,30 +553,6 @@
 
         <div class="complete-banner" id="done-kali-7"><span>✓</span> Lab 7 fullført — alle flagg funnet!</div>
       </div>
-      <div class="lab-right">
-        <div class="kali-desktop" style="min-height:600px">
-          <div class="kali-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="kali-title">root@kali:~# — CTF: InnoTech AS</div>
-          </div>
-          <div class="kali-term" style="flex:1">
-            <div class="kali-body" id="kb7" style="max-height:460px">
-              <div class="hl-purple" style="font-weight:700;margin-bottom:4px">╔══════════════════════════════════════╗</div>
-              <div class="hl-purple" style="font-weight:700">║   CTF — HACK INNOTECH AS             ║</div>
-              <div class="hl-purple" style="font-weight:700;margin-bottom:4px">╚══════════════════════════════════════╝</div>
-              <div class="lt-out">Target IP: 10.10.10.50</div>
-              <div class="lt-out">Flagg å finne: 3</div>
-              <div class="lt-info" style="margin-top:6px">Start med: nmap -sV 10.10.10.50</div>
-              <div class="lt-info">Skriv 'help' for tilgjengelige kommandoer</div>
-            </div>
-            <div class="kali-input-row">
-              <span class="kali-ps1" id="ctf-ps1">root@kali:~#&nbsp;</span>
-              <input class="kali-in" id="ki7" placeholder="skriv kommando..." autocomplete="off">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 

@@ -61,8 +61,7 @@
     <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="level-badge lb-1" style="margin:0">Nivå 1</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-1">Nivå 1 — Hashing grunnlag</div>
         <p class="lab-desc">Hash-kalkulatoren til høyre kjører ekte SHA-256 i nettleseren. Utforsk egenskapene — spesielt avalanche effect.</p>
         <div>
@@ -72,28 +71,7 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Hash en tom streng — hva returneres?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Prøv å hash samme ord to ganger — er resultatet alltid identisk?</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="5861743">
-            <span class="ans-q">Hvor mange heksadesimale tegn er en SHA-256-hash?</span>
-            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="5863504">
-            <span class="ans-q">Gir samme input alltid samme hash? ja eller nei</span>
-            <input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box"><strong>Avalanche effect:</strong> én bit forskjell i input = ~50% endrede bits i output. Dette er designet — gjør det umulig å "gjette seg frem" mot en hash.</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>Egenskaper:</strong> Deterministisk (samme input = samme output), enveis (ikke reverserbar), kollisjonsresistent (ingen to inputs har lik hash i praksis).<br><br>Hashing er ikke kryptering — det finnes ingen nøkkel og ingen dekryptering.</div>
-        </div>
-        <div class="complete-banner" id="done-kryp-1"><span>✓</span> Lab 1 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url">SHA-256 kalkulator — kjøres lokalt</div>
@@ -122,9 +100,26 @@
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="5861743">
+            <span class="ans-q">Hvor mange heksadesimale tegn er en SHA-256-hash?</span>
+            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="5863504">
+            <span class="ans-q">Gir samme input alltid samme hash? ja eller nei</span>
+            <input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box"><strong>Avalanche effect:</strong> én bit forskjell i input = ~50% endrede bits i output. Dette er designet — gjør det umulig å "gjette seg frem" mot en hash.</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>Egenskaper:</strong> Deterministisk (samme input = samme output), enveis (ikke reverserbar), kollisjonsresistent (ingen to inputs har lik hash i praksis).<br><br>Hashing er ikke kryptering — det finnes ingen nøkkel og ingen dekryptering.</div>
+        </div>
+        <div class="complete-banner" id="done-kryp-1"><span>✓</span> Lab 1 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -136,8 +131,7 @@
     <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="level-badge lb-2" style="margin:0">Nivå 2</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-2">Nivå 2 — Passordlagring</div>
         <p class="lab-desc">En database med brukerhashes har lekket. Til høyre ser du databasen — prøv å knekke passordene, og se hva salt gjør med angrepet.</p>
         <div>
@@ -147,28 +141,7 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hvorfor hjelper ikke et rainbow table mot saltet hash?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva er bcrypt og hvorfor er det bedre enn SHA-256 for passord?</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="-458980769,2033503922,891100823">
-            <span class="ans-q">Hva kalles forhåndsberegnede hashtabeller?</span>
-            <input class="ans-in" placeholder="to ord"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="-206003943">
-            <span class="ans-q">Hvilken algoritme er treg med vilje og har innebygd salt?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box">Prøv å hash vanlige passord i Lab 1 og sammenlign med hashene i databasen. Usaltede hashes med kjente passord knekkes direkte.</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>Usaltede passord</strong> kan knekkes via rainbow tables — forhåndsberegnede tabeller med millioner av hasher.<br><br><strong>Salt</strong> gjør at identiske passord gir ulike hashes — rainbow tables er ubrukelige.<br><br><strong>bcrypt</strong> er treg by design (~100ms per hash) og har innebygd salt. En angriper med 100 milliarder forsøk/sek rekker bare 10 millioner bcrypt/sek.</div>
-        </div>
-        <div class="complete-banner" id="done-kryp-2"><span>✓</span> Lab 2 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url">leaked_db.sql — database dump (simulert)</div>
@@ -195,9 +168,26 @@
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="-458980769,2033503922,891100823">
+            <span class="ans-q">Hva kalles forhåndsberegnede hashtabeller?</span>
+            <input class="ans-in" placeholder="to ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="-206003943">
+            <span class="ans-q">Hvilken algoritme er treg med vilje og har innebygd salt?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box">Prøv å hash vanlige passord i Lab 1 og sammenlign med hashene i databasen. Usaltede hashes med kjente passord knekkes direkte.</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>Usaltede passord</strong> kan knekkes via rainbow tables — forhåndsberegnede tabeller med millioner av hasher.<br><br><strong>Salt</strong> gjør at identiske passord gir ulike hashes — rainbow tables er ubrukelige.<br><br><strong>bcrypt</strong> er treg by design (~100ms per hash) og har innebygd salt. En angriper med 100 milliarder forsøk/sek rekker bare 10 millioner bcrypt/sek.</div>
+        </div>
+        <div class="complete-banner" id="done-kryp-2"><span>✓</span> Lab 2 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -209,8 +199,7 @@
     <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="level-badge lb-3" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-3">Nivå 3 — Krypteringstyper</div>
         <p class="lab-desc">Krypterings-laben viser utviklingen fra Caesar-siffer til moderne AES og RSA. Forstå forskjellene og svakhetene.</p>
         <div>
@@ -220,28 +209,7 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hva er nøkkelutbyttingsproblemet for symmetrisk kryptering?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hvordan løser RSA dette problemet?</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="5861612">
-            <span class="ans-q">Hvor mange mulige skift finnes i et Caesar-chiffer?</span>
-            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="899781859,-371969624,362648740">
-            <span class="ans-q">Hvilken av Bobs nøkler bruker Alice når hun krypterer til ham?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box"><strong>Nøkkelutbytting:</strong> Hvis Alice og Bob vil bruke AES, må de dele den hemmelige nøkkelen trygt. Men over internett er det umulig uten asymmetrisk hjelp.</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>RSA-løsning:</strong> Bob sender sin offentlige nøkkel til Alice. Alice krypterer AES-nøkkelen med Bobs offentlige nøkkel. Bare Bob kan dekryptere med sin private nøkkel. Nå deler de trygt en AES-nøkkel — dette er nøyaktig hva TLS gjør.</div>
-        </div>
-        <div class="complete-banner" id="done-kryp-3"><span>✓</span> Lab 3 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url">CryptoLab — krypteringshistorie</div>
@@ -278,9 +246,26 @@
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="5861612">
+            <span class="ans-q">Hvor mange mulige skift finnes i et Caesar-chiffer?</span>
+            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="899781859,-371969624,362648740">
+            <span class="ans-q">Hvilken av Bobs nøkler bruker Alice når hun krypterer til ham?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box"><strong>Nøkkelutbytting:</strong> Hvis Alice og Bob vil bruke AES, må de dele den hemmelige nøkkelen trygt. Men over internett er det umulig uten asymmetrisk hjelp.</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>RSA-løsning:</strong> Bob sender sin offentlige nøkkel til Alice. Alice krypterer AES-nøkkelen med Bobs offentlige nøkkel. Bare Bob kan dekryptere med sin private nøkkel. Nå deler de trygt en AES-nøkkel — dette er nøyaktig hva TLS gjør.</div>
+        </div>
+        <div class="complete-banner" id="done-kryp-3"><span>✓</span> Lab 3 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -292,8 +277,7 @@
     <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="level-badge lb-3" style="margin:0">Nivå 4</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-3">Nivå 4 — TLS i praksis</div>
         <p class="lab-desc">Klikk gjennom TLS-handshake steg for steg til høyre — se nøyaktig hva som utveksles mellom nettleser og server.</p>
         <div>
@@ -303,28 +287,7 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Sjekk TLS-sertifikat på vg.no i din nettleser — finn TLS-versjon</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva er Perfect Forward Secrecy og hvorfor er det viktig?</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="177627">
-            <span class="ans-q">Hvor mange steg er TLS-handshaken delt inn i her?</span>
-            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="193502446,501930161">
-            <span class="ans-q">Hva heter egenskapen som hindrer at gamle sesjoner kan dekrypteres senere?</span>
-            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box">RSA er ~1000× tregere enn AES. Du bruker asymmetrisk kun for å trygt bli enige om en symmetrisk sesjonsnøkkel — deretter AES for all dataoverføring.</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>PFS (Perfect Forward Secrecy):</strong> Hver sesjon genererer en ny, midlertidig sesjonsnøkkel via Diffie-Hellman. Selv om serverens private nøkkel kompromitteres i fremtiden, kan ikke tidligere sesjoner dekrypteres — nøklene er borte.</div>
-        </div>
-        <div class="complete-banner" id="done-kryp-4"><span>✓</span> Lab 4 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url secure">🔒 TLS Handshake Visualizer</div>
@@ -344,9 +307,26 @@
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="177627">
+            <span class="ans-q">Hvor mange steg er TLS-handshaken delt inn i her?</span>
+            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="193502446,501930161">
+            <span class="ans-q">Hva heter egenskapen som hindrer at gamle sesjoner kan dekrypteres senere?</span>
+            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box">RSA er ~1000× tregere enn AES. Du bruker asymmetrisk kun for å trygt bli enige om en symmetrisk sesjonsnøkkel — deretter AES for all dataoverføring.</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>PFS (Perfect Forward Secrecy):</strong> Hver sesjon genererer en ny, midlertidig sesjonsnøkkel via Diffie-Hellman. Selv om serverens private nøkkel kompromitteres i fremtiden, kan ikke tidligere sesjoner dekrypteres — nøklene er borte.</div>
+        </div>
+        <div class="complete-banner" id="done-kryp-4"><span>✓</span> Lab 4 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -358,8 +338,7 @@
     <div class="lab-meta"><span class="badge badge-hard">Hard</span><span class="level-badge lb-4" style="margin:0">Nivå 5</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-4">Nivå 5 — Digitale signaturer</div>
         <p class="lab-desc">En digital signatur kombinerer hashing og asymmetrisk kryptering. Bruk laben til høyre til å signere og verifisere meldinger — og se hva som skjer når noen manipulerer innholdet.</p>
         <div>
@@ -369,28 +348,7 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar steg for steg: hvordan verifiserer mottakeren?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva beviser signaturen, og hva beviser den <em>ikke</em>?</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="359353179,1702027880,-1026246880">
-            <span class="ans-q">Hvilken nøkkel signerer man en melding med?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="5863273,257921532,980259985">
-            <span class="ans-q">Hvem må ha signert sertifikatet for at identitet skal være bevist?</span>
-            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box">Signering: <strong>hash melding → krypter hash med privat nøkkel</strong>.<br>Verifisering: <strong>dekrypter signatur med offentlig nøkkel → sammenlign med ny hash av meldingen</strong>.</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>Beviser:</strong> At meldingen ikke er endret (integritet) + at avsenderen eier den private nøkkelen (autentisitet).<br><br><strong>Beviser ikke:</strong> At avsenderen er den de sier de er — det krever en CA som har signert sertifikatet.</div>
-        </div>
-        <div class="complete-banner" id="done-kryp-5"><span>✓</span> Lab 5 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url">Digital Signature Lab</div>
@@ -420,9 +378,26 @@
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="359353179,1702027880,-1026246880">
+            <span class="ans-q">Hvilken nøkkel signerer man en melding med?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="5863273,257921532,980259985">
+            <span class="ans-q">Hvem må ha signert sertifikatet for at identitet skal være bevist?</span>
+            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box">Signering: <strong>hash melding → krypter hash med privat nøkkel</strong>.<br>Verifisering: <strong>dekrypter signatur med offentlig nøkkel → sammenlign med ny hash av meldingen</strong>.</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>Beviser:</strong> At meldingen ikke er endret (integritet) + at avsenderen eier den private nøkkelen (autentisitet).<br><br><strong>Beviser ikke:</strong> At avsenderen er den de sier de er — det krever en CA som har signert sertifikatet.</div>
+        </div>
+        <div class="complete-banner" id="done-kryp-5"><span>✓</span> Lab 5 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -434,8 +409,7 @@
     <div class="lab-meta"><span class="badge badge-hard">Hard</span><span class="level-badge lb-5" style="margin:0">Nivå 6</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-5">Nivå 6 — TLS-angrep</div>
         <p class="lab-desc">To reelle TLS-angrep med enorme konsekvenser. Bruk "angrepssimulator" til høyre til å forstå mekanismene steg for steg.</p>
         <div>
@@ -445,7 +419,26 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hva er det enkle tiltaket som stopper begge?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Sjekk en nettside med ssllabs.com/ssltest — hva er ratingen?</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
+          <div class="fake-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="fake-url">TLS Attack Simulator — DROWN &amp; POODLE</div>
+          </div>
+          <div class="site-wrap">
+            <div class="ts">
+              <div class="ts-nav" style="background:#7f1d1d"><span class="ts-logo">⚡ AttackSim</span></div>
+              <div class="ts-body">
+                <div style="display:flex;gap:8px;margin-bottom:12px">
+                  <button class="ts-btn" style="background:#b91c1c;flex:1" onclick="k6run('drown')">▶ DROWN angrep</button>
+                  <button class="ts-btn" style="background:#92400e;flex:1" onclick="k6run('poodle')">▶ POODLE angrep</button>
+                </div>
+                <div id="k6-output" style="background:#1a1a2e;border-radius:8px;padding:14px;font-family:monospace;font-size:12px;min-height:200px;color:#e2e8f0;line-height:1.9">
+                  <span style="color:#4ade80">AttackSim v1.0 — velg et angrep over</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="274787455,477960063,274784617">
             <span class="ans-q">Hvilken gammel protokoll utnytter DROWN?</span>
@@ -465,29 +458,6 @@
         </div>
         <div class="complete-banner" id="done-kryp-6"><span>✓</span> Lab 6 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
-          <div class="fake-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="fake-url">TLS Attack Simulator — DROWN &amp; POODLE</div>
-          </div>
-          <div class="site-wrap">
-            <div class="ts">
-              <div class="ts-nav" style="background:#7f1d1d"><span class="ts-logo">⚡ AttackSim</span></div>
-              <div class="ts-body">
-                <div style="display:flex;gap:8px;margin-bottom:12px">
-                  <button class="ts-btn" style="background:#b91c1c;flex:1" onclick="k6run('drown')">▶ DROWN angrep</button>
-                  <button class="ts-btn" style="background:#92400e;flex:1" onclick="k6run('poodle')">▶ POODLE angrep</button>
-                </div>
-                <div id="k6-output" style="background:#1a1a2e;border-radius:8px;padding:14px;font-family:monospace;font-size:12px;min-height:200px;color:#e2e8f0;line-height:1.9">
-                  <span style="color:#4ade80">AttackSim v1.0 — velg et angrep over</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 

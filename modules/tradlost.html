@@ -55,22 +55,22 @@
       <span class="lab-title">Lufta er et delt medium</span>
       <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-1">Niv&aring; 1 &mdash; Terskelen</div>
         <div class="theory-block"><div class="theory-title">📡 Ingen trenger å koble til noe for å høre deg</div><div class="theory-text"><p>P&aring; kabel m&aring; en angriper fysisk koble seg til nettet. I lufta holder det &aring; v&aelig;re <strong>innenfor rekkevidde</strong>.</p><p>Signalet stopper ikke ved veggen. Et vanlig aksesspunkt n&aring;s fra gata, fra naboleiligheten og fra parkeringsplassen.</p><p>Radiospekteret er ogs&aring; <strong>delt</strong>: alle p&aring; samme kanal m&aring; bytte p&aring; &aring; sende. Flere enheter gir mindre kapasitet til hver, selv om ingen gj&oslash;r noe galt.</p><p>Kort sagt: samme pakke, samme protokoller, men <strong>terskelen for &aring; lytte er nesten borte</strong>. Det er derfor kryptering er obligatorisk i lufta og valgfritt p&aring; kabel.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Samme angriper, to milj&oslash;er.</p><ol class="wsteps"><li>Kabel: han m&aring; inn i bygget og finne en ledig port</li><li>Tr&aring;dl&oslash;st: han kan sitte i en bil p&aring; utsiden</li><li>Kabel: han ser bare trafikk p&aring; den porten han sitter p&aring;</li><li>Tr&aring;dl&oslash;st: han h&oslash;rer <strong>alt som sendes innenfor rekkevidde</strong></li><li>Derfor er ukryptert Wi-Fi noe helt annet enn et ukryptert kablet nett</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">Må en angriper koble til noe fysisk for å høre trådløs trafikk? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">To naboer bruker samme kanal. Får hver av dem full kapasitet? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-675147389,-504542325,1274184498,-653526529"><span class="ans-q">Hva er den viktigste forskjellen på kabel og luft, i ett ord?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r hva som skal til for &aring; <em>lytte</em>, ikke for &aring; koble til.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># se n&aelig;rliggende nett</span>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># se n&aelig;rliggende nett</span>
 nmcli dev wifi list
 iwlist scan 2&gt;/dev/null | grep -E 'ESSID|Quality'</div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">Må en angriper koble til noe fysisk for å høre trådløs trafikk? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">To naboer bruker samme kanal. Får hver av dem full kapasitet? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-675147389,-504542325,1274184498,-653526529"><span class="ans-q">Hva er den viktigste forskjellen på kabel og luft, i ett ord?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r hva som skal til for &aring; <em>lytte</em>, ikke for &aring; koble til.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="n10-2" data-level="easy">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -78,21 +78,21 @@ iwlist scan 2&gt;/dev/null | grep -E 'ESSID|Quality'</div>
       <span class="lab-title">WEP, WPA2 og WPA3</span>
       <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-1">Niv&aring; 1 &mdash; Sikkerhetsmodus</div>
         <div class="theory-block"><div class="theory-title">🔐 Fire generasjoner, og bare to du skal bruke</div><div class="theory-text"><p><strong>&Aring;pent</strong> nett: ingen kryptering. Alt kan leses av alle i n&aelig;rheten.</p><p><strong>WEP</strong>: fra 1999, knekkes p&aring; minutter med verkt&oslash;y som er fritt tilgjengelige. Skal aldri brukes.</p><p><strong>WPA2</strong>: dagens vanlige standard, bygget p&aring; AES. Trygt s&aring; lenge passordet er langt nok, fordi passordet kan angripes med ordliste offline.</p><p><strong>WPA3</strong>: nyeste. Gj&oslash;r offline ordlisteangrep upraktisk, og krypterer ogs&aring; p&aring; &aring;pne nett.</p><p>Valget er enkelt: <strong>WPA3 hvis alt utstyret st&oslash;tter det, ellers WPA2 med et langt passord</strong>.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Et gammelt nett bruker WEP med et 20 tegn langt passord.</p><ol class="wsteps"><li>Lang passordfrase hjelper ikke</li><li>Svakheten i WEP ligger i <strong>selve protokollen</strong>, ikke i passordlengden</li><li>Nok fanget trafikk gir n&oslash;kkelen uansett hvor langt passordet er</li><li>Det samme gjelder ikke WPA2, der lengden faktisk betyr noe</li><li>Derfor er r&aring;det ulikt: bytt ut WEP, men forleng passordet p&aring; WPA2</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193510033"><span class="ans-q">Hvilken sikkerhetsmodus skal aldri brukes?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Hjelper et langt passord mot svakheten i WEP? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="2090875328"><span class="ans-q">Hvilken modus beskytter også på åpne nett?</span><input class="ans-in" placeholder="fire tegn"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r om svakheten ligger i passordet eller i protokollen.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">nmcli dev wifi list
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">nmcli dev wifi list
 <span class='c'># kolonnen SECURITY viser modus</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193510033"><span class="ans-q">Hvilken sikkerhetsmodus skal aldri brukes?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Hjelper et langt passord mot svakheten i WEP? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="2090875328"><span class="ans-q">Hvilken modus beskytter også på åpne nett?</span><input class="ans-in" placeholder="fire tegn"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r om svakheten ligger i passordet eller i protokollen.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="n10-3" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -100,23 +100,23 @@ iwlist scan 2&gt;/dev/null | grep -E 'ESSID|Quality'</div>
       <span class="lab-title">Navnet er ikke identitet</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 2 &mdash; Evil Twin</div>
         <div class="theory-block"><div class="theory-title">👯 Hvem som helst kan kalle nettet sitt hva de vil</div><div class="theory-text"><p>Nettverksnavnet, <strong>SSID-en</strong>, er bare en tekststreng som aksesspunktet kringkaster. Det er ingen identitet og ingen garanti.</p><p>En <strong>Evil Twin</strong> er et aksesspunkt satt opp med <em>samme navn</em> som et nett du stoler p&aring;. Enheten din ser kjent navn og kobler til, gjerne automatisk.</p><p>Et <strong>Rogue AP</strong> er noe annet: et uautorisert aksesspunkt koblet inn i bedriftens <em>eget</em> nett, ofte av en ansatt som ville ha bedre dekning. Det &aring;pner en vei utenom brannmuren.</p><p>Telefonen din gj&oslash;r dette verre ved &aring; rope etter nett den har brukt f&oslash;r. En angriper kan h&oslash;re hvilke navn du leter etter, og lage nettopp det.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du &aring;pner PC-en p&aring; en kafe.</p><ol class="wsteps"><li>Den kobler automatisk til <code>Gjestenett</code>, som den brukte p&aring; skolen</li><li>Men dette aksesspunktet st&aring;r i sekken til en som sitter to bord unna</li><li>Alt du sender g&aring;r gjennom hans maskin f&oslash;rst</li><li>HTTPS beskytter fortsatt innholdet, men han ser <strong>hvilke</strong> tjenester du bruker</li><li>Og alt som ikke er kryptert, leser han rett av</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="1587675927,701885527"><span class="ans-q">To nett i lista har samme navn men ulik BSSID. Hva kan det være?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="172290296,273452359"><span class="ans-q">Et uautorisert AP koblet inn i bedriftens eget nett, hva kalles det?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="2042963510,1426324488,-1413866406"><span class="ans-q">Hvilken innstilling på klienten reduserer risikoen mest?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Skill mellom et falskt nett <em>utenfor</em> og et ulovlig AP <em>innenfor</em>.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Merk at to AP-er med samme navn ogs&aring; er helt normalt i store bygg, der flere aksesspunkt deler SSID med vilje. Funnet er alts&aring; ikke \u00absamme navn\u00bb alene, men samme navn der du <em>ikke</em> forventer det.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">nmcli dev wifi list
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">nmcli dev wifi list
 <span class='c'># samme navn, to ulike BSSID?</span>
 <span class='c'># sl&aring; av automatisk tilkobling</span>
 nmcli con mod &lt;navn&gt; connection.autoconnect no</div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="1587675927,701885527"><span class="ans-q">To nett i lista har samme navn men ulik BSSID. Hva kan det være?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="172290296,273452359"><span class="ans-q">Et uautorisert AP koblet inn i bedriftens eget nett, hva kalles det?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="2042963510,1426324488,-1413866406"><span class="ans-q">Hvilken innstilling på klienten reduserer risikoen mest?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Skill mellom et falskt nett <em>utenfor</em> og et ulovlig AP <em>innenfor</em>.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Merk at to AP-er med samme navn ogs&aring; er helt normalt i store bygg, der flere aksesspunkt deler SSID med vilje. Funnet er alts&aring; ikke \u00absamme navn\u00bb alene, men samme navn der du <em>ikke</em> forventer det.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="n10-4" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -124,22 +124,22 @@ nmcli con mod &lt;navn&gt; connection.autoconnect no</div>
       <span class="lab-title">Velg riktig oppsett</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 3 &mdash; Vurdering</div>
         <div class="theory-block"><div class="theory-title">🏠 Fire spørsmål avgjør oppsettet</div><div class="theory-text"><p><strong>Hvem skal p&aring;?</strong> Ansatte, gjester og utstyr b&oslash;r ikke dele nett. Det er segmenteringen fra forrige leksjon, i tr&aring;dl&oslash;s utgave.</p><p><strong>Hvilken modus?</strong> WPA3 om mulig, ellers WPA2. Aldri WEP, aldri &aring;pent uten at du mener det.</p><p><strong>Hvor langt passord?</strong> P&aring; WPA2 er lengden det eneste som beskytter mot offline ordlisteangrep. Korte og vanlige passord knekkes.</p><p><strong>Skal gjester n&aring; noe internt?</strong> Nesten alltid nei. Gjestenettet skal ut mot internett og ingenting annet.</p><p>Og sl&aring; av WPS. Det er en snarvei som undergraver et godt passord.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En liten bedrift setter opp tr&aring;dl&oslash;st.</p><ol class="wsteps"><li>Ansatte: eget SSID, WPA3, tilgang til interne tjenester</li><li>Gjester: eget SSID, WPA2 eller WPA3, <strong>kun ut mot internett</strong></li><li>Skrivere og sensorer: eget SSID, ingen tilgang til hverandre eller til ansattnettet</li><li>WPS sl&aring;s av overalt</li><li>Tre nett p&aring; samme aksesspunkt, tre ulike sett med regler</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193510399"><span class="ans-q">Hva bør slås av fordi det undergraver et godt passord?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div><div class="ans-row" data-a="700434056,1540260200,-1877339157"><span class="ans-q">Gjestenettet skal nå internett og hva mer?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="1213985470,1894449058,1277084247,373492058"><span class="ans-q">På WPA2, hva er det eneste som beskytter mot offline ordlisteangrep?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Still de fire sp&oslash;rsm&aring;lene i rekkef&oslash;lge for hvert nett du setter opp.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">nmcli dev wifi list
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">nmcli dev wifi list
 <span class='c'># sjekk modus og signalstyrke</span>
 nmcli -f SSID,SECURITY,SIGNAL dev wifi</div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193510399"><span class="ans-q">Hva bør slås av fordi det undergraver et godt passord?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div><div class="ans-row" data-a="700434056,1540260200,-1877339157"><span class="ans-q">Gjestenettet skal nå internett og hva mer?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="1213985470,1894449058,1277084247,373492058"><span class="ans-q">På WPA2, hva er det eneste som beskytter mot offline ordlisteangrep?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Still de fire sp&oslash;rsm&aring;lene i rekkef&oslash;lge for hvert nett du setter opp.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   </div>
 

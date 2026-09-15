@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passordangrep og forsvar — CyberLab</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/lab-shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Bricolage+Grotesque:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+.cmd{background:#05070a;border:1px solid var(--border);border-left:2px solid var(--blue);
+  border-radius:0 6px 6px 0;padding:11px 14px;font-family:var(--mono);font-size:11.5px;
+  color:var(--text2);overflow-x:auto;line-height:1.85;white-space:pre-wrap;word-break:break-word}
+.cmd .c{color:var(--text3)}
+</style>
+</head>
+<body class="page">
+<nav class="nav">
+  <div class="nav-logo"><span class="bracket">[</span>CyberLab<span class="bracket">]</span></div>
+  <div class="nav-links">
+    <a href="../index.html" class="nav-link">Hjem</a>
+    <a href="../emne1.html" class="nav-link">Emne 1</a>
+    <a href="../emne3.html" class="nav-link">Emne 3</a>
+    <a href="../labber.html" class="nav-link on">Labber</a>
+    <a href="https://tk1104.timoamling.com/" target="_blank" rel="noopener" class="nav-link">Self check &nearr;</a>
+  </div>
+</nav>
+
+<div class="container-sm page" style="padding-top:40px;padding-bottom:80px">
+  <a href="../labber.html" class="back-link">&larr; Tilbake</a>
+  <div class="mod-hero">
+    <div class="section-eyebrow">Lab 20 &middot; Emne 3 &middot; Leksjon 10</div>
+    <div class="section-title">Passordangrep og forsvar</div>
+    <p class="section-desc">Tre angrep som stadig forveksles, regnestykket som avgj&oslash;r om en hash holder, og hvordan hvert angrep ser ut for den som f&oslash;lger med.</p>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Fremdrift</span><span id="progressLabel">0 / 0 fullf&oslash;rt</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <div class="filter-row">
+    <button class="filter-pill active-all" onclick="setFilter('all',this)">Alle</button>
+    <button class="filter-pill" onclick="setFilter('easy',this)">Lett</button>
+    <button class="filter-pill" onclick="setFilter('medium',this)">Middels</button>
+    <button class="filter-pill" onclick="setFilter('hard',this)">Vanskelig</button>
+  </div>
+
+  <div class="tasks">
+  <div class="lab-card" id="pw-1" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">01</span>
+      <span class="lab-title">Tre angrep som forveksles</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; Skillet</div>
+        <div class="theory-block"><div class="theory-title">🎯 Hva som holdes fast, og hva som varieres</div><div class="theory-text"><p>De tre kalles ofte det samme, men de varierer hver sin akse.</p><p><strong>Brute force</strong>: &eacute;n konto, mange passord. Du holder brukeren fast. L&aring;sepolicy stopper deg raskt.</p><p><strong>Spraying</strong>: mange kontoer, &eacute;tt passord om gangen. Du holder passordet fast. Ingen konto n&aring;r l&aring;segrensa, s&aring; policyen merker ingenting.</p><p><strong>Credential stuffing</strong>: kjente <em>par</em> fra en lekkasje, pr&oslash;vd et annet sted. Du gjetter ikke i det hele tatt. Det virker fordi folk gjenbruker, ikke fordi passordet er svakt.</p><p>Skillet betyr noe i praksis: bare det f&oslash;rste stoppes av l&aring;sing, og bare det siste stoppes av at brukeren har unike passord.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Samme m&aring;l, tre fremgangsm&aring;ter.</p><ol class="wsteps"><li>Brute force: <code>kari</code> mot 14 millioner passord. L&aring;st etter fem</li><li>Spraying: 500 kontoer mot <code>Host2026!</code>. Ett fors&oslash;k hver, ingen l&aring;sing</li><li>Stuffing: 900 par fra en lekkasje, pr&oslash;vd rett inn. Ingen gjetting</li><li>Mot en sterk, unik passordpolicy faller stuffing bort, men spraying virker fortsatt hvis <em>&eacute;n</em> ansatt bruker sesongpassord</li><li>Mot l&aring;sepolicy faller brute force bort, men de to andre merker det ikke</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Til hjelp</div>
+          <div class="cmd"><span class='c'># brute force: &eacute;n bruker, mange passord</span>
+hydra -l kari -P liste.txt ssh://&lt;MAAL&gt;
+
+<span class='c'># spraying: mange brukere, &eacute;tt passord</span>
+hydra -L brukere.txt -p 'Host2026!' ssh://&lt;MAAL&gt;</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="1540097842"><span class="ans-q">Mange kontoer, ett passord. Hvilket av de tre er det?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="632913318,-1761311893"><span class="ans-q">Hvilket av de tre innebærer ingen gjetting i det hele tatt?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1054636362,1873489334,-545876253"><span class="ans-q">En låsepolicy på fem forsøk. Hvilket av de tre stopper den?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r hva som holdes fast i hvert angrep: brukeren, passordet, eller begge.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Stuffing er det som overrasker folk: passordet kan v&aelig;re b&aring;de langt og komplekst, men hvis det allerede er lekket fra et annet nettsted, er styrken irrelevant.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="pw-2" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">02</span>
+      <span class="lab-title">Låsepolicy og hvorfor spraying finnes</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-3">Niv&aring; 3 &mdash; Terskler</div>
+        <div class="theory-block"><div class="theory-title">🔒 Policyen teller feil per konto, ikke per angriper</div><div class="theory-text"><p>En typisk policy l&aring;ser kontoen etter fem feil innen tretti minutter. Den teller <strong>per konto</strong>.</p><p>Angriperen vet det, og legger seg under grensa. To eller tre fors&oslash;k per konto, mange kontoer, og deretter pause til vinduet g&aring;r ut. Ingen konto l&aring;ses, og ingen bruker merker noe.</p><p>Derfor m&aring; deteksjonen telle <strong>p&aring; tvers</strong> av kontoer: mange ulike brukernavn som feiler fra samme kilde i samme tidsrom. Det er et helt annet sp&oslash;rsm&aring;l enn det policyen stiller.</p><p>Og l&aring;sing har en bakside: kan hvem som helst l&aring;se en konto med fem gale fors&oslash;k, har du bygget en tjenestenekt.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>500 kontoer, l&aring;sing ved 5 fors&oslash;k per 30 minutter.</p><ol class="wsteps"><li>Angriperen pr&oslash;ver <strong>3</strong> passord per konto, alts&aring; under grensa p&aring; 5</li><li>Det blir 500 &times; 3 = <strong>1500 fors&oslash;k</strong> totalt</li><li>Ingen enkeltkonto n&aring;r fem, s&aring; <strong>null l&aring;singer</strong> utl&oslash;ses</li><li>Policyen ser 500 kontoer med tre feil hver, og det er innenfor</li><li>Deteksjon som teller per kilde ser derimot 1500 feil fra &eacute;n adresse p&aring; kort tid</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># tell feil per konto</span>
+grep 'Failed password' /var/log/auth.log \
+  | awk '{print $9}' | sort | uniq -c | sort -rn | head
+
+<span class='c'># tell feil per kildeadresse</span>
+grep 'Failed password' /var/log/auth.log \
+  | awk '{print $11}' | sort | uniq -c | sort -rn | head</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2088293867"><span class="ans-q">500 kontoer, 3 forsøk hver. Hvor mange forsøk totalt?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="177621,2090557760,262742614"><span class="ans-q">Hvor mange kontoer låses hvis grensa er 5?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="264940174,147367669,5863486,2019846642"><span class="ans-q">Deteksjonen må telle på tvers av kontoer. Hva grupperer du på i stedet?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Regn ut fors&oslash;k per konto f&oslash;rst, og sammenlign med grensa.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Dette er hele grunnen til at spraying finnes. Policyen er ikke &oslash;delagt, den svarer bare p&aring; et annet sp&oslash;rsm&aring;l enn det du trenger svar p&aring;.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="pw-3" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">03</span>
+      <span class="lab-title">Hashen er ikke kryptering</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; Enveis</div>
+        <div class="theory-block"><div class="theory-title">🔐 Ingen nøkkel, ingen vei tilbake</div><div class="theory-text"><p>Kryptering har en n&oslash;kkel og kan reverseres. En <strong>hash kan ikke reverseres i det hele tatt</strong>, uansett n&oslash;kkel, fordi informasjonen ikke er der.</p><p>Derfor «knekker» man ikke en hash. Man <strong>gjetter inndata, hasher gjettet, og sammenligner</strong>. Det er alt verkt&oslash;yene gj&oslash;r.</p><p>Det f&oslash;lger to ting av det. Hastigheten avgj&oslash;r alt, siden du m&aring; hashe hvert eneste gjett. Og en <strong>usaltet</strong> hash trenger ikke engang det: er passordet vanlig, er hashen allerede regnet ut av noen andre og ligger i et oppslagsverk.</p><p>Det siste m&oslash;tte du i injeksjonslabben: DVWA-passordene l&aring; som usaltet MD5, og de sl&aring;s opp i stedet for &aring; knekkes.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du har hashen <code>5f4dcc3b5aa765d61d8327deb882cf99</code>.</p><ol class="wsteps"><li>32 heksadesimale tegn, alts&aring; 128 bit. Det ser ut som MD5</li><li>Du kan ikke regne deg bakover fra den</li><li>Du hasher gjett etter gjett og sammenligner</li><li>Men denne er s&aring; vanlig at den allerede st&aring;r i oppslagsverk</li><li>Den er MD5 av <code>password</code>, og du fant det uten &aring; knekke noe</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">echo -n password | md5sum
+echo -n password | sha256sum
+
+<span class='c'># identifiser hashtype</span>
+hashid 5f4dcc3b5aa765d61d8327deb882cf99</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193432064"><span class="ans-q">En hash på 32 heksadesimale tegn. Hvor mange bit er det?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Kan du regne deg bakover fra en hash til passordet? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="1229118863,-1537643880,1907186651"><span class="ans-q">En usaltet hash av et vanlig passord. Må du knekke den, eller slå den opp?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">32 heksadesimale tegn, hvert tegn er 4 bit.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="pw-4" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">04</span>
+      <span class="lab-title">Hastighet er hele forsvaret</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-5">Niv&aring; 4 &mdash; Regnestykket</div>
+        <div class="theory-block"><div class="theory-title">⚡ Samme passord, samme maskin, 28 sekunder mot 18 år</div><div class="theory-text"><p>Siden angrepet er &aring; hashe gjett etter gjett, er <strong>hvor fort hashen kan regnes ut</strong> hele forsvaret.</p><p>MD5 og SHA-1 er laget for &aring; v&aelig;re raske. Et moderne skjermkort gj&oslash;r st&oslash;rrelsesorden <strong>100 milliarder MD5 i sekundet</strong>.</p><p><strong>bcrypt</strong>, <strong>scrypt</strong> og <strong>Argon2</strong> er laget for &aring; v&aelig;re trege, og har en kostnadsparameter du kan skru opp etter hvert som maskinvaren blir bedre. bcrypt med kostnad 12 gir st&oslash;rrelsesorden <strong>5 000 i sekundet</strong> p&aring; samme kort.</p><p>Det er rundt <strong>20 millioner ganger</strong> forskjell, og det er ikke et lite forbedringstiltak. Det er skillet mellom en lekkasje som er katastrofal og en som er ubehagelig.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Et passord p&aring; 8 tegn, sm&aring; bokstaver og siffer.</p><ol class="wsteps"><li>S&oslash;keområdet er 36^8, alts&aring; <strong>2,8 billioner</strong> muligheter</li><li>MD5 p&aring; 100 GH/s: 2,8e12 delt p&aring; 1e11 = <strong>28 sekunder</strong></li><li>bcrypt p&aring; 5 000 H/s: 2,8e12 delt p&aring; 5000 = <strong>18 &aring;r</strong></li><li>Samme passord. Samme maskinvare. Bare hashfunksjonen er byttet</li><li>Og bcrypt kan skrus tregere n&aring;r maskinvaren blir raskere. Det kan ikke MD5</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># se hastigheten selv</span>
+hashcat -b -m 0      <span class='c'># MD5</span>
+hashcat -b -m 3200   <span class='c'># bcrypt</span>
+
+<span class='c'># s&oslash;keområde: tegnsett^lengde</span>
+python3 -c 'print(36**8)'</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5861615"><span class="ans-q">Søkeområdet er 2,8e12 og du rekker 1e11 i sekundet. Omtrent hvor mange sekunder?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="5867580,193485945"><span class="ans-q">Samme søkeområde, men 5000 i sekundet. Er svaret sekunder, døgn eller år?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="1000742553,-1836090259,2090156158"><span class="ans-q">Hvilken egenskap har bcrypt som MD5 ikke har? En parameter du kan skru opp, kalt hva?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Del s&oslash;keområdet p&aring; farten. Regn deretter om sekundene til noe du kan forholde deg til.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">2,8e12 delt p&aring; 5000 er 5,6e8 sekunder, alts&aring; rundt <strong>18 &aring;r</strong>. Det er samme regnestykke som over, med ett tall byttet ut, og det er hele poenget.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="pw-5" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">05</span>
+      <span class="lab-title">Hva salt gjør, og ikke gjør</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-5">Niv&aring; 4 &mdash; Salt og peppar</div>
+        <div class="theory-block"><div class="theory-title">🧂 Salt stopper gjenbruk av arbeid, ikke arbeidet selv</div><div class="theory-text"><p>Et <strong>salt</strong> er en tilfeldig verdi som lagres sammen med hashen og blandes inn f&oslash;r hashing. Det skal v&aelig;re <strong>unikt per bruker</strong>.</p><p>Da gj&oslash;r det to ting. Ferdig utregnede tabeller blir ubrukelige, fordi de ikke kjenner ditt salt. Og to brukere med samme passord f&aring;r <strong>ulike hasher</strong>, s&aring; du kan ikke lenger se hvem som deler passord.</p><p>Men salt gj&oslash;r <strong>ikke</strong> det &aring; knekke &eacute;n bestemt hash tregere. Saltet er kjent for angriperen, det ligger jo ved siden av. Det eneste som hjelper der er langsom hashing.</p><p>Salt og langsom hash l&oslash;ser alts&aring; to ulike problemer, og du trenger begge.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En lekket database med 10 000 brukere.</p><ol class="wsteps"><li>Uten salt: du hasher <code>Sommer2026!</code> &eacute;n gang og sammenligner med alle 10 000</li><li>Alle som brukte det passordet faller p&aring; &eacute;n utregning</li><li>Med unikt salt: du m&aring; hashe <code>Sommer2026!</code> <strong>10 000 ganger</strong>, &eacute;n per salt</li><li>Men skal du knekke &eacute;n bestemt bruker, koster saltet deg <strong>ingenting</strong></li><li>Derfor: salt mot masseangrep, langsom hash mot m&aring;lrettet angrep</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># samme passord, ulikt salt</span>
+python3 -c "import crypt;print(crypt.crypt('hemmelig','\$6\$aaa'))"
+python3 -c "import crypt;print(crypt.crypt('hemmelig','\$6\$bbb'))"
+
+<span class='c'># se saltet i en skyggefil</span>
+sudo cut -d: -f2 /etc/shadow | head -3</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">Gjør salt det tregere å knekke én bestemt brukers passord? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="194041238,2107818614"><span class="ans-q">10 000 brukere med unikt salt. Hvor mange ganger må du hashe ett kandidatpassord for å teste alle?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1528974502,1095475099,-1239942568,-1836090259"><span class="ans-q">Salt stopper masseangrep. Hva stopper målrettet knekking av én hash?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r om saltet er hemmelig. Det ligger lagret ved siden av hashen.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Den vanligste misforst&aring;elsen er at salt gj&oslash;r knekking tregere. Det gj&oslash;r det ikke. Det gj&oslash;r <strong>gjenbruk av arbeid</strong> umulig, og det er en helt annen ting.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="pw-6" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">06</span>
+      <span class="lab-title">Å knekke i praksis</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-5">Niv&aring; 4 &mdash; Praktisk</div>
+        <div class="theory-block"><div class="theory-title">🔨 Identifiser, velg modus, velg liste</div><div class="theory-text"><p>Rekkef&oslash;lgen er alltid den samme. <strong>Identifiser hashtypen</strong> ut fra lengde og format. <strong>Velg modus</strong> i verkt&oslash;yet. <strong>Velg angrepsm&aring;te</strong>: ordliste f&oslash;rst, regler etterp&aring;, ren gjennomgang bare hvis s&oslash;keområdet er lite.</p><p>32 heks er MD5, 40 er SHA-1, 64 er SHA-256. Begynner strengen med <code>$2y$</code> er det bcrypt, og med <code>$6$</code> er det SHA-512-crypt fra <code>/etc/shadow</code>.</p><p>I hashcat er <code>-m 0</code> MD5, <code>-m 1800</code> er SHA-512-crypt og <code>-m 3200</code> er bcrypt. <code>-a 0</code> er ordliste.</p><p>P&aring; en VM uten skjermkort g&aring;r dette p&aring; CPU og er tregt. Bruk korte lister, og bruk hashene fra DVWA du allerede har hentet ut.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du har MD5-hashene fra DVWA-brukertabellen.</p><ol class="wsteps"><li>Lengde 32 heks bekrefter MD5, alts&aring; <code>-m 0</code></li><li><code>hashcat -m 0 -a 0 hasher.txt rockyou.txt</code></li><li>Uten GPU tar full rockyou lang tid, s&aring; begynn med de f&oslash;rste tusen linjene</li><li>Eller: <code>john --format=raw-md5 --wordlist=kort.txt hasher.txt</code></li><li>Merk hvor fort det gikk, og sammenlign med regnestykket i oppgave 4</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">head -1000 /usr/share/wordlists/rockyou.txt &gt; kort.txt
+
+hashcat -m 0 -a 0 hasher.txt kort.txt
+hashcat -m 0 hasher.txt --show
+
+<span class='c'># eller med john</span>
+john --format=raw-md5 --wordlist=kort.txt hasher.txt</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="274377759,2090722866"><span class="ans-q">En hash på 40 heksadesimale tegn. Hvilken type er det?</span><input class="ans-in" placeholder="hashtype"><span class="ans-mark"></span></div><div class="ans-row" data-a="177621,2088210575"><span class="ans-q">Hvilken hashcat-modus er MD5?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="-206003943"><span class="ans-q">En streng som begynner med $2y$. Hvilken hashtype er det?</span><input class="ans-in" placeholder="hashtype"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Tell tegnene f&oslash;rst. Lengden alene skiller de vanligste typene.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="pw-7" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">07</span>
+      <span class="lab-title">Hva forsvareren ser</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-5">Niv&aring; 4 &mdash; Deteksjon</div>
+        <div class="theory-block"><div class="theory-title">👁️ Tre angrep, tre helt ulike signaturer</div><div class="theory-text"><p>Hvert angrep tegner sitt eget m&oslash;nster i loggen, og det er m&oslash;nsteret du detekterer p&aring;, ikke antallet.</p><p><strong>Brute force</strong>: &eacute;n konto, mange feil, kort tid. Lett &aring; se, og l&aring;sepolicyen fanger den.</p><p><strong>Spraying</strong>: mange kontoer, <strong>f&aring; feil hver</strong>, samme kilde. Usynlig per konto. Du m&aring; gruppere p&aring; kilde eller p&aring; tidsvindu.</p><p><strong>Stuffing</strong>: mange kontoer, og en <strong>uvanlig h&oslash;y andel vellykkede</strong> innlogginger, ofte fra uventede land eller fra mange ulike adresser samtidig.</p><p>Det siste er verdt &aring; merke seg: stuffing kan ha <em>bedre</em> treffrate enn vanlige brukere, og da er suksess i seg selv signalet.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Tre timer med logg, tre ulike bilder.</p><ol class="wsteps"><li>A: <code>kari</code> feiler 47 ganger p&aring; to minutter. <strong>Brute force</strong></li><li>B: 300 ulike brukernavn feiler to ganger hver, alt fra &eacute;n adresse. <strong>Spraying</strong></li><li>C: 80 innlogginger lykkes fra 80 ulike adresser i fire land p&aring; ti minutter. <strong>Stuffing</strong></li><li>A fanges av l&aring;sepolicy. B og C gj&oslash;r den ikke</li><li>B fanges ved &aring; gruppere p&aring; kilde. C fanges p&aring; at <em>suksessraten</em> er feil</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># per konto</span>
+grep 'Failed password' /var/log/auth.log \
+  | awk '{print $9}' | sort | uniq -c | sort -rn | head
+
+<span class='c'># per kilde</span>
+grep 'Failed password' /var/log/auth.log \
+  | awk '{print $11}' | sort | uniq -c | sort -rn | head
+
+<span class='c'># vellykkede</span>
+grep 'Accepted password' /var/log/auth.log | tail</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="1540097842"><span class="ans-q">300 brukernavn, to feil hver, én kildeadresse. Hvilket angrep?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1761311893,632913318"><span class="ans-q">Hvilket av de tre kan ha høyere suksessrate enn vanlige brukere?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="264940174,147367669,5863486"><span class="ans-q">Spraying er usynlig per konto. Hva må du gruppere på i stedet?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r hva som er felles i hvert bilde: kontoen, kilden, eller utfallet.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Den siste er den som skiller en god deteksjon fra en d&aring;rlig. De fleste regler teller <em>feilede</em> innlogginger. Stuffing ser ut som <strong>vellykkede</strong> innlogginger, og glir rett gjennom en slik regel.</div></div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div style="margin-top:36px"><a href="../labber.html" class="btn btn-ghost">&larr; Labber</a></div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner">
+<span>CyberLab &mdash; Fagskole Informasjonssikkerhet</span><span>Gratis &amp; &aring;pen kildekode</span>
+</div></div></footer>
+<script src="../js/cyberlab.js"></script>
+</body>
+</html>

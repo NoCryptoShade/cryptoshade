@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autentiseringssvakheter — CyberLab</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/lab-shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Bricolage+Grotesque:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+.cmd{background:#05070a;border:1px solid var(--border);border-left:2px solid var(--blue);
+  border-radius:0 6px 6px 0;padding:11px 14px;font-family:var(--mono);font-size:11.5px;
+  color:var(--text2);overflow-x:auto;line-height:1.85;white-space:pre-wrap;word-break:break-word}
+.cmd .c{color:var(--text3)}
+</style>
+</head>
+<body class="page">
+<nav class="nav">
+  <div class="nav-logo"><span class="bracket">[</span>CyberLab<span class="bracket">]</span></div>
+  <div class="nav-links">
+    <a href="../index.html" class="nav-link">Hjem</a>
+    <a href="../emne1.html" class="nav-link">Emne 1</a>
+    <a href="../emne3.html" class="nav-link">Emne 3</a>
+    <a href="../labber.html" class="nav-link on">Labber</a>
+    <a href="https://tk1104.timoamling.com/" target="_blank" rel="noopener" class="nav-link">Self check &nearr;</a>
+  </div>
+</nav>
+
+<div class="container-sm page" style="padding-top:40px;padding-bottom:80px">
+  <a href="../labber.html" class="back-link">&larr; Tilbake</a>
+  <div class="mod-hero">
+    <div class="section-eyebrow">Lab 19 &middot; Emne 3 &middot; Leksjon 9</div>
+    <div class="section-title">Autentiseringssvakheter</div>
+    <p class="section-desc">Innloggingen er som regel den best beskyttede d&oslash;ra. Problemet er alle de andre d&oslash;rene inn til samme konto.</p>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Fremdrift</span><span id="progressLabel">0 / 0 fullf&oslash;rt</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <div class="filter-row">
+    <button class="filter-pill active-all" onclick="setFilter('all',this)">Alle</button>
+    <button class="filter-pill" onclick="setFilter('easy',this)">Lett</button>
+    <button class="filter-pill" onclick="setFilter('medium',this)">Middels</button>
+    <button class="filter-pill" onclick="setFilter('hard',this)">Vanskelig</button>
+  </div>
+
+  <div class="tasks">
+  <div class="lab-card" id="au-1" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">01</span>
+      <span class="lab-title">Hva som faktisk gjør et passord svakt</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-3">Niv&aring; 2 &mdash; Forutsigbarhet</div>
+        <div class="theory-block"><div class="theory-title">🔑 Gjettbarhet, ikke kompleksitet</div><div class="theory-text"><p>Regler om store bokstaver og spesialtegn gj&oslash;r passord vanskelige &aring; huske, ikke vanskelige &aring; gjette. Folk l&oslash;ser kravet p&aring; samme m&aring;te: <code>Sommer2026!</code> oppfyller alt, og st&aring;r i enhver ordliste.</p><p>Det som faktisk avgj&oslash;r er <strong>hvor stort s&oslash;keområdet er i praksis</strong>. Et passord fra en kjent liste har s&oslash;keområde &eacute;n, uansett hvor mange tegnklasser det inneholder.</p><p>Tre m&oslash;nstre gj&oslash;r jobben for angriperen: <strong>&aring;rstall eller sesong</strong> (bedrifter tvinger bytte hver 90. dag, og folk teller oppover), <strong>firmanavnet</strong>, og <strong>gjenbruk</strong> fra en tjeneste som allerede er lekket.</p><p>Derfor anbefaler NIST i dag lengde og sperreliste mot kjente passord, og fraråder tvungen periodisk bytte.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>To passord, samme policy.</p><ol class="wsteps"><li><code>Host2025!</code>: 9 tegn, store, sm&aring;, siffer og tegn. Oppfyller alt</li><li>Men det st&aring;r i en ordliste, s&aring; det knekkes p&aring; f&oslash;rste fors&oslash;k</li><li><code>drosje potet vinter kork</code>: bare sm&aring; bokstaver, oppfyller ingen regler</li><li>Fire tilfeldige ord gir et s&oslash;keområde som ingen ordliste dekker</li><li>Det andre er langt sterkere, og langt lettere &aring; huske</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># se hvor mange ganger et passord</span>
+<span class='c'># har dukket opp i lekkasjer</span>
+<span class='c'># haveibeenpwned.com/Passwords</span>
+
+<span class='c'># ordlista de fleste starter med</span>
+wc -l /usr/share/wordlists/rockyou.txt</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177622,193490930,5867708"><span class="ans-q">Et passord oppfyller alle kompleksitetskrav, men står i rockyou.txt. Hvor mange forsøk trengs?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="-236562788,461694548,500574829,-660895500"><span class="ans-q">Firmaet tvinger bytte hver 90. dag. Hvilket mønster får du da i passordene?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="900702050,-986213354,154036998,1891036090"><span class="ans-q">Hva anbefaler NIST i stedet for tvungen periodisk bytte? Skriv det ene: sperreliste mot hva?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r hvor stort s&oslash;keområdet er <em>i praksis</em>, ikke hvor mange tegnklasser som brukes.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Poenget: kompleksitetsregler flytter ikke s&oslash;keområdet, de flytter bare hvor i lista passordet st&aring;r. <strong>Lengde og en sperreliste</strong> gj&oslash;r jobben.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="au-2" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">02</span>
+      <span class="lab-title">Tilbakestilling er ofte den svakeste døra</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-5">Niv&aring; 3 &mdash; Reset-flyten</div>
+        <div class="theory-block"><div class="theory-title">🚪 Samme konto, mye dårligere vakthold</div><div class="theory-text"><p>Innloggingen har gjerne ratebegrensning, MFA, l&aring;sing og overv&aring;king. <strong>Tilbakestillingsflyten har som regel ingen av delene.</strong> Den er en egen vei inn til samme konto, bygget av noen andre, ofte senere.</p><p>Fire ting g&aring;r galt igjen og igjen. <strong>Forutsigbart token</strong>: bygget av tidsstempel eller teller i stedet for tilfeldighet. <strong>Token som ikke utl&oslash;per</strong> eller kan brukes flere ganger. <strong>Token knyttet til feil konto</strong>, slik at du kan bytte bruker-ID i siste steg. Og <strong>sikkerhetsspørsmål</strong>, som ofte kan slås opp.</p><p>Den femte er verre: hvis lenka i e-posten bygges av <code>Host</code>-headeren i foresp&oslash;rselen, kan angriperen styre hvor tokenet sendes.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du ber om tilbakestilling to ganger og sammenligner lenkene.</p><ol class="wsteps"><li>F&oslash;rste: <code>?token=MTcyNTk4MjQwMA</code></li><li>Andre, ett sekund senere: <code>?token=MTcyNTk4MjQwMQ</code></li><li>Base64-dekodet er dette <code>1725982400</code> og <code>1725982401</code></li><li>Alts&aring; er tokenet <strong>unix-tid</strong>, ikke tilfeldig</li><li>Kjenner du omtrent n&aring;r offeret ba om tilbakestilling, er s&oslash;keområdet noen hundre verdier</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># be om to tilbakestillinger og sammenlign</span>
+echo 'MTcyNTk4MjQwMA==' | base64 -d
+
+<span class='c'># sjekk om tokenet fortsatt virker</span>
+<span class='c'># etter bruk, og etter en time</span></div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193500225"><span class="ans-q">To tokens utstedt ett sekund fra hverandre skiller seg med én. Er tokenet tilfeldig? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="277199586,-1263735140,-379568607,17655510"><span class="ans-q">Et token virker fortsatt etter at passordet er byttet. Hvilken egenskap mangler?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Innloggingen har MFA og ratebegrensning. Har reset-flyten det automatisk også? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Behandle tilbakestilling som en egen innlogging, og still de samme sp&oslash;rsm&aring;lene til den.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Dette er grunnen til at reset-flyten skal testes separat i enhver rapport. Den er en <strong>fullverdig vei til kontoovertakelse</strong> som sjelden har samme beskyttelse som d&oslash;ra ved siden av.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="au-3" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">03</span>
+      <span class="lab-title">Finnes brukeren? Systemet svarer ofte ja</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-3">Niv&aring; 3 &mdash; Brukeropptelling</div>
+        <div class="theory-block"><div class="theory-title">🔍 Tre kanaler røper om kontoen finnes</div><div class="theory-text"><p>F&oslash;r du kan angripe et passord m&aring; du vite at kontoen finnes. Systemer r&oslash;per det p&aring; tre m&aring;ter.</p><p><strong>Ordlyd</strong>: «Ukjent bruker» mot «Feil passord» er to ulike svar. <strong>Statuskode eller lengde</strong>: samme tekst, men svaret er noen byte lengre. <strong>Tid</strong>: finnes brukeren, hashes passordet ditt, og det tar millisekunder ekstra. Finnes han ikke, avbrytes det med en gang.</p><p>Tidskanalen m&oslash;tte du i leksjon 5 p&aring; lab5-serveren, der en ekte bruker tok rundt 0,35 sekunder og en oppdiktet under ett millisekund.</p><p>Forsvaret er &aring; gj&oslash;re alle tre like: samme tekst, samme lengde, og hash alltid, ogs&aring; mot en oppdiktet bruker.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du tester to brukernavn mot samme innlogging.</p><ol class="wsteps"><li><code>admin</code> med feil passord: svar p&aring; 0,31 s, 1240 byte</li><li><code>zzqq99</code> med feil passord: svar p&aring; 0,01 s, 1240 byte</li><li>Teksten og lengden er lik, s&aring; det ser trygt ut</li><li>Men tidsforskjellen er 30 ganger, og den er m&aring;lbar utenfra</li><li>Alts&aring; finnes <code>admin</code> og <code>zzqq99</code> ikke</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># m&aring;l tid og st&oslash;rrelse p&aring; svaret</span>
+curl -s -o /dev/null -w '%{time_total} %{size_download}\n' \
+  -d 'user=admin&pass=x' http://&lt;MAAL&gt;/login
+curl -s -o /dev/null -w '%{time_total} %{size_download}\n' \
+  -d 'user=zzqq99&pass=x' http://&lt;MAAL&gt;/login</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5863504"><span class="ans-q">To svar har lik tekst og lik lengde, men ulik svartid. Kan du fortsatt telle brukere? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="261102670,1473566283,2090320585"><span class="ans-q">Hvorfor tar et ekte brukernavn lengre tid? Fordi systemet rekker å gjøre hva med passordet?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="1866847289,-65359716,258723574,-1698052540"><span class="ans-q">Hva er forsvaret mot tidskanalen? Hash alltid, også mot en hva slags bruker?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Tre kanaler: ordlyd, lengde og tid. Alle tre m&aring; gj&oslash;res like.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="au-4" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">04</span>
+      <span class="lab-title">MFA-tretthet</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-3">Niv&aring; 3 &mdash; Push-bombing</div>
+        <div class="theory-block"><div class="theory-title">📲 En godkjenning uten kontekst er bare en ja-knapp</div><div class="theory-text"><p>MFA med push-varsel spør «var dette deg?» og tilbyr Godkjenn eller Avvis. Har angriperen allerede passordet, kan han utl&oslash;se varselet s&aring; ofte han vil.</p><p><strong>MFA-tretthet</strong> er &aring; sende tjue varsler p&aring; natten til noen trykker godkjenn for &aring; f&aring; ro. Det er ikke et teknisk brudd. Det er utmattelse.</p><p>Tre tiltak virker. <strong>Nummermatching</strong>: brukeren m&aring; skrive inn et tall som vises p&aring; innloggingsskjermen, og da kan han ikke godkjenne noe han ikke ser. <strong>Kontekst i varselet</strong>: sted, enhet og applikasjon. Og <strong>ratebegrensning</strong> p&aring; antall push per konto.</p><p>Sterkest er n&oslash;kler bundet til nettstedet, som passkeys og FIDO2. De kan ikke godkjennes for feil domene i det hele tatt.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En bruker f&aring;r 14 varsler mellom 02:00 og 02:20.</p><ol class="wsteps"><li>Angriperen har passordet allerede, ellers utl&oslash;ses ingen push</li><li>Varselet sier bare «Godkjenn innlogging?» uten sted eller enhet</li><li>Bruker nummer 14 trykker godkjenn for &aring; f&aring; sove</li><li>Med <strong>nummermatching</strong> ville han m&aring;ttet lese et tall han ikke hadde</li><li>Loggen viser 13 avslag f&oslash;r den ene godkjenningen, og det er et tydelig deteksjonsm&oslash;nster</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Til hjelp</div>
+          <div class="cmd"><span class='c'># dette testes ikke praktisk her.</span>
+<span class='c'># se etter m&oslash;nsteret i loggene i stedet:</span>
+<span class='c'># mange avslag, s&aring; &eacute;n godkjenning</span>
+<span class='c'># samme konto, kort tidsrom</span></div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5863504"><span class="ans-q">Må angriperen ha passordet før han kan starte MFA-tretthet? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1195050812,1271276548,-1062729507"><span class="ans-q">Hvilket tiltak gjør at brukeren ikke kan godkjenne noe han ikke ser?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="574310022,-1353122422,1738970771"><span class="ans-q">Hvordan ser angrepet ut i loggen? Mange avslag og så hva?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r hva brukeren faktisk vet i det &oslash;yeblikket han trykker.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="au-5" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">05</span>
+      <span class="lab-title">Når slutter en sesjon egentlig</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-5">Niv&aring; 4 &mdash; Tidsavbrudd</div>
+        <div class="theory-block"><div class="theory-title">⏳ Utlogging som bare tømmer nettleseren er ingen utlogging</div><div class="theory-text"><p>Tre grenser styrer en sesjon. <strong>Inaktivitetsavbrudd</strong>: slutter etter et opphold. <strong>Absolutt avbrudd</strong>: slutter uansett aktivitet, for eksempel etter &aring;tte timer. <strong>Ugyldiggj&oslash;ring</strong>: sesjonen dør fordi noe skjedde, som bytte av passord.</p><p>Bare det siste stopper en angriper som allerede har sesjonen. Uten det kan offeret bytte passord mens angriperen blir sittende innlogget.</p><p>Og dette m&oslash;tte du konkret i leksjon 5: p&aring; lab5-serveren fjernet utlogging bare cookien i nettleseren. Sesjons-ID-en virket fortsatt, fordi <strong>serveren aldri slettet den</strong>.</p><p>Regelen: sesjons-ID skal byttes ved innlogging, og slettes p&aring; serveren ved utlogging og ved passordbytte.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Et system har 30 minutters inaktivitet og ingen ugyldiggj&oslash;ring.</p><ol class="wsteps"><li>Angriperen stjeler en sesjons-ID klokka 09:00</li><li>Offeret merker noe og bytter passord 09:10</li><li>Angriperen gj&oslash;r et kall 09:25, og sesjonen er fortsatt gyldig</li><li>Passordbyttet gjorde ingenting, fordi sesjonen ikke var knyttet til det</li><li>Med ugyldiggj&oslash;ring ville alle &oslash;kter d&oslash;dd i samme sekund som passordet ble byttet</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># test mot lab5 fra leksjon 5</span>
+curl -c jar -d 'user=student&pass=student123' \
+  http://127.0.0.1:8080/login
+curl -b jar http://127.0.0.1:8080/logout
+<span class='c'># virker sesjons-ID-en fortsatt?</span>
+curl -b jar http://127.0.0.1:8080/account</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="-511590381,-379568607,-674061558"><span class="ans-q">Hvilken av de tre grensene stopper en angriper som allerede har sesjonen?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Utlogging sletter bare cookien i nettleseren. Er sesjonen død? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1679781983,373492058"><span class="ans-q">Når ellers enn ved utlogging må sesjonen ugyldiggjøres? Ved bytte av hva?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r hvem som m&aring; gl emme sesjonen: nettleseren eller serveren.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Dette er samme funn som i leksjon 5, sett fra forsvarssiden. Utlogging som bare skjer hos klienten er <strong>kosmetikk</strong>. Sesjonen lever til serveren sletter den.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="au-6" data-level="medium">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">06</span>
+      <span class="lab-title">Delte kontoer</span>
+      <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-3">Niv&aring; 3 &mdash; Sporbarhet</div>
+        <div class="theory-block"><div class="theory-title">👥 Uten en eier kan ingen spørsmål besvares</div><div class="theory-text"><p>En konto som flere deler koster deg tre ting.</p><p><strong>Attribusjon</strong>: loggen sier <code>drift</code> gjorde det, og det er alt du f&aring;r vite. Ved en hendelse kan du ikke svare p&aring; hvem.</p><p><strong>Tilbaketrekking</strong>: n&aring;r noen slutter, m&aring; passordet byttes for alle. I praksis skjer ikke det, s&aring; tidligere ansatte beholder tilgang.</p><p><strong>MFA</strong>: en delt konto kan ikke ha personlig MFA, s&aring; den ender uten.</p><p>L&oslash;sningen er ikke &aring; forby delt arbeid, men &aring; gi hver person sin konto og la dem <strong>heve rettigheter</strong> til en felles rolle. Da st&aring;r det i loggen hvem som hevet seg n&aring;r.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En hendelse skal etterforskes tre m&aring;neder tilbake.</p><ol class="wsteps"><li>Loggen viser at <code>drift</code> slettet en database 14. mars kl 23:40</li><li>Fem personer kjenner det passordet, og to av dem har sluttet siden</li><li>Ingen teknisk spor skiller dem</li><li>Etterforskningen stopper her, uansett hvor gode loggene ellers er</li><li>Med personlige kontoer og <code>sudo</code> hadde du hatt et navn</li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># hvem har logget inn</span>
+last | head -20
+<span class='c'># hvem har hevet rettigheter</span>
+grep sudo /var/log/auth.log | tail -20
+<span class='c'># kontoer som deler uid</span>
+awk -F: '{print $3}' /etc/passwd | sort | uniq -d</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177626,193491517"><span class="ans-q">Loggen sier «drift» gjorde det, og fem personer kjenner passordet. Hvor mange mistenkte?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="-976566758,-1601306977"><span class="ans-q">Hvilken av de tre kostnadene rammer deg først ved en hendelse?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="960193716,2090325037,1187367761"><span class="ans-q">Hva er løsningen? Personlige kontoer som kan gjøre hva til en felles rolle?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sp&oslash;r hvilket sp&oslash;rsm&aring;l du ikke lenger kan svare p&aring; etter en hendelse.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lab-card" id="au-7" data-level="hard">
+    <div class="lab-header" onclick="toggleTask(this)">
+      <span class="lab-num">07</span>
+      <span class="lab-title">Hydra i praksis</span>
+      <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
+    </div>
+    <div class="lab-body">
+      <div class="lab-flow">
+        <div class="level-badge lb-5">Niv&aring; 4 &mdash; Praktisk</div>
+        <div class="theory-block"><div class="theory-title">🐙 Ett verktøy, to helt ulike angrep</div><div class="theory-text"><p><code>hydra</code> pr&oslash;ver brukernavn og passord mot en tjeneste. Hvilket angrep det blir avhenger av hvilken vei du fyller listene.</p><p><code>-l bruker -P passordliste</code> er <strong>brute force</strong>: &eacute;n konto, mange passord. Det l&aring;ser kontoen hvis det finnes en l&aring;sepolicy.</p><p><code>-L brukerliste -p passord</code> er <strong>spraying</strong>: mange kontoer, &eacute;tt passord. Det unng&aring;r l&aring;sing, fordi hver konto bare f&aring;r ett fors&oslash;k.</p><p>Det er &eacute;n bokstav forskjell, og to helt ulike st&oslash;yprofiler. Du m&oslash;ter dette igjen i neste leksjon.</p><p><code>-t</code> styrer parallelle tr&aring;der. H&oslash;yt tall g&aring;r fortere og oppdages lettere. Bruk bare mot Metasploitable, p&aring; host-only.</p></div></div>
+        <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Samme verkt&oslash;y, to kommandoer, to angrep.</p><ol class="wsteps"><li><code>hydra -l msfadmin -P rockyou.txt ssh://MAAL</code></li><li>&Eacute;n konto, 14 millioner passord. <strong>Brute force</strong>, og kontoen l&aring;ses hvis det finnes en policy</li><li><code>hydra -L brukere.txt -p Host2026! ssh://MAAL</code></li><li>Mange kontoer, &eacute;tt passord. <strong>Spraying</strong>, og ingen konto n&aring;r l&aring;segrensa</li><li>Forskjellen i kommandoen er <code>-l</code> mot <code>-L</code> og <code>-P</code> mot <code>-p</code></li></ol></div></div>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># liten liste f&oslash;rst, ikke hele rockyou</span>
+head -50 /usr/share/wordlists/rockyou.txt &gt; kort.txt
+
+hydra -l msfadmin -P kort.txt ssh://&lt;MAAL&gt; -t 4
+
+<span class='c'># og spraying-varianten</span>
+hydra -L brukere.txt -p msfadmin ssh://&lt;MAAL&gt; -t 4</div>
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="1540097842"><span class="ans-q">Stor -L og liten -p: er dette brute force eller spraying?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1054636362,1873489334,-545876253"><span class="ans-q">Hvilken av de to låser kontoen hvis det finnes en låsepolicy?</span><input class="ans-in" placeholder="to ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="5861510,177689"><span class="ans-q">Hvilket flagg styrer antall parallelle tråder, og dermed hvor fort du oppdages?</span><input class="ans-in" placeholder="et flagg"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Store bokstaver betyr liste, sm&aring; betyr &eacute;n verdi. Se hvilken side lista st&aring;r p&aring;.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Merk hvor lite som skiller dem i kommandoen, og hvor mye som skiller dem i praksis. <strong>Brute force l&aring;ser &eacute;n konto. Spraying ber&oslash;rer alle, og l&aring;ser ingen.</strong></div></div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div style="margin-top:36px"><a href="../labber.html" class="btn btn-ghost">&larr; Labber</a></div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner">
+<span>CyberLab &mdash; Fagskole Informasjonssikkerhet</span><span>Gratis &amp; &aring;pen kildekode</span>
+</div></div></footer>
+<script src="../js/cyberlab.js"></script>
+</body>
+</html>

@@ -61,8 +61,7 @@
     <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="level-badge lb-1" style="margin:0">Nivå 1</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-1">Nivå 1 — Lokal nettverksinformasjon</div>
         <div class="theory-block"><div class="theory-title">📐 Adresse pluss maske gir nettverket</div><div class="theory-text"><p>En IP-adresse alene sier ingenting om hvilket nett du står i. Det er <strong>adressen og masken sammen</strong> som avgjør det.</p><p>Masken deler adressen i en <strong>nettverksdel</strong> og en <strong>vertsdel</strong>. Tallet etter skråstreken er hvor mange bit som er nettverksdel. <code>/24</code> betyr de 24 første bitene, altså de tre første tallene.</p><p>Antall brukbare adresser er <code>2^(32 - maske) - 2</code>. De to som trekkes fra er nettverksadressen, der vertsdelen er null, og kringkastingsadressen, der vertsdelen er full.</p><p>To maskiner er på samme nett hvis <strong>nettverksdelen er lik</strong>. Er den ulik, må trafikken gjennom en ruter.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En maskin har <code>172.20.5.80/24</code>.</p><ol class="wsteps"><li>Masken er /24, så nettverksdelen er de tre første tallene: <code>172.20.5</code></li><li>Vertsdelen er det siste tallet: <code>80</code></li><li>Nettverksadressen har vertsdel null: <code>172.20.5.0</code></li><li>Kringkastingsadressen har vertsdel full: <code>172.20.5.255</code></li><li>Brukbare: 2^(32-24) - 2 = 256 - 2 = <strong>254</strong>, altså .1 til .254</li><li><code>172.20.5.200</code> har samme nettverksdel, altså <strong>samme nett</strong>. <code>172.20.6.9</code> har ikke, altså <strong>må gjennom ruter</strong></li></ol></div></div>
@@ -74,7 +73,16 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Hva er standard gateway, og hva brukes den til?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Prøv også <code>ifconfig</code> og <code>ip a</code></div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
+          <div class="fake-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="fake-url">Terminal — student@cyberlab:~$</div>
+          </div>
+          <div class="lab-term" style="flex:1">
+            <div class="lab-term-body" id="tb1"><div class="lt-info">Skriv 'help' for tilgjengelige kommandoer</div></div>
+            <div class="lab-term-input"><span class="lt-ps1">student@cyberlab:~$&nbsp;</span><input class="lt-in" id="ti1" placeholder="skriv kommando..." autocomplete="off"></div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Din tur</div>
           <div class="ans-row" data-a="-598711009">
             <span class="ans-q">Din maskin er 10.44.7.15/24. Hva er nettverksadressen?</span>
@@ -98,19 +106,6 @@
         </div>
         <div class="complete-banner" id="done-net-1"><span>✓</span> Lab 1 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
-          <div class="fake-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="fake-url">Terminal — student@cyberlab:~$</div>
-          </div>
-          <div class="lab-term" style="flex:1">
-            <div class="lab-term-body" id="tb1"><div class="lt-info">Skriv 'help' for tilgjengelige kommandoer</div></div>
-            <div class="lab-term-input"><span class="lt-ps1">student@cyberlab:~$&nbsp;</span><input class="lt-in" id="ti1" placeholder="skriv kommando..." autocomplete="off"></div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -122,8 +117,7 @@
     <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="level-badge lb-2" style="margin:0">Nivå 2</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-2">Nivå 2 — DNS og tilgjengelighet</div>
         <div class="theory-block"><div class="theory-title">📖 DNS svarer på ulike spørsmål</div><div class="theory-text"><p>DNS er ikke ett oppslag, det er flere. Hver <strong>record-type</strong> svarer på sitt eget spørsmål om et domene.</p><p><code>A</code> gir IPv4-adressen. <code>AAAA</code> gir IPv6. <code>MX</code> peker på e-postserverne, med et prioritetstall der <strong>lavest tall prøves først</strong>. <code>NS</code> peker på navneserverne. <code>TXT</code> inneholder fritekst, ofte SPF-oppføringer som sier hvem som får sende e-post for domenet.</p><p>Oppslaget går til en navneserver, <strong>ikke til målet</strong>. Derfor dukker det ikke opp i målets logger.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Et oppslag mot <code>eksempel.no</code> gir:</p><ol class="wsteps"><li><code>A</code> peker på <code>93.184.2.10</code>, altså webserveren</li><li><code>MX 10 mail1.eksempel.no</code> og <code>MX 20 mail2.eksempel.no</code></li><li>Lavest prioritetstall prøves først, så <strong>mail1 er primær</strong> og mail2 er reserve</li><li>Ingen av oppslagene sendte en eneste pakke til 93.184.2.10</li></ol></div></div>
@@ -135,7 +129,16 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Kjør <code>ping vg.no</code> — svarer serveren? Hva betyr timeout?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva kan en angriper lære av DNS-informasjon alene?</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
+          <div class="fake-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="fake-url">Terminal — student@cyberlab:~$</div>
+          </div>
+          <div class="lab-term" style="flex:1">
+            <div class="lab-term-body" id="tb2"><div class="lt-info">Prøv: nslookup vg.no</div></div>
+            <div class="lab-term-input"><span class="lt-ps1">student@cyberlab:~$&nbsp;</span><input class="lt-in" id="ti2" placeholder="skriv kommando..." autocomplete="off"></div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Din tur</div>
           <div class="ans-row" data-a="2090080569">
             <span class="ans-q">Domenet har MX 5 alfa og MX 30 beta. Hvilken prøves først?</span>
@@ -159,19 +162,6 @@
         </div>
         <div class="complete-banner" id="done-net-2"><span>✓</span> Lab 2 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
-          <div class="fake-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="fake-url">Terminal — student@cyberlab:~$</div>
-          </div>
-          <div class="lab-term" style="flex:1">
-            <div class="lab-term-body" id="tb2"><div class="lt-info">Prøv: nslookup vg.no</div></div>
-            <div class="lab-term-input"><span class="lt-ps1">student@cyberlab:~$&nbsp;</span><input class="lt-in" id="ti2" placeholder="skriv kommando..." autocomplete="off"></div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -183,8 +173,7 @@
     <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="level-badge lb-3" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-3">Nivå 3 — Portanalyse</div>
         <div class="theory-block"><div class="theory-title">🔌 En linje i netstat er fire opplysninger</div><div class="theory-text"><p>Hver linje forteller deg <strong>lokal adresse og port</strong>, <strong>ekstern adresse og port</strong>, og en <strong>tilstand</strong>.</p><p><code>LISTENING</code> betyr at en tjeneste venter. Den eksterne adressen er da tom eller null, fordi ingen har koblet til ennå. <code>ESTABLISHED</code> betyr at to parter snakker sammen nå, og da står det en ekte adresse i begge ender.</p><p>Den lokale adressen avgjør hvem som når tjenesten. <code>127.0.0.1</code> betyr bare maskinen selv. <code>0.0.0.0</code> betyr <strong>alle grensesnitt</strong>, altså også nettet.</p><p>Retningen ligger i portnumrene. En tjeneste lytter på en <strong>fast, lav</strong> port. En klient som kobler ut får en <strong>tilfeldig, høy</strong> port over 32768.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En linje viser <code>TCP 0.0.0.0:445 0.0.0.0:0 LISTENING</code>, en annen <code>TCP 10.0.0.5:49821 93.184.2.10:443 ESTABLISHED</code>.</p><ol class="wsteps"><li>Første linje: lokal port 445 er fast og lav, ekstern adresse er tom. En <strong>tjeneste som venter</strong></li><li>Den lytter på 0.0.0.0, altså <strong>nåbar fra nettet</strong>, ikke bare lokalt</li><li>Andre linje: lokal port 49821 er høy og tilfeldig, ekstern port 443 er fast og lav</li><li>Altså er <strong>denne maskinen klienten</strong>, og den kobler ut til en webserver</li></ol></div></div>
@@ -196,7 +185,16 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Hvilken tilkobling indikerer en aktiv bakdør?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva gjør du som incident responder umiddelbart?</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
+          <div class="fake-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="fake-url">Terminal — student@kompromittert-server:~$</div>
+          </div>
+          <div class="lab-term" style="flex:1">
+            <div class="lab-term-body" id="tb3"><div class="lt-info">Kjør 'netstat' for å se nettverkstilstanden</div></div>
+            <div class="lab-term-input"><span class="lt-ps1">student@server:~$&nbsp;</span><input class="lt-in" id="ti3" placeholder="skriv kommando..." autocomplete="off"></div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Din tur</div>
           <div class="ans-row" data-a="193500225">
             <span class="ans-q">TCP 127.0.0.1:3306 0.0.0.0:0 LISTENING — er databasen nåbar fra nettet? ja eller nei</span>
@@ -220,19 +218,6 @@
         </div>
         <div class="complete-banner" id="done-net-3"><span>✓</span> Lab 3 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
-          <div class="fake-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="fake-url">Terminal — student@kompromittert-server:~$</div>
-          </div>
-          <div class="lab-term" style="flex:1">
-            <div class="lab-term-body" id="tb3"><div class="lt-info">Kjør 'netstat' for å se nettverkstilstanden</div></div>
-            <div class="lab-term-input"><span class="lt-ps1">student@server:~$&nbsp;</span><input class="lt-in" id="ti3" placeholder="skriv kommando..." autocomplete="off"></div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -244,8 +229,7 @@
     <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="level-badge lb-3" style="margin:0">Nivå 4</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-3">Nivå 4 — Nettverkstopologi</div>
         <div class="theory-block"><div class="theory-title">🗺️ TTL er en teller, ikke en tid</div><div class="theory-text"><p>Hver IP-pakke har et felt som heter <strong>TTL</strong>. Hver ruter pakken passerer trekker fra én. Når TTL treffer null kastes pakken, og ruteren sender en feilmelding tilbake til avsenderen.</p><p>Traceroute utnytter det: send med TTL 1, og første ruter melder fra. Send med TTL 2, og andre ruter melder fra. <strong>Hoppnummeret er altså TTL-verdien som ble brukt.</strong></p><p><code>* * *</code> betyr bare at hoppet ikke svarte. Mange rutere er satt opp til å la være, og pakken går videre likevel.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En traceroute viser hopp 4 som <code>* * *</code>, og hopp 5 svarer normalt.</p><ol class="wsteps"><li>Hopp 4 fikk pakker med TTL 4 og svarte ikke</li><li>Hopp 5 fikk pakker med TTL 5 og svarte</li><li>Altså kom pakken <strong>gjennom</strong> hopp 4 og videre til hopp 5</li><li>Ruter 4 er derfor <strong>ikke nede</strong>, den er bare satt opp til å tie</li></ol></div></div>
@@ -257,7 +241,16 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Sammenlign <code>tracert vg.no</code> og <code>tracert google.com</code></div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva kan traceroute avsløre om intern nettverksstruktur?</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
+          <div class="fake-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="fake-url">Terminal — student@cyberlab:~$</div>
+          </div>
+          <div class="lab-term" style="flex:1">
+            <div class="lab-term-body" id="tb4"><div class="lt-info">Prøv: tracert vg.no</div></div>
+            <div class="lab-term-input"><span class="lt-ps1">student@cyberlab:~$&nbsp;</span><input class="lt-in" id="ti4" placeholder="skriv kommando..." autocomplete="off"></div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Din tur</div>
           <div class="ans-row" data-a="193500225">
             <span class="ans-q">Hopp 7 svarer, hopp 8 er * * *, hopp 9 svarer. Er ruter 8 nede? ja eller nei</span>
@@ -281,19 +274,6 @@
         </div>
         <div class="complete-banner" id="done-net-4"><span>✓</span> Lab 4 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
-          <div class="fake-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="fake-url">Terminal — student@cyberlab:~$</div>
-          </div>
-          <div class="lab-term" style="flex:1">
-            <div class="lab-term-body" id="tb4"><div class="lt-info">Prøv: tracert vg.no</div></div>
-            <div class="lab-term-input"><span class="lt-ps1">student@cyberlab:~$&nbsp;</span><input class="lt-in" id="ti4" placeholder="skriv kommando..." autocomplete="off"></div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -305,8 +285,7 @@
     <div class="lab-meta"><span class="badge badge-hard">Hard</span><span class="level-badge lb-4" style="margin:0">Nivå 5</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-4">Nivå 5 — Protokollsikkerhet</div>
         <div class="theory-block"><div class="theory-title">🔐 Kryptering skjuler innhold, ikke eksistens</div><div class="theory-text"><p>Telnet sender alt i klartekst. SSH krypterer nyttelasten.</p><p>Det en avlytter fortsatt ser av en SSH-økt: <strong>hvem som snakker med hvem</strong>, <strong>når</strong>, <strong>hvor mye data</strong> og <strong>hvor lenge</strong>. Det han ikke ser er hva som ble skrevet.</p><p>Ved første tilkobling viser SSH et <strong>fingeravtrykk</strong> av serverens offentlige nøkkel. Poenget er at en mellommann kan videresende trafikken, men han har ikke serverens private nøkkel. Derfor blir fingeravtrykket et annet, og klienten advarer.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En avlytter fanger 40 minutter SSH mellom to maskiner, til sammen 8 MB, med jevn trafikk hvert femte sekund.</p><ol class="wsteps"><li>Han kan ikke lese en eneste kommando som ble kjørt</li><li>Han vet likevel <strong>hvem</strong> som snakket med <strong>hvem</strong>, i 40 minutter</li><li>8 MB er mye for et tastatur, så noe ble sannsynligvis <strong>overført</strong></li><li>Jevn trafikk hvert femte sekund ser ut som noe automatisk, ikke som en person som skriver</li></ol></div></div>
@@ -318,32 +297,7 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Kjør <code>ssh</code> i terminalen — forstå fingerprint-advarselen</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva er et MITM-angrep, og hvordan stopper SSH-nøkkel det?</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Din tur</div>
-          <div class="ans-row" data-a="1066276937,1384985029,-98716831">
-            <span class="ans-q">En avlytter ser en 6 timer lang SSH-økt på 2 kB totalt. Er det mest sannsynlig en filoverføring eller en åpen terminal?</span>
-            <input class="ans-in" placeholder="to ord"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="326905173,1937712744,2090509020,1391583301">
-            <span class="ans-q">Fingeravtrykket endrer seg plutselig på en server du har brukt i et år. Hva bør du anta først?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="5861609">
-            <span class="ans-q">Hvilken port må være åpen for at SSH skal virke?</span>
-            <input class="ans-in" placeholder="portnummer"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box">SSH-fingerprint er en hash av serverens offentlige nøkkel. Hvis fingerprinten endrer seg neste gang du kobler til, kan noen sitte mellom deg og serveren.</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>Telnet:</strong> Brukernavn og passord i klartekst — Wireshark viser alt direkte.<br><br><strong>SSH:</strong> Alt kryptert med AES — en avlytter ser bare kryptert støy.<br><br><strong>MITM:</strong> Angriperen setter seg mellom klient og server. SSH-nøkkelverifisering stopper dette fordi angriperen ikke har serverens private nøkkel.</div>
-        </div>
-        <div class="complete-banner" id="done-net-5"><span>✓</span> Lab 5 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url">Wireshark — nettverkspakke-analyse (simulert)</div>
@@ -386,9 +340,30 @@
             <div class="lab-term-body" id="tb5"><div class="lt-info">Prøv: ssh</div></div>
             <div class="lab-term-input"><span class="lt-ps1">student@cyberlab:~$&nbsp;</span><input class="lt-in" id="ti5" placeholder="skriv kommando..." autocomplete="off"></div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Din tur</div>
+          <div class="ans-row" data-a="1066276937,1384985029,-98716831">
+            <span class="ans-q">En avlytter ser en 6 timer lang SSH-økt på 2 kB totalt. Er det mest sannsynlig en filoverføring eller en åpen terminal?</span>
+            <input class="ans-in" placeholder="to ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="326905173,1937712744,2090509020,1391583301">
+            <span class="ans-q">Fingeravtrykket endrer seg plutselig på en server du har brukt i et år. Hva bør du anta først?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="5861609">
+            <span class="ans-q">Hvilken port må være åpen for at SSH skal virke?</span>
+            <input class="ans-in" placeholder="portnummer"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box">SSH-fingerprint er en hash av serverens offentlige nøkkel. Hvis fingerprinten endrer seg neste gang du kobler til, kan noen sitte mellom deg og serveren.</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>Telnet:</strong> Brukernavn og passord i klartekst — Wireshark viser alt direkte.<br><br><strong>SSH:</strong> Alt kryptert med AES — en avlytter ser bare kryptert støy.<br><br><strong>MITM:</strong> Angriperen setter seg mellom klient og server. SSH-nøkkelverifisering stopper dette fordi angriperen ikke har serverens private nøkkel.</div>
+        </div>
+        <div class="complete-banner" id="done-net-5"><span>✓</span> Lab 5 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -400,8 +375,7 @@
     <div class="lab-meta"><span class="badge badge-hard">Hard</span><span class="level-badge lb-5" style="margin:0">Nivå 6</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-5">Nivå 6 — Intern rekognosering</div>
         <div class="theory-block"><div class="theory-title">🤫 Støy er et mål, ikke en følelse</div><div class="theory-text"><p>En kommando lager støy i forhold til <strong>hvor mange pakker den sender og til hvor mange maskiner</strong>.</p><p>Noen kommandoer sender null pakker fordi de bare leser noe maskinen allerede har. Andre snakker med én maskin. Et sveip snakker med hele nettet.</p><p>En IDS reagerer på mønstre, og det tydeligste mønsteret er <strong>én kilde mot mange mål på kort tid</strong>. Det er derfor rekkefølgen betyr noe: hent alt du kan fra de stille kildene før du rører de støyende.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Tre kommandoer på et /24-nett:</p><ol class="wsteps"><li><code>arp -a</code> leser en tabell maskinen allerede har: <strong>0 pakker</strong> ut</li><li><code>nslookup vg.no</code> spør én navneserver: <strong>1 pakke</strong> ut, og ikke til målet</li><li>Et pingsveip over /24 treffer 254 adresser: <strong>254 pakker</strong> fra én kilde på få sekunder</li><li>Den siste er den eneste som tegner mønsteret <strong>én mot mange</strong></li></ol></div></div>
@@ -413,7 +387,19 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Identifiser tjenester som kjører på nettverket</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Skriv rekkefølgen på kommandoene du brukte, og forklar hvilke er mest "stille"</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
+          <div class="fake-bar">
+            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+            <div class="fake-url">Terminal — angriper@kompromittert-pc (192.168.10.45)</div>
+          </div>
+          <div class="lab-term" style="flex:1">
+            <div class="lab-term-body" id="tb6">
+              <div class="lt-info">Du er inne. Finn ut hva som er rundt deg.</div>
+              <div class="lt-out">Last login: Mon Mar 24 02:31:44 2026 from 185.220.101.34</div>
+            </div>
+            <div class="lab-term-input"><span class="lt-ps1">angriper@win-pc:~$&nbsp;</span><input class="lt-in" id="ti6" placeholder="skriv kommando..." autocomplete="off"></div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Din tur</div>
           <div class="ans-row" data-a="-227521546,193486504">
             <span class="ans-q">Rangér etter støy, minst først: pingsveip, arp -a, nslookup. Skriv den minst støyende.</span>
@@ -434,22 +420,6 @@
         </div>
         <div class="complete-banner" id="done-net-6"><span>✓</span> Lab 6 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
-          <div class="fake-bar">
-            <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-            <div class="fake-url">Terminal — angriper@kompromittert-pc (192.168.10.45)</div>
-          </div>
-          <div class="lab-term" style="flex:1">
-            <div class="lab-term-body" id="tb6">
-              <div class="lt-info">Du er inne. Finn ut hva som er rundt deg.</div>
-              <div class="lt-out">Last login: Mon Mar 24 02:31:44 2026 from 185.220.101.34</div>
-            </div>
-            <div class="lab-term-input"><span class="lt-ps1">angriper@win-pc:~$&nbsp;</span><input class="lt-in" id="ti6" placeholder="skriv kommando..." autocomplete="off"></div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 

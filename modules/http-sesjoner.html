@@ -46,7 +46,7 @@
   <div class="setup-box">
     <h3>Start labben først</h3>
     <p>Denne labben kjører mot en ekte webserver du starter selv i Kali. Den trenger ingen ekstra VM og ingen installasjon utover Python, som allerede er der.</p>
-    <pre>curl -O https://nocryptoshade.github.io/e3/lab5.py
+    <pre>curl -O https://cybersikkerhet-gokstad.github.io/CyberLab/lab5.py
 sha256sum lab5.py
 python3 lab5.py</pre>
     <p>Sjekksummen skal begynne med <code>cdffff28</code>. Stemmer den ikke, si fra og ikke kjør fila.</p>
@@ -74,11 +74,12 @@ python3 lab5.py</pre>
       <span class="lab-title">Din første forespørsel</span>
       <div class="lab-meta"><span class="badge badge-easy">Grunnlag</span><span class="level-badge lb-1" style="margin:0">Nivå 1</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-1">Nivå 1 — Les svaret</div>
         <p class="lab-desc">Be labben om forsiden, men se på svaret i stedet for på siden. Første linje er statuslinjen. Under den kommer headerne, så en blank linje, så selve siden. Den blanke linja er ikke pynt, den er hvordan mottakeren vet at headerne er slutt.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl -i http://127.0.0.1:8080/</div>
+        <p style="font-size:12.5px;color:var(--text3);margin-top:14px"><code>-i</code> tar med svarheaderne over selve siden. Uten den ser du bare HTML-en, og alt det interessante er borte.</p></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="193433079,-2147453583">
             <span class="ans-q">Hvilken statuskode kom tilbake?</span>
@@ -93,13 +94,7 @@ python3 lab5.py</pre>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Se på aller første linje curl skriver ut. Den har protokollen, så et tall, så et ord. Server-linja ser ut som <code>Server: noe/1.0</code>.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl -i http://127.0.0.1:8080/</div>
-        <p style="font-size:12.5px;color:var(--text3);margin-top:14px"><code>-i</code> tar med svarheaderne over selve siden. Uten den ser du bare HTML-en, og alt det interessante er borte.</p>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 2 ─────────────────────────────────────────── -->
@@ -109,11 +104,12 @@ python3 lab5.py</pre>
       <span class="lab-title">Headere du aldri skrev</span>
       <div class="lab-meta"><span class="badge badge-easy">Grunnlag</span><span class="level-badge lb-1" style="margin:0">Nivå 1</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-1">Nivå 1 — Hva curl legger til</div>
         <p class="lab-desc">Du skrev en kort kommando. curl sendte mer enn det. Linjene under «Send header» er det som faktisk forlot maskinen din, og du skrev ingen av dem.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl --trace-ascii - http://127.0.0.1:8080/ | head -20</div>
+        <p style="font-size:12.5px;color:var(--text3);margin-top:14px">Linjer merket <code>=&gt;</code> er sendt fra deg. Linjer merket <code>&lt;=</code> kom tilbake. Linjer med <code>*</code> er curl som snakker om seg selv.</p></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="2090335843">
             <span class="ans-q">Hvilken header forteller serveren hvilket nettsted du vil ha?</span>
@@ -130,13 +126,7 @@ python3 lab5.py</pre>
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box">De tre er <code>Host</code>, <code>User-Agent</code> og <code>Accept</code>. Poenget er ikke navnene, men at klienten legger til ting du ikke ba om. Alt en klient sender kan endres av den som eier klienten.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl --trace-ascii - http://127.0.0.1:8080/ | head -20</div>
-        <p style="font-size:12.5px;color:var(--text3);margin-top:14px">Linjer merket <code>=&gt;</code> er sendt fra deg. Linjer merket <code>&lt;=</code> kom tilbake. Linjer med <code>*</code> er curl som snakker om seg selv.</p>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 3 ─────────────────────────────────────────── -->
@@ -146,11 +136,11 @@ python3 lab5.py</pre>
       <span class="lab-title">Content-Length er en påstand</span>
       <div class="lab-meta"><span class="badge badge-easy">Grunnlag</span><span class="level-badge lb-1" style="margin:0">Nivå 1</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-1">Nivå 1 — Kontroller, ikke tro</div>
         <p class="lab-desc">Serveren oppgir hvor mange byte siden er. Sjekk det i stedet for å tro på det. Det er den samme vanen som skiller et bekreftet funn fra et antatt funn.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl -s http://127.0.0.1:8080/ | wc -c</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="193438590">
             <span class="ans-q">Hvor mange byte er forsiden?</span>
@@ -161,12 +151,7 @@ python3 lab5.py</pre>
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box"><code>wc -c</code> teller byte. Sammenlign med Content-Length fra oppgave 1.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl -s http://127.0.0.1:8080/ | wc -c</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 4 ─────────────────────────────────────────── -->
@@ -176,11 +161,15 @@ python3 lab5.py</pre>
       <span class="lab-title">To måter å bli avvist på</span>
       <div class="lab-meta"><span class="badge badge-easy">Statuskoder</span><span class="level-badge lb-2" style="margin:0">Nivå 2</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-2">Nivå 2 — 501 mot 405</div>
         <p class="lab-desc">Servere sier nei på mer enn én måte, og forskjellen betyr noe. Den første kommandoen finner opp en metode som ikke finnes. Den andre bruker GET på noe som bare tar imot POST.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl -s -o /dev/null -w '%{http_code}\n' \
+     -X GOKSTAD http://127.0.0.1:8080/shop/
+
+curl -s -o /dev/null -w '%{http_code}\n' \
+     http://127.0.0.1:8080/api/login</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="193436347">
             <span class="ans-q">Statuskode for den oppdiktede metoden?</span>
@@ -197,16 +186,7 @@ python3 lab5.py</pre>
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box"><strong>501 Not Implemented</strong> og <strong>405 Method Not Allowed</strong>. En 405 skal følges av en <code>Allow</code>-header som forteller hva som er lov. Det er gratis kartlegging for en angriper.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl -s -o /dev/null -w '%{http_code}\n' \
-     -X GOKSTAD http://127.0.0.1:8080/shop/
-
-curl -s -o /dev/null -w '%{http_code}\n' \
-     http://127.0.0.1:8080/api/login</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 5 ─────────────────────────────────────────── -->
@@ -216,11 +196,15 @@ curl -s -o /dev/null -w '%{http_code}\n' \
       <span class="lab-title">Host-headeren velger nettstedet</span>
       <div class="lab-meta"><span class="badge badge-medium">Headere</span><span class="level-badge lb-3" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-3">Nivå 3 — En header, to nettsteder</div>
         <p class="lab-desc">Samme adresse, samme port, samme tilkobling. Én header avgjør hvilket nettsted du får. Hent den andre ordentlig etterpå og les hva som står der.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl -s -o /dev/null -w '%{size_download}\n' \
+     http://127.0.0.1:8080/
+
+curl -s -o /dev/null -w '%{size_download}\n' \
+     -H 'Host: admin.lab' http://127.0.0.1:8080/</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="193437607">
             <span class="ans-q">Hvor mange byte returnerer admin.lab-versjonen?</span>
@@ -231,16 +215,7 @@ curl -s -o /dev/null -w '%{http_code}\n' \
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Kjør begge linjene. Tallene er forskjellige. Fjern <code>-o /dev/null</code> for å se innholdet.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl -s -o /dev/null -w '%{size_download}\n' \
-     http://127.0.0.1:8080/
-
-curl -s -o /dev/null -w '%{size_download}\n' \
-     -H 'Host: admin.lab' http://127.0.0.1:8080/</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 6 ─────────────────────────────────────────── -->
@@ -250,11 +225,15 @@ curl -s -o /dev/null -w '%{size_download}\n' \
       <span class="lab-title">Samme kode, ulikt svar</span>
       <div class="lab-meta"><span class="badge badge-medium">Lekkasje</span><span class="level-badge lb-3" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-3">Nivå 3 — Forskjellen er lekkasjen</div>
         <p class="lab-desc">To filer i hvelvet. Ingen av dem kan leses. Serveren avviser begge på samme måte, nesten. Hent den lengste ordentlig og les hva den sier.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl -s -o /dev/null -w '%{http_code} %{size_download}\n' \
+     http://127.0.0.1:8080/vault/rapport-2026-q1.pdf
+
+curl -s -o /dev/null -w '%{http_code} %{size_download}\n' \
+     http://127.0.0.1:8080/vault/finnesikke.pdf</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="193435260">
             <span class="ans-q">Statuskode for begge?</span>
@@ -271,16 +250,7 @@ curl -s -o /dev/null -w '%{size_download}\n' \
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box">Det lange avslaget navngir fila og eieren. Det korte sier bare nei. Altså forteller avslaget deg hvilke filer som finnes, og du har kartlagt hvelvet uten en eneste vellykket forespørsel. <strong>Feilmeldinger må være like for alle avviste tilfeller</strong>, ikke bare ha riktig statuskode.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl -s -o /dev/null -w '%{http_code} %{size_download}\n' \
-     http://127.0.0.1:8080/vault/rapport-2026-q1.pdf
-
-curl -s -o /dev/null -w '%{http_code} %{size_download}\n' \
-     http://127.0.0.1:8080/vault/finnesikke.pdf</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 7 ─────────────────────────────────────────── -->
@@ -290,11 +260,11 @@ curl -s -o /dev/null -w '%{http_code} %{size_download}\n' \
       <span class="lab-title">Les informasjonskapslene rett fra trafikken</span>
       <div class="lab-meta"><span class="badge badge-easy">Cookies</span><span class="level-badge lb-2" style="margin:0">Nivå 2</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-2">Nivå 2 — Flaggene</div>
         <p class="lab-desc">Ikke les cookie-flagg av et lysark. Les bytene. Tre informasjonskapsler kommer tilbake med tre forskjellige flaggkombinasjoner, og flaggene står etter semikolonene.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl -sI http://127.0.0.1:8080/ | grep -i set-cookie</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="-747041505">
             <span class="ans-q">Hvilken cookie har Secure-flagget?</span>
@@ -309,12 +279,7 @@ curl -s -o /dev/null -w '%{http_code} %{size_download}\n' \
           <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
           <div class="hint-box">Hver Set-Cookie-linje slutter med flaggene sine. Den tredje har ingen av delene.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl -sI http://127.0.0.1:8080/ | grep -i set-cookie</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 8 ─────────────────────────────────────────── -->
@@ -324,11 +289,19 @@ curl -s -o /dev/null -w '%{http_code} %{size_download}\n' \
       <span class="lab-title">Sesjonen er én header</span>
       <div class="lab-meta"><span class="badge badge-medium">Sesjoner</span><span class="level-badge lb-2" style="margin:0">Nivå 2</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-2">Nivå 2 — Cookie-krukke</div>
         <p class="lab-desc">En cookie-krukke er bare en fil curl skriver informasjonskapsler til og leser dem tilbake fra. Logg inn, hent kontosiden, og kjør så den siste linja på nytt uten <code>-b jar.txt</code>.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl -s -c jar.txt -o /dev/null \
+     http://127.0.0.1:8080/login
+
+curl -s -b jar.txt -c jar.txt -o /dev/null \
+     -d 'username=student&password=student123' \
+     http://127.0.0.1:8080/login
+
+curl -s -b jar.txt http://127.0.0.1:8080/account \
+     | grep -o '&lt;span&gt;[^&lt;]*&lt;/span&gt;'</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="193505797">
             <span class="ans-q">Hva heter sesjonscookien?</span>
@@ -345,20 +318,7 @@ curl -s -o /dev/null -w '%{http_code} %{size_download}\n' \
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box">Cookien heter <code>sid</code>. Uten den får du 302, altså en omdirigering til innloggingssiden. <strong>Hele sesjonen var den ene headeren.</strong> Serveren kjenner ingen bruker, den slår opp en streng.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl -s -c jar.txt -o /dev/null \
-     http://127.0.0.1:8080/login
-
-curl -s -b jar.txt -c jar.txt -o /dev/null \
-     -d 'username=student&password=student123' \
-     http://127.0.0.1:8080/login
-
-curl -s -b jar.txt http://127.0.0.1:8080/account \
-     | grep -o '&lt;span&gt;[^&lt;]*&lt;/span&gt;'</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 9 ─────────────────────────────────────────── -->
@@ -368,11 +328,19 @@ curl -s -b jar.txt http://127.0.0.1:8080/account \
       <span class="lab-title">Logger utlogging deg egentlig ut?</span>
       <div class="lab-meta"><span class="badge badge-medium">Sesjoner</span><span class="level-badge lb-3" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-3">Nivå 3 — Spill den av på nytt</div>
         <p class="lab-desc">Noter sesjons-ID-en din, logg ut, og send så den gamle ID-en tilbake. 200 betyr at den fortsatt virker. 302 ville betydd at den faktisk ble drept.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd"><span class="c"># noter verdien</span>
+grep sid jar.txt
+
+curl -s -b jar.txt -o /dev/null \
+     http://127.0.0.1:8080/logout
+
+curl -s -o /dev/null -w '%{http_code}\n' \
+     -H 'Cookie: sid=LIM_INN_GAMMEL_VERDI' \
+     http://127.0.0.1:8080/account</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="193433079,-2147453583">
             <span class="ans-q">Statuskode når du spiller av den gamle sesjonen?</span>
@@ -385,20 +353,7 @@ curl -s -b jar.txt http://127.0.0.1:8080/account \
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box">Den svarer <strong>200</strong>. Utloggingen tømte bare nettleseren din. Serveren glemte aldri sesjonen, så alle som allerede har kopiert verdien er upåvirket. En utlogging som bare sender <code>Max-Age=0</code> er en anbefaling til nettleseren, ikke en sikkerhetsmekanisme.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd"><span class="c"># noter verdien</span>
-grep sid jar.txt
-
-curl -s -b jar.txt -o /dev/null \
-     http://127.0.0.1:8080/logout
-
-curl -s -o /dev/null -w '%{http_code}\n' \
-     -H 'Cookie: sid=LIM_INN_GAMMEL_VERDI' \
-     http://127.0.0.1:8080/account</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 10 ────────────────────────────────────────── -->
@@ -408,11 +363,16 @@ curl -s -o /dev/null -w '%{http_code}\n' \
       <span class="lab-title">Er sesjons-ID-ene gjettbare?</span>
       <div class="lab-meta"><span class="badge badge-medium">Sesjoner</span><span class="level-badge lb-3" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-3">Nivå 3 — Dekod den</div>
         <p class="lab-desc">Hent en fersk ID og se ordentlig på den. Den er base64, som er <strong>koding, ikke kryptering</strong>. Hent to ID-er noen sekunder fra hverandre og sammenlign dem.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl -si http://127.0.0.1:8080/login \
+  | grep -i 'set-cookie: sid=' \
+  | sed 's/.*sid=\([^;]*\).*/\1/'
+
+<span class="c"># dekod verdien du fikk</span>
+echo 'LIM_INN_VERDIEN' | base64 -d ; echo</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="177631">
             <span class="ans-q">Den dekodede verdien har to deler. Hvilket tegn skiller dem?</span>
@@ -429,17 +389,7 @@ curl -s -o /dev/null -w '%{http_code}\n' \
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box">Den dekoder til <code>s</code> pluss et tall, kolon, så et unix-tidsstempel. Tallet øker med én for hver ID som deles ut. <strong>Da kan du regne deg fram til andres ID-er</strong>, og det er hele poenget med oppgave 11.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl -si http://127.0.0.1:8080/login \
-  | grep -i 'set-cookie: sid=' \
-  | sed 's/.*sid=\([^;]*\).*/\1/'
-
-<span class="c"># dekod verdien du fikk</span>
-echo 'LIM_INN_VERDIEN' | base64 -d ; echo</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 11 ────────────────────────────────────────── -->
@@ -449,14 +399,21 @@ echo 'LIM_INN_VERDIEN' | base64 -d ; echo</div>
       <span class="lab-title">🚩 Ta en sesjon som ikke er din</span>
       <div class="lab-meta"><span class="badge badge-hard">Flagg</span><span class="level-badge lb-5" style="margin:0">Nivå 5</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="flagline">🚩 FLAGG 1 av 2</div>
         <div class="level-badge lb-5">Nivå 5 — Sesjonskapring</div>
         <p class="lab-desc">En annen bruker, Kari, logger inn hvert tolvte sekund i bakgrunnen. ID-en hennes kom fra <strong>samme teller som din</strong>, og ble laget <strong>litt før</strong> din.</p>
         <p class="lab-desc">Altså: telleren hennes er litt lavere enn din, og tidsstempelet hennes er litt lavere. Det er et lite rutenett å lete i, ikke en tilfeldig gjetning.</p>
         <p class="lab-desc">302 betyr at ID-en ikke finnes. Alt annet betyr treff. Når du lander på kontoen hennes, viser siden et notat din egen ikke har.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Bygg en kandidat</div>
+        <div class="cmd">python3 -c "import base64;print(
+  base64.b64encode(b's9999:1700000000')
+  .decode().rstrip('='))"
+
+curl -s -o /dev/null -w '%{http_code}\n' \
+     -H 'Cookie: sid=LIM_INN' \
+     http://127.0.0.1:8080/account</div>
+        <p style="font-size:12.5px;color:var(--text3);margin-top:14px">Ikke skriv kandidatene for hånd. Legg de to linjene i en løkke og la maskinen gjøre jobben. Noter hvor mange forespørsler det tok.</p></div><div class="ans-block">
           <div class="obj-title">Flagg</div>
           <div class="ans-row" data-a="-632544501">
             <span class="ans-q">Lim inn flagget</span>
@@ -469,19 +426,7 @@ echo 'LIM_INN_VERDIEN' | base64 -d ; echo</div>
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box"><strong>Skript det.</strong> To løkker: en over telleren, en over sekundene. Bygg ID-en, base64-kod den, send den som cookie mot <code>/account</code>, og stopp på alt som ikke er 302.<br><br>Fikset i den ekte verden: <code>/login2</code> bruker <code>secrets.token_hex</code>, som ikke kan regnes ut, og roterer i tillegg ID-en ved innlogging. Hver av de to alene hadde stoppet dette angrepet.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Bygg en kandidat</div>
-        <div class="cmd">python3 -c "import base64;print(
-  base64.b64encode(b's9999:1700000000')
-  .decode().rstrip('='))"
-
-curl -s -o /dev/null -w '%{http_code}\n' \
-     -H 'Cookie: sid=LIM_INN' \
-     http://127.0.0.1:8080/account</div>
-        <p style="font-size:12.5px;color:var(--text3);margin-top:14px">Ikke skriv kandidatene for hånd. Legg de to linjene i en løkke og la maskinen gjøre jobben. Noter hvor mange forespørsler det tok.</p>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 12 ────────────────────────────────────────── -->
@@ -491,11 +436,17 @@ curl -s -o /dev/null -w '%{http_code}\n' \
       <span class="lab-title">Logg inn gjennom API-et</span>
       <div class="lab-meta"><span class="badge badge-easy">API</span><span class="level-badge lb-2" style="margin:0">Nivå 2</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-2">Nivå 2 — Samme sesjon, ny bærer</div>
         <p class="lab-desc">Samme innlogging, som JSON, uten nettleser. Legg tokenet i en shell-variabel så du kan bruke det videre. Merk at <strong>ingenting fester det for deg</strong>, i motsetning til en cookie.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl -s -H 'Content-Type: application/json' \
+  -d '{"username":"student","password":"student123"}' \
+  http://127.0.0.1:8080/api/login
+
+TOK='lim_inn_tokenet_her'
+curl -s -H "Authorization: Bearer $TOK" \
+     http://127.0.0.1:8080/api/me</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="1595898102">
             <span class="ans-q">Hvilken HTTP-header bærer tokenet?</span>
@@ -508,18 +459,7 @@ curl -s -o /dev/null -w '%{http_code}\n' \
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box"><code>Authorization</code>. En cookie sendes automatisk av nettleseren, og det er nettopp den automatikken CSRF utnytter. Et Bearer-token må settes av kode, så det klassiske CSRF-angrepet faller bort. Til gjengjeld må tokenet lagres et sted som ofte er lesbart for JavaScript. <strong>Problemet er ikke løst, det er flyttet.</strong></div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl -s -H 'Content-Type: application/json' \
-  -d '{"username":"student","password":"student123"}' \
-  http://127.0.0.1:8080/api/login
-
-TOK='lim_inn_tokenet_her'
-curl -s -H "Authorization: Bearer $TOK" \
-     http://127.0.0.1:8080/api/me</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 13 ────────────────────────────────────────── -->
@@ -529,11 +469,12 @@ curl -s -H "Authorization: Bearer $TOK" \
       <span class="lab-title">Les hva som ligger i tokenet</span>
       <div class="lab-meta"><span class="badge badge-medium">API</span><span class="level-badge lb-3" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-3">Nivå 3 — Signert, ikke kryptert</div>
         <p class="lab-desc">Et JWT er tre base64-biter skilt med punktum. Det er <strong>signert, ikke kryptert</strong>, så alle som holder det kan lese hvert felt i det. Første bit er headeren, andre er nyttelasten.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">echo "$TOK" | cut -d. -f1 | base64 -d 2>/dev/null; echo
+echo "$TOK" | cut -d. -f2 | base64 -d 2>/dev/null; echo</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="261677021">
             <span class="ans-q">Hvilken signeringsalgoritme navngir headeren?</span>
@@ -550,13 +491,7 @@ curl -s -H "Authorization: Bearer $TOK" \
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box">alg er <code>HS256</code> og role er <code>customer</code>. Legg merke til at det også ligger et felt der en utvikler aldri skulle lagt inn i et token. <strong>Signaturen beskytter mot endring, ikke mot lesing.</strong></div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">echo "$TOK" | cut -d. -f1 | base64 -d 2>/dev/null; echo
-echo "$TOK" | cut -d. -f2 | base64 -d 2>/dev/null; echo</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 14 ────────────────────────────────────────── -->
@@ -566,11 +501,15 @@ echo "$TOK" | cut -d. -f2 | base64 -d 2>/dev/null; echo</div>
       <span class="lab-title">Grensesnittet er ikke API-et</span>
       <div class="lab-meta"><span class="badge badge-medium">API</span><span class="level-badge lb-3" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-3">Nivå 3 — Excessive data exposure</div>
         <p class="lab-desc">Sammenlign hva siden viser mot hva API-et faktisk gir fra seg. Siden viser tre ting. API-et returnerer ti.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl -s -b jar.txt http://127.0.0.1:8080/account \
+  | grep -o '&lt;span&gt;[^&lt;]*&lt;/span&gt;'
+
+curl -s -H "Authorization: Bearer $TOK" \
+     http://127.0.0.1:8080/api/me</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="956151994">
             <span class="ans-q">Hvilket felt i API-svaret er farligst å lekke?</span>
@@ -583,16 +522,7 @@ echo "$TOK" | cut -d. -f2 | base64 -d 2>/dev/null; echo</div>
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box"><code>password_reset_token</code>. Utvikleren så på siden, ikke på svaret. Endepunktet returnerer hele objektet fra databasen og lar grensesnittet velge hva som vises. <strong>Det er en av de vanligste API-feilene i produksjon.</strong></div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl -s -b jar.txt http://127.0.0.1:8080/account \
-  | grep -o '&lt;span&gt;[^&lt;]*&lt;/span&gt;'
-
-curl -s -H "Authorization: Bearer $TOK" \
-     http://127.0.0.1:8080/api/me</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 15 ────────────────────────────────────────── -->
@@ -602,11 +532,13 @@ curl -s -H "Authorization: Bearer $TOK" \
       <span class="lab-title">Prøv å forfremme deg selv</span>
       <div class="lab-meta"><span class="badge badge-medium">API</span><span class="level-badge lb-3" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="level-badge lb-3">Nivå 3 — Signaturen holder</div>
         <p class="lab-desc">Tokenet ditt sier customer. Det finnes et endepunkt bare for administratorer. Prøv det, og prøv så å jukse: dekod nyttelasten, endre role til admin, kod den på nytt, fest på den gamle signaturen og prøv igjen.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">curl -s -o /dev/null -w '%{http_code}\n' \
+     -H "Authorization: Bearer $TOK" \
+     http://127.0.0.1:8080/api/admin/users</div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="193435260">
             <span class="ans-q">Statuskode med ditt vanlige token?</span>
@@ -623,14 +555,7 @@ curl -s -H "Authorization: Bearer $TOK" \
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box">Endringen avvises med <em>signature check failed</em>. Signaturen gjør nøyaktig jobben sin. <strong>Så langt.</strong> Se oppgave 16.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">curl -s -o /dev/null -w '%{http_code}\n' \
-     -H "Authorization: Bearer $TOK" \
-     http://127.0.0.1:8080/api/admin/users</div>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   <!-- ── 16 ────────────────────────────────────────── -->
@@ -640,14 +565,21 @@ curl -s -H "Authorization: Bearer $TOK" \
       <span class="lab-title">🚩 Knekk signaturen</span>
       <div class="lab-meta"><span class="badge badge-hard">Flagg</span><span class="level-badge lb-5" style="margin:0">Nivå 5</span><span class="lab-chev">▶</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body"><div class="lab-flow">
         <div class="flagline">🚩 FLAGG 2 av 2</div>
         <div class="level-badge lb-5">Nivå 5 — Nøkkelen, ikke algoritmen</div>
         <p class="lab-desc">Signaturen holder bare så lenge nøkkelen gjør det. Den som satte opp dette valgte nøkkel slik folk velger passord.</p>
         <p class="lab-desc">Et JWT kan angripes offline, fordi du holder både signeringsinputen og signaturen. Da kan du teste kandidatnøkler så fort maskinen klarer å hashe.</p>
         <p class="lab-desc">Når du har nøkkelen: bygg en nyttelast som sier <code>"role":"admin"</code>, signer den med nøkkelen, og bruk den mot <code>/api/admin/users</code>.</p>
-        <div class="ans-block">
+        <div class="cmd-block"><div class="obj-title">Kjør dette</div>
+        <div class="cmd">echo "$TOK" > tok.txt
+
+<span class="c"># bare første gang</span>
+gunzip -k /usr/share/wordlists/rockyou.txt.gz
+
+hashcat -m 16500 tok.txt \
+  /usr/share/wordlists/rockyou.txt</div>
+        <p style="font-size:12.5px;color:var(--text3);margin-top:14px">Gi den noen minutter i en VM uten GPU. Den står ikke fast.</p></div><div class="ans-block">
           <div class="obj-title">Flagg</div>
           <div class="ans-row" data-a="1453421539">
             <span class="ans-q">Lim inn flagget</span>
@@ -660,19 +592,7 @@ curl -s -H "Authorization: Bearer $TOK" \
           <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
           <div class="sol-box"><strong>Signer med python:</strong><br><code>hmac.new(nøkkel, header + '.' + payload, hashlib.sha256)</code>, så base64url av digesten med padding fjernet.<br><br><strong>Poenget:</strong> algoritmen var riktig, biblioteket var riktig, koden var riktig. Det var <em>nøkkelvalget</em> som var hele sårbarheten. En tilfeldig generert nøkkel av tilstrekkelig lengde hadde gjort angrepet meningsløst.</div>
         </div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kjør dette</div>
-        <div class="cmd">echo "$TOK" > tok.txt
-
-<span class="c"># bare første gang</span>
-gunzip -k /usr/share/wordlists/rockyou.txt.gz
-
-hashcat -m 16500 tok.txt \
-  /usr/share/wordlists/rockyou.txt</div>
-        <p style="font-size:12.5px;color:var(--text3);margin-top:14px">Gi den noen minutter i en VM uten GPU. Den står ikke fast.</p>
-      </div>
-    </div></div>
+      </div></div>
   </div>
 
   </div>

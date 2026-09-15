@@ -72,8 +72,7 @@
     <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="level-badge lb-1" style="margin:0">Nivå 1</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-1">Nivå 1 — SMTP grunnlag</div>
         <p class="lab-desc">Bruk SMTP-simulatoren til å sende en e-post manuelt — slik e-postservere kommuniserer med hverandre bak kulissene.</p>
         <div>
@@ -83,7 +82,19 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Prøv <code>VRFY student@example.no</code> — hva skjer?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva er konvolutt-avsender vs. header-avsender?</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
+          <div class="fake-bar"><div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div><div class="fake-url">SMTP simulator — port 587</div></div>
+          <div style="background:#05070a;flex:1;display:flex;flex-direction:column">
+            <div class="smtp-body" id="smtp1-body">
+              <div class="smtp-srv">220 mail.cyberlab.no ESMTP Postfix (Ubuntu)</div>
+              <div class="smtp-inf">// Start med: EHLO dittdomene.no</div>
+            </div>
+            <div class="smtp-input-row">
+              <span class="smtp-ps1">CLIENT>&nbsp;</span>
+              <input class="smtp-in" id="smtp1-in" placeholder="skriv SMTP-kommando..." autocomplete="off">
+            </div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="193433244">
             <span class="ans-q">Hvilken SMTP-svarkode betyr OK?</span>
@@ -103,22 +114,6 @@
         </div>
         <div class="complete-banner" id="done-ep-1"><span>✓</span> Lab 1 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
-          <div class="fake-bar"><div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div><div class="fake-url">SMTP simulator — port 587</div></div>
-          <div style="background:#05070a;flex:1;display:flex;flex-direction:column">
-            <div class="smtp-body" id="smtp1-body">
-              <div class="smtp-srv">220 mail.cyberlab.no ESMTP Postfix (Ubuntu)</div>
-              <div class="smtp-inf">// Start med: EHLO dittdomene.no</div>
-            </div>
-            <div class="smtp-input-row">
-              <span class="smtp-ps1">CLIENT>&nbsp;</span>
-              <input class="smtp-in" id="smtp1-in" placeholder="skriv SMTP-kommando..." autocomplete="off">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -130,8 +125,7 @@
     <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="level-badge lb-2" style="margin:0">Nivå 2</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-2">Nivå 2 — E-postsikkerhet</div>
         <p class="lab-desc">Til høyre er en interaktiv quiz om de tre viktigste e-postsikkerhetsmekanismene. Test forståelsen og se forklaringen for hvert svar.</p>
         <div>
@@ -140,26 +134,7 @@
           <div class="obj-item"><div class="obj-num">2</div><div class="obj-text">Forklar: hva er forskjellen på SPF og DKIM?</div></div>
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Hvilken orden bør du implementere dem i, og hvorfor?</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193506030">
-            <span class="ans-q">Hvilken mekanisme sjekker om avsender-IP er autorisert for domenet?</span>
-            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="2090187402">
-            <span class="ans-q">Hvilken signerer e-posten kryptografisk?</span>
-            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>SPF</strong> sjekker om sending-IP er autorisert for domenet (DNS-oppslag).<br><strong>DKIM</strong> signerer e-posten kryptografisk — bevis at innholdet ikke er endret.<br><strong>DMARC</strong> kombinerer begge og sier hva mottaker skal gjøre ved feil.<br><br><strong>Rekkefølge:</strong> SPF → DKIM → DMARC(none) → DMARC(quarantine) → DMARC(reject)</div>
-        </div>
-        <div class="complete-banner" id="done-ep-2"><span>✓</span> Lab 2 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
           <div class="fake-bar"><div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div><div class="fake-url">E-post sikkerhet quiz</div></div>
           <div class="site-wrap">
             <div class="ts">
@@ -195,9 +170,24 @@
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="193506030">
+            <span class="ans-q">Hvilken mekanisme sjekker om avsender-IP er autorisert for domenet?</span>
+            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="2090187402">
+            <span class="ans-q">Hvilken signerer e-posten kryptografisk?</span>
+            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>SPF</strong> sjekker om sending-IP er autorisert for domenet (DNS-oppslag).<br><strong>DKIM</strong> signerer e-posten kryptografisk — bevis at innholdet ikke er endret.<br><strong>DMARC</strong> kombinerer begge og sier hva mottaker skal gjøre ved feil.<br><br><strong>Rekkefølge:</strong> SPF → DKIM → DMARC(none) → DMARC(quarantine) → DMARC(reject)</div>
+        </div>
+        <div class="complete-banner" id="done-ep-2"><span>✓</span> Lab 2 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -209,8 +199,7 @@
     <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="level-badge lb-3" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-3">Nivå 3 — Header-analyse</div>
         <p class="lab-desc">En ansatt har mottatt en e-post som later som å være fra DNB. Klikk på headerlinjene til høyre for å se detaljer — finn alle røde flagg.</p>
         <div>
@@ -221,26 +210,7 @@
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hvorfor hjelper ikke hengelåsen (HTTPS) her?</div></div>
         </div>
         <div id="ep3-score" style="font-family:var(--mono);font-size:12px;color:var(--text3);margin-top:4px">Røde flagg funnet: <span id="ep3-found">0</span> / 5</div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="177626,193491517">
-            <span class="ans-q">Hvor mange røde flagg er det i denne headeren?</span>
-            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="-188012449,1168049426">
-            <span class="ans-q">Hvilken headerlinje avslører at avsenderen ikke er dnb.no?</span>
-            <input class="ans-in" placeholder="headernavn"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis alle flagg</button>
-          <div class="sol-box"><strong>Røde flagg:</strong><br>1. Return-Path peker til mail-promo247.ru — ikke dnb.no<br>2. Sending-IP 185.220.101.88 er Tor-tilknyttet server<br>3. SPF FAIL — IP ikke autorisert av dnb.no<br>4. Ingen DKIM-signatur<br>5. DMARC FAIL — burde vært avvist automatisk<br><br><strong>Hengelåsen</strong> betyr kun at forbindelsen er kryptert — ikke at avsenderen er legitim.</div>
-        </div>
-        <div class="complete-banner" id="done-ep-3"><span>✓</span> Lab 3 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
           <div class="fake-bar"><div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div><div class="fake-url">e-postheader — klikk for detaljer</div></div>
           <div class="site-wrap" style="background:#0a0c10">
             <div style="padding:14px 18px">
@@ -283,9 +253,24 @@
             </div>
             <div id="ep3-detail" style="display:none;background:#111827;border-top:1px solid #333;padding:14px 18px;font-family:monospace;font-size:12px;color:#9ca3af;line-height:1.7"></div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="177626,193491517">
+            <span class="ans-q">Hvor mange røde flagg er det i denne headeren?</span>
+            <input class="ans-in" placeholder="et tall"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="-188012449,1168049426">
+            <span class="ans-q">Hvilken headerlinje avslører at avsenderen ikke er dnb.no?</span>
+            <input class="ans-in" placeholder="headernavn"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis alle flagg</button>
+          <div class="sol-box"><strong>Røde flagg:</strong><br>1. Return-Path peker til mail-promo247.ru — ikke dnb.no<br>2. Sending-IP 185.220.101.88 er Tor-tilknyttet server<br>3. SPF FAIL — IP ikke autorisert av dnb.no<br>4. Ingen DKIM-signatur<br>5. DMARC FAIL — burde vært avvist automatisk<br><br><strong>Hengelåsen</strong> betyr kun at forbindelsen er kryptert — ikke at avsenderen er legitim.</div>
+        </div>
+        <div class="complete-banner" id="done-ep-3"><span>✓</span> Lab 3 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -297,8 +282,7 @@
     <div class="lab-meta"><span class="badge badge-hard">Hard</span><span class="level-badge lb-4" style="margin:0">Nivå 4</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-4">Nivå 4 — E-postspoofing</div>
         <p class="lab-desc">SMTP-simulatoren til høyre er konfigurert slik at du kan sette <code>MAIL FROM</code> til hva som helst. Se hva som skjer — og forstå hvorfor SMTP historisk har hatt null autentisering.</p>
         <div class="warn" style="margin:0">⚠ Simulert — ingen ekte e-poster sendes</div>
@@ -309,7 +293,19 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hvorfor er SMTP designet uten autentisering?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva er Business Email Compromise (BEC)?</div></div>
         </div>
-        <div class="ans-block">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
+          <div class="fake-bar"><div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div><div class="fake-url">SMTP spoofing demo — ingen ekte e-poster</div></div>
+          <div style="background:#05070a;flex:1;display:flex;flex-direction:column">
+            <div class="smtp-body" id="smtp4-body">
+              <div class="smtp-srv">220 demo-smtp.cyberlab.no ESMTP (spoofing demo)</div>
+              <div class="smtp-inf">// Prøv: EHLO, MAIL FROM:&lt;bank@dnb.no&gt;, RCPT TO:&lt;offer@bedrift.no&gt;, DATA</div>
+            </div>
+            <div class="smtp-input-row">
+              <span class="smtp-ps1">CLIENT>&nbsp;</span>
+              <input class="smtp-in" id="smtp4-in" placeholder="skriv SMTP-kommando..." autocomplete="off">
+            </div>
+          </div>
+        </div></div><div class="ans-block">
           <div class="obj-title">Svar</div>
           <div class="ans-row" data-a="2090187402">
             <span class="ans-q">Hvilken mekanisme feiler fordi du ikke har dnb.no sin private nøkkel?</span>
@@ -329,22 +325,6 @@
         </div>
         <div class="complete-banner" id="done-ep-4"><span>✓</span> Lab 4 fullført!</div>
       </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
-          <div class="fake-bar"><div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div><div class="fake-url">SMTP spoofing demo — ingen ekte e-poster</div></div>
-          <div style="background:#05070a;flex:1;display:flex;flex-direction:column">
-            <div class="smtp-body" id="smtp4-body">
-              <div class="smtp-srv">220 demo-smtp.cyberlab.no ESMTP (spoofing demo)</div>
-              <div class="smtp-inf">// Prøv: EHLO, MAIL FROM:&lt;bank@dnb.no&gt;, RCPT TO:&lt;offer@bedrift.no&gt;, DATA</div>
-            </div>
-            <div class="smtp-input-row">
-              <span class="smtp-ps1">CLIENT>&nbsp;</span>
-              <input class="smtp-in" id="smtp4-in" placeholder="skriv SMTP-kommando..." autocomplete="off">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -356,8 +336,7 @@
     <div class="lab-meta"><span class="badge badge-hard">Hard</span><span class="level-badge lb-5" style="margin:0">Nivå 5</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-5">Nivå 5 — BEC og avansert forsvar</div>
         <p class="lab-desc">Selskapet har blitt utsatt for tre vellykkede phishing-angrep. Du er sikkerhetskonsulent — analyser hvert angrep og foreslå forsvarstiltak.</p>
         <div>
@@ -367,26 +346,7 @@
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hvilke angrep kan SPF/DKIM/DMARC IKKE stoppe?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Lag en prioritert liste med 5 tiltak for selskapet</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193499161,193434910">
-            <span class="ans-q">Hvilket tiltak stopper angrepet med kompromittert konto?</span>
-            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="-396876224,1690127493">
-            <span class="ans-q">Hvilken angrepstype hjelper ikke SPF og DKIM mot, fordi domenet er ekte?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>Angrep 1</strong> (spoofing): Stopp med SPF+DKIM+DMARC reject.<br><strong>Angrep 2</strong> (lookalike): SPF/DKIM hjelper ikke (ekte domene). Krev lookalike-monitoring.<br><strong>Angrep 3</strong> (kompromittert konto): All autentisering bestått. Stopp med MFA + brukeropplæring.<br><br><strong>Top 5:</strong> MFA, SPF+DKIM+DMARC, DMARC-rapportering, phishing-simuleringer, lookalike-overvåking.</div>
-        </div>
-        <div class="complete-banner" id="done-ep-5"><span>✓</span> Lab 5 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser" style="flex-direction:column">
+        <div class="term-block"><div class="fake-browser" style="flex-direction:column">
           <div class="fake-bar"><div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div><div class="fake-url">BEC Attack Analyzer</div></div>
           <div class="site-wrap">
             <div class="ts">
@@ -422,9 +382,24 @@
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="193499161,193434910">
+            <span class="ans-q">Hvilket tiltak stopper angrepet med kompromittert konto?</span>
+            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="-396876224,1690127493">
+            <span class="ans-q">Hvilken angrepstype hjelper ikke SPF og DKIM mot, fordi domenet er ekte?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>Angrep 1</strong> (spoofing): Stopp med SPF+DKIM+DMARC reject.<br><strong>Angrep 2</strong> (lookalike): SPF/DKIM hjelper ikke (ekte domene). Krev lookalike-monitoring.<br><strong>Angrep 3</strong> (kompromittert konto): All autentisering bestått. Stopp med MFA + brukeropplæring.<br><br><strong>Top 5:</strong> MFA, SPF+DKIM+DMARC, DMARC-rapportering, phishing-simuleringer, lookalike-overvåking.</div>
+        </div>
+        <div class="complete-banner" id="done-ep-5"><span>✓</span> Lab 5 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 

@@ -55,24 +55,24 @@
       <span class="lab-title">Hva en port faktisk er</span>
       <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-1">Niv&aring; 1 &mdash; Adresse og port</div>
         <div class="theory-block"><div class="theory-title">🚪 Adressen finner maskinen, porten finner tjenesten</div><div class="theory-text"><p>En maskin kjører gjerne mange tjenester samtidig: en webserver, en e-postserver, en database. Alle deler samme IP-adresse.</p><p><strong>Porten</strong> er det som skiller dem. Adressen tar pakken til riktig maskin, portnummeret tar den videre til riktig program på maskinen.</p><p>Kombinasjonen adresse pluss port kalles en <strong>socket</strong> og skrives med kolon: <code>10.0.0.5:443</code>.</p><p>Det finnes 65 535 porter. De deles i tre: <strong>0 til 1023</strong> er velkjente og reservert til standardtjenester, <strong>1024 til 49151</strong> er registrerte, og <strong>49152 og oppover</strong> er flyktige, altså de klienten låner mens en forbindelse varer.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En maskin på <code>10.0.0.5</code> kjører både en webserver og en database.</p><ol class="wsteps"><li>Webtrafikk kommer inn til <code>10.0.0.5:443</code></li><li>Databasetrafikk kommer inn til <code>10.0.0.5:3306</code></li><li>Samme adresse, to porter, to programmer</li><li>Uten portnummeret ville maskinen ikke visst hvilket program pakken skulle til</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="200156077,-1985536563"><span class="ans-q">Hvor mange porter finnes det totalt?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Er 8080 en velkjent port? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1272237281,965842788,2100411256,794917477"><span class="ans-q">En klient kobler ut og får port 51200. Hvilken av de tre gruppene er det?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Grensene er 1023 og 49151. Sjekk hvilken side tallet havner på.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">8080 ligger mellom 1024 og 49151, altså <strong>registrert</strong>, ikke velkjent. Det er derfor hvem som helst kan starte noe på 8080 uten spesielle rettigheter, mens port 80 krever administrator på de fleste systemer.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># Windows</span>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># Windows</span>
 netstat -ano | more
 
 <span class='c'># Linux</span>
 ss -tuln</div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="200156077,-1985536563"><span class="ans-q">Hvor mange porter finnes det totalt?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Er 8080 en velkjent port? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="-1272237281,965842788,2100411256,794917477"><span class="ans-q">En klient kobler ut og får port 51200. Hvilken av de tre gruppene er det?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Grensene er 1023 og 49151. Sjekk hvilken side tallet havner på.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">8080 ligger mellom 1024 og 49151, altså <strong>registrert</strong>, ikke velkjent. Det er derfor hvem som helst kan starte noe på 8080 uten spesielle rettigheter, mens port 80 krever administrator på de fleste systemer.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="prt-2" data-level="easy">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -80,25 +80,25 @@ ss -tuln</div>
       <span class="lab-title">Portene du må kunne utenat</span>
       <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-1">Niv&aring; 1 &mdash; Gjenkjenne tjenester</div>
         <div class="theory-block"><div class="theory-title">📋 Ti porter dekker det meste du møter</div><div class="theory-text"><p>Disse ti går igjen så ofte at du bør kjenne dem igjen uten å slå opp.</p><p><code>21</code> FTP &middot; <code>22</code> SSH &middot; <code>23</code> Telnet &middot; <code>25</code> SMTP &middot; <code>53</code> DNS &middot; <code>80</code> HTTP &middot; <code>443</code> HTTPS &middot; <code>445</code> SMB &middot; <code>3306</code> MySQL &middot; <code>3389</code> RDP</p><p>Tre av dem er <strong>klartekstversjoner</strong> av noe som finnes kryptert: 21 mot SFTP, 23 mot SSH på 22, og 80 mot 443.</p><p>Et portnummer er <strong>en konvensjon, ikke en garanti</strong>. Hvem som helst kan kjøre hva som helst på hvilken som helst port. Derfor gjetter en skanner ut fra portnummeret, mens en versjonsskann faktisk spør tjenesten.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En skann av en ukjent maskin gir 22, 445 og 3389 åpne.</p><ol class="wsteps"><li><code>22</code> er SSH, som er vanlig på Linux men finnes også på Windows</li><li><code>445</code> er SMB, altså fildeling, som er typisk Windows</li><li><code>3389</code> er RDP, fjernskrivebord, som er <strong>bare</strong> Windows</li><li>To av tre peker mot Windows, så det er den beste gjetningen</li><li>Men det er fortsatt en gjetning, helt til du spør tjenestene</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="-648101222,802190106,-366067689"><span class="ans-q">En maskin har 80 og 443 åpne, ingenting annet. Hva slags maskin er dette sannsynligvis?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="5861609"><span class="ans-q">Du finner port 23 åpen. Hvilken port burde vært brukt i stedet?</span><input class="ans-in" placeholder="et portnummer"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">Noen kjører en webserver på port 8443. Er det lov? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Siste oppgave handler om forskjellen på en konvensjon og en regel.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Ja, det er helt lov. Portnumre er avtaler om hva folk <em>pleier</em> å gjøre, ikke noe systemet håndhever. Nettopp derfor er <code>-sV</code> i nmap verdt noe: den spør tjenesten i stedet for å tro på portnummeret.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># hva svarer egentlig på porten</span>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># hva svarer egentlig på porten</span>
 nc -vz 127.0.0.1 22
 curl -I http://127.0.0.1
 
 <span class='c'># hele lista over kjente porter</span>
 cat /etc/services | head -30</div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="-648101222,802190106,-366067689"><span class="ans-q">En maskin har 80 og 443 åpne, ingenting annet. Hva slags maskin er dette sannsynligvis?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="5861609"><span class="ans-q">Du finner port 23 åpen. Hvilken port burde vært brukt i stedet?</span><input class="ans-in" placeholder="et portnummer"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">Noen kjører en webserver på port 8443. Er det lov? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Siste oppgave handler om forskjellen på en konvensjon og en regel.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Ja, det er helt lov. Portnumre er avtaler om hva folk <em>pleier</em> å gjøre, ikke noe systemet håndhever. Nettopp derfor er <code>-sV</code> i nmap verdt noe: den spør tjenesten i stedet for å tro på portnummeret.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="prt-3" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -106,25 +106,25 @@ cat /etc/services | head -30</div>
       <span class="lab-title">Lytter eller tilkoblet</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 2 &mdash; Lese netstat</div>
         <div class="theory-block"><div class="theory-title">🔌 Tilstanden og portnumrene forteller retningen</div><div class="theory-text"><p><code>LISTENING</code> betyr at et program venter på at noen skal koble til. Da er den eksterne adressen tom eller null, fordi ingen har koblet til ennå.</p><p><code>ESTABLISHED</code> betyr at to parter snakker sammen akkurat nå, og da står det en ekte adresse og port i begge ender.</p><p>Retningen leser du av portnumrene. En <strong>tjener</strong> lytter på en fast, lav port. En <strong>klient</strong> som kobler ut får en tilfeldig, høy port.</p><p>Så: har din side den høye porten, er du klienten. Har din side den lave, faste porten, er du tjeneren.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>To linjer fra samme maskin.</p><ol class="wsteps"><li><code>TCP 0.0.0.0:22 0.0.0.0:0 LISTENING</code></li><li>Lav fast port på min side, ingen på den andre: <strong>jeg er tjener</strong>, SSH venter på gjester</li><li><code>TCP 10.0.0.5:53412 142.250.74.78:443 ESTABLISHED</code></li><li>Høy tilfeldig port hos meg, 443 hos den andre: <strong>jeg er klienten</strong></li><li>Samme maskin er altså tjener og klient samtidig, i to ulike samtaler</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="506255053,461665948"><span class="ans-q">TCP 10.0.0.5:445 10.0.0.9:61204 ESTABLISHED. Er denne maskinen klient eller tjener?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193495867,193499134,-687719259,-1323792641"><span class="ans-q">En linje viser lokal port 60112 mot ekstern port 80. Hvem startet forbindelsen?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">Du ser LISTENING på port 4444 og ingen tilkobling ennå. Er det farlig? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Finn den lave faste porten. Den siden er tjeneren.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Siste oppgave: 4444 er ingen standardtjeneste, og en bakdør som lytter er like farlig før noen kobler til som etter. At tilstanden er LISTENING og ikke ESTABLISHED betyr bare at angriperen ikke er logget på <em>akkurat nå</em>.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># Linux, med prosessnavn</span>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># Linux, med prosessnavn</span>
 ss -tlnp
 ss -tnp | head
 
 <span class='c'># Windows</span>
 netstat -ano | findstr LISTENING</div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="506255053,461665948"><span class="ans-q">TCP 10.0.0.5:445 10.0.0.9:61204 ESTABLISHED. Er denne maskinen klient eller tjener?</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193495867,193499134,-687719259,-1323792641"><span class="ans-q">En linje viser lokal port 60112 mot ekstern port 80. Hvem startet forbindelsen?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">Du ser LISTENING på port 4444 og ingen tilkobling ennå. Er det farlig? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Finn den lave faste porten. Den siden er tjeneren.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Siste oppgave: 4444 er ingen standardtjeneste, og en bakdør som lytter er like farlig før noen kobler til som etter. At tilstanden er LISTENING og ikke ESTABLISHED betyr bare at angriperen ikke er logget på <em>akkurat nå</em>.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="prt-4" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -132,26 +132,26 @@ netstat -ano | findstr LISTENING</div>
       <span class="lab-title">Hvem når tjenesten</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 2 &mdash; Eksponering</div>
         <div class="theory-block"><div class="theory-title">🌐 Adressen tjenesten lytter på avgjør hvem som slipper til</div><div class="theory-text"><p>Dette er det viktigste i hele leksjonen, og det er én kolonne i utdata.</p><p><code>127.0.0.1</code> betyr at tjenesten <strong>bare</strong> kan nås fra maskinen selv. Ingen andre på nettet kommer til, uansett brannmur.</p><p><code>0.0.0.0</code> betyr <strong>alle grensesnitt</strong>. Tjenesten er nåbar fra nettverket, og fra internett hvis maskinen har en offentlig adresse.</p><p>En konkret adresse som <code>10.0.0.5</code> betyr bare det grensesnittet.</p><p>De fleste databaselekkasjer starter her: en database som skulle lyttet på 127.0.0.1, lytter på 0.0.0.0 fordi det var standard i oppsettet.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Tre tjenester på samme maskin, som har den offentlige adressen <code>203.0.113.9</code>.</p><ol class="wsteps"><li><code>127.0.0.1:3306</code> MySQL: bare maskinen selv. <strong>Trygt</strong></li><li><code>0.0.0.0:443</code> webserver: hele internett. <strong>Meningen</strong></li><li><code>0.0.0.0:3306</code> hvis den sto slik i stedet: hele internett når databasen. <strong>Alvorlig</strong></li><li>Forskjellen mellom første og siste linje er ni tegn i en konfigurasjonsfil</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2090080771,1428850688,314172386"><span class="ans-q">0.0.0.0:5432 LISTENING på en server med offentlig IP. Hvem kan nå databasen?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">En kollega sier «porten er lukket i brannmuren, så det går fint at den lytter på 0.0.0.0». Er tjenesten fortsatt nåbar fra det lokale nettet? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="1532542490,906931598"><span class="ans-q">Du vil at bare maskinen selv skal nå en tjeneste. Hvilken adresse skal den lytte på?</span><input class="ans-in" placeholder="en adresse"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Les kolonnen for lokal adresse, ikke portnummeret.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Andre oppgave er den som teller. En brannmur foran stopper trafikk <em>utenfra</em>, men tjenesten er fortsatt åpen for alt som allerede er innenfor. To lag som gjør ulike jobber, og du kan ikke erstatte det ene med det andre.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">ss -tlnp
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">ss -tlnp
 
 <span class='c'># se bare hva som er eksponert utover</span>
 ss -tln | grep -v 127.0.0.1
 
 <span class='c'># Windows</span>
 netstat -an | findstr LISTENING</div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="2090080771,1428850688,314172386"><span class="ans-q">0.0.0.0:5432 LISTENING på en server med offentlig IP. Hvem kan nå databasen?</span><input class="ans-in" placeholder="kort svar"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">En kollega sier «porten er lukket i brannmuren, så det går fint at den lytter på 0.0.0.0». Er tjenesten fortsatt nåbar fra det lokale nettet? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="1532542490,906931598"><span class="ans-q">Du vil at bare maskinen selv skal nå en tjeneste. Hvilken adresse skal den lytte på?</span><input class="ans-in" placeholder="en adresse"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Les kolonnen for lokal adresse, ikke portnummeret.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Andre oppgave er den som teller. En brannmur foran stopper trafikk <em>utenfra</em>, men tjenesten er fortsatt åpen for alt som allerede er innenfor. To lag som gjør ulike jobber, og du kan ikke erstatte det ene med det andre.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="prt-5" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -159,24 +159,24 @@ netstat -an | findstr LISTENING</div>
       <span class="lab-title">TCP eller UDP</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 2 &mdash; To transportprotokoller</div>
         <div class="theory-block"><div class="theory-title">📦 Den ene bekrefter, den andre gjør det ikke</div><div class="theory-text"><p><strong>TCP</strong> setter opp en forbindelse med et trehåndsgrep, nummererer pakkene, bekrefter mottak og sender på nytt hvis noe forsvinner. Det koster tid, men du vet at alt kom fram.</p><p><strong>UDP</strong> sender bare av gårde. Ingen forbindelse, ingen bekreftelse, ingen gjensending. Raskere, men uten garanti.</p><p>Derfor bruker filoverføring, web og e-post TCP, mens DNS, direktesendt video og spill gjerne bruker UDP.</p><p>Konsekvens for skanning: en lukket TCP-port svarer med RST, altså et tydelig nei. En lukket UDP-port svarer ofte <strong>ingenting i det hele tatt</strong>, som ser nøyaktig ut som en åpen port. Det er derfor UDP-skanning er treg og usikker.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Du skanner port 53 på to måter.</p><ol class="wsteps"><li><code>nmap -sS -p 53</code> gir <code>closed</code>. Du fikk RST, altså et klart svar</li><li><code>nmap -sU -p 53</code> gir <code>open|filtered</code></li><li>Det doble svaret betyr at nmap <strong>ikke fikk noe</strong> og ikke kan skille</li><li>Åpen UDP-tjeneste som tier, og lukket port bak brannmur, ser likt ut utenfra</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193507822"><span class="ans-q">DNS bruker vanligvis hvilken av de to?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">En UDP-skann gir open|filtered. Vet du om noe lytter der? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193506700"><span class="ans-q">Hvilken av de to gjensender en pakke som forsvant på veien?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Spør om protokollen venter på et svar før den går videre.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">ss -uln            <span class='c'># UDP som lytter</span>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">ss -uln            <span class='c'># UDP som lytter</span>
 ss -tln            <span class='c'># TCP som lytter</span>
 
 nmap -sU -p 53 127.0.0.1
 nmap -sS -p 53 127.0.0.1</div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193507822"><span class="ans-q">DNS bruker vanligvis hvilken av de to?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">En UDP-skann gir open|filtered. Vet du om noe lytter der? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193506700"><span class="ans-q">Hvilken av de to gjensender en pakke som forsvant på veien?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Spør om protokollen venter på et svar før den går videre.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="prt-6" data-level="hard">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -184,24 +184,24 @@ nmap -sS -p 53 127.0.0.1</div>
       <span class="lab-title">Hva skal aldri ut på internett</span>
       <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-5">Niv&aring; 3 &mdash; Vurdering</div>
         <div class="theory-block"><div class="theory-title">🚨 Tre spørsmål avgjør om en åpen port er et funn</div><div class="theory-text"><p>En åpen port er ikke i seg selv et problem. En webserver <em>skal</em> ha 443 åpen. Vurderingen krever tre spørsmål.</p><p><strong>Er tjenesten ment for publikum?</strong> Web og e-post er det. Databaser, fjernskrivebord og fildeling er det aldri.</p><p><strong>Er trafikken kryptert?</strong> Telnet, FTP og HTTP sender alt i klartekst, inkludert passord.</p><p><strong>Krever den autentisering, og er den standard?</strong> En tjeneste med standard brukernavn og passord er like åpen som en uten.</p><p>Rangeringen følger konsekvens, ikke portnummer. En åpen database er verre enn en åpen webserver, selv om begge bare er «en åpen port».</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En skann mot en server med offentlig IP gir fire åpne porter.</p><ol class="wsteps"><li><code>443</code> HTTPS: ment for publikum, kryptert. <strong>Greit</strong></li><li><code>22</code> SSH: ikke ment for publikum, men kryptert og krever nøkkel. <strong>Akseptabelt, men bør begrenses</strong></li><li><code>3389</code> RDP mot internett: ikke ment for publikum, hyppig angrepet. <strong>Alvorlig</strong></li><li><code>3306</code> MySQL mot internett: aldri ment for publikum, og ofte med svakt passord. <strong>Kritisk</strong></li><li>Rekkefølgen du fikser dem i er 3306, 3389, 22, og 443 rører du ikke</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5861608"><span class="ans-q">En server har 21, 22, 80 og 443 åpne. Hvilken port ville du fjernet først?</span><input class="ans-in" placeholder="et portnummer"><span class="ans-mark"></span></div><div class="ans-row" data-a="899781859,-212500690,1017080837"><span class="ans-q">Hvorfor er port 3306 åpen mot internett verre enn port 80 åpen? Svar med ett ord om hva 80 er og 3306 ikke er</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">En tjeneste er kryptert, men bruker standard brukernavn og passord. Er den trygg? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Gå gjennom de tre spørsmålene for hver port, ett om gangen.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">21 er FTP: ikke ment for publikum <em>og</em> ukryptert, altså feil på to av tre spørsmål. 80 er ment for publikum, så en åpen 80 er ikke et funn i seg selv. Og kryptering beskytter trafikken på veien, ikke mot noen som bare logger inn med passordet som sto i dokumentasjonen.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># alt som er eksponert utover</span>
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd"><span class='c'># alt som er eksponert utover</span>
 ss -tln | grep -v 127.0.0.1
 
 <span class='c'># mot et mål du har lov til å skanne</span>
 nmap -sV --top-ports 20 <MAAL></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5861608"><span class="ans-q">En server har 21, 22, 80 og 443 åpne. Hvilken port ville du fjernet først?</span><input class="ans-in" placeholder="et portnummer"><span class="ans-mark"></span></div><div class="ans-row" data-a="899781859,-212500690,1017080837"><span class="ans-q">Hvorfor er port 3306 åpen mot internett verre enn port 80 åpen? Svar med ett ord om hva 80 er og 3306 ikke er</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">En tjeneste er kryptert, men bruker standard brukernavn og passord. Er den trygg? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Gå gjennom de tre spørsmålene for hver port, ett om gangen.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">21 er FTP: ikke ment for publikum <em>og</em> ukryptert, altså feil på to av tre spørsmål. 80 er ment for publikum, så en åpen 80 er ikke et funn i seg selv. Og kryptering beskytter trafikken på veien, ikke mot noen som bare logger inn med passordet som sto i dokumentasjonen.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   </div>
 

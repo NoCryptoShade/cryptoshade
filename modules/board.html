@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Board — Metasploitable 2 — CyberLab</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/lab-shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Bricolage+Grotesque:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+.mod-band{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  padding:13px 20px;border-radius:10px;margin:30px 0 10px;border:1px solid var(--border);background:var(--bg2)}
+.mod-band.green{border-left:3px solid var(--green)}
+.mod-band.amber{border-left:3px solid var(--amber)}
+.mod-band.red{border-left:3px solid var(--red)}
+.mod-band-l{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.mod-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--text3);text-transform:uppercase}
+.mod-name{font-size:15px;font-weight:700}
+.mod-weeks{font-family:var(--mono);font-size:11px;color:var(--text3)}
+.tier-desc{font-size:12.5px;color:var(--text3);margin:0 0 14px 6px;max-width:66ch;line-height:1.6}
+.route{background:var(--bg2);border:1px solid var(--border);border-radius:10px;margin-bottom:9px;overflow:clip}
+.route.done{border-color:rgba(0,229,160,.35);background:rgba(0,229,160,.03)}
+.rtop{display:flex;gap:13px;padding:14px 16px;align-items:flex-start}
+.chk{margin-top:3px;width:17px;height:17px;accent-color:var(--green);cursor:pointer;flex-shrink:0}
+.rmain{flex:1;min-width:0}
+.rhead{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.rport{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--blue)}
+.rsvc{font-size:14px;font-weight:600}
+.rid{font-family:var(--mono);font-size:11px;color:var(--text3);margin-left:auto}
+.rgoal{font-size:13px;color:var(--text2);line-height:1.65;max-width:78ch}
+.rbody{padding:0 16px 15px 46px}
+.rfields{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.rf{display:block;font-size:12px;color:var(--text3);font-family:var(--mono)}
+.rf .t{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:6px;
+  color:var(--text);font-family:var(--mono);font-size:12.5px;padding:9px 12px;margin-top:5px;outline:none}
+.rf .t:focus{border-color:var(--green)}
+.rf textarea.t{min-height:52px;resize:vertical;line-height:1.6}
+.hbtn{font-family:var(--mono);font-size:11px;font-weight:600;background:transparent;
+  border:1px solid var(--border2);color:var(--text3);padding:5px 12px;border-radius:5px;
+  cursor:pointer;margin:0 7px 7px 0;transition:all .16s}
+.hbtn:hover{border-color:var(--amber);color:var(--amber)}
+.hbtn.on{border-color:var(--amber);color:var(--amber);background:var(--amber-d)}
+.htext{display:none;font-size:12.5px;color:#d4b07a;background:var(--amber-d);
+  border:1px solid rgba(255,181,71,.2);border-radius:7px;padding:11px 14px;
+  margin:0 0 9px;line-height:1.7}
+.htext.show{display:block}
+.htext code{font-family:var(--mono);font-size:11.5px;background:rgba(255,255,255,.08);padding:1px 5px;border-radius:3px}
+.loop{counter-reset:lp;list-style:none;margin:10px 0 0;padding:0}
+.loop li{counter-increment:lp;position:relative;padding:8px 0 8px 34px;font-size:13.5px;
+  color:var(--text2);line-height:1.7;border-bottom:1px solid rgba(255,255,255,.04)}
+.loop li:last-child{border-bottom:none}
+.loop li::before{content:counter(lp);position:absolute;left:0;top:10px;font-family:var(--mono);
+  font-size:10px;font-weight:700;width:21px;height:21px;border-radius:5px;display:flex;
+  align-items:center;justify-content:center;background:var(--green-d);
+  border:1px solid rgba(0,229,160,.3);color:var(--green)}
+.loop li strong{color:var(--text)}
+@media(max-width:640px){.rbody{padding-left:16px}}
+</style>
+</head>
+<body class="page">
+<nav class="nav">
+  <div class="nav-logo"><span class="bracket">[</span>CyberLab<span class="bracket">]</span></div>
+  <div class="nav-links">
+    <a href="../index.html" class="nav-link">Hjem</a>
+    <a href="../emne1.html" class="nav-link">Emne 1</a>
+    <a href="../emne3.html" class="nav-link">Emne 3</a>
+    <a href="../labber.html" class="nav-link on">Labber</a>
+    <a href="https://tk1104.timoamling.com/" target="_blank" rel="noopener" class="nav-link">Self check &nearr;</a>
+  </div>
+</nav>
+
+<div class="container-sm page" style="padding-top:40px;padding-bottom:80px">
+  <a href="../labber.html" class="back-link">&larr; Tilbake</a>
+  <div class="mod-hero">
+    <div class="section-eyebrow">Lab 18 &middot; Emne 3 &middot; Leksjon 11-12</div>
+    <div class="section-title">The Board &mdash; Metasploitable 2</div>
+    <p class="section-desc">Sytten veier inn i den samme maskinen. Poenget er ikke &aring; komme inn,
+    det er &aring; kunne forklare <em>hvorfor</em> hver enkelt tjeneste slapp deg inn.</p>
+  </div>
+
+  <div class="intro-card">
+    <div class="lect">Start her</div>
+    <h3>Sl&oslash;yfa er lik for alle sytten</h3>
+    <ol class="loop">
+      <li><strong>Skann f&oslash;rst.</strong> <code>nmap -sV &lt;MAAL&gt;</code>. Uten skanneutdata vet du
+      ikke hvilke ruter som i det hele tatt er &aring;pne, og da gjetter du.</li>
+      <li><strong>Velg en rute der porten er &aring;pen.</strong> Er porten lukket, hopp over. Ruta er
+      ikke tilgjengelig p&aring; ditt image.</li>
+      <li><strong>Les m&aring;lsetningen.</strong> Den sier hva du skal oppn&aring;, ikke hvordan.</li>
+      <li><strong>&Aring;pne f&oslash;rste hint hvis du st&aring;r fast.</strong> «Hva ser du etter» forteller deg
+      hva i skanneutdataen som peker p&aring; nettopp denne ruta.</li>
+      <li><strong>Bekreft at du er inne.</strong> Et r&aring;tt skall har ingen prompt. Det ser d&oslash;dt ut.
+      Skriv <code>id</code> og trykk enter uansett.</li>
+      <li><strong>Fyll ut begge feltene.</strong> Hvilken bruker du havnet som, og hvorfor tjenesten
+      slapp deg inn. <strong>Det er dette som er oppgaven</strong>, ikke avkrysningen.</li>
+    </ol>
+  </div>
+
+  <div class="warn-box" style="margin-bottom:8px">
+    <strong>F&oslash;r du starter:</strong> begge VM-ene skal st&aring; p&aring; <strong>host-only</strong>.
+    Metasploitable har blant annet et rotskall som lytter uten passord. St&aring;r den p&aring; et delt
+    nett, er den ikke din lenge. Skann bare den IP-en du har f&aring;tt oppgitt.
+  </div>
+
+  <div class="progress-wrap" style="margin:22px 0 6px">
+    <div class="progress-label"><span>Ruter fullf&oslash;rt</span><span id="bCount">0 / 17</span></div>
+    <div class="progress-track"><div class="progress-fill" id="bFill"></div></div>
+  </div>
+
+  <div class="mod-band green">
+    <div class="mod-band-l"><span class="mod-tag">Niv&aring; 1</span><span class="mod-name">Uten exploit</span></div>
+    <span class="mod-weeks">4 ruter</span>
+  </div>
+  <p class="tier-desc">Tjenester som slipper deg inn fordi de er satt opp feil, ikke fordi de har en sårbarhet.</p>
+  <div class="route" id="rt-1.1">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'1.1')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">1524</span>
+          <span class="rsvc">Something is already listening here</span>
+          <span class="badge badge-easy">grunnleggende</span>
+          <span class="rid">1.1</span>
+        </div>
+        <div class="rgoal">Se hva nmap kalte denne porten, og koble til med nc. Ingenting spør deg om noe. Skriv en kommando likevel.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-1.1" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-1.1" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">I nmap-utdata st&aring;r det <code>bindshell</code> eller <code>shell</code> p&aring; denne porten. Det er ikke en vanlig tjeneste. Se p&aring; navnet nmap ga porten, ikke p&aring; nummeret.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">Ingen exploit, ingen modul, ingen innlogging.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Den hilser ikke på deg. Koble til, skriv id, trykk enter.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-1.2">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'1.2')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">23</span>
+          <span class="rsvc">Telnet</span>
+          <span class="badge badge-easy">grunnleggende</span>
+          <span class="rid">1.2</span>
+        </div>
+        <div class="rgoal">Brukernavnet og passordet er de samme du har brukt siden uke 36 for å lese konsollet. Ikke noe mer avansert kreves.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-1.2" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-1.2" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Porten er &aring;pen og tjenesten heter <code>telnet</code>. Banneret r&oslash;per ofte distribusjonen. Her trenger du ingen exploit, bare en klient og et brukernavn du kan gjette.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">Du kjenner dem allerede.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Samme par som du bruker på konsollet. Begge ordene er like.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-1.3">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'1.3')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">5900</span>
+          <span class="rsvc">VNC</span>
+          <span class="badge badge-easy">grunnleggende</span>
+          <span class="rid">1.3</span>
+        </div>
+        <div class="rgoal">Ett passord, og det er et ord du gjetter på tre forsøk. Det finnes en login-skanner under auxiliary/scanner/vnc/ hvis du vil gå systematisk til verks. Koble til med vncviewer når du har det, og noter hvilken skrivebordsøkt du havner i.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-1.3" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-1.3" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Nmap melder <code>vnc</code> og gjerne <code>VNC protocol</code>. Sp&oslash;rsm&aring;let er hva som beskytter den, ikke om den er der.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">Passordet er det tingen selv heter, helt generisk.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Det er ordet password.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-1.4">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'1.4')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">3306</span>
+          <span class="rsvc">MySQL</span>
+          <span class="badge badge-easy">grunnleggende</span><span class="badge badge-module" style="margin-left:6px">uten skall</span>
+          <span class="rid">1.4</span>
+        </div>
+        <div class="rgoal">Databasens root-konto har ikke passord i det hele tatt. Kom inn med mysql-klienten. Denne gir deg ikke et skall i seg selv, så svar på spørsmålet i stedet: hva kan du lese herfra, og hvilken av de andre rutene dine hjelper det på?</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-1.4" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-1.4" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Porten svarer, og du kommer inn <strong>uten passord</strong>. Test det f&oslash;rst: klarer du &aring; koble til i det hele tatt? Denne ruta gir deg ingen shell, bare lesetilgang.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">mysql -h $T -u root</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Utelat passordet helt. Ikke skriv noe, og ikke bruk -p.</div></div>
+    </div>
+  </div>
+
+  <div class="mod-band amber">
+    <div class="mod-band-l"><span class="mod-tag">Niv&aring; 2</span><span class="mod-name">Med Metasploit</span></div>
+    <span class="mod-weeks">8 ruter</span>
+  </div>
+  <p class="tier-desc">Kjente sårbarheter med ferdige moduler. Du skal likevel vite hvorfor modulen virker.</p>
+  <div class="route" id="rt-2.1">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'2.1')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">139/445</span>
+          <span class="rsvc">Samba 3.x</span>
+          <span class="badge badge-easy">grunnleggende</span>
+          <span class="rid">2.1</span>
+        </div>
+        <div class="rgoal">Modulen har usermap i navnet. Skallet du får er rått og uten prompt, så skriv en kommando i blinde. Feilklassen her er temaet i leksjon 7, og du bør kunne navngi den før du går.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-2.1" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-2.1" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Nmap melder <code>netbios-ssn</code> og <code>microsoft-ds</code>. <code>smb_version</code> i Metasploit sier SMBv1, Unix, signering ikke p&aring;krevd. Versjonsnummeret st&aring;r ikke der, s&aring; du m&aring; matche p&aring; noe annet.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">search samba, se etter usermap.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">LHOST må være host-only-adressen din. Sjekk med ip addr.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-2.2">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'2.2')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">3306</span>
+          <span class="rsvc">MySQL, again</span>
+          <span class="badge badge-easy">grunnleggende</span>
+          <span class="rid">2.2</span>
+        </div>
+        <div class="rgoal">Du kom inn i databasen i 1.4. Gjør det om til et skall. Databasen kan skrive filer til disk og laste kode fra dem, og det er en funksjon og ikke en feil. Finn modulen som bruker det, og si hva en database gjør med den muligheten i utgangspunktet.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-2.2" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-2.2" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Samme port som 1.4, men n&aring; vil du ha mer enn &aring; lese. Foruts etningen er den samme: du kommer inn uten passord. Sp&oslash;rsm&aring;let er hva en databasebruker med h&oslash;ye rettigheter kan gj&oslash;re mot filsystemet.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">search mysql, og se etter payload-modulen i stedet for login-skanneren.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">USERNAME er root og PASSWORD er tomt. Sett den til ingenting i stedet for å utelate den.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-2.3">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'2.3')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">6667</span>
+          <span class="rsvc">UnrealIRCd</span>
+          <span class="badge badge-easy">grunnleggende</span>
+          <span class="rid">2.3</span>
+        </div>
+        <div class="rgoal">Noen forgiftet nedlastingen. Når du har skallet, les modulbeskrivelsen og si hva som faktisk gikk galt, gitt at det ikke var en kodefeil.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-2.3" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-2.3" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Nmap melder <code>irc</code> p&aring; 6667. Et sjekkemodul svarer <code>appears</code>, ikke <code>vulnerable</code>, og du m&aring; registrere en bruker f&oslash;rst for at det skal virke.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">search unreal.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Reverse-nyttelast, altså LHOST.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-2.4">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'2.4')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">1099</span>
+          <span class="rsvc">Java RMI</span>
+          <span class="badge badge-medium">dybde</span>
+          <span class="rid">2.4</span>
+        </div>
+        <div class="rgoal">Sjekken på denne fortalte deg at klasselasteren er aktivert. Gjør det om til et skall. Nyttelastfamilien her er en annen enn på de andre, så les hva modulen tilbyr deg.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-2.4" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-2.4" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Skanningen sa <code>Java RMI Endpoint Detected: Class Loader Enabled</code>. Akkurat de tre siste ordene er hele grunnen til at ruta finnes.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">search rmi.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Denne bruker en Java-nyttelast i stedet for en kommandonyttelast.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-2.5">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'2.5')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">8787</span>
+          <span class="rsvc">Ruby DRb</span>
+          <span class="badge badge-medium">dybde</span>
+          <span class="rid">2.5</span>
+        </div>
+        <div class="rgoal">Distribuert Ruby, som gjør nøyaktig det den ble laget for.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-2.5" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-2.5" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Nmap melder <code>drb</code> eller <code>Ruby DRb RMI</code> p&aring; 8787. Det er fjernkall i Ruby, og det er ikke ment &aring; st&aring; &aring;pent mot noen.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">search drb.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Modulnavnet slutter på remote_codeexec.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-2.6">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'2.6')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">8180</span>
+          <span class="rsvc">Apache Tomcat</span>
+          <span class="badge badge-medium">dybde</span>
+          <span class="rid">2.6</span>
+        </div>
+        <div class="rgoal">To steg. Finn først administratorpassordet, som aldri ble endret fra paret som står i dokumentasjonen. Bruk deretter manageren til å kjøre kode, som er hele poenget med en manager. RPORT er ikke 8080.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-2.6" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-2.6" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Port 8180 svarer med Apache Tomcat. G&aring; til <code>/manager/html</code> i nettleseren. F&aring;r du en innloggingsboks, er sp&oslash;rsm&aring;let bare hvilke standardpassord som gjelder.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">auxiliary/scanner/http/tomcat_mgr_login finner paret.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Brukernavn og passord er begge navnet på programvaren. Deretter tomcat_mgr_upload, RPORT 8180.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-2.7">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'2.7')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">5432</span>
+          <span class="rsvc">PostgreSQL</span>
+          <span class="badge badge-medium">dybde</span>
+          <span class="rid">2.7</span>
+        </div>
+        <div class="rgoal">Du beviste allerede forrige uke at autentiseringen lykkes. Gjør det om til kodekjøring. Noter hvilken bruker du havner som, og hvorfor det ikke er root.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-2.7" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-2.7" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Nmap melder <code>postgresql</code> p&aring; 5432. Et sjekkemodul sier at autentisering lyktes, og da er sp&oslash;rsm&aring;let hva den brukeren f&aring;r lov til &aring; gj&oslash;re.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">search postgres. Du vil ha payload-modulen.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Standard innlogging, begge deler navnet på databasen.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-2.8">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'2.8')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">80</span>
+          <span class="rsvc">TWiki</span>
+          <span class="badge badge-medium">dybde</span>
+          <span class="rid">2.8</span>
+        </div>
+        <div class="rgoal">Bla gjennom webroten og finn wikien blant applikasjonene som ligger der. Den har kodekjøring i et av skriptene sine, og modulen er oppkalt etter funksjonen det gjelder. Å finne applikasjonen er en del av oppgaven.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-2.8" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-2.8" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">P&aring; port 80 finnes det flere applikasjoner. Bla gjennom forsiden, eller bruk <code>gobuster</code>, og se etter en katalog som heter noe med twiki.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">Bla til webroten og les lista over applikasjoner.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">search twiki. Modulen er oppkalt etter skriptet det gjelder.</div></div>
+    </div>
+  </div>
+
+  <div class="mod-band red">
+    <div class="mod-band-l"><span class="mod-tag">Niv&aring; 3</span><span class="mod-name">For hånd</span></div>
+    <span class="mod-weeks">5 ruter</span>
+  </div>
+  <p class="tier-desc">Ingen modul. Du bygger veien selv, av det tjenesten allerede tilbyr.</p>
+  <div class="route" id="rt-3.1">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'3.1')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">2049</span>
+          <span class="rsvc">NFS</span>
+          <span class="badge badge-medium">dybde</span>
+          <span class="rid">3.1</span>
+        </div>
+        <div class="rgoal">Spør tjenesten hva den deler ut, monter det fra Kali, og finn ut hva du kan gjøre med skrivetilgang til noen andres filsystem. Veien videre til et skall går gjennom en annen port, og du vet allerede hvilken, for den har vært åpen hele tiden.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-3.1" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-3.1" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Nmap melder <code>nfs</code> og <code>mountd</code>. F&oslash;rste steg er ikke &aring; angripe, men &aring; <strong>sp&oslash;rre</strong> hva serveren deler ut. Se hva som st&aring;r i eksportlista.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">showmount -e viser deg eksporten. Monter den med mount -t nfs.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Nå har du skrivetilgang til en hjemmekatalog. Hva leser SSH ut av en slik?</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-3.2">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'3.2')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">512-514</span>
+          <span class="rsvc">The r-services</span>
+          <span class="badge badge-medium">dybde</span>
+          <span class="rid">3.2</span>
+        </div>
+        <div class="rgoal">Tre porter fra en tid da maskiner stolte på hverandre ut fra navn. Finn ut hvilken fil på målet som gir den tilliten, og hva som må stå i den. Logg deretter inn uten passord. Du må kanskje installere en klient.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-3.2" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-3.2" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Tre porter ved siden av hverandre: 512, 513 og 514. Nmap kaller dem <code>exec</code>, <code>login</code> og <code>shell</code>. Dette er tillitsbaserte tjenester fra f&oslash;r passord ble vanlig, og de stoler p&aring; en fil i hjemmekatalogen.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">Fila heter .rhosts og ligger i en hjemmekatalog. Se på hva som allerede ligger i root sin.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">apt install rsh-client, deretter rlogin -l root</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-3.3">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'3.3')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">80</span>
+          <span class="rsvc">WebDAV</span>
+          <span class="badge badge-medium">dybde</span>
+          <span class="rid">3.3</span>
+        </div>
+        <div class="rgoal">Apache her er bygget med DAV, og én katalog under webroten tar imot det. Finn katalogen, bekreft hvilke metoder den tillater, legg så en fil der og få serveren til å kjøre den. Ingen modul på denne, curl holder. Grunnen til at det virker er én setning om to rettigheter som aldri skal gis til samme katalog.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-3.3" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-3.3" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">P&aring; port 80 finnes en katalog som tar imot mer enn GET. Pr&oslash;v <code>OPTIONS</code> mot <code>/dav/</code> og les hvilke metoder serveren sier at den st&oslash;tter.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">curl -X OPTIONS mot katalogen viser hva den tillater.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">PUT en .php-fil med curl -T, og be om den i nettleseren etterpå.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-3.4">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'3.4')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">local</span>
+          <span class="rsvc">Escalate</span>
+          <span class="badge badge-hard">strekk</span>
+          <span class="rid">3.4</span>
+        </div>
+        <div class="rgoal">Flere av skallene dine var ikke root. Velg ett og eskaler. Denne verten kjører en svært gammel kjerne og en like gammel enhetsbehandler. searchsploit virker uten nett. Les kildekoden til exploiten før du kjører den, for den trenger et argument du må slå opp på målet først.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-3.4" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-3.4" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Denne starter der de andre slutter: du har allerede et skall som en vanlig bruker. Sjekk <code>uname -a</code> og hvilken kjerne den kj&oslash;rer. Ruta handler om noe som kj&oslash;rer som root og tar imot input fra deg.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">uname -a gir deg kjernen. Kjør searchsploit på den.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Målet er udev. Exploiten trenger en PID du finner i /proc/net/netlink.</div></div>
+    </div>
+  </div>
+  <div class="route" id="rt-3.5">
+    <div class="rtop">
+      <input type="checkbox" class="chk" onchange="tDone(this,'3.5')">
+      <div class="rmain">
+        <div class="rhead">
+          <span class="rport">22</span>
+          <span class="rsvc">OpenSSH 4.7p1</span>
+          <span class="badge badge-hard">strekk</span>
+          <span class="rid">3.5</span>
+        </div>
+        <div class="rgoal">I 2008 ødela Debians pakke nøkkelgenereringen så grundig at hele nøkkelrommet får plass på en disk. Finn ut hva som skjedde, og kom deg inn med en nøkkel i stedet for et passord.</div>
+      </div>
+    </div>
+    <div class="rbody">
+      <div class="rfields">
+        <label class="rf">Hvilken bruker havnet du som?
+          <input class="t" data-k="u-3.5" placeholder="root, www-data, daemon ..."></label>
+        <label class="rf">Hvorfor slapp denne tjenesten deg inn? &Eacute;n setning, mekanismen og ikke symptomet.
+          <textarea class="t" data-k="w-3.5" placeholder="Fordi ..."></textarea></label>
+      </div>
+      <div class="rhints"><button class="hbtn" onclick="tHint(this)">&#9654; Hva ser du etter</button><div class="htext">Nmap melder OpenSSH 4.7p1 og Debian. &Aring;rstallet er poenget: dette er et bygg fra perioden da n&oslash;kkelgenereringen var &oslash;delagt. Du trenger ikke knekke noe, du trenger &aring; lete i en liste.</div><button class="hbtn" onclick="tHint(this)">&#9654; Hvordan</button><div class="htext">Søk opp Debian OpenSSL og forutsigbar PRNG, 2008.</div><button class="hbtn" onclick="tHint(this)">&#9654; Detaljen</button><div class="htext">Nøkkelsettene er pakket. Metasploit har ssh_login_pubkey.</div></div>
+    </div>
+  </div>
+
+  <div class="recap-card" style="margin-top:34px">
+    <h3>N&aring;r du er ferdig</h3>
+    <ol>
+      <li><strong>Hvilke ruter trengte ingen sårbarhet?</strong> De som bare var satt opp feil. Hvor mange av de sytten var det?</li>
+      <li><strong>Hvilken bruker havnet du oftest som?</strong> Og hva sier det om hva tjenesten kj&oslash;rer som?</li>
+      <li><strong>Hvilke to ruter ga root direkte?</strong> Hva hadde de til felles?</li>
+      <li><strong>Hvilken ville du rapportert f&oslash;rst</strong> til en kunde, og hvordan begrunner du rekkef&oslash;lgen?</li>
+    </ol>
+  </div>
+
+  <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap">
+    <button class="btn btn-ghost" onclick="bExport()">Eksporter notatene</button>
+    <button class="btn btn-ghost" onclick="bReset()">Nullstill</button>
+    <a href="../labber.html" class="btn btn-ghost">&larr; Labber</a>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-inner">
+<span>CyberLab &mdash; Fagskole Informasjonssikkerhet</span><span>Gratis &amp; &aring;pen kildekode</span>
+</div></div></footer>
+
+<script src="../js/cyberlab.js"></script>
+<script>
+var BK = 'cl_board_v1';
+function bGet(){ try { return JSON.parse(localStorage.getItem(BK) || '{}'); } catch(e){ return {}; } }
+function bSet(o){ try { localStorage.setItem(BK, JSON.stringify(o)); } catch(e){} }
+function tHint(b){ b.classList.toggle('on'); b.nextElementSibling.classList.toggle('show'); }
+function tDone(cb, id){
+  var s = bGet(); s['d-'+id] = cb.checked; bSet(s);
+  cb.closest('.route').classList.toggle('done', cb.checked); bCount();
+}
+function bCount(){
+  var all = document.querySelectorAll('.route').length;
+  var d = document.querySelectorAll('.route.done').length;
+  document.getElementById('bCount').textContent = d + ' / ' + all;
+  document.getElementById('bFill').style.width = (all ? (d/all*100) : 0) + '%';
+}
+function bExport(){
+  var s = bGet(), out = ['CyberLab - The Board, Metasploitable 2', ''];
+  document.querySelectorAll('.route').forEach(function(r){
+    var id = r.id.replace('rt-',''), done = r.classList.contains('done');
+    var u = r.querySelector('[data-k^="u-"]').value.trim();
+    var w = r.querySelector('[data-k^="w-"]').value.trim();
+    if (done || u || w) {
+      out.push((done ? '[x] ' : '[ ] ') + id + '  ' + r.querySelector('.rsvc').textContent);
+      if (u) out.push('    bruker: ' + u);
+      if (w) out.push('    hvorfor: ' + w);
+    }
+  });
+  var b = new Blob([out.join('\n')], {type:'text/plain'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(b); a.download = 'board-notater.txt'; a.click();
+}
+function bReset(){
+  if (!confirm('Nullstille alle avkrysninger og notater?')) return;
+  localStorage.removeItem(BK); location.reload();
+}
+document.addEventListener('DOMContentLoaded', function(){
+  var s = bGet();
+  document.querySelectorAll('.route').forEach(function(r){
+    var id = r.id.replace('rt-','');
+    if (s['d-'+id]) { r.querySelector('.chk').checked = true; r.classList.add('done'); }
+  });
+  document.querySelectorAll('.rf .t').forEach(function(t){
+    var k = t.dataset.k;
+    if (s[k]) t.value = s[k];
+    t.addEventListener('input', function(){ var o = bGet(); o[k] = t.value; bSet(o); });
+  });
+  bCount();
+});
+</script>
+</body>
+</html>

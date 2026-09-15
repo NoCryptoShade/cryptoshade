@@ -55,21 +55,21 @@
       <span class="lab-title">32 biter i fire oktetter</span>
       <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-1">Niv&aring; 1 &mdash; Formen</div>
         <div class="theory-block"><div class="theory-title">🔢 Fire tall, hvert fra 0 til 255</div><div class="theory-text"><p>En IPv4-adresse er <strong>32 biter</strong>, skrevet som fire tall skilt med punktum. Hvert tall kalles en <strong>oktett</strong> og er 8 biter.</p><p>8 biter gir 256 kombinasjoner, alts&aring; verdiene <strong>0 til 255</strong>. Et tall over 255 i en oktett er ikke en gyldig adresse.</p><p>Adressen er ikke et navn p&aring; maskinen. Den sier <strong>hvilket nettverk</strong> maskinen st&aring;r i, og <strong>hvilken vert</strong> den er der. Flytter maskinen seg, f&aring;r den ny adresse.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Fire adresser, to av dem umulige.</p><ol class="wsteps"><li><code>192.168.1.10</code> gyldig: alle fire mellom 0 og 255</li><li><code>10.0.0.255</code> gyldig som tall, men ofte reservert som kringkasting</li><li><code>192.168.300.1</code> <strong>ugyldig</strong>: 300 er over 255</li><li><code>172.16.5</code> <strong>ugyldig</strong>: bare tre oktetter</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177629,2094833431,2090089747"><span class="ans-q">Hvor mange biter er én oktett?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Er 192.168.1.256 en gyldig adresse? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="5861642"><span class="ans-q">Hvor mange biter er hele adressen?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">8 biter gir 256 verdier, og de teller fra 0.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">ip addr show
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">ip addr show
 ipconfig          <span class='c'># Windows</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177629,2094833431,2090089747"><span class="ans-q">Hvor mange biter er én oktett?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Er 192.168.1.256 en gyldig adresse? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="5861642"><span class="ans-q">Hvor mange biter er hele adressen?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">8 biter gir 256 verdier, og de teller fra 0.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="n6-2" data-level="easy">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -77,21 +77,21 @@ ipconfig          <span class='c'># Windows</span></div>
       <span class="lab-title">Nettdel og vertsdel</span>
       <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-1">Niv&aring; 1 &mdash; Hva masken gj&oslash;r</div>
         <div class="theory-block"><div class="theory-title">✂️ Masken forteller hvor adressen deles</div><div class="theory-text"><p>Adressen alene sier ingenting om hvilket nett du er i. Det er <strong>masken</strong> som deler den i to.</p><p><strong>Nettdelen</strong> er felles for alle p&aring; samme nett. <strong>Vertsdelen</strong> er unik for hver maskin.</p><p>I CIDR-notasjon st&aring;r masken som et tall etter skr&aring;strek: <code>/24</code> betyr at de <strong>24 f&oslash;rste bitene</strong> er nettdel. Siden hver oktett er 8 biter, er 24 biter n&oslash;yaktig <strong>tre oktetter</strong>.</p><p>Derfor er /8, /16 og /24 de enkleste: de treffer akkurat p&aring; et punktum.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Tre masker som treffer p&aring; punktum.</p><ol class="wsteps"><li><code>/8</code>: f&oslash;rste tall er nett, tre siste er vert. <code>10</code>.x.x.x</li><li><code>/16</code>: to f&oslash;rste er nett. <code>172.16</code>.x.x</li><li><code>/24</code>: tre f&oslash;rste er nett. <code>192.168.1</code>.x</li><li>For <code>192.168.1.10/24</code> er nettdelen <strong>192.168.1</strong> og vertsdelen <strong>10</strong></li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="194039126"><span class="ans-q">For 10.20.30.40/16, hva er nettdelen?</span><input class="ans-in" placeholder="to tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="177629"><span class="ans-q">For 172.16.5.8/24, hva er vertsdelen?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="177622,5867708,5863352"><span class="ans-q">Hvor mange oktetter er nettdel ved /8?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Del masketallet p&aring; 8 for &aring; se hvor mange hele oktetter det er.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">ip addr show | grep inet
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">ip addr show | grep inet
 <span class='c'># tallet etter / er masken</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="194039126"><span class="ans-q">For 10.20.30.40/16, hva er nettdelen?</span><input class="ans-in" placeholder="to tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="177629"><span class="ans-q">For 172.16.5.8/24, hva er vertsdelen?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="177622,5867708,5863352"><span class="ans-q">Hvor mange oktetter er nettdel ved /8?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Del masketallet p&aring; 8 for &aring; se hvor mange hele oktetter det er.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="n6-3" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -99,22 +99,22 @@ ipconfig          <span class='c'># Windows</span></div>
       <span class="lab-title">Samme nett eller ikke</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 2 &mdash; Sammenligningen</div>
         <div class="theory-block"><div class="theory-title">⚖️ Lik nettdel betyr samme nett</div><div class="theory-text"><p>Dette er sp&oslash;rsm&aring;let maskinen din stiller f&oslash;r hver eneste pakke.</p><p>Regelen: to adresser er p&aring; <strong>samme nett</strong> hvis nettdelen er lik, med <strong>samme maske</strong> lagt til grunn.</p><p>Er den ulik, m&aring; trafikken gjennom en ruter, og da sendes pakken til standard gateway.</p><p>Med /24 holder det &aring; sammenligne de <strong>tre f&oslash;rste tallene</strong>. Med /16 de to f&oslash;rste. Med /8 bare det f&oslash;rste.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Din maskin er <code>192.168.4.10/24</code>.</p><ol class="wsteps"><li>Til <code>192.168.4.200</code>: nettdel 192.168.4 mot 192.168.4. <strong>Samme nett</strong></li><li>Til <code>192.168.5.200</code>: nettdel 192.168.4 mot 192.168.<strong>5</strong>. Ulik. <strong>Via ruter</strong></li><li>Hadde masken v&aelig;rt /16, ville nettdelen v&aelig;rt bare 192.168 for begge</li><li>Da hadde de to <strong>v&aelig;rt</strong> p&aring; samme nett</li><li>Samme adresser, ulik maske, motsatt svar</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5863504"><span class="ans-q">10.1.2.5/24 og 10.1.2.99. Samme nett? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">10.1.2.5/24 og 10.1.3.99. Samme nett? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">10.1.2.5/16 og 10.1.3.99. Samme nett? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sett masken f&oslash;rst, s&aring; sammenlign bare s&aring; mange tall som masken dekker.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Legg merke til at oppgave 2 og 3 har <strong>identiske adresser</strong> og motsatt svar. Det er masken som avgj&oslash;r, ikke adressene. Derfor gir en adresse uten maske ingen mening.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">ip addr show
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">ip addr show
 ip route
 ping -c 1 <naboadresse></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5863504"><span class="ans-q">10.1.2.5/24 og 10.1.2.99. Samme nett? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">10.1.2.5/24 og 10.1.3.99. Samme nett? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="5863504"><span class="ans-q">10.1.2.5/16 og 10.1.3.99. Samme nett? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Sett masken f&oslash;rst, s&aring; sammenlign bare s&aring; mange tall som masken dekker.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Legg merke til at oppgave 2 og 3 har <strong>identiske adresser</strong> og motsatt svar. Det er masken som avgj&oslash;r, ikke adressene. Derfor gir en adresse uten maske ingen mening.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="n6-4" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -122,22 +122,22 @@ ping -c 1 <naboadresse></div>
       <span class="lab-title">Hvor mange verter får plass</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 2 &mdash; Regnestykket</div>
         <div class="theory-block"><div class="theory-title">🧮 To opphøyd i vertsbitene, minus to</div><div class="theory-text"><p>Antall <strong>vertsbiter</strong> er <code>32 minus masken</code>. Antall brukbare adresser er <code>2^vertsbiter - 2</code>.</p><p>De to som trekkes fra er <strong>nettverksadressen</strong>, der alle vertsbitene er null, og <strong>kringkastingsadressen</strong>, der alle er ett. Ingen av dem kan gis til en maskin.</p><p>Tabellen er verdt &aring; kunne:</p><p><code>/24</code> = 254 &middot; <code>/25</code> = 126 &middot; <code>/26</code> = 62 &middot; <code>/27</code> = 30 &middot; <code>/28</code> = 14 &middot; <code>/29</code> = 6 &middot; <code>/30</code> = 2</p><p>Legg merke til m&oslash;nsteret: hver gang masken &oslash;ker med &eacute;n, <strong>halveres</strong> antallet.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Hvor mange verter i et <code>/27</code>?</p><ol class="wsteps"><li>Vertsbiter: 32 - 27 = <strong>5</strong></li><li>Adresser totalt: 2^5 = <strong>32</strong></li><li>Trekk fra nettverksadresse og kringkasting: 32 - 2 = <strong>30</strong></li><li>Et /27 rommer alts&aring; 30 maskiner</li><li>Trenger du 40 maskiner, holder ikke /27. Da m&aring; du opp til /26, som gir 62</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5861578"><span class="ans-q">Hvor mange brukbare adresser i et /28?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="193429883,5861612"><span class="ans-q">Du trenger plass til 100 maskiner. Hvilken maske er den minste som holder?</span><input class="ans-in" placeholder="en maske"><span class="ans-mark"></span></div><div class="ans-row" data-a="177623"><span class="ans-q">Hvor mange vertsbiter har et /30?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Regn vertsbitene f&oslash;rst, s&aring; to opph&oslash;yd i det, s&aring; minus to.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">100 maskiner: /26 gir 62, som er for lite. /25 gir 126, som holder. Du velger alltid den <strong>minste masken som er stor nok</strong>, ikke den n&aelig;rmeste.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># regn selv, det g&aring;r fort</span>
+        <div class="cmd-block">
+          <div class="obj-title">Regnem&aring;te</div>
+          <div class="cmd"><span class='c'># regn selv, det g&aring;r fort</span>
 <span class='c'># 32 - maske = vertsbiter</span>
 <span class='c'># 2^vertsbiter - 2 = brukbare</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5861578"><span class="ans-q">Hvor mange brukbare adresser i et /28?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="193429883,5861612"><span class="ans-q">Du trenger plass til 100 maskiner. Hvilken maske er den minste som holder?</span><input class="ans-in" placeholder="en maske"><span class="ans-mark"></span></div><div class="ans-row" data-a="177623"><span class="ans-q">Hvor mange vertsbiter har et /30?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Regn vertsbitene f&oslash;rst, s&aring; to opph&oslash;yd i det, s&aring; minus to.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">100 maskiner: /26 gir 62, som er for lite. /25 gir 126, som holder. Du velger alltid den <strong>minste masken som er stor nok</strong>, ikke den n&aelig;rmeste.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="n6-5" data-level="hard">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -145,21 +145,21 @@ ping -c 1 <naboadresse></div>
       <span class="lab-title">Første og siste adresse</span>
       <div class="lab-meta"><span class="badge badge-hard">Vanskelig</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-5">Niv&aring; 3 &mdash; Blokker</div>
         <div class="theory-block"><div class="theory-title">📏 Blokkstørrelsen forteller hvor nettene begynner</div><div class="theory-text"><p>Med masker som ikke treffer p&aring; punktum, deles en oktett i blokker.</p><p><strong>Blokkst&oslash;rrelsen</strong> er antall adresser per nett: 2 opph&oslash;yd i vertsbitene. For /26 er det 64, for /27 er det 32, for /28 er det 16.</p><p>Nettene begynner p&aring; multipler av blokkst&oslash;rrelsen: 0, 64, 128, 192 for /26.</p><p>I hvert nett er <strong>f&oslash;rste adresse nettverksadressen</strong>, <strong>siste er kringkasting</strong>, og alt imellom er brukbart.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>Hvilket nett ligger <code>192.168.1.100/26</code> i?</p><ol class="wsteps"><li>Vertsbiter: 32 - 26 = 6, s&aring; blokkst&oslash;rrelsen er 2^6 = <strong>64</strong></li><li>Nettene starter p&aring; 0, 64, 128 og 192</li><li>100 ligger mellom 64 og 128, alts&aring; i nettet som starter p&aring; <strong>64</strong></li><li>Nettverksadresse: <code>192.168.1.64</code>, kringkasting: <code>192.168.1.127</code></li><li>Brukbart omr&aring;de: <code>.65</code> til <code>.126</code></li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5861642"><span class="ans-q">Hva er blokkstørrelsen for et /27?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="613708268"><span class="ans-q">Hvilken nettverksadresse hører 10.0.0.200/26 til?</span><input class="ans-in" placeholder="en adresse"><span class="ans-mark"></span></div><div class="ans-row" data-a="613709228"><span class="ans-q">Hva er kringkastingsadressen i det nettet?</span><input class="ans-in" placeholder="en adresse"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Finn blokkst&oslash;rrelsen, tell oppover i blokker, og se hvilken adressen havner i.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">/26 gir blokker p&aring; 64: 0, 64, 128, <strong>192</strong>. 200 ligger i den siste, som g&aring;r fra 192 til 255. Alts&aring; nett 192, kringkasting 255, brukbart 193 til 254.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd"><span class='c'># blokkst&oslash;rrelse = 2^(32-maske)</span>
+        <div class="cmd-block">
+          <div class="obj-title">Regnem&aring;te</div>
+          <div class="cmd"><span class='c'># blokkst&oslash;rrelse = 2^(32-maske)</span>
 <span class='c'># start = n&aelig;rmeste multiplum under</span></div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="5861642"><span class="ans-q">Hva er blokkstørrelsen for et /27?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="613708268"><span class="ans-q">Hvilken nettverksadresse hører 10.0.0.200/26 til?</span><input class="ans-in" placeholder="en adresse"><span class="ans-mark"></span></div><div class="ans-row" data-a="613709228"><span class="ans-q">Hva er kringkastingsadressen i det nettet?</span><input class="ans-in" placeholder="en adresse"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Finn blokkst&oslash;rrelsen, tell oppover i blokker, og se hvilken adressen havner i.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">/26 gir blokker p&aring; 64: 0, 64, 128, <strong>192</strong>. 200 ligger i den siste, som g&aring;r fra 192 til 255. Alts&aring; nett 192, kringkasting 255, brukbart 193 til 254.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="n6-6" data-level="easy">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -167,23 +167,23 @@ ping -c 1 <naboadresse></div>
       <span class="lab-title">Hvordan maskinen får innstillingene</span>
       <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-1">Niv&aring; 1 &mdash; DHCP</div>
         <div class="theory-block"><div class="theory-title">📨 Fire meldinger, og du har alt du trenger</div><div class="theory-text"><p>De fleste maskiner f&aring;r nettverksinnstillingene automatisk fra en <strong>DHCP-server</strong>.</p><p>Utvekslingen har fire steg, ofte forkortet <strong>DORA</strong>: klienten roper <em>Discover</em>, serveren svarer <em>Offer</em>, klienten sier <em>Request</em>, serveren bekrefter med <em>Acknowledge</em>.</p><p>Du f&aring;r fire ting: <strong>IP-adresse</strong>, <strong>maske</strong>, <strong>gateway</strong> og <strong>DNS-server</strong>. Mangler &eacute;n av dem, virker noe, men ikke alt.</p><p>F&aring;r maskinen en adresse som begynner p&aring; <code>169.254</code>, fant den <strong>ingen DHCP-server</strong> og fant p&aring; en adresse selv. Den n&aring;r da ingenting.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En PC f&aring;r <code>169.254.12.44</code> og n&aring;r ingenting.</p><ol class="wsteps"><li>169.254 er ikke fra en DHCP-server, den er selvtildelt</li><li>Alts&aring; fikk maskinen <strong>ingen svar</strong> p&aring; Discover</li><li>Mulige &aring;rsaker: kabel ute, feil VLAN, eller DHCP-serveren er nede</li><li>Merk at dette ikke er et DNS-problem eller et gateway-problem</li><li>Feilen er ett steg tidligere: maskinen har aldri f&aring;tt en gyldig adresse</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193489642,-1803821202"><span class="ans-q">Hvilke fire opplysninger får du normalt fra DHCP? Skriv den som oversetter navn til adresse</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">En maskin har adressen 169.254.8.3. Fikk den svar fra DHCP? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="177625,2090257387"><span class="ans-q">Hvor mange meldinger er det i DORA-utvekslingen?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">169.254 er alltid et tegn p&aring; at ingen svarte.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">ip addr show
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">ip addr show
 <span class='c'># Windows</span>
 ipconfig /all
 ipconfig /release &amp;&amp; ipconfig /renew</div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193489642,-1803821202"><span class="ans-q">Hvilke fire opplysninger får du normalt fra DHCP? Skriv den som oversetter navn til adresse</span><input class="ans-in" placeholder="ett ord"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">En maskin har adressen 169.254.8.3. Fikk den svar fra DHCP? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="177625,2090257387"><span class="ans-q">Hvor mange meldinger er det i DORA-utvekslingen?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">169.254 er alltid et tegn p&aring; at ingen svarte.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="n6-7" data-level="easy">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -191,23 +191,23 @@ ipconfig /release &amp;&amp; ipconfig /renew</div>
       <span class="lab-title">Fra navn til adresse</span>
       <div class="lab-meta"><span class="badge badge-easy">Lett</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-1">Niv&aring; 1 &mdash; DNS</div>
         <div class="theory-block"><div class="theory-title">🔎 Oppslaget går oppover i hierarkiet</div><div class="theory-text"><p>Du skriver <code>vg.no</code>, men maskinen trenger en IP-adresse. <strong>DNS</strong> gj&oslash;r oversettelsen.</p><p>Maskinen sp&oslash;r sin DNS-server. Kjenner den ikke svaret, sp&oslash;r den videre oppover: f&oslash;rst rotserverne, s&aring; serveren for <code>.no</code>, s&aring; serveren for <code>vg.no</code>.</p><p>Svaret <strong>mellomlagres</strong> med en levetid, kalt TTL, slik at neste oppslag g&aring;r raskere.</p><p>Feils&oslash;kingspoenget: virker <code>ping 8.8.8.8</code> men ikke <code>ping vg.no</code>, er nettverket i orden og <strong>DNS er problemet</strong>.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p><code>ping vg.no</code> feiler, men <code>ping 8.8.8.8</code> virker.</p><ol class="wsteps"><li>Pakker kommer fram til en IP-adresse, s&aring; ruting og gateway fungerer</li><li>Navnet blir ikke oversatt, s&aring; feilen ligger i <strong>navneoppslaget</strong></li><li>Sjekk hvilken DNS-server maskinen bruker</li><li>Test med en annen: <code>nslookup vg.no 8.8.8.8</code></li><li>Virker det med en annen server, er din egen DNS-server problemet</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193489642"><span class="ans-q">ping 8.8.8.8 virker, ping vg.no feiler. Hva er problemet?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div><div class="ans-row" data-a="193507257"><span class="ans-q">Hva kalles levetiden på et mellomlagret DNS-svar?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div><div class="ans-row" data-a="177670,-1712745326"><span class="ans-q">Hvilken record-type gir deg IPv4-adressen til et domene?</span><input class="ans-in" placeholder="én bokstav"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Test med IP f&oslash;rst, s&aring; med navn. Forskjellen peker rett p&aring; laget som feiler.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">nslookup vg.no
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">nslookup vg.no
 dig vg.no +short
 <span class='c'># test mot en annen server</span>
 nslookup vg.no 8.8.8.8</div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="193489642"><span class="ans-q">ping 8.8.8.8 virker, ping vg.no feiler. Hva er problemet?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div><div class="ans-row" data-a="193507257"><span class="ans-q">Hva kalles levetiden på et mellomlagret DNS-svar?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div><div class="ans-row" data-a="177670,-1712745326"><span class="ans-q">Hvilken record-type gir deg IPv4-adressen til et domene?</span><input class="ans-in" placeholder="én bokstav"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Test med IP f&oslash;rst, s&aring; med navn. Forskjellen peker rett p&aring; laget som feiler.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   <div class="lab-card" id="n6-8" data-level="medium">
     <div class="lab-header" onclick="toggleTask(this)">
@@ -215,23 +215,23 @@ nslookup vg.no 8.8.8.8</div>
       <span class="lab-title">Feilsøking: adresse, gateway eller navn</span>
       <div class="lab-meta"><span class="badge badge-medium">Middels</span><span class="lab-chev">&#9654;</span></div>
     </div>
-    <div class="lab-body"><div class="lab-split">
-      <div class="lab-left">
+    <div class="lab-body">
+      <div class="lab-flow">
         <div class="level-badge lb-3">Niv&aring; 2 &mdash; Systematikk</div>
         <div class="theory-block"><div class="theory-title">🧰 Fire tester i rekkefølge, og du vet hvor det stopper</div><div class="theory-text"><p>Gjett aldri. Test nedenfra og opp, og stopp p&aring; f&oslash;rste som feiler.</p><p><strong>1. Har jeg en gyldig adresse?</strong> <code>ip addr</code>. En 169.254-adresse betyr DHCP-problem.</p><p><strong>2. N&aring;r jeg gatewayen?</strong> <code>ping</code> gateway. Feiler den, er det lokalt: kabel, switch, VLAN.</p><p><strong>3. N&aring;r jeg ut?</strong> <code>ping 8.8.8.8</code>. Feiler den, er det ruting eller brannmur.</p><p><strong>4. Virker navn?</strong> <code>ping vg.no</code>. Feiler bare denne, er det DNS.</p><p>Hvert steg utelukker alt under seg. Det er derfor rekkef&oslash;lgen betyr noe.</p></div></div>
         <div class="worked"><div class="worked-t">Regneeksempel</div><div class="worked-b"><p>En bruker sier «internett virker ikke». Du tester i rekkef&oslash;lge.</p><ol class="wsteps"><li><code>ip addr</code> gir 192.168.1.45/24. Gyldig adresse, <strong>DHCP er i orden</strong></li><li><code>ping 192.168.1.1</code> svarer. <strong>Lokalnettet er i orden</strong></li><li><code>ping 8.8.8.8</code> svarer. <strong>Ruting ut er i orden</strong></li><li><code>ping vg.no</code> feiler. Alts&aring; er det <strong>DNS</strong></li><li>Du har utelukket tre lag p&aring; under ett minutt, uten &aring; gjette</li></ol></div></div>
-        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177622,478968905,2090183940"><span class="ans-q">ip addr viser 169.254.3.9. Hvilket steg feilet?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Gateway svarer, 8.8.8.8 svarer ikke. Er DNS problemet? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193489642"><span class="ans-q">Alt virker unntatt ping vg.no. Hva er feilen?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div></div>
-        <div><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Stopp p&aring; f&oslash;rste test som feiler. Alt over den er uavklart, alt under er friskmeldt.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Oppgave 2 er den viktige. N&aring;r 8.8.8.8 ikke svarer, har du ikke <em>kommet til</em> DNS-steget enn&aring;. &Aring; begynne &aring; feils&oslash;ke DNS da er &aring; hoppe over et lag, og det er den vanligste tidsbruken i praksis.</div></div>
-      </div>
-      <div class="lab-right" style="padding:24px">
-        <div class="obj-title">Kj&oslash;r dette</div>
-        <div class="cmd">ip addr
+        <div class="cmd-block">
+          <div class="obj-title">Kj&oslash;r dette</div>
+          <div class="cmd">ip addr
 ping -c 2 $(ip route | awk '/default/{print $3}')
 ping -c 2 8.8.8.8
 ping -c 2 vg.no</div>
-        
+          
+        </div>
+        <div class="ans-block"><div class="obj-title">Din tur</div><div class="ans-row" data-a="177622,478968905,2090183940"><span class="ans-q">ip addr viser 169.254.3.9. Hvilket steg feilet?</span><input class="ans-in" placeholder="et tall"><span class="ans-mark"></span></div><div class="ans-row" data-a="193500225"><span class="ans-q">Gateway svarer, 8.8.8.8 svarer ikke. Er DNS problemet? ja eller nei</span><input class="ans-in" placeholder="ja / nei"><span class="ans-mark"></span></div><div class="ans-row" data-a="193489642"><span class="ans-q">Alt virker unntatt ping vg.no. Hva er feilen?</span><input class="ans-in" placeholder="tre bokstaver"><span class="ans-mark"></span></div></div>
+        <div class="hint-row"><button class="hint-btn" onclick="toggleHint(this)">&#9654; Hint</button><div class="hint-box">Stopp p&aring; f&oslash;rste test som feiler. Alt over den er uavklart, alt under er friskmeldt.</div><button class="sol-btn" onclick="toggleSolution(this)">&#9654; Vis l&oslash;sning</button><div class="sol-box">Oppgave 2 er den viktige. N&aring;r 8.8.8.8 ikke svarer, har du ikke <em>kommet til</em> DNS-steget enn&aring;. &Aring; begynne &aring; feils&oslash;ke DNS da er &aring; hoppe over et lag, og det er den vanligste tidsbruken i praksis.</div></div>
       </div>
-    </div></div>
+    </div>
   </div>
   </div>
 
